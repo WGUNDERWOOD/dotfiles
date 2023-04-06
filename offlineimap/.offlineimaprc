@@ -1,0 +1,47 @@
+; vi: ft=confini
+
+[general]
+accounts = Gmail, Princeton
+pythonfile=~/.offlineimap.py
+
+# Gmail
+
+[Account Gmail]
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
+autorefresh = 0.25
+synclabels = yes
+
+[Repository Gmail-Local]
+type = GmailMaildir
+localfolders = ~/Mail/Gmail
+
+[Repository Gmail-Remote]
+type = Gmail
+remoteusereval = gmail_user
+remotepasseval = gmail_pass
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+keepalive = 120
+holdconnectionopen = yes
+
+# Princeton
+
+[Account Princeton]
+localrepository = Princeton-Local
+remoterepository = Princeton-Remote
+autorefresh = 0.25
+synclabels = yes
+
+[Repository Princeton-Local]
+type = GmailMaildir
+localfolders = ~/Mail/Princeton
+
+[Repository Princeton-Remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteport = 993
+remoteusereval = princeton_user
+remotepasseval = princeton_pass
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+keepalive = 120
+holdconnectionopen = yes
