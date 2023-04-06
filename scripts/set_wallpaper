@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ -e "/home/will/wallpaper.png" ]; then
+    echo "using ~/wallpaper.png"
+    nitrogen --set-zoom-fill ~/wallpaper.png
+
+elif [ -f "/home/will/wallpaper.jpg" ]; then
+    echo "using ~/wallpaper.jpg"
+    nitrogen --set-zoom-fill ~/wallpaper.jpg
+
+elif [ -f "/home/will/wallpaper.jpeg" ]; then
+    echo "using ~/wallpaper.jpeg"
+    nitrogen --set-zoom-fill ~/wallpaper.jpeg
+
+else
+    echo "no suitable wallpaper found"
+
+fi

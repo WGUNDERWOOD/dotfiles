@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+lilypond $1.ly
+audacious -Hq $1.midi

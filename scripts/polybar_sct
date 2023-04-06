@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+while true; do
+
+  current_status=$(cat ~/sct_status)
+
+  if [ "$current_status" == "on" ]; then
+      echo "%{F#ffb86c}◓"
+  else
+      echo "%{F#8be9fd}◓"
+  fi
+
+  sleep 2
+
+done

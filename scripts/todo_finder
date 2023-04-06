@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+import sys
+from colors import red, green, yellow
+import re
+
+assert len(sys.argv) == 2, "todo_finder requires one input"
+
+keywords = ["TODO", "BUG", "NOTE", "NOW", "XXX"]
+excludes = ["\\newcommand{\\TODO}"]
+filename = sys.argv[1]
+lines = open(filename, "r").read().splitlines()
+occurences = []
+
+def check_match(l):
+
+    contains_keyword = any([k in l for k in keywords])
+    contains_exclude = any([e in l for e in excludes])
+    return contains_keyword and not contains_exclude
+
+
+def print_formatted(l, i):
+
+    print(green(str(i+1) + ": ", style="bold"), end="")
+
+    formatted = [l]
+
+    for k in keywords:
+        parsed = [re.split("(" + k + "+)", s) for s in formatted]
+        formatted = [t for s in parsed for t in s]
+
+    for f in formatted:
+        if any([k in f for k in keywords]):
+            print(red(f, style="bold"), end="")
+        else:
+            print(f, end="")
+    print("\n", end="")
+
+
+if any([check_match(l) for l in lines]):
+    print(yellow(sys.argv[1], style="bold"))
+
+for i in range(len(lines)):
+    l = lines[i]
+    if check_match(l):
+        print_formatted(l, i)

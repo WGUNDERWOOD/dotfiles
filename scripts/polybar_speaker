@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+while true; do
+
+    device_name="Speaker"
+    device_status=$(amixer sget $device_name | grep -om 1 "\[.*\]")
+
+    if [ "$device_status" == "[on]" ]; then
+        echo "🎧 S"
+    else
+        echo "🎧 H"
+    fi
+    sleep 5
+done

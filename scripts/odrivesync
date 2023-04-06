@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+mount_dir="$HOME/odrive/"
+bin_dir="/home/will/.odrive-agent/bin/"
+
+ignore="gsheetx.cloud"
+ignore=$ignore"\|gdocx.cloud"
+ignore=$ignore"\|gmapx.cloud"
+ignore=$ignore"\|gslidesx.cloud"
+ignore=$ignore"\|Shared with Me/Cattaneo-Masini-Underwood.cloud"
+ignore=$ignore"\|Shared with Me/Cattaneo-Feng-Underwood.cloud"
+ignore=$ignore"\|Ellis Interview.cloud"
+ignore=$ignore"\|CRAW Photos for people"
+ignore=$ignore"\|Bachir EL KHADIR's conflicted copy"
+ignore=$ignore"\|MacBook Pro's conflicted copy"
+ignore=$ignore"\|Georgina Hall's conflicted copy"
+ignore=$ignore"\|2023 Tour rehearsal"
+ignore=$ignore"\|Germany 2023 Tour Photos"
+
+# warn about ignore pattern
+if [ "$ignore" ]
+then echo "warning: odrivesync is ignoring the following pattern(s):"
+     echo $ignore
+     echo
+fi
+
+# warn about conflicts
+if find "$mount_dir" -name "*conflict*" | grep "conflict" | grep -v "$ignore" &> /dev/null
+then echo "warning: conflicted file(s):"
+     find "$mount_dir" -name "*conflict*" | grep -v "$ignore"
+     echo
+fi
+
+# sync all cloud files
+echo "syncing files..."
+for i in {1..3}; do
+    find "$mount_dir" -name "*.cloud*" | grep -v "$ignore" | while read line; do
+        "$bin_dir/odrive" sync "$line"
+    done
+done
+echo "odrivesync finished"

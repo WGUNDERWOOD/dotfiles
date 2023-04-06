@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+echo
+
+# --------------------------------------------------------------------
+echo LOOKING FOR SYSTEM ERRORS
+# --------------------------------------------------------------------
+
+# failed systemd services
+read -n 1 -p "view failed systemd services? [y]:" systemd_input
+echo
+if [ "$systemd_input" = "y" ]; then
+    systemctl --failed | less
+fi
+
+
+# logfile errors
+read -n 1 -p "view logfile errors? [y]:" logfile_input
+echo
+if [ "$logfile_input" = "y" ]; then
+    journalctl -p 3 -xb --no-pager | less
+fi
+
+
+# view kernel ring buffer
+read -n 1 -p "view kernel ring buffer? [y]:" kernel_input
+echo
+if [ "$kernel_input" = "y" ]; then
+    dmesg -H
+fi
+
+echo
+
+# --------------------------------------------------------------------
+echo PACKAGE MAINTENANCE
+# --------------------------------------------------------------------
+
+# update mirrors
+read -n 1 -p "update mirrors? [y]:" mirrors_input
+echo
+if [ "$mirrors_input" = "y" ]; then
+    sudo reflector -l 100 -f 10 --sort score --save /etc/pacman.d/mirrorlist
+fi
+
+
+# update packages
+read -n 1 -p "update packages? [y]:" update_input
+echo
+if [ "$update_input" = "y" ]; then
+    yay -Syu
+    echo
+fi
+
+
+# update linux kernel
+read -n 1 -p "update linux kernel? [y]:" kernel_input
+echo
+if [ "$kernel_input" = "y" ]; then
+    sudo pacman -S linux linux-headers linux-api-headers
+    echo
+fi
+
+
+# export and view package list
+read -n 1 -p "view and save full package list? [y]:" package_input
+echo
+if [ "$package_input" = "y" ]; then
+    expac -s "%-40n %m" | sort -rhk 2 | less
+    pacman -Qqe > ~/Documents/github/system/pacman/$HOSTNAME-package-list.txt
+fi
+
+
+# view aur packages
+read -n 1 -p "view aur packages? [y]:" aur_input
+echo
+if [ "$aur_input" = "y" ]; then
+    pacman -Qm | less
+fi
+
+
+# clear cache
+read -n 1 -p "clean package cache? [y]:" cache_input
+echo
+if [ "$cache_input" = "y" ]; then
+    yay -Sc
+fi
+
+
+# view orphaned packages
+read -n 1 -p "view orphaned packages? [y]:" orphan_input
+echo
+if [ "$orphan_input" = "y" ]; then
+    pacman -Qtd | less
+
+    # remove orphaned packages
+    read -n 1 -p "remove orphaned packages? [y]:" orphan_remove_input
+    echo
+    if [ "$orphan_remove_input" = "y" ]; then
+        sudo pacman -Rns $(pacman -Qtdq)
+    fi
+fi
+
+
+echo
+
+# --------------------------------------------------------------------
+echo STORAGE STATUS
+# --------------------------------------------------------------------
+
+# disk space
+read -n 1 -p "view disk usage? [y]:" disk_input
+echo
+if [ "$disk_input" = "y" ]; then
+    df -H | less
+fi
+
+
+# timeshift
+read -n 1 -p "create timeshift snapshot? [y]:" timeshift_input
+echo
+if [ "$timeshift_input" = "y" ]; then
+    sudo timeshift --create
+    echo
+fi
+
+
+echo
+
+echo MAINTENANCE COMPLETE
+
+echo

@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+current_brightness=$(lux -g);
+
+if [ $current_brightness -gt 0 ]; then
+    lux -S 0;
+else
+    bash ~/scripts/lux_init
+fi

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# 🠋🔄🡇⮹！❗
+new_email="%{F#ffa9f6}🔄"
+no_email="🔄"
+inactive="%{F#f4511e}🔄"
+
+while true; do
+
+    # check syncing status
+    status_Princeton=$(systemctl is-active --user offlineimap@Princeton)
+    status_Gmail=$(systemctl is-active --user offlineimap@Gmail)
+    status="$status_Princeton$status_Gmail"
+
+    # count emails
+    count_email=$(find ~/Mail/Princeton/INBOX/new/ ~/Mail/Gmail/INBOX/new/ -type f | wc -l)
+
+    # display output
+    if [ "$status" = "activeactive" ]; then
+
+        if [ "$count_email" -ge "1" ]; then
+            echo "$new_email $count_email"
+        else
+            echo "$no_email"
+        fi
+
+    else
+        echo "$inactive"
+    fi
+
+    sleep 5
+done

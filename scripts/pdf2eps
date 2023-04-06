@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# usage:
+# pdf2eps <page number> <pdf file without ext>
+
+pdftops -f $1 -l $1 -eps "$2.pdf"

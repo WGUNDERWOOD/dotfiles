@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# PATH
+PATH=$PATH:$HOME/scripts
+PATH=$PATH:$HOME/Documents/github/system/scripts/
+PATH=$PATH:$HOME/.odrive-agent/bin
+
+# lux brightness
+[[ $HOSTNAME == "xanth" ]] && lux_init &
+
+# sct
+sctstop &
+
+# odrive
+odrivestart
+
+# mute exterior speakers
+[[ $HOSTNAME == "xanth" ]] && speaker_mute &
+
+# turn off microphone
+[[ $HOSTNAME == "xanth" ]] && amixer set Capture nocap &
+
+# set volume
+[[ $HOSTNAME == "xanth" ]] && pactl set-sink-volume 0 20%
+[[ $HOSTNAME == "libra" ]] && pactl set-sink-volume 1 35%
+
+# hide pointer after 1 second
+unclutter -idle 1 -root &
+
+# screen lock on sleep
+xset s 3600 # xset s TIME_UNTIL_SCREEN_SAVER (lock)
+xset dpms 3600 3600 3600 # xset dpms TIME_UNTIL_STANDBY TIME_UNTIL_SUSPEND TIME_UNTIL_SCREEN_OFF
+[[ $HOSTNAME == "xanth" ]] && xss-lock -- physlock +resetsaver &
+
+# key repeat rate
+xset r rate 200 50
+
+# keyboard backlight on
+#brightnessctl --device='tpacpi::kbd_backlight' set 0
+#brightnessctl --device='tpacpi::kbd_backlight' set 2
+
+# conky
+#conky -d &
+
+# emails
+email_sync &

@@ -1,0 +1,140 @@
+#!/usr/bin/python
+import os.path
+import subprocess
+import re
+import sys
+
+# make wordlist if it doesn't exist
+if not os.path.exists("./wordlist.txt"):
+    print("No wordlist.txt found!")
+    generate_wordlist = input("Generate a new wordlist.txt? [y/n] ")
+    if generate_wordlist == "y":
+        with open("./wordlist.txt", "w") as f:
+            f.writelines("# whitelist" + "\n\n")
+            f.writelines("# blacklist" + "\n")
+        print("Generated a new wordlist!")
+    else:
+        raise FileNotFoundError("Skipping wordlist.txt generation.")
+
+# check file to check exists
+check = sys.argv[1]
+if not os.path.exists(check):
+    raise FileNotFoundError("File to check does not exist")
+
+# input wordlist
+with open("./wordlist.txt", "r") as f:
+    wordlist = f.read().split("\n\n")
+
+# check format of wordlist
+assert len(wordlist) == 2, "Incorrectly formatted wordlist"
+whitelist = wordlist[0].split("\n")
+blacklist = wordlist[1].split("\n")
+assert whitelist[0] == "# whitelist"
+assert blacklist[0] == "# blacklist"
+whitelist = whitelist[1:]
+blacklist = blacklist[1:]
+whitelist = list(filter(None, whitelist))
+blacklist = list(filter(None, blacklist))
+
+# check whitelist and blacklist unique
+whitelist = sorted(whitelist, key=str.lower)
+blacklist = sorted(blacklist, key=str.lower)
+unique_words = dict()
+
+for w in whitelist + blacklist:
+    if w in unique_words:
+        raise ValueError(w + " is duplicated in wordlist")
+    else:
+        unique_words[w] = True
+
+# rewrite wordlist
+with open("./wordlist.txt", "w") as f:
+    f.writelines("# whitelist" + "\n")
+    for l in whitelist:
+        f.writelines(l + "\n")
+    f.writelines("\n")
+    f.writelines("# blacklist" + "\n")
+    for l in blacklist:
+        f.writelines(l + "\n")
+
+# write temp whitelist
+with open("./.spell_whitelist.tmp", "w") as f:
+    f.writelines("personal_ws-1.1 en 1000 utf-8" + "\n")
+    for l in whitelist:
+        f.writelines(l + "\n")
+
+# write temp blacklist
+with open("./.spell_blacklist.tmp", "w") as f:
+    f.writelines("personal_ws-1.1 en 1000 utf-8" + "\n")
+    for l in blacklist:
+        f.writelines(l + "\n")
+
+# write temp check
+cmd = ["cp", check, ".spell_check.tmp"]
+output = subprocess.check_output(cmd)
+
+# aspell with whitelist
+whitelist_mistakes = subprocess.check_output(
+    'bash -c "cat .spell_check.tmp | \
+    aspell --home-dir=. --personal=.spell_whitelist.tmp -t list"',
+    shell=True)
+whitelist_mistakes = whitelist_mistakes.decode("utf-8").split("\n")
+whitelist_mistakes = list(filter(None, whitelist_mistakes))
+whitelist_mistakes = list(set(whitelist_mistakes))
+
+# format mistakes
+mistakes = []
+with open(check, "r") as f:
+    fsplit = f.read().split("\n")
+    for l in range(len(fsplit)):
+        for w in whitelist_mistakes + blacklist:
+            if re.search(r"\b" + w + r"\b", fsplit[l]):
+                mistakes += [[l, w, fsplit[l]]]
+
+# check aspell treats whitelist as errors
+aspell_whitelist_errors = subprocess.check_output(
+    'bash -c "cat .spell_whitelist.tmp | \
+    tail -n +2 | \
+    aspell --home-dir=. -t list"',
+    shell=True)
+aspell_whitelist_errors = aspell_whitelist_errors.decode("ascii").split("\n")
+aspell_whitelist_errors = list(filter(None, aspell_whitelist_errors))
+assert whitelist == aspell_whitelist_errors, "Whitelist should be treated as errors by aspell"
+
+# check aspell treats blacklist as ok
+aspell_blacklist_errors = subprocess.check_output(
+    'bash -c "cat .spell_blacklist.tmp | \
+    tail -n +2 | \
+    aspell --home-dir=. -t list"',
+    shell=True)
+aspell_blacklist_errors = aspell_blacklist_errors.decode("ascii").split("\n")
+aspell_blacklist_errors = list(filter(None, aspell_blacklist_errors))
+assert aspell_blacklist_errors == [], "Blacklist should be treated as correct by aspell"
+
+# clean up
+try:
+    os.remove(".spell_whitelist.tmp")
+except:
+    "No .spell_whitelist.tmp file to clean"
+
+try:
+    os.remove(".spell_blacklist.tmp")
+except:
+    "No .spell_blacklist.tmp file to clean"
+
+try:
+    os.remove(".spell_check.tmp")
+except:
+    "No .spell_check.tmp file to clean"
+
+# output results
+if len(mistakes) > 0:
+    header = "\033[0;33m\033[1m" + check + "\033[00m\033[0m"
+    print(header)
+
+for m in mistakes:
+    linenum = "\033[0;32m\033[1m" + str(m[0] + 1) + ":\033[00m\033[0m"
+    word = m[1]
+    line = m[2]
+    line = re.sub(word, "\033[0;31m\033[1m" + word + "\033[00m\033[0m", line)
+    print(linenum + " " + line)

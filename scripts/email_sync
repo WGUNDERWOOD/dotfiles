@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+while [[ $(ps -e | grep offlineimap) ]]
+do
+    echo "killing instance of offlineimap..."
+    killall offlineimap
+    sleep 1
+done
+
+
+echo "starting offlineimap Gmail..."
+systemctl start --user offlineimap@Gmail.service
+
+echo "starting offlineimap Princeton..."
+systemctl start --user offlineimap@Princeton.service
+
+echo "email sync finished"

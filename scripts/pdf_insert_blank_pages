@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# get directory names
+current_dir=$(pwd)
+new_dir="/tmp/$$/"
+
+# check directory names
+echo "Current directory:"
+echo $current_dir
+
+echo "Directory for building pdf:"
+echo $new_dir
+
+echo "Pdf name:"
+echo $1
+
+# copy to new directory
+mkdir -p $new_dir
+cp $1 $new_dir/in.pdf
+cd $new_dir
+
+# make blank page
+echo "\documentclass{article}" > blank.tex
+echo "\pagenumbering{gobble}" >> blank.tex
+echo "\begin{document}" >> blank.tex
+echo "\mbox{}" >> blank.tex
+echo "\end{document}" >> blank.tex
+pdflatex blank
+
+# insert blank pages
+pdftk in.pdf burst
+for i in pg*.pdf; do echo -n " $i blank.pdf " >> list; done
+pdftk `cat list` cat output out.pdf
+
+# move back
+cd "$current_dir"
+cp $new_dir/out.pdf "$current_dir/blanks_$1"
+rm -r $new_dir

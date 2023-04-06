@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Screen temperatures
+temp_day=6500
+sct $temp_day
+echo "off" > ~/sct_status

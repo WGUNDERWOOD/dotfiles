@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+startup_brightness=530
+
+# set brightness to 50%
+lux -S $startup_brightness;

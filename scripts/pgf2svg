@@ -1,0 +1,91 @@
+#!/bin/env bash
+
+# usage function
+function usage() {
+    cat <<USAGE
+
+    Usage: pgf2svg [-p preamble] file.pdf
+
+    Options:
+        -p: string to pass to latex preamble
+USAGE
+    exit 1
+}
+
+# get preamble argument if present
+
+PREAMBLE=""
+
+while getopts "p:" opt; do
+    case "$opt" in
+        p)
+            PREAMBLE=$OPTARG
+            ;;
+        h)
+            usage
+            exit 0
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+# check an argument is passed
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# check input file exists
+if [[ ! -f "$1" ]]; then
+    echo "File $1 does not exist"
+    exit 1
+fi
+
+# check input file is a pgf
+if [[ ! $1 == *.pgf ]]; then
+    echo "File $1 is not a pgf"
+    exit 1
+fi
+
+# start main script
+echo "This is pgf2svg"
+filename=$(basename $1 .pgf)
+
+# make latex file
+echo "\documentclass{standalone}" > "${filename}_pgf2svg_temp.tex"
+echo "\usepackage{pgf}" >> "${filename}_pgf2svg_temp.tex"
+echo $PREAMBLE >> "${filename}_pgf2svg_temp.tex"
+echo "\begin{document}" >> "${filename}_pgf2svg_temp.tex"
+echo "\input{${filename}.pgf}" >> "${filename}_pgf2svg_temp.tex"
+echo "\end{document}" >> "${filename}_pgf2svg_temp.tex"
+
+# run latex to get pdf
+echo "pgf -> pdf..."
+latexmk -quiet -pdf "${filename}_pgf2svg_temp.tex" > /dev/null 2>&1
+
+# convert pdf to svg
+echo "pdf -> svg..."
+pdf2svg "${filename}_pgf2svg_temp.pdf" "${filename}_pgf2svg_temp.svg"
+
+# compress svg
+echo "compress svg..."
+svgcleaner "${filename}_pgf2svg_temp.svg" "${filename}.svg" > /dev/null 2>&1
+
+# clean up
+echo "cleaning up..."
+rm "${filename}_pgf2svg_temp.tex"
+rm "${filename}_pgf2svg_temp.pdf"
+rm "${filename}_pgf2svg_temp.svg"
+rm "${filename}_pgf2svg_temp.fls"
+rm "${filename}_pgf2svg_temp.aux"
+rm "${filename}_pgf2svg_temp.log"
+rm "${filename}_pgf2svg_temp.fdb_latexmk"
+
+# report
+echo "Input file: ${filename}.pgf, $(stat -c %s ${filename}.pgf | numfmt --to=iec)"
+echo "Output file: ${filename}.svg, $(stat -c %s ${filename}.svg | numfmt --to=iec)"
