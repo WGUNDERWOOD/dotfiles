@@ -16,6 +16,9 @@ nnoremap ,b :update<CR><Plug>(vimtex-compile-ss)
 nnoremap ,v <Plug>(vimtex-view)
 nnoremap ,k <Plug>(vimtex-stop-all)
 nnoremap ,w <Plug>(vimtex-errors) <C-W>k
+inoremap <C-L> <C-X><C-O>
+inoremap <C-J> <C-N>
+inoremap <C-K> <C-P>
 
 hi QuickFixLine guifg=NONE gui=bold
 hi texTitleArg gui=bold guifg=#ffff22
