@@ -1,0 +1,12 @@
+# -*- conf -*-
+
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+
+set keymap vi-command
+Control-l: clear-screen
+
+set keymap vi-insert
+Control-l: clear-screen
