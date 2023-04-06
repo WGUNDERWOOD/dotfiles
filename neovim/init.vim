@@ -149,7 +149,7 @@ nnoremap <Space>bb :lua require'fzf-lua'.oldfiles({prompt="Recent files> ",
   \ include_current_session=true}) <CR>
 nnoremap <Space>gc :lua require'fzf-lua'.git_commits({prompt="Commits> ",
   \ show_cwd_header=false}) <CR>
-nnoremap <Space>fc :e ~/Documents/github/system/neovim/init.vim <CR>
+nnoremap <Space>fc :e ~/Documents/github/dotfiles/neovim/init.vim <CR>
 nnoremap <Space>/ :lua require'fzf-lua'.grep_project({prompt="Project> ",
   \ cwd = "`git rev-parse --show-toplevel`",
   \ no_header_i=true, no_header=true}) <CR>
@@ -160,7 +160,7 @@ let g:startify_lists = [{'type': 'commands', 'header': []}]
 let g:startify_enable_special = 0
 let g:startify_commands = [
   \ {'n': ['New buffer', ':enew']},
-  \ {'c': ['Config file', ':e ~/Documents/github/system/neovim/init.vim']},
+  \ {'c': ['Config file', ':e ~/Documents/github/dotfiles/neovim/init.vim']},
   \ {'q': ['Quit', ':q']},
 \ ]
 let g:startify_custom_header = [

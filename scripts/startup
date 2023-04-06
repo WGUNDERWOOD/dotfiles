@@ -2,7 +2,7 @@
 
 # PATH
 PATH=$PATH:$HOME/scripts
-PATH=$PATH:$HOME/Documents/github/system/scripts/
+PATH=$PATH:$HOME/Documents/github/dotfiles/scripts/
 PATH=$PATH:$HOME/.odrive-agent/bin
 
 # lux brightness
