@@ -527,9 +527,9 @@ modifyLineBreaks:
             questionMark: 1                 # 0/1
             other: 0                        # regex
     textWrapOptions:
-        columns: 0
+        columns: 80
         multipleSpacesToSingle: 1
-        removeBlockLineBreaks: 1
+        removeBlockLineBreaks: 0
         when: before                        # before/after
         comments:
            wrap: 0                          # 0/1

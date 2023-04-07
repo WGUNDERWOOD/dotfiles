@@ -11,6 +11,5 @@
 ** Latexindent
 *** TODO Should agree with Neovim
 *** TODO Compatibility with PythonTex
-*** TODO Wrap long lines at punctuation
 ** Scripts
 *** TODO Use mktemp instead of $$ in scripts
