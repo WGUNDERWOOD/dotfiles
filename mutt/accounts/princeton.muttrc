@@ -12,7 +12,7 @@ set smtp_pass = "`gpg -q -d ~/.config/mutt/passwords/princeton_password.gpg`"
 
 # sidebar colors
 color sidebar_indicator default color166
-color status 		default	color166
+color status default color166
 
 # sync folders
 set postponed = "~/Mail/Princeton/[Gmail].Drafts"

@@ -11,10 +11,10 @@ while true; do
     # when there are updates available
     while (( UPDATES > 0 )); do
         if (( UPDATES > 99 )); then
-       	    echo "%{F#f4511e} $UPDATES"
-	      else
-       	    echo "%{F#f1fa8c} $UPDATES"
-	      fi
+            echo "%{F#f4511e} $UPDATES"
+        else
+            echo "%{F#f1fa8c} $UPDATES"
+        fi
         sleep 300
         get_total_updates
     done

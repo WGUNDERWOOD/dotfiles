@@ -14,17 +14,17 @@
   ci = "commit -v"
   co = "checkout"
   di = "diff"
-	dipdf = "difftool --tool diffpdf"
+  dipdf = "difftool --tool diffpdf"
   din = "diff --name-only"
   dic = "diff --compact-summary"
-	dis = "diff --staged"
+  dis = "diff --staged"
   fe = "fetch --all"
   hi = "log --graph --full-history --all --pretty=format:'%Cred%h%Creset %Cblue%ad%Creset %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d %H:%M:%S' --date=iso"
   lg = "log --graph --pretty=format:'%Cred%h%Creset %Cblue%ad%Creset %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d %H:%M:%S' --date=iso"
   me = "merge"
   pl = "pull"
   ps = "push"
-	re = "rebase"
+  re = "rebase"
   st = "status"
   tree = "ls-tree -r --name-only"
   tr = "tree"
@@ -41,10 +41,10 @@
   cmd = diffpdf "$LOCAL" "$REMOTE"
 
 [pull]
-	rebase = false
+  rebase = false
 
 [credential "https://git.overleaf.com"]
-    helper = store
+  helper = store
 
 [init]
-	defaultBranch = main
+  defaultBranch = main

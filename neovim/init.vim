@@ -41,22 +41,22 @@ hi vimCommand gui=bold guifg=#ff79c6
 hi ExtraWhitespace guibg=#6272a4
 match ExtraWhitespace /\s\+$/
 
-" Background 		#282a36
-" My background		#181a26
-" Current Line 		#44475a
-" Selection 		#44475a
-" Foreground 		#f8f8f2
-" Comment   		#6272a4
-" Cyan 	    		#8be9fd
-" Green     		#50fa7b
-" Orange    		#ffb86c
-" Pink 	    		#ff79c6
-" Purple    		#bd93f9
-" Red	    		#ff5555
-" Yellow    		#f1fa8c
-" Alert     		#ff7722
-" Bright Yellow 	#ffff22
-" Bright Green 		#00dd00
+" Background       #282a36
+" My background    #181a26
+" Current Line     #44475a
+" Selection        #44475a
+" Foreground       #f8f8f2
+" Comment          #6272a4
+" Cyan             #8be9fd
+" Green            #50fa7b
+" Orange           #ffb86c
+" Pink             #ff79c6
+" Purple           #bd93f9
+" Red              #ff5555
+" Yellow           #f1fa8c
+" Alert            #ff7722
+" Bright Yellow    #ffff22
+" Bright Green     #00dd00
 
 " basics
 set number
@@ -329,7 +329,7 @@ EOF
 "
 lua << EOF
   require("luasnip").setup({
-	update_events = {"TextChanged", "TextChangedI"},
+    update_events = {"TextChanged", "TextChangedI"},
     history = true,
   })
   require("luasnip.loaders.from_snipmate").lazy_load({paths = "./snippets"})
