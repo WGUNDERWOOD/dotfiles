@@ -5,13 +5,13 @@ call matchadd('mailAttachment', '
             \[Aa]ttach\|
             \cv\|
             \CV\|
-            \[Ee]nclosed\|
             \[Ee]nclosing\|
+            \[Ee]nclosed\|
             \[Ee]nclose\|
             \[Ff]iles\|
             \[Ff]ile\|
-            \[Ii]nclude\|
             \[Ii]ncluded\|
+            \[Ii]nclude\|
             \[Pp]rinting\|
             \[Pp]rinter\|
             \[Pp]rint\|

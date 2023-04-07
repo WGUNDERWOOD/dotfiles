@@ -20,6 +20,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/cmp-rg'
 Plug 'airblade/vim-gitgutter'
+Plug 'farmergreg/vim-lastplace'
 call plug#end()
 
 " ignore missing language providers
@@ -221,6 +222,9 @@ nnoremap f <Plug>(leap-forward)
 nnoremap F <Plug>(leap-backward)
 highlight LeapBackdrop guifg=#6272a4 guibg=NONE gui=NONE
 highlight LeapLabelPrimary guifg=#50fa7b guibg=NONE gui=bold
+
+" lastplace
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,mail"
 
 " insert special symbols
 nnoremap <Space>ip i£<Esc>

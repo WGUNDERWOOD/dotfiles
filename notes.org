@@ -2,14 +2,15 @@
 #+author: William G Underwood
 * Tasks
 ** Neovim
-*** TODO Highlight "included" in filetype mail
 *** TODO Autocomplete latex references within document
 *** TODO Filetype org cursor color on hidden stars
 *** TODO Code folding for various filetypes
 *** TODO Vimtex go to location of next error
 *** TODO Org when tabbing to indent heading cursor is in wrong place
+*** TODO Command-waiting cursor is slow to change
 ** Latexindent
 *** TODO Should agree with Neovim
 *** TODO Compatibility with PythonTex
+*** TODO Wrap long lines at punctuation
 ** Scripts
 *** TODO Use mktemp instead of $$ in scripts
