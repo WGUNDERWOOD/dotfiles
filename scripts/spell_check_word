@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+word="$1"
+out="$(echo "$word" | aspell -a | tail -n +2 | cut -c 3- | cut -d ' ' -f 4-)"
+
+if [ ! -z "$out" ]; then
+    echo -n "$out"
+fi

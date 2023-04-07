@@ -180,6 +180,15 @@ endfun
 autocmd FileType tex,julia,python,text,org,sh,vim,yaml,snippet,rust,bib
   \ autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
+" check spelling under cursor
+function! CheckSpellingUnderCursor ( )
+    let word = expand("<cword>")
+    let check = system("spell_check_word '" . word . "'")
+    echom check
+endfunction
+command CheckSpellingUnderCursor call CheckSpellingUnderCursor()
+nnoremap <Space>cs :CheckSpellingUnderCursor<CR>
+
 " go to longest line
 function! GoToLongestLine ( )
   let maxlength   = 0
