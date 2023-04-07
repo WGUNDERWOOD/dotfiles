@@ -19,6 +19,7 @@ Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*',
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/cmp-rg'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " ignore missing language providers
@@ -86,6 +87,7 @@ nnoremap <Space><Tab> :e#<CR>
 let g:netrw_browsex_viewer = 'firefox'
 nnoremap <Space>tc :ColorizerToggle<CR>
 nnoremap <silent> <Space>rr :source $MYVIMRC<CR>
+set updatetime=300
 
 " indent
 set tabstop=4

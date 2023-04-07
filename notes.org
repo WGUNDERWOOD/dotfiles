@@ -7,6 +7,9 @@
 *** TODO Filetype org cursor color on hidden stars
 *** TODO Code folding for various filetypes
 *** TODO Vimtex go to location of next error
+*** TODO Org when tabbing to indent heading cursor is in wrong place
 ** Latexindent
 *** TODO Should agree with Neovim
 *** TODO Compatibility with PythonTex
+** Scripts
+*** TODO Use mktemp instead of $$ in scripts
