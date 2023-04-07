@@ -1,9 +1,3 @@
-" TODO
-" show and hide outlines with z a etc
-" org cursor color
-" leap cursor color
-" vimtex go to next error
-
 " vim-plug plugins
 call plug#begin()
 Plug 'dracula/vim', {'as': 'dracula'}

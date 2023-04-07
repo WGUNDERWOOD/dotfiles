@@ -1,0 +1,10 @@
+#+title: Dotfiles Notes
+#+author: William G Underwood
+* Tasks
+** Neovim
+*** TODO Highlight "included" in filetype mail
+*** TODO Autocomplete latex references within document
+*** TODO Latexindent should agree with Neovim on tex files
+*** TODO Filetype org cursor color on hidden stars
+*** TODO Code folding for various filetypes
+*** TODO Vimtex go to location of next error
