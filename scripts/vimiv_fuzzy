@@ -1,6 +1,13 @@
 #!/usr/bin/bash
 
-export FZF_DEFAULT_OPTS='--color=fg:#dddddd,bg:#181a26,hl:#bd93f9 --color=fg+:#ffffff,bg+:#181a26,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
-file=$(find ~/Documents ~/Downloads ~/odrive -type f \( -name '*.png' -or -name '*.svg' -or -name '*.jpg' -or -name '*.jpeg' \) -print | fzf --tac)
+export FZF_DEFAULT_OPTS='--color=fg:#dddddd,bg:#181a26,hl:#bd93f9
+    --color=fg+:#ffffff,bg+:#181a26,hl+:#bd93f9
+    --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
+    --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+
+file=$(find ~/Documents ~/Downloads ~/odrive -type f \
+    \( -name '*.png' -or -name '*.svg' -or -name '*.jpg' -or -name '*.jpeg' \) \
+    -print | fzf --tac)
+
 echo $file
 [[ -n "$file" ]] && screen -d -m vimiv "$file" && sleep 0.1
