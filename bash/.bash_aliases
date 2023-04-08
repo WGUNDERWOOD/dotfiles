@@ -11,7 +11,7 @@ alias lrz='fd -tf -X exa --long --sort size'
 
 # one letter aliases
 alias b='bat --theme Dracula'
-alias c='cd'
+c() { command my_zoxide "$@" > /dev/null && cd $(my_zoxide "$@"); }
 alias g='git'
 alias m='(cd ~/Downloads; neomutt)'
 alias n='nvim'
