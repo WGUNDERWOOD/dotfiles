@@ -2,7 +2,6 @@
 #+author: William G Underwood
 * Tasks
 ** Neovim
-*** TODO Autocomplete latex references within document
 *** TODO Filetype org cursor color on hidden stars
 *** TODO Code folding for various filetypes
 *** TODO Vimtex go to location of next error

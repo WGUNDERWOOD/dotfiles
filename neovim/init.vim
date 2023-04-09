@@ -356,7 +356,8 @@ lua << EOF
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
-        fallback()
+        local keys = vim.api.nvim_replace_termcodes('<C-X><C-O>', false, false, true)
+        vim.api.nvim_feedkeys(keys, "n", {})
       end
     end, { "i", "s" }),
     ["<C-j>"] = cmp.mapping(function(fallback)
