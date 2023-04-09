@@ -21,6 +21,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/cmp-rg'
 Plug 'airblade/vim-gitgutter'
 Plug 'farmergreg/vim-lastplace'
+Plug 'hrsh7th/cmp-omni'
 call plug#end()
 
 " ignore missing language providers
@@ -376,6 +377,7 @@ lua << EOF
     sources = cmp.config.sources({
       { name = 'luasnip' },
       { name = 'rg' },
+      { name = 'omni' },
     }),
     formatting = {
       format = function(entry, vim_item)
@@ -383,6 +385,7 @@ lua << EOF
       vim_item.menu = ({
         luasnip = "[snippet]",
         rg = "[ripgrep]",
+        omni = "[omnifunc]",
       })[entry.source.name]
       return vim_item
       end
