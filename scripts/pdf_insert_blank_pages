@@ -2,7 +2,7 @@
 
 # get directory names
 current_dir=$(pwd)
-new_dir="/tmp/$$/"
+new_dir=$(mktemp -d)
 
 # check directory names
 echo "Current directory:"

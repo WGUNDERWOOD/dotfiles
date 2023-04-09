@@ -5,7 +5,8 @@
 
 file="$1"
 filebase="$(basename "$file" .pdf)"
-optfile="/tmp/$$-${filebase}_opt.pdf"
+optdir=$(mktemp -d)
+optfile="${optdir}/${filebase}_opt.pdf"
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
         -sOutputFile="${optfile}" "${file}"
 
