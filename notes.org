@@ -5,7 +5,10 @@
 *** TODO Filetype org cursor color on hidden stars
 *** TODO Code folding for various filetypes
 *** TODO Org when tabbing to indent heading cursor is in wrong place
-*** TODO Command-waiting cursor is slow to change
+*** TODO Command-waiting cursor is slow to change in org
+*** TODO Reimplement org-mode manually
+**** Fix cursor problems
+**** Faster startup
 ** Latexindent
 *** TODO Should agree with Neovim
 *** TODO Compatibility with PythonTex
