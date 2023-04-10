@@ -7,5 +7,6 @@ elif zoxide query $1 > /dev/null 2>&1; then
 elif cd $1 > /dev/null 2>&1; then
     echo $1
 else
+    >&2 echo "zoxide: No such file or directory"
     exit 1
 fi
