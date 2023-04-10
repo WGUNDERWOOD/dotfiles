@@ -90,6 +90,7 @@ let g:netrw_browsex_viewer = 'firefox'
 nnoremap <Space>tc :ColorizerToggle<CR>
 nnoremap <silent> <Space>rr :source $MYVIMRC<CR>
 set updatetime=300
+set pumheight=8
 
 " indent
 set tabstop=4
@@ -376,9 +377,9 @@ lua << EOF
     end, { "i", "s" }),
   },
     sources = cmp.config.sources({
-      { name = 'luasnip' },
-      { name = 'rg' },
-      { name = 'omni' },
+      { name = 'luasnip', keyword_length = 1 },
+      { name = 'rg', keyword_length = 4 },
+      { name = 'omni', keyword_length = 1 },
     }),
     formatting = {
       format = function(entry, vim_item)
