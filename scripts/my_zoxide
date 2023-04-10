@@ -2,6 +2,10 @@
 
 if [ "$1" = "" ]; then
     echo ~ && exit
+elif zoxide query $1 > /dev/null 2>&1; then
+    zoxide query $1
+elif cd $1 > /dev/null 2>&1; then
+    echo $1
 else
-    zoxide query $1 > /dev/null 2>&1 && zoxide query $1
+    exit 1
 fi
