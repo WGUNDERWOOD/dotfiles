@@ -35,3 +35,4 @@ set index-active-bg "#44475a"
 set index-active-fg "#ffff33"
 set highlight-fg "#8be9fd"
 set database sqlite
+map <Space> feedkeys <Esc>

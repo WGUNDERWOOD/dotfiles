@@ -91,6 +91,7 @@ nnoremap <Space>tc :ColorizerToggle<CR>
 nnoremap <silent> <Space>rr :source $MYVIMRC<CR>
 set updatetime=300
 set pumheight=8
+nnoremap Y y$
 
 " indent
 set tabstop=4
