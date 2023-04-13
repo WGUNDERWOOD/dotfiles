@@ -173,6 +173,11 @@ let g:startify_custom_header = [
   \ '     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
 \ ]
 
+" gitgutter
+let g:gitgutter_enabled = 0
+let g:gitgutter_map_keys = 0
+nnoremap <Space>gg :GitGutterToggle <CR>
+
 " trim trailing whitespace
 function! <SID>StripTrailingWhitespaces()
   if !&binary && &filetype != 'diff'
