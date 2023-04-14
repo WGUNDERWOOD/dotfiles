@@ -114,6 +114,10 @@ set guicursor+=o:hor50-CursorPending
 set guicursor+=i:ver100-CursorInsert
 set guicursor+=a:blinkwait300-blinkon200-blinkoff150
 
+" git conflicts
+nnoremap gc /=======\\|<<<<<<<\\|>>>>>>><CR>
+
+
 " tex with zathura
 let g:vimtex_view_method = 'zathura'
 
@@ -139,7 +143,7 @@ nnoremap <Space>fa :lua require'fzf-lua'.files({prompt="All files> ",
   \ -E '*.pptx' -E '*.bin' -E '*.gif' -E '*.HEIC' -E '*.MOV' -E '*.PNG'
   \ -E '*.JPG' -E '*.mov' -E '/vendor/*' -E '/target/*' -E '*.m4a'
   \ -E '*.docx' -E '*.xlsx' -E '*.ppt' -E '*.log' -E '*.eps' -E '*.aux'
-  \ -E '*.p'"
+  \ -E '*.p' -E '*.fig'"
   \ }) <CR>
 nnoremap <Space>pf :lua require'fzf-lua'.git_files({prompt="Project files> ",
   \ cwd = "`git rev-parse --show-toplevel`",
@@ -378,7 +382,7 @@ lua << EOF
   },
     sources = cmp.config.sources({
       { name = 'luasnip', keyword_length = 1 },
-      { name = 'rg', keyword_length = 4 },
+      { name = 'rg', keyword_length = 3 },
       { name = 'omni', keyword_length = 1 },
     }),
     formatting = {

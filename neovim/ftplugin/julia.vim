@@ -19,4 +19,5 @@ hi juliaFloat guifg=#8be9fd
 hi juliaConstGeneric guifg=#8be9fd
 hi juliaRangeKeyword guifg=#8be9fd
 hi juliaOperator guifg=#f8f8f2
+hi juliaMacro gui=bold guifg=#ffb86c
 
