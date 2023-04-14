@@ -10,6 +10,7 @@ call matchadd('mailAttachment', '
             \[Ee]nclose\|
             \[Ff]iles\|
             \[Ff]ile\|
+            \[Ii]ncluding\|
             \[Ii]ncluded\|
             \[Ii]nclude\|
             \[Pp]rinting\|

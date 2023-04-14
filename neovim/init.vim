@@ -91,6 +91,7 @@ nnoremap <Space>tc :ColorizerToggle<CR>
 nnoremap <silent> <Space>rr :source $MYVIMRC<CR>
 set updatetime=300
 set pumheight=8
+nnoremap Y y$
 
 " indent
 set tabstop=4
@@ -175,6 +176,11 @@ let g:startify_custom_header = [
   \ '     ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
   \ '     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
 \ ]
+
+" gitgutter
+let g:gitgutter_enabled = 0
+let g:gitgutter_map_keys = 0
+nnoremap <Space>gg :GitGutterToggle <CR>
 
 " trim trailing whitespace
 function! <SID>StripTrailingWhitespaces()
