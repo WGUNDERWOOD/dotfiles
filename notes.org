@@ -17,4 +17,5 @@
 *** TODO Compatibility with PythonTex
 ** Neomutt
 *** TODO Rename mutt to neomutt in dotfiles
-** Arch linux
+** Scripts
+*** TODO IMSLP renamer
