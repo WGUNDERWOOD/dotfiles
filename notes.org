@@ -15,7 +15,5 @@
 ** Latexindent
 *** TODO Should agree with Neovim
 *** TODO Compatibility with PythonTex
-** Neomutt
-*** TODO Rename mutt to neomutt in dotfiles
 ** Scripts
 *** TODO IMSLP renamer
