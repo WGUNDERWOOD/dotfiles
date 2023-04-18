@@ -7,7 +7,6 @@
 *** TODO Org when tabbing to indent heading cursor is in wrong place
 *** TODO Recent files ignore git commit messages
 *** TODO Shift-Y should yank to the end of the line
-*** TODO Use F not f for leap in both directions
 *** TODO Update to v0.9 breaks fzf-lua
 *** TODO Reimplement org-mode manually or use treesitter
 **** Fix cursor problems

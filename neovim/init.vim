@@ -229,9 +229,6 @@ nnoremap <Space>mc :NeomakeSh make clean <CR>
 nnoremap <Space>mf :update <CR> :silent! make format <CR> :edit<CR>
 
 " leap
-lua require('leap').opts.safe_labels = {}
-nnoremap f <Plug>(leap-forward)
-nnoremap F <Plug>(leap-backward)
 highlight LeapBackdrop guifg=#6272a4 guibg=NONE gui=NONE
 highlight LeapLabelPrimary guifg=#50fa7b guibg=NONE gui=bold
 
@@ -403,4 +400,14 @@ lua << EOF
       end
     },
   })
+EOF
+
+" leap
+"
+lua << EOF
+require('leap').opts.safe_labels = {}
+vim.keymap.set('n', 'F', function ()
+  local current_window = vim.fn.win_getid()
+  require('leap').leap { target_windows = { current_window } }
+end)
 EOF
