@@ -5,7 +5,6 @@
 *** TODO Org cursor color on hidden stars
 *** TODO Code folding for various filetypes
 *** TODO Org when tabbing to indent heading cursor is in wrong place
-*** TODO Command-waiting cursor is slow to change in org
 *** TODO Recent files ignore git commit messages
 *** TODO Shift-Y should yank to the end of the line
 *** TODO Use F not f for leap in both directions
@@ -15,3 +14,4 @@
 **** Faster startup
 ** Scripts
 *** TODO IMSLP renamer
+*** TODO Indent

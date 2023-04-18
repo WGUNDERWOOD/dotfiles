@@ -1,7 +1,5 @@
 " org
 nnoremap tt <Plug>(org_todo)
-imap <TAB> <C-o>>>
-imap <S-TAB> <C-o><<
 setlocal nofoldenable
 
 hi OrgTSDirective guifg=#ffb86c gui=bold
@@ -19,7 +17,7 @@ highlight OrgDoneHeading guifg=#6272a4 guibg=NONE
 call matchadd('OrgDone', '*\+ \(DONE\)', -1)
 highlight OrgDone guifg=#00dd00 guibg=NONE
 call matchadd('OrgLeadingStars', '*\+\(* \)\@=', -1)
-highlight OrgLeadingStars guifg=#181a26
+highlight OrgLeadingStars guifg=#181a26 guibg=NONE
 call matchadd('OrgLeadingStar', '* ', -1)
 highlight OrgLeadingStar gui=bold
 
