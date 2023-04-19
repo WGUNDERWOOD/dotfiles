@@ -11,6 +11,7 @@ alias lrz='fd -tf -X exa --long --sort size'
 
 # one letter aliases
 alias b='bat --theme Dracula'
+alias c='cd'
 alias g='git'
 alias m='(cd ~/Downloads; neomutt)'
 alias n='nvim'
