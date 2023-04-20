@@ -15,7 +15,7 @@ hi OrgTSHeadlineLevel8 guifg=#50fa7b
 call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
 highlight OrgDoneHeading guifg=#6272a4 guibg=NONE
 call matchadd('OrgDone', '*\+ \(DONE\)', -1)
-highlight OrgDone guifg=#00dd00 guibg=NONE
+highlight OrgDone guifg=#00dd00 guibg=NONE gui=bold
 call matchadd('OrgLeadingStars', '*\+\(* \)\@=', -1)
 highlight OrgLeadingStars guifg=#181a26 guibg=NONE
 call matchadd('OrgLeadingStar', '* ', -1)

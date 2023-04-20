@@ -325,6 +325,13 @@ local custom_dracula = require'lualine.themes.dracula'
 custom_dracula.normal.a.bg = '#ffb86c'
 custom_dracula.normal.b.bg = '#44475a'
 custom_dracula.normal.c.bg = '#282a36'
+custom_dracula.insert.b.bg = '#44475a'
+custom_dracula.insert.c.bg = '#282a36'
+custom_dracula.visual.b.bg = '#44475a'
+custom_dracula.visual.c.bg = '#282a36'
+custom_dracula.command.a.bg = '#ff79c6'
+custom_dracula.command.b.bg = '#44475a'
+custom_dracula.command.c.bg = '#282a36'
 require('lualine').setup {
   options = {
     theme  = custom_dracula,
