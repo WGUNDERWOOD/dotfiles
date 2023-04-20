@@ -25,6 +25,7 @@ alias cf='source ~/scripts/cd_fuzzy'
 alias getclip='xclip -selection c -o'
 alias gl='glances --disable-bg -t 2'
 li() { command libreoffice "$@" & }
+alias lnb='find . -xtype l' # broken symlinks
 alias neofetch='neofetch --config ~/neofetch.conf'
 alias or='odrive refresh .'
 alias pipes='pipes -p 5 -R -t 1 -r 10000 && clear'

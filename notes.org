@@ -11,9 +11,6 @@
 *** TODO Reimplement org-mode manually or use treesitter
 **** Fix cursor problems
 **** Faster startup
-** Latexindent
-*** TODO Should agree with Neovim
-*** TODO Compatibility with PythonTex
 ** Scripts
 *** TODO IMSLP renamer
 *** TODO Indent

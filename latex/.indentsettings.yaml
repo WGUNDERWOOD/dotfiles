@@ -110,6 +110,7 @@ verbatimEnvironments:
     verbatim: 1
     lstlisting: 1
     minted: 1
+    pyconsole: 1
 
 #  verbatim commands such as \verb! body !, \lstinline$something else$
 verbatimCommands:
