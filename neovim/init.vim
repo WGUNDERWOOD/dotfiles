@@ -92,6 +92,8 @@ nnoremap <silent> <Space>rr :source $MYVIMRC<CR>
 set updatetime=300
 set pumheight=8
 nnoremap Y y$
+nnoremap H :bprev<CR>
+nnoremap L :bnext<CR>
 
 " indent
 set tabstop=4
@@ -117,7 +119,6 @@ set guicursor+=a:blinkwait300-blinkon200-blinkoff150
 
 " git conflicts
 nnoremap gc /=======\\|<<<<<<<\\|>>>>>>><CR>
-
 
 " tex with zathura
 let g:vimtex_view_method = 'zathura'
