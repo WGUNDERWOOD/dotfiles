@@ -94,6 +94,7 @@ set pumheight=8
 nnoremap Y y$
 nnoremap H :bprev<CR>
 nnoremap L :bnext<CR>
+nnoremap <Space>bd :bd<CR>
 
 " indent
 set tabstop=4
