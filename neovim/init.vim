@@ -248,6 +248,8 @@ nnoremap <Space>w/ <C-W>v
 nnoremap <Space>wm <C-W>o
 nnoremap <Space>ww <C-W>=
 nnoremap <Space>wd :clo<CR>
+nnoremap <Space>wi :vertical resize +5<CR>
+nnoremap <Space>wu :vertical resize -5<CR>
 
 " todo highlighting
 highlight Todo guifg=#FF7722 guibg=NONE gui=bold
