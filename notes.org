@@ -14,3 +14,5 @@
 ** Scripts
 *** TODO IMSLP renamer
 *** TODO Indent
+** Exa
+*** TODO Nicer colors
