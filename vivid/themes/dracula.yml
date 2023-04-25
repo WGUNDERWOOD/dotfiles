@@ -11,7 +11,7 @@ colors:
   red     :  'ff5555'
   yellow  :  'f1fa8c'
   cyan    :  '8be9fd'
-  pink    :  'ff79c6'
+  pink    :  'ff92df'
   orange  :  'ffb86c'
   white   :  'f8f8f2'
   base01  :  '3a3c4e'
@@ -29,6 +29,7 @@ core:
 
   directory:
     foreground: purple
+    font-style: bold
 
   symlink:
     foreground: cyan
@@ -61,12 +62,11 @@ core:
 
   broken_symlink:
     foreground: red
-    background: black
     font-style: bold
 
   missing_symlink_target:
     foreground: red
-    background: black
+    font-style: bold
 
   setuid:
     foreground: white
@@ -109,16 +109,16 @@ text:
     foreground: orange
 
   other:
-    foreground: orange
+    foreground: white
 
 markup:
   foreground: orange
 
 programming:
-  foreground: white
+  foreground: yellow
 
   tooling:
-    foreground: white
+    foreground: yellow
 
     build:
       foreground: yellow
@@ -130,11 +130,10 @@ media:
     foreground: pink
 
   audio:
-    foreground: cyan
+    foreground: pink
 
   video:
-    foreground: orange
-    font-style: bold
+    foreground: pink
 
   fonts:
     foreground: orange

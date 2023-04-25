@@ -62,10 +62,6 @@ text:
     metadata:
       - .xmp
 
-    bibtex:
-      - .bib
-      - .bst
-
     dockerfile:
       - Dockerfile
 
@@ -131,7 +127,7 @@ programming:
     javascript: [.js, .htc]
     julia: [.jl]
     kotlin: [.kt, .kts]
-    latex: [.tex, .ltx]
+    latex: [.tex, .ltx, .bib, .cls, .sty, .bst]
     less: [.less]
     llvm: [.ll, .mir]
     lisp: [.lisp, .el]
@@ -151,6 +147,7 @@ programming:
     rust: [.rs]
     scala: [.scala, .sbt]
     shell: [.sh, .bash, .zsh, .fish]
+    slurm: [.slurm]
     sql: [.sql]
     swift: [.swift]
     tablegen: [.td]
@@ -395,13 +392,17 @@ unimportant:
       - .bbl
       - .bcf
       - .blg
+      - -blx.bib
+      - .dvi
       - .fdb_latexmk
       - .fls
       - .idx
       - .ilg
       - .ind
+      - .run.xml
+      - .nav
       - .out
-      - .sty
+      - .snm
       - .synctex.gz
       - .toc
       - .pytxcode

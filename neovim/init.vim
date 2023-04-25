@@ -120,6 +120,7 @@ set guicursor+=a:blinkwait300-blinkon200-blinkoff150
 
 " git conflicts
 nnoremap gc /=======\\|<<<<<<<\\|>>>>>>><CR>
+hi gitconfigSection guifg=#ff79c6 gui=bold
 
 " tex with zathura
 let g:vimtex_view_method = 'zathura'
