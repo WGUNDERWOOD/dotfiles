@@ -6,7 +6,7 @@ let g:vimtex_compiler_silent = 1
 let g:vimtex_quickfix_mode = 0
 let g:vimtex_quickfix_method = 'pplatex'
 let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-let g:tex_fast = 1
+let g:tex_fast = "M"
 let g:vimtex_indent_delims = {
     \ 'open'  : ['{', '(', '['],
     \ 'close' : ['}', ')', ']'],

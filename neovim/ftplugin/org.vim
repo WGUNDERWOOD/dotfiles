@@ -1,5 +1,7 @@
 " org
 nnoremap tt <Plug>(org_todo)
+inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
+inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
 setlocal nofoldenable
 
 hi OrgTSDirective guifg=#ffb86c gui=bold

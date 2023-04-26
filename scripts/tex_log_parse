@@ -4,8 +4,19 @@ import subprocess
 import re
 import sys
 
-match = ["error", "warn", "overfull", "underfull"]
-nomatch =["Package: infwarerr", "warning\$ -- 0", "file:line:error style"]
+match = [
+        "error",
+        "warn",
+        "overfull",
+        "underfull",
+        ]
+
+nomatch = [
+        "Package: infwarerr",
+        "warning\$ -- 0",
+        "file:line:error style",
+        "pgfplots.errorbars.code.tex",
+        ]
 
 # check correct format
 check = sys.argv[1]
