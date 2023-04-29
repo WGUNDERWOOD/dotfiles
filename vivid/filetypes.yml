@@ -422,6 +422,7 @@ unimportant:
     - .log
     - .orig
     - .pid
+    - .sha256
     - .swp
     - .tmp
     - package-lock.json
