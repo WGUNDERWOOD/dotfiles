@@ -21,6 +21,7 @@ rm -rfv \
   *.out \
   *.pytxcode \
   *.run.xml \
+  *.sha256 \
   *.snm \
   *.synctex.gz \
   *.toc \

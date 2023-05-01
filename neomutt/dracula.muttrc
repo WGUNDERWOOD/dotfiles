@@ -50,3 +50,6 @@ color quoted2         color84         default
 color quoted3         color215        default
 color quoted4         color212        default
 color signature       color212        default
+
+# compose menu ------ foreground ---- background -----------------------------
+color compose header  bold color13    default

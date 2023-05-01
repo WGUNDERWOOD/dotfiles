@@ -77,6 +77,10 @@ text:
     system:
       - passwd
       - shadow
+      - .inputrc
+      - .muttrc
+      - .ripgreprc
+      - .xinitrc
 
   other:
     - .txt
@@ -422,6 +426,7 @@ unimportant:
     - .log
     - .orig
     - .pid
+    - .sha256
     - .swp
     - .tmp
     - package-lock.json
