@@ -22,9 +22,6 @@ color sidebar_divider default default
 color sidebar_highlight default color60
 
 # message index ----- foreground ---- background -----------------------------
-color index_author    bold color13    default    '.*'
-color index_date      bold color12    default    '.*'
-color index_size      bold color14    default    '.*'
 color index           bold color11    default    ~N       # new messages
 color index           color10         default    ~Q       # messages which have been replied to
 color index           color141        default    ~v       # messages part of a collapsed thread
@@ -32,6 +29,9 @@ color index           bold color215   default    ~F       # flagged messages
 color index           color245        default    "~H 999" # spam messages
 color index           color210        default    ~D       # deleted messages
 color index           bold color117   default    ~T       # tagged messages
+color index_author    color13    default    '.*'
+color index_date      color12    default    '.*'
+color index_size      color14    default    '.*'
 
 # message headers --- foreground ---- background -----------------------------
 color hdrdefault      color117        default
