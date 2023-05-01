@@ -12,8 +12,5 @@
 **** Faster startup
 ** Scripts
 *** TODO IMSLP renamer
-*** TODO LatexIndent check if file has changed first
 ** Exa
 *** TODO Nicer colors
-** Neomutt
-*** TODO Composing screen colors

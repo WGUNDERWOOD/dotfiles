@@ -118,7 +118,7 @@ programming:
   foreground: yellow
 
   tooling:
-    foreground: yellow
+    foreground: orange
 
     build:
       foreground: yellow

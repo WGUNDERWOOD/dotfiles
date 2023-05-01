@@ -77,6 +77,10 @@ text:
     system:
       - passwd
       - shadow
+      - .inputrc
+      - .muttrc
+      - .ripgreprc
+      - .xinitrc
 
   other:
     - .txt
