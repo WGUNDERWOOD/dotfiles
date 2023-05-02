@@ -16,6 +16,7 @@ hi juliaBaseTypeBasic guifg=#bd93f9
 hi juliaBaseTypeRound guifg=#bd93f9
 hi juliaChar guifg=#f1fa8c
 hi juliaNumber guifg=#8be9fd
+hi juliaConstNum guifg=#8be9fd
 hi juliaFloat guifg=#8be9fd
 hi juliaConstGeneric guifg=#8be9fd
 hi juliaRangeKeyword guifg=#8be9fd
