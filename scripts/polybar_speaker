@@ -6,9 +6,9 @@ while true; do
     device_status=$(amixer sget $device_name | grep -om 1 "\[.*\]")
 
     if [ "$device_status" == "[on]" ]; then
-        echo "🎧 S"
+        echo "S"
     else
-        echo "🎧 H"
+        echo "H"
     fi
     sleep 5
 done
