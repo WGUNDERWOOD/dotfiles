@@ -3,6 +3,7 @@
 # exa aliases
 alias l='exa'
 alias lg='exa --all --long --git --git-ignore'
+alias ltg='exa --long --tree --git --git-ignore'
 alias lt='exa --all --long --sort newest'
 alias ltt='exa --tree'
 alias ll='exa --all --long --git'
