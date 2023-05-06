@@ -8,9 +8,9 @@ while true; do
     # when there are updates available
     while (( UPDATES > 0 )); do
         if (( UPDATES > 99 )); then
-            echo "%{F#f4511e}PKG $UPDATES"
+            echo "%{F#ff612e}Pkg $UPDATES"
         else
-            echo "%{F#f1fa8c}PKG $UPDATES"
+            echo "Pkg $UPDATES"
         fi
         sleep 300
         get_total_updates
@@ -18,7 +18,7 @@ while true; do
 
     # when no updates are available
     while (( UPDATES == 0 )); do
-        echo "PKG"
+        echo "Pkg"
         sleep 300
         get_total_updates
     done

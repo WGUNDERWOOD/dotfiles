@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-disconnected="%{F#f4511e}NET"
-wireless_connected="NET"
-ethernet_connected="NET"
+disconnected="%{F#ff612e}Net"
+wireless_connected="Net"
+ethernet_connected="Net"
 
 ID="$(ip link | awk '/state UP/ {print $2}')"
 
