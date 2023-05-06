@@ -9,9 +9,9 @@ max(){
 format_temp(){
     temp=$(printf "%.0f\n" $@)
     if [ "$temp" -lt "80" ]; then
-        echo "%{F#aaffcc}$temp"°C
+        echo "%{F#aaffcc}Temp $temp"°C
     else
-        echo "%{F#ff612e}$temp"°C
+        echo "%{F#ff612e}Temp $temp"°C
     fi
 }
 
@@ -34,13 +34,15 @@ while true; do
     gpu_temp_3=$(jq '. | with_entries(select(.key|match(".*amdgpu.*")))[]["mem"]["temp3_input"]' /tmp/sensors.json)
     gpu_temp=$(max $gpu_temp_1 $gpu_temp_2 $gpu_temp_3)
 
+    # max temp
+    max_temp=$(max $cpu_temp $gpu_temp)
+
     # format temps
-    cpu_temp_format=$(format_temp $cpu_temp)
-    gpu_temp_format=$(format_temp $gpu_temp)
+    max_temp_format=$(format_temp $max_temp)
 
     # print temps
-    echo "$cpu_temp_format" "%{F#aaffcc}"/ "$gpu_temp_format"
+    echo "$max_temp_format"
 
-    sleep 2
+    sleep 3
 
 done

@@ -5,9 +5,9 @@ while true; do
   current_status=$(cat ~/sct_status)
 
   if [ "$current_status" == "on" ]; then
-      echo "%{F#ffb86c}◓"
+      echo "%{F#ffb86c}SCT"
   else
-      echo "%{F#8be9fd}◓"
+      echo "%{F#8be9fd}SCT"
   fi
 
   sleep 2

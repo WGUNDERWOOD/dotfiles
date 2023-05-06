@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # 🠋🔄🡇⮹！❗
-new_email="%{F#ffa9f6}🔄"
-no_email="🔄"
-inactive="%{F#f4511e}🔄"
+new_email="%{F#ffa9f6}Mail"
+no_email="Mail"
+inactive="%{F#f4511e}Mail"
 
 while true; do
 
