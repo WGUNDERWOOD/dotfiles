@@ -24,6 +24,7 @@ z() { command zathura "$@" & }
 alias cava='cava -p ~/cava.conf'
 alias cf='source ~/scripts/cd_fuzzy'
 alias getclip='xclip -selection c -o'
+ggrep() { command git grep "$@" $(git rev-list --all); }
 alias gl='glances --disable-bg -t 2'
 li() { command libreoffice "$@" & }
 alias lnb='find . -xtype l' # broken symlinks
