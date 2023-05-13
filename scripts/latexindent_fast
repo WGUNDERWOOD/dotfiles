@@ -5,7 +5,8 @@ shafile="$file.sha256"
 
 indent_and_update_sha () {
     latexindent -wd -s -m "$file"
-    echo "$sha" > "$shafile"
+    new_sha="$(sha256sum $file)"
+    echo "$new_sha" > "$shafile"
 }
 
 if [ -f "$shafile" ]; then
