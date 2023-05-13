@@ -14,8 +14,7 @@ Plug 'aymericbeaumet/vim-symlink'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
-Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*',
-  \ 'do': 'make install_jsregexp'}
+Plug 'L3MON4D3/LuaSnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/cmp-rg'
@@ -72,6 +71,7 @@ filetype plugin indent on
 set completeopt=menu
 nnoremap <Tab> ==
 nnoremap <Space>pi :PlugInstall<CR>
+nnoremap <Space>pu :PlugUpdate<CR>
 nnoremap <Space>tl :set wrap!<CR>
 nnoremap <Space>tL :set linebreak!<CR>
 nnoremap <Space><Space> :
