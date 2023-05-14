@@ -38,6 +38,7 @@ hi texMathCmd guifg=#bd93f9
 hi texMathEnvArgName gui=bold guifg=#50fa7b
 hi texMathDelimZoneTI gui=bold guifg=#ff0000
 
+call matchadd('texPartArgTitle', '\proofparagraph{\zs[^}]*', -1)
 call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage', -1)
 highlight texPageCmd gui=bold guifg=#ff0000
 
