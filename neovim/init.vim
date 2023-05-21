@@ -222,6 +222,7 @@ function! GoToLongestLine ( )
     let linenumber = linenumber+1
   endwhile
   exe ":".longestlinenumber
+  normal $
 endfunction
 command GoToLongestLine call GoToLongestLine()
 nnoremap gl :GoToLongestLine<CR>

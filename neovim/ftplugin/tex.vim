@@ -16,6 +16,7 @@ nnoremap ,b :update<CR><Plug>(vimtex-compile-ss)
 nnoremap ,v <Plug>(vimtex-view)
 nnoremap ,k <Plug>(vimtex-stop-all)
 nnoremap ,w <Plug>(vimtex-errors)
+nnoremap ,e V<Plug>(vimtex-ae)
 inoremap <C-L> <C-X><C-O>
 inoremap <C-J> <C-N>
 inoremap <C-K> <C-P>
