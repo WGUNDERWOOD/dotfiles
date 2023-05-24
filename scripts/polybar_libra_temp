@@ -9,9 +9,9 @@ max(){
 format_temp(){
     temp=$(printf "%.0f\n" $@)
     if [ "$temp" -lt "80" ]; then
-        echo "%{F#aaffcc}Temp $temp"°C
+        echo "%{F#aaffcc}$temp"°C
     else
-        echo "%{F#ff612e}Temp $temp"°C
+        echo "%{F#ff612e}$temp"°C
     fi
 }
 
