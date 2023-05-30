@@ -31,6 +31,8 @@ alias lnb='find . -xtype l' # broken symlinks
 alias neofetch='neofetch --config ~/neofetch.conf'
 alias or='odrive refresh .'
 alias pipes='pipes -p 5 -R -t 1 -r 10000 && clear'
+alias repos='(cd ~/Documents && git_status_all)'
+alias reposf='(cd ~/Documents && git_status_all -f)'
 alias Rscript='Rscript --quiet'
 alias setclip='xclip -selection c'
 alias sshad='ssh adroit'
@@ -41,6 +43,7 @@ alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 
 alias sudo='sudo '
 alias psgrep='ps -aux | grep -v "grep" | grep'
 alias pacgrep='pacman -Q | grep'
+alias pacsize='expac -H M "%m\t%n" | sort -h'
 alias timenow='date +"%Y/%m/%d%n%H:%M:%S.%3N%n%:z"'
 gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 

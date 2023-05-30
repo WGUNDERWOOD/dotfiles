@@ -40,6 +40,6 @@ hi texMathEnvArgName gui=bold guifg=#50fa7b
 hi texMathDelimZoneTI gui=bold guifg=#ff0000
 
 call matchadd('texPartArgTitle', '\proofparagraph{\zs[^}]*', -1)
-call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage', -1)
+call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
 highlight texPageCmd gui=bold guifg=#ff0000
 
