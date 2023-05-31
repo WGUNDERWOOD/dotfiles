@@ -11,4 +11,3 @@
 **** Faster startup
 ** Scripts
 *** TODO IMSLP renamer
-*** TODO Google bibtex downloader
