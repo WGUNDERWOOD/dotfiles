@@ -54,9 +54,21 @@ for i in range(len(results)):
     except:
         pass
 
+    try:
+        journal = truncate(result["short-container-title"][0])
+        print(pad + slugify(journal))
+    except:
+        pass
+
     print()
 
-choice = int(input(CYAN + "Select: " + RESET))
+choice = input(CYAN + "Select (default 1): " + RESET)
+
+if len(choice) >= 1:
+    choice = int(choice)
+else:
+    choice = 1
+
 result = results[choice - 1]
 doi = result["DOI"]
 bibtex = cn.content_negotiation(ids=doi, format="bibentry")
