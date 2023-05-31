@@ -21,6 +21,7 @@ alias v='vim'
 z() { command zathura "$@" & }
 
 # programs
+alias bibd='bibtex-download'
 alias cava='cava -p ~/cava.conf'
 alias cf='source ~/scripts/cd_fuzzy'
 alias getclip='xclip -selection c -o'
