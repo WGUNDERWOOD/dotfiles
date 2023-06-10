@@ -2,9 +2,7 @@
 #+author: William G Underwood
 * Tasks
 ** Neovim
-*** TODO Org cursor color on hidden stars
 *** TODO Code folding for various filetypes
-*** TODO Recent files ignore git commit messages
 *** TODO Shift-Y should yank to the end of the line
 *** TODO Reimplement org-mode manually or use treesitter
 **** Fix cursor problems

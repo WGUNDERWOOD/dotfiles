@@ -153,6 +153,7 @@ nnoremap <Space>pf :lua require'fzf-lua'.git_files({prompt="Project files> ",
   \ cwd = "`git rev-parse --show-toplevel`",
   \ show_cwd_header=false}) <CR>
 nnoremap <Space>bb :lua require'fzf-lua'.oldfiles({prompt="Recent files> ",
+  \ file_ignore_patterns = { "%COMMIT_EDITMSG$" },
   \ include_current_session=true}) <CR>
 nnoremap <Space>gc :lua require'fzf-lua'.git_commits({prompt="Commits> ",
   \ show_cwd_header=false}) <CR>
