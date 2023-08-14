@@ -5,6 +5,7 @@ hi juliaBlKeyword gui=bold guifg=#ff79c6
 hi juliaRepeat gui=bold guifg=#ff79c6
 hi juliaConditional gui=bold guifg=#ff79c6
 hi juliaComprehensionFor gui=bold guifg=#ff79c6
+hi juliaComprehensionIf gui=bold guifg=#ff79c6
 hi juliaInfixKeyword gui=bold guifg=#ff79c6
 hi juliaWhereKeyword gui=bold guifg=#ff79c6
 hi juliaType guifg=#bd93f9

@@ -20,7 +20,7 @@ ignore=$ignore"\|Germany 2023 Tour Photos"
 # warn about ignore pattern
 if [ "$ignore" ]
 then echo "warning: odrivesync is ignoring the following pattern(s):"
-     echo $ignore
+     echo -e "    ${ignore//\\\|/\\n    }"
      echo
 fi
 

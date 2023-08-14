@@ -3,3 +3,6 @@
 * Tasks
 ** Scripts
 *** TODO IMSLP renamer
+*** TODO Receipt OCR
+** Neovim
+*** TODO Find all files ignore in .git
