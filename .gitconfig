@@ -26,6 +26,7 @@
   ps = "push"
   re = "rebase"
   st = "status"
+  t = "log --tags --simplify-by-decoration --pretty=format:'%Cred%h%Creset %Cblue%ad%Creset %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d %H:%M:%S' --date=iso"
   tree = "ls-tree -r --name-only"
   tr = "tree"
   unstage = "reset HEAD --"
