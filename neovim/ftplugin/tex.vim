@@ -36,6 +36,7 @@ hi texRefArg guifg=#8be9fd
 hi texTabularChar gui=bold guifg=#ff0000
 hi texMathSuperSub gui=bold guifg=#6272a4
 hi texMathCmd guifg=#bd93f9
+hi texMathDelimZoneLD guifg=#ff0000
 hi texMathEnvArgName gui=bold guifg=#50fa7b
 hi texMathDelimZoneTI gui=bold guifg=#ff0000
 
