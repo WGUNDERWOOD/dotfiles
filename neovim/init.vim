@@ -265,7 +265,7 @@ highlight No guifg=#ff0000 guibg=NONE gui=bold
 call matchadd('Todo', 'TODO\|BUG\|\\TODO', -1)
 call matchadd('Done', 'DONE\|YES', -1)
 call matchadd('Now', 'NOW', -1)
-call matchadd('Note', 'NOTE\|BOUGHT\|ARRIVED\|CHECK\|BASKET\|WRAPPED\|MAYBE\|DRAFT', -1)
+call matchadd('Note', 'NOTE\|BOUGHT\|ARRIVED\|CHECK\|BASKET\|WRAPPED\|MAYBE\|DRAFT\|EMAILED', -1)
 call matchadd('Later', 'LATER', -1)
 call matchadd('No', 'NO\s', -1)
 
