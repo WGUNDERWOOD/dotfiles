@@ -66,7 +66,7 @@ echo "\end{document}" >> "${filename}_pgf2svg_temp.tex"
 
 # run latex to get pdf
 echo "pgf -> pdf..."
-latexmk -quiet -pdf "${filename}_pgf2svg_temp.tex" > /dev/null 2>&1
+latexmk -quiet -pdflua "${filename}_pgf2svg_temp.tex" > /dev/null 2>&1
 
 # convert pdf to svg
 echo "pdf -> svg..."
@@ -78,13 +78,13 @@ svgcleaner "${filename}_pgf2svg_temp.svg" "${filename}.svg" > /dev/null 2>&1
 
 # clean up
 echo "cleaning up..."
-rm "${filename}_pgf2svg_temp.tex"
-rm "${filename}_pgf2svg_temp.pdf"
-rm "${filename}_pgf2svg_temp.svg"
-rm "${filename}_pgf2svg_temp.fls"
-rm "${filename}_pgf2svg_temp.aux"
-rm "${filename}_pgf2svg_temp.log"
-rm "${filename}_pgf2svg_temp.fdb_latexmk"
+rm -f "${filename}_pgf2svg_temp.tex"
+rm -f "${filename}_pgf2svg_temp.pdf"
+rm -f "${filename}_pgf2svg_temp.svg"
+rm -f "${filename}_pgf2svg_temp.fls"
+rm -f "${filename}_pgf2svg_temp.aux"
+rm -f "${filename}_pgf2svg_temp.log"
+rm -f "${filename}_pgf2svg_temp.fdb_latexmk"
 
 # report
 echo "Input file: ${filename}.pgf, $(stat -c %s ${filename}.pgf | numfmt --to=iec)"
