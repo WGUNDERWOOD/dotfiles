@@ -25,6 +25,8 @@ alias bibd='bibtex-download'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
 alias cf='source ~/scripts/cd_fuzzy'
+alias fp='fd_git'
+alias rp='rg_git'
 alias getclip='xclip -selection c -o'
 ggrep() { command git grep "$@" $(git rev-list --all); }
 alias gl='glances --disable-bg -t 2'
