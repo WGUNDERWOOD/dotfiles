@@ -39,6 +39,8 @@ hi texMathCmd guifg=#bd93f9
 hi texMathDelimZoneLD guifg=#ff0000
 hi texMathEnvArgName gui=bold guifg=#50fa7b
 hi texMathDelimZoneTI gui=bold guifg=#ff0000
+hi texTheoremEnvOpt gui=bold guifg=#ffff22
+hi texProofEnvOpt gui=bold guifg=#ffff22
 
 call matchadd('texPartArgTitle', '\proofparagraph{\zs[^}]*', -1)
 call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
