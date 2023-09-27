@@ -261,7 +261,7 @@ highlight Now guifg=#8be9fd guibg=NONE gui=bold
 highlight Note guifg=#ffff22 guibg=NONE gui=bold
 highlight Done guifg=#00dd00 guibg=NONE gui=bold
 highlight Later guifg=#6272a4 guibg=NONE gui=bold
-highlight No guifg=#ff0000 guibg=NONE gui=bold
+highlight No guifg=#ff3333 guibg=NONE gui=bold
 call matchadd('Todo', 'TODO\|BUG\|\\TODO', -1)
 call matchadd('Done', 'DONE\|YES', -1)
 call matchadd('Now', 'NOW', -1)
