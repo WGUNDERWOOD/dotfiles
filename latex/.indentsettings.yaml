@@ -158,11 +158,11 @@ removeTrailingWhitespace:
 # name of code blocks that should have their body aligned at ampersand delimiters
 lookForAlignDelims:
    tabular:
-      delims: 1
-      alignDoubleBackSlash: 1
-      spacesBeforeDoubleBackSlash: 1
+      delims: 0
+      alignDoubleBackSlash: 0
+      spacesBeforeDoubleBackSlash: 0
       multiColumnGrouping: 0
-      alignRowsWithoutMaxDelims: 1
+      alignRowsWithoutMaxDelims: 0
       spacesBeforeAmpersand: 0
       spacesAfterAmpersand: 0
       justification: left
@@ -172,7 +172,7 @@ lookForAlignDelims:
       delimiterJustification: left
       lookForChildCodeBlocks: 1
    tabularx:
-      delims: 1
+      delims: 0
    longtable: 1
    tabu: 1
    array: 1
@@ -180,12 +180,12 @@ lookForAlignDelims:
    listabla: 1
    # amsmath
    align:
-      delims: 1
+      delims: 0
       alignDoubleBackSlash: 0
       spacesBeforeAmpersand: 0
       spacesAfterAmpersand: 0
    align*:
-      delims: 1
+      delims: 0
       alignDoubleBackSlash: 0
       spacesBeforeAmpersand: 0
       spacesAfterAmpersand: 0
@@ -194,7 +194,7 @@ lookForAlignDelims:
    aligned: 1
    bmatrix: 1
    Bmatrix: 1
-   cases: 1
+   cases: 0
    flalign: 1
    flalign*: 1
    pmatrix: 1

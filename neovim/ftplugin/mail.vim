@@ -40,4 +40,6 @@ hi mailQuoted2 guifg=#ffb86c
 hi mailQuoted3 guifg=#50fa7b
 hi mailQuoted4 guifg=#8be9fd
 hi ExtraWhitespace guibg=NONE
+set linebreak
+" go to start of body when opening file
 /\n\n--
