@@ -506,7 +506,7 @@ modifyLineBreaks:
         manipulateSentences: 0              # 0/1
         removeSentenceLineBreaks: 1         # 0/1
         multipleSpacesToSingle: 1           # 0/1
-        textWrapSentences: 0                # 1 disables main textWrap
+        textWrapSentences: 1                # 1 disables main textWrap
         sentenceIndent: ""
         sentencesFollow:
             par: 1                          # 0/1
