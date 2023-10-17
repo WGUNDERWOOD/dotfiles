@@ -93,7 +93,8 @@ def parse_jstor(filename):
 
 
 def save_file(info):
-    title_excluded_words = ["A", "An", "And", "The", "On", "When", "For", "Can", "Note", "Of"]
+    title_excluded_words = ["A", "An", "And", "The", "On", "When", "For",
+                            "Can", "Note", "Of", "With"]
     title_words = [w.title() for w in info["title"] if w.title() not in title_excluded_words]
     title = slugify("-".join(title_words[0:2]))
     authors = [a.title() for a in info["authors"]]
