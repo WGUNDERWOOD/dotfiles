@@ -46,6 +46,7 @@ text:
     - COPYING
     - COPYRIGHT
     - LICENSE
+    - LICENSE.md
     - LICENSE-APACHE
     - LICENSE-MIT
 

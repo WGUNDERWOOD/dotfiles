@@ -103,7 +103,8 @@ text:
     font-style: bold
 
   licenses:
-    foreground: orange
+    foreground: yellow
+    font-style: bold
 
   configuration:
     foreground: orange

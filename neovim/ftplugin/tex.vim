@@ -25,6 +25,7 @@ hi QuickFixLine guifg=NONE gui=bold
 hi texTitleArg gui=bold guifg=#ffff22
 hi texPartArgTitle gui=bold guifg=#ffff22
 hi texCmdInput gui=bold guifg=#ff79c6
+hi texCmdStyle gui=bold guifg=#bd93f9
 hi texFileArg guifg=#8be9fd
 hi texCmdEnv gui=bold guifg=#ff79c6
 hi texEnvArgName gui=bold guifg=#50fa7b
