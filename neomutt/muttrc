@@ -26,7 +26,7 @@ set mail_check_stats_interval = 30
 set timeout = 30
 
 # display
-set date_format = "%d %h %y  %H:%M"
+set date_format = "%a %d %h %y  %H:%M"
 set status_format = "Emails: %?M?%M/?%m%?n?   New: %n?%?d?   Delete: %d?%?F?   Important: %F?%?t?   Tagged: %t?%?p?  Postponed: %p?   %*  Sort: %s/%S   Size: %?L?%L/?%l%?V?   %V?   %P"
 set index_format = "%3C   %D   %-30.30F   %s  %*   %c"
 set mark_old = no
