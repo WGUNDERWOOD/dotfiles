@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration-libra.nix ];
+  imports = [ <home-manager/nixos> ./hardware-configuration-libra.nix ];
 
   # boot
   boot.loader.systemd-boot.enable = true;
@@ -55,6 +55,22 @@
 
   services.getty.autologinUser = "will";
 
+  # home
+  home-manager.users.will = { pkgs, ... }: {
+    #home.packages = [ pkgs.cowsay ];
+    #programs.bash.enable = true;
+    #imports = [ ./shell.nix ];
+
+    programs.bash = {
+      enable = true;
+      shellAliases = {
+        g = "git";
+      };
+    };
+
+    home.stateVersion = "23.05";
+  };
+
   # packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -63,6 +79,7 @@
     alacritty
     vim 
     git
+    home-manager
     firefox
     wayland
     aspell
