@@ -1,11 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ <home-manager/nixos> ./hardware-configuration-libra.nix ];
+  imports = [
+    ./hardware-configuration-libra.nix
+    <home-manager/nixos>
+  ];
 
   # boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # hardware
+  hardware.opengl.driSupport32Bit = true;
 
   # greeter
   services.greetd = {
@@ -102,12 +108,16 @@
     lutris
     tldr
     zoom-us
+    steam
   ];
 
   programs.sway.enable = true;
+  programs.steam.enable = true;
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   # release: do not edit without reading documentation
