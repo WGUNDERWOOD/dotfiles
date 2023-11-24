@@ -75,7 +75,7 @@
 
   environment.systemPackages = with pkgs; [
     alacritty
-    vim 
+    vim
     wl-clipboard
     git
     home-manager
@@ -99,6 +99,9 @@
     du-dust
     texlive.combined.scheme-full
     rclone
+    lutris
+    tldr
+    zoom-us
   ];
 
   programs.sway.enable = true;
