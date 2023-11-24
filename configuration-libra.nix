@@ -19,7 +19,6 @@
     };
   };
 
-
   # network
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -39,6 +38,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # fonts
+  fonts.fonts = with pkgs; [ source-code-pro ];
+
   # keymap
   services.xserver = {
     layout = "us";
@@ -50,21 +52,18 @@
     isNormalUser = true;
     description = "Will Underwood";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
   };
 
   services.getty.autologinUser = "will";
 
   # home
   home-manager.users.will = { pkgs, ... }: {
-    imports = [ ./bash.nix ];
+    imports = [
+      ./bash.nix
+      ./sway.nix
+      ./alacritty.nix
+    ];
 
-    #programs.bash = {
-      #enable = true;
-      #shellAliases = {
-        #g = "git";
-      #};
-    #};
 
     home.stateVersion = "23.05";
   };
@@ -90,6 +89,7 @@
     neomutt
     isync # this is mbsync
     gnumake
+    source-code-pro
     spotify
     starship
     zathura
