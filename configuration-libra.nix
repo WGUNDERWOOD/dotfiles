@@ -1,11 +1,24 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration-libra.nix ];
 
   # boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # greeter
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "will";
+      };
+      default_session = initial_session;
+    };
+  };
+
 
   # network
   networking.hostName = "nixos";
@@ -44,13 +57,14 @@
 
   # packages
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = "nix-command flakes"
+  nix.settings.experimental-features = "nix-command flakes";
 
   environment.systemPackages = with pkgs; [
     alacritty
     vim 
     git
     firefox
+    wayland
     aspell
     bat
     diff-so-fancy
