@@ -57,16 +57,14 @@
 
   # home
   home-manager.users.will = { pkgs, ... }: {
-    #home.packages = [ pkgs.cowsay ];
-    #programs.bash.enable = true;
-    #imports = [ ./shell.nix ];
+    imports = [ ./bash.nix ];
 
-    programs.bash = {
-      enable = true;
-      shellAliases = {
-        g = "git";
-      };
-    };
+    #programs.bash = {
+      #enable = true;
+      #shellAliases = {
+        #g = "git";
+      #};
+    #};
 
     home.stateVersion = "23.05";
   };
