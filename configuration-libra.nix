@@ -62,6 +62,7 @@
       ./bash.nix
       ./sway.nix
       ./alacritty.nix
+      ./neovim.nix
     ];
 
 
@@ -75,24 +76,29 @@
   environment.systemPackages = with pkgs; [
     alacritty
     vim 
+    wl-clipboard
     git
     home-manager
-    firefox
+    firefox-bin
     wayland
     aspell
     bat
     diff-so-fancy
     ripgrep
-    exa # what about eza?
+    exa
     fd
     bottom
     neomutt
-    isync # this is mbsync
+    isync
     gnumake
     source-code-pro
     spotify
     starship
     zathura
+    procs
+    du-dust
+    texlive.combined.scheme-full
+    rclone
   ];
 
   programs.sway.enable = true;
