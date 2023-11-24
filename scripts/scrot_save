@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-scrot -s -q 100 ~/Pictures/screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png

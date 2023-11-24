@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-FILE=$(basename -s .pdf "$1")
-
-gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
-    -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages \
-    -dCompressFonts=true -r50 -sOutputFile="$FILE"_pdfcompress.pdf "$1"

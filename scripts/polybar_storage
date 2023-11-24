@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-used=$(df -h --output=used /home | grep -v "Used")
-size=$(df -h --output=size /home | grep -v "Size")
-
-print="$used / $size"
-
-echo $print

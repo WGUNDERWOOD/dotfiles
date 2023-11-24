@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-for i in /sys/class/hwmon/hwmon*/temp*_input; do
-  echo "Name: $(<$(dirname $i)/name)"
-  echo "Label: $(cat ${i%_*}_label 2>/dev/null)"
-  echo "Sensor index: $(basename ${i%_*})"
-  echo "Location: $(ls $i)";
-  echo "Current temp: $(expr $(cat $i) / 1000)"
-  echo
-done

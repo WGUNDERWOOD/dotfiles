@@ -1,8 +1,0 @@
-#+title: Dotfiles Notes
-#+author: William G Underwood
-* Tasks
-** Scripts
-*** TODO IMSLP renamer
-*** TODO Receipt OCR
-** Neovim
-*** TODO Find all files ignore in .git
