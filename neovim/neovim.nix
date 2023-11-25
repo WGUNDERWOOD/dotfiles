@@ -7,7 +7,7 @@
     pkgs.vimPlugins.dracula-nvim
     pkgs.vimPlugins.leap-nvim
     pkgs.vimPlugins.vim-repeat
-    pkgs.vimPlugins.nvim-treesitter
+    pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     pkgs.vimPlugins.orgmode
     pkgs.vimPlugins.fzf-lua
     pkgs.vimPlugins.YankRing-vim
