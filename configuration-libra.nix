@@ -10,8 +10,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # hardware
+  # video and sound
   hardware.opengl.driSupport32Bit = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
 
   # greeter
   services.greetd = {
@@ -57,7 +59,7 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
   };
 
   services.getty.autologinUser = "will";
@@ -68,7 +70,7 @@
       ./bash.nix
       ./sway.nix
       ./alacritty.nix
-      ./neovim.nix
+      ./neovim/neovim.nix
     ];
 
 
@@ -91,6 +93,7 @@
     bat
     diff-so-fancy
     ripgrep
+    fzf
     exa
     fd
     bottom
@@ -109,6 +112,24 @@
     tldr
     zoom-us
     steam
+    pavucontrol
+    diffpdf
+    watchexec
+    julia
+    gammastep
+    python3
+    imagemagick
+    gimp
+    lynx
+    ocrmypdf
+    pandoc
+    pdftk
+    pplatex
+    flameshot
+    symlinks
+    ranger
+    zoxide
+    vlc
   ];
 
   programs.sway.enable = true;
@@ -116,8 +137,6 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   # release: do not edit without reading documentation
