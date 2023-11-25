@@ -49,6 +49,7 @@ map("n", "<Space>ww", "<C-W>=")
 map("n", "<Space>wd", ":clo<CR>")
 map("n", "<Space>wi", ":vertical resize +5<CR>")
 map("n", "<Space>wu", ":vertical resize -5<CR>")
+map("n", "<Space>hg", ":Inspect <CR>")
 map("i", "kj", "<Esc>")
 vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
   extends = ">", precedes = "<", space = "·"}
@@ -168,7 +169,8 @@ vim.cmd("hi No guifg=#ff3333 guibg=NONE gui=bold")
 vim.cmd("call matchadd('Todo', 'TODO\\|BUG\\|\\\\TODO', -1)")
 vim.cmd("call matchadd('Done', 'DONE\\|YES', -1)")
 vim.cmd("call matchadd('Now', 'NOW', -1)")
-vim.cmd("call matchadd('Note', 'NOTE\\|BOUGHT\\|ARRIVED\\|CHECK\\|BASKET\\|WRAPPED\\|MAYBE\\|DRAFT\\|EMAILED', -1)")
+vim.cmd("call matchadd('Note', 'NOTE\\|BOUGHT\\|ARRIVED\\|CHECK\\|BASKET\\|" ..
+        "WRAPPED\\|MAYBE\\|DRAFT\\|EMAILED', -1)")
 vim.cmd("call matchadd('Later', 'LATER', -1)")
 vim.cmd("call matchadd('No', 'NO\\s', -1)")
 
@@ -279,43 +281,35 @@ cmp.setup({
     },
 })
 
---[[
-" get highlight group at point
-function! SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-command SynStack call SynStack()
-nnoremap <Space>hg :SynStack<CR>
+-- go to longest line
+vim.cmd [[
+    function! GoToLongestLine ( )
+        let maxlength   = 0
+        let linenumber  = 1
+        let longestlinenumber  = 1
+        while linenumber <= line("$")
+            exe ":".linenumber
+            let linelength  = virtcol("$")
+            if maxlength < linelength
+                let maxlength = linelength
+                let longestlinenumber = linenumber
+            endif
+            let linenumber = linenumber+1
+        endwhile
+        exe ":".longestlinenumber
+        normal $
+    endfunction
+    command GoToLongestLine call GoToLongestLine()
+    nnoremap gl :GoToLongestLine<CR>
+]]
 
-" check spelling under cursor
-function! CheckSpellingUnderCursor ( )
-    let word = expand("<cword>")
-    let check = system("spell_check_word '" . word . "'")
-    echom check
-endfunction
-command CheckSpellingUnderCursor call CheckSpellingUnderCursor()
-nnoremap <Space>cs :CheckSpellingUnderCursor<CR>
-
-" go to longest line
-function! GoToLongestLine ( )
-    let maxlength   = 0
-    let linenumber  = 1
-    let longestlinenumber  = 1
-    while linenumber <= line("$")
-        exe ":".linenumber
-        let linelength  = virtcol("$")
-        if maxlength < linelength
-            let maxlength = linelength
-            let longestlinenumber = linenumber
-        endif
-        let linenumber = linenumber+1
-    endwhile
-    exe ":".longestlinenumber
-    normal $
-endfunction
-command GoToLongestLine call GoToLongestLine()
-nnoremap gl :GoToLongestLine<CR>
+-- check spelling under cursor
+vim.cmd [[
+    function! CheckSpellingUnderCursor ( )
+        let word = expand("<cword>")
+        let check = system("spell_check_word '" . word . "'")
+        echom check
+    endfunction
+    command CheckSpellingUnderCursor call CheckSpellingUnderCursor()
+    nnoremap <Space>cs :CheckSpellingUnderCursor<CR>
 ]]
