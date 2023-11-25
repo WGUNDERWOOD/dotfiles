@@ -67,6 +67,7 @@ vim.cmd("hi MatchParen guifg=#8be9ff gui=bold")
 vim.cmd("hi ErrorMsg guifg=#ff8833 guibg=#181a26 gui=bold")
 vim.cmd("hi vimCommand gui=bold guifg=#ff79c6")
 vim.cmd("hi ExtraWhitespace guibg=#6272a4")
+vim.cmd("hi Search guibg=#50fa7b")
 vim.cmd("match ExtraWhitespace /\\s\\+$/")
 
 -- cursor
@@ -313,3 +314,76 @@ vim.cmd [[
     command CheckSpellingUnderCursor call CheckSpellingUnderCursor()
     nnoremap <Space>cs :CheckSpellingUnderCursor<CR>
 ]]
+
+-- bib files
+vim.cmd("call matchadd('bibTypeAt', '^@[a-z]', -1)")
+vim.cmd("hi bibType gui=bold guifg=#50fa7b")
+vim.cmd("hi bibTypeAt gui=bold guifg=#50fa7b")
+vim.cmd("hi bibKey gui=bold guifg=#bd93f9")
+vim.cmd("hi bibEntryKw gui=bold guifg=#ff79c6")
+
+-- shell files
+vim.cmd("hi shFunction gui=bold guifg=#50fa7b")
+vim.cmd("hi shQuote gui=NONE guifg=#f1fa8c")
+vim.cmd("hi shStatement gui=bold guifg=#ff79c6")
+vim.cmd("hi shVarAssign gui=bold guifg=#ff79c6")
+vim.cmd("hi shFunctionkey gui=bold guifg=#ff79c6")
+
+-- rust files
+vim.cmd("hi rustFuncName gui=bold guifg=#50fa7b")
+vim.cmd("hi rustKeyword gui=bold guifg=#ff79c6")
+vim.cmd("hi rustModPath guifg=#8be9fd")
+vim.cmd("hi rustRepeat gui=bold guifg=#ff79c6")
+vim.cmd("hi rustTypeDef gui=bold guifg=#ff79c6")
+vim.cmd("hi rustConditional gui=bold guifg=#ff79c6")
+vim.cmd("hi rustStorage gui=bold guifg=#ff79c6")
+vim.cmd("hi rustDecNumber guifg=#8be9fd")
+vim.cmd("hi rustType guifg=#bd93f9")
+vim.cmd("hi rustOperator guifg=#f8f8f2")
+vim.cmd("hi rustMacro guifg=#ffb86c")
+vim.cmd("hi rustAssert guifg=#ffb86c")
+vim.cmd("hi rustAttribute gui=bold guifg=#ffb86c")
+vim.cmd("hi rustDerive gui=bold guifg=#ffb86c")
+vim.cmd("hi rustStructure gui=bold guifg=#ff79c6")
+
+-- julia files
+vim.cmd("hi juliaFunctionName gui=bold guifg=#50fa7b")
+vim.cmd("hi juliaKeyword gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaBlKeyword gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaRepeat gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaConditional gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaComprehensionFor gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaComprehensionIf gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaInfixKeyword gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaWhereKeyword gui=bold guifg=#ff79c6")
+vim.cmd("hi juliaType guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeNum guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeString guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeRange guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeArray guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeBasic guifg=#bd93f9")
+vim.cmd("hi juliaBaseTypeRound guifg=#bd93f9")
+vim.cmd("hi juliaParamType guifg=#bd93f9")
+vim.cmd("hi juliaChar guifg=#f1fa8c")
+vim.cmd("hi juliaNumber guifg=#8be9fd")
+vim.cmd("hi juliaConstNum guifg=#8be9fd")
+vim.cmd("hi juliaFloat guifg=#8be9fd")
+vim.cmd("hi juliaConstGeneric guifg=#8be9fd")
+vim.cmd("hi juliaRangeKeyword guifg=#8be9fd")
+vim.cmd("hi juliaSymbol guifg=#8be9fd")
+vim.cmd("hi juliaOperator guifg=#f8f8f2")
+vim.cmd("hi juliaMacro gui=bold guifg=#ffb86c")
+
+-- python files
+vim.cmd("hi pythonInclude gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonStatement gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonFunction gui=bold guifg=#50fa7b")
+vim.cmd("hi pythonBuiltin gui=NONE guifg=#ffb86c")
+vim.cmd("hi pythonRepeat gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonOperator gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonConditional gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonException gui=bold guifg=#ff79c6")
+vim.cmd("hi pythonNumber gui=NONE guifg=#8be9fd")
+
+-- snippet files
+vim.cmd("hi snippet gui=bold guifg=#ff79c6")
