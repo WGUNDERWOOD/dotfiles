@@ -95,6 +95,7 @@ vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
 -- snippets
+require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/github/dotfiles/neovim/snippets"})
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ?" ..
     "'<Plug>luasnip-expand-or-jump' : '<Tab>'")
 vim.cmd("inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>")
@@ -417,6 +418,7 @@ vim.cmd([[
     augroup snippet
     autocmd!
     au Filetype snippet hi snippet gui=bold guifg=#ff79c6
+    au Filetype snippet hi tabStop gui=NONE guifg=#8be9fd
 ]])
 
 -- git commit files
@@ -500,15 +502,15 @@ vim.cmd([[
     au Filetype org inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
     au Filetype org inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
     au Filetype org setlocal nofoldenable
-    au Filetype org hi OrgTSDirective guifg=#ffb86c gui=bold
-    au Filetype org hi OrgTSHeadlineLevel1 guifg=#ff79c6 gui=bold
-    au Filetype org hi OrgTSHeadlineLevel2 guifg=#bd93f9 gui=bold
-    au Filetype org hi OrgTSHeadlineLevel3 guifg=#50fa7b
-    au Filetype org hi OrgTSHeadlineLevel4 guifg=#f1fa8c
-    au Filetype org hi OrgTSHeadlineLevel5 guifg=#8be9fd
-    au Filetype org hi OrgTSHeadlineLevel6 guifg=#ff79c6
-    au Filetype org hi OrgTSHeadlineLevel7 guifg=#bd93f9
-    au Filetype org hi OrgTSHeadlineLevel8 guifg=#50fa7b
+    au Filetype org hi OrgHeadlineLevel1 guifg=#ff79c6 gui=bold
+    au Filetype org hi OrgHeadlineLevel2 guifg=#bd93f9 gui=bold
+    au Filetype org hi OrgHeadlineLevel3 guifg=#50fa7b
+    au Filetype org hi OrgHeadlineLevel4 guifg=#f1fa8c
+    au Filetype org hi OrgHeadlineLevel5 guifg=#8be9fd
+    au Filetype org hi OrgHeadlineLevel6 guifg=#ff79c6
+    au Filetype org hi OrgHeadlineLevel7 guifg=#bd93f9
+    au Filetype org hi OrgHeadlineLevel8 guifg=#50fa7b
+    au Filetype org hi Title gui=bold guifg=#ffb86c
     au Filetype org call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
     au Filetype org hi OrgDoneHeading guifg=#6272a4 guibg=NONE
     au Filetype org call matchadd('OrgDone', '*\+ \(DONE\)', -1)

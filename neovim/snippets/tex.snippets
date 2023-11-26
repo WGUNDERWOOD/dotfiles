@@ -1,0 +1,405 @@
+snippet part part
+    \\part{$1}%
+    \\label{part:$2}
+    $0
+
+snippet cha chapter
+    \\part{$1}%
+    \\label{cha:$2}
+    $0
+
+snippet sec section
+    \\section{$1}%
+    \\label{sec:$2}
+    $0
+
+snippet ssec subsection
+    \\subsection{$1}%
+    \\label{sec:$2}
+    $0
+
+snippet sssec subsubsection
+    \\subsubsection{$1}%
+    \\label{sec:$2}
+    $0
+
+snippet secs section*
+    \\section*{$1}
+    $0
+
+snippet ssecs subsection*
+    \\subsection*{$1}
+    $0
+
+snippet sssecs subsubsection*
+    \\subsubsection*{$1}
+    $0
+
+snippet para paragraph
+    \\paragraph{$1}%
+    \\label{para:$2}
+    $0
+
+snippet todo todo
+    \\TODO{$0}
+
+snippet doc document
+    \\documentclass{article}
+    \\title{$1}
+    \\author{William G.\ Underwood}
+    \\begin{document}
+    \\maketitle
+    $0
+    \\end{document}
+
+snippet up usepackage
+    \\usepackage{$1}
+
+snippet beg begin end
+    \\begin{$1}
+    $0
+    \\end{$1}
+
+snippet mkt maketitle
+    \\maketitle
+
+snippet tab table
+    \\begin{table}
+    \\begin{center}
+    \\begin{tabular}{$1}
+      \\hline
+      $0
+      \\hline
+    \\end{tabular}
+    \\end{center}
+    \\caption{$2}
+    \\label{tab:$3}
+    \\end{table}
+
+snippet thm theorem
+    \\begin{theorem}[$1]%
+      \\label{thm:$2}
+      $0
+    \\end{theorem}
+
+snippet ass assumption
+    \\begin{assumption}[$1]%
+      \\label{ass:$2}
+      $0
+    \\end{assumption}
+
+snippet lem lemma
+    \\begin{lemma}[$1]%
+      \\label{lem:$2}
+      $0
+    \\end{lemma}
+
+snippet pro proof
+    \\begin{proof}[$1]
+      $0
+    \\end{proof}
+
+snippet rem remark
+    \\begin{remark}
+      $0
+    \\end{remark}
+
+snippet def definition
+    \\begin{definition}[$1]%
+      \\label{def:$2}
+      $0
+    \\end{definition}
+
+snippet prop proposition
+    \\begin{proposition}[$1]%
+      \\label{pro:$2}
+      $0
+    \\end{proposition}
+
+snippet cen center
+    \\begin{center}
+      $0
+    \\end{center}
+
+snippet ali align
+    \\begin{align}
+      \\label{eq:$1}
+      $0
+    \\end{align}
+
+snippet alis align*
+    \\begin{align*}
+      $0
+    \\end{align*}
+
+snippet eq equation
+    \\begin{equation}
+      \\label{eq:$1}
+      $0
+    \\end{equation}
+
+snippet eqs equation*
+    \\begin{equation*}
+      $0
+    \\end{equation*}
+
+snippet pyc pyconsole
+    \\begin{pyconsole}
+      $0
+    \\end{pyconsole}
+
+snippet lst lstlisting
+    \\begin{lstlisting}
+      $0
+    \\end{lstlisting}
+
+snippet lab \label
+    \\label{$1}
+
+snippet enum enumerate
+    \\begin{enumerate}
+      \\item
+        $0
+    \\end{enumerate}
+
+snippet enumi enumerate roman
+    \\begin{enumerate}[label=(\roman*)]
+      \\item
+        $0
+    \\end{enumerate}
+
+snippet enuma enumerate alphabetic
+    \\begin{enumerate}[label=\alph*)]
+      \\item
+        $0
+    \\end{enumerate}
+
+snippet item itemize
+    \\begin{itemize}
+      \\item $0
+    \\end{itemize}
+
+snippet it item
+    \\item
+      $0
+
+snippet itd description item
+    \\item[$1]
+      $0
+
+snippet pmat pmatrix
+    \\begin{pmatrix}
+      $0
+    \\end{pmatrix}
+
+snippet cas cases
+    \\begin{cases}
+      $0
+    \\end{cases}
+
+snippet ni noindent
+    \\noindent
+
+snippet figr figure reference
+    Figure~\\ref{fig:$1}
+
+snippet tabr table reference
+    Table~\\ref{tab:$1}
+
+snippet secr section reference
+    Section~\\ref{sec:$1}
+
+snippet appr appendix reference
+    Appendix~\\ref{sec:$1}
+
+snippet lemr lemma reference
+    Lemma~\\ref{lem:$1}
+
+snippet assr assumption reference
+    Assumption~\\ref{ass:$1}
+
+snippet thmr theorem reference
+    Theorem~\\ref{thm:$1}
+
+snippet propr proposition reference
+    Proposition~\\ref{pro:$1}
+
+snippet eqr equation reference
+    \\eqref{eq:$1}
+
+snippet pager page reference
+    page~\\pageref{$1}
+
+snippet cite cite
+    \\cite{$1}
+
+snippet citec cite with comment
+    \\cite[$1]{$2}
+
+snippet citep cite in parentheses
+    \\citep{$1}
+
+snippet citepc cite in parentheses with comment
+    \\citep[$1]{$2}
+
+snippet citet cite in text
+    \\citet{$1}
+
+snippet citetc cite in text with comment
+    \\citet[$1]{$2}
+
+snippet emph emphasize
+    \\emph{$1}
+
+snippet mf mathfrak
+    \\mathfrak{$1}
+
+snippet mc mathcal
+    \\mathcal{$1}
+
+snippet mbb mathbb
+    \\mathbb{$1}
+
+snippet mb mathbf
+    \\mathbf{$1}
+
+snippet mr mathrm
+    \\mathrm{$1}
+
+snippet ms mathsf
+    \\mathsf{$1}
+
+snippet ft footnote
+    \\footnote{$1}
+
+snippet fig figure
+    \\begin{figure}[ht]
+    \\centering
+      \\includegraphics[scale=1]{$1}
+    \\caption{$2}
+    \\label{fig:$3}
+    \\end{figure}
+    $0
+
+snippet subfig subfigure
+    \\begin{subfigure}{0.4\textwidth}
+    \\centering
+      \\includegraphics[scale=1]{$1}
+    \\caption{$2}
+    \\label{fig:$3}
+    \\end{subfigure}
+    $0
+
+snippet fra fraction
+    \\frac{$1}{$2}
+
+snippet sum sum
+    \\sum_{$1}^{$2}
+
+snippet prod prod
+    \\prod_{$1}^{$2}
+
+snippet bcap bigcap
+    \\bigcap_{$1}^{$2}
+
+snippet bcup bigcup
+    \\bigcup_{$1}^{$2}
+
+snippet sm setminus
+    \\setminus
+
+snippet lim limit
+    \\lim_{$1}
+
+snippet max maximum
+    \\max_{$1}
+
+snippet min minimum
+    \\min_{$1}
+
+snippet sup supremum
+    \\sup_{$1}
+
+snippet inf infimum
+    \\inf_{$1}
+
+snippet ls lesssim
+    \\lesssim
+
+snippet lsp lesssim_P
+    \\lesssim_\\P
+
+snippet lam lambda
+    \\lambda
+
+snippet vep varepsilon
+    \\varepsilon
+
+snippet frame frame
+    \\begin{frame}{$1}
+      $0
+    \\end{frame}
+
+snippet block block
+    \\begin{block}{$1}
+      $0
+    \\end{block}
+
+snippet lrp left right parentheses
+    \\left( $0 \\right)
+
+snippet lrb left right brackets
+    \\left[ $0 \\right]
+
+snippet lrr left right braces
+    \\left\\{ $0 \\right\\}
+
+snippet lrv left right verts
+    \\left| $0 \\right|
+
+snippet lrn left right norms
+    \\left\| $0 \\right\|
+
+snippet lra left right angles
+    \\langle $0 \\rangle
+
+snippet expe expectation
+    \\E \\left[ $0 \\right]
+
+snippet prob probability
+    \\P \\left( $0 \\right)
+
+snippet var variance
+    \\Var \\left[ $0 \\right]
+
+snippet br matching braces
+    \\{ $0 \\}
+
+snippet href href
+    \\href{$1}{$2}
+
+snippet hrefp href paste
+    \\href{`@+`}{$1}
+
+snippet dv derivative
+    \\frac{\\diff $1}{\\diff $2}
+
+snippet pdv partial derivative
+    \\frac{\\partial $1}{\\partial $2}
+
+snippet int integral
+    \\int_{$1}^{$2} $3 \\diff $4
+
+snippet tpl tex program lualatex
+    % !TeX program = lualatex
+
+snippet tpx tex program xelatex
+    % !TeX program = xelatex
+
+snippet minipage minipage
+    \\begin{minipage}{$1}
+      $0
+    \\end{minipage}
+
+snippet hsp hspace
+    \\hspace*{$1}
