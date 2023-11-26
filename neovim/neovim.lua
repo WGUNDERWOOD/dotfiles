@@ -58,7 +58,8 @@ vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
 vim.o.syntax = true
 vim.o.termguicolors = true
 vim.g.dracula_colorterm = 0
-vim.cmd("color dracula")
+vim.g.dracula_italic = 0
+vim.cmd("colorscheme dracula")
 vim.cmd("hi normal guibg=#181a26")
 
 vim.cmd("hi StatusLine guibg=#6272a4 guifg=#f8f8f2")
@@ -112,6 +113,14 @@ vim.g.startify_custom_header = {
     "     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     " "
 }
+vim.cmd([[
+    augroup startify
+    autocmd!
+    au Filetype startify hi StartifyHeader gui=bold guifg=#bd93f9
+    au Filetype startify hi StartifySection gui=bold guifg=#ff79c6
+    au Filetype startify hi StartifyNumber gui=bold guifg=#50fa7b
+    au Filetype startify hi ExtraWhitespace guibg=NONE
+]])
 
 -- fzf
 map("n", "<Space>ff", ":lua require'fzf-lua'.files({prompt='Files> '}) <CR>")
@@ -137,9 +146,6 @@ map("n", "<Space>gc", ":lua require'fzf-lua'.git_commits({prompt='Commits> '," .
 map("n", "<Space>/", ":lua require'fzf-lua'.grep_project({prompt='Project> '," ..
     "cwd = '`git rev-parse --show-toplevel`'," ..
     "no_header_i=true, no_header=true}) <CR>")
-
--- latex
-vim.g.vimtex_view_method = "zathura"
 
 -- gitgutter
 vim.g.gitgutter_enabled = false
@@ -316,74 +322,259 @@ vim.cmd [[
 ]]
 
 -- bib files
-vim.cmd("call matchadd('bibTypeAt', '^@[a-z]', -1)")
-vim.cmd("hi bibType gui=bold guifg=#50fa7b")
-vim.cmd("hi bibTypeAt gui=bold guifg=#50fa7b")
-vim.cmd("hi bibKey gui=bold guifg=#bd93f9")
-vim.cmd("hi bibEntryKw gui=bold guifg=#ff79c6")
+vim.cmd([[
+    augroup bib
+    autocmd!
+    au Filetype bib call matchadd('bibTypeAt', '^@[a-z]', -1)
+    au Filetype bib hi bibTypeAt gui=bold guifg=#50fa7b
+    au Filetype bib hi bibType gui=bold guifg=#50fa7b
+    au Filetype bib hi bibKey gui=bold guifg=#bd93f9
+    au Filetype bib hi bibEntryKw gui=bold guifg=#ff79c6
+    augroup END
+]])
 
 -- shell files
-vim.cmd("hi shFunction gui=bold guifg=#50fa7b")
-vim.cmd("hi shQuote gui=NONE guifg=#f1fa8c")
-vim.cmd("hi shStatement gui=bold guifg=#ff79c6")
-vim.cmd("hi shVarAssign gui=bold guifg=#ff79c6")
-vim.cmd("hi shFunctionkey gui=bold guifg=#ff79c6")
+vim.cmd([[
+    augroup sh
+    autocmd!
+    au Filetype sh hi shFunction gui=bold guifg=#50fa7b
+    au Filetype sh hi shQuote gui=NONE guifg=#f1fa8c
+    au Filetype sh hi shStatement gui=bold guifg=#ff79c6
+    au Filetype sh hi shVarAssign gui=bold guifg=#ff79c6
+    au Filetype sh hi shFunctionkey gui=bold guifg=#ff79c6
+]])
 
 -- rust files
-vim.cmd("hi rustFuncName gui=bold guifg=#50fa7b")
-vim.cmd("hi rustKeyword gui=bold guifg=#ff79c6")
-vim.cmd("hi rustModPath guifg=#8be9fd")
-vim.cmd("hi rustRepeat gui=bold guifg=#ff79c6")
-vim.cmd("hi rustTypeDef gui=bold guifg=#ff79c6")
-vim.cmd("hi rustConditional gui=bold guifg=#ff79c6")
-vim.cmd("hi rustStorage gui=bold guifg=#ff79c6")
-vim.cmd("hi rustDecNumber guifg=#8be9fd")
-vim.cmd("hi rustType guifg=#bd93f9")
-vim.cmd("hi rustOperator guifg=#f8f8f2")
-vim.cmd("hi rustMacro guifg=#ffb86c")
-vim.cmd("hi rustAssert guifg=#ffb86c")
-vim.cmd("hi rustAttribute gui=bold guifg=#ffb86c")
-vim.cmd("hi rustDerive gui=bold guifg=#ffb86c")
-vim.cmd("hi rustStructure gui=bold guifg=#ff79c6")
+vim.cmd([[
+    augroup rust
+    autocmd!
+    au Filetype rust hi rustFuncName gui=bold guifg=#50fa7b
+    au Filetype rust hi rustKeyword gui=bold guifg=#ff79c6
+    au Filetype rust hi rustModPath guifg=#8be9fd
+    au Filetype rust hi rustRepeat gui=bold guifg=#ff79c6
+    au Filetype rust hi rustTypeDef gui=bold guifg=#ff79c6
+    au Filetype rust hi rustConditional gui=bold guifg=#ff79c6
+    au Filetype rust hi rustStorage gui=bold guifg=#ff79c6
+    au Filetype rust hi rustDecNumber guifg=#8be9fd
+    au Filetype rust hi rustType guifg=#bd93f9
+    au Filetype rust hi rustOperator guifg=#f8f8f2
+    au Filetype rust hi rustMacro guifg=#ffb86c
+    au Filetype rust hi rustAssert guifg=#ffb86c
+    au Filetype rust hi rustAttribute gui=bold guifg=#ffb86c
+    au Filetype rust hi rustDerive gui=bold guifg=#ffb86c
+    au Filetype rust hi rustStructure gui=bold guifg=#ff79c6
+]])
 
 -- julia files
-vim.cmd("hi juliaFunctionName gui=bold guifg=#50fa7b")
-vim.cmd("hi juliaKeyword gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaBlKeyword gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaRepeat gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaConditional gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaComprehensionFor gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaComprehensionIf gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaInfixKeyword gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaWhereKeyword gui=bold guifg=#ff79c6")
-vim.cmd("hi juliaType guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeNum guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeString guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeRange guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeArray guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeBasic guifg=#bd93f9")
-vim.cmd("hi juliaBaseTypeRound guifg=#bd93f9")
-vim.cmd("hi juliaParamType guifg=#bd93f9")
-vim.cmd("hi juliaChar guifg=#f1fa8c")
-vim.cmd("hi juliaNumber guifg=#8be9fd")
-vim.cmd("hi juliaConstNum guifg=#8be9fd")
-vim.cmd("hi juliaFloat guifg=#8be9fd")
-vim.cmd("hi juliaConstGeneric guifg=#8be9fd")
-vim.cmd("hi juliaRangeKeyword guifg=#8be9fd")
-vim.cmd("hi juliaSymbol guifg=#8be9fd")
-vim.cmd("hi juliaOperator guifg=#f8f8f2")
-vim.cmd("hi juliaMacro gui=bold guifg=#ffb86c")
+vim.cmd([[
+    augroup julia
+    autocmd!
+    au Filetype julia hi juliaFunctionName gui=bold guifg=#50fa7b
+    au Filetype julia hi juliaKeyword gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaBlKeyword gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaRepeat gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaConditional gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaComprehensionFor gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaComprehensionIf gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaInfixKeyword gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaWhereKeyword gui=bold guifg=#ff79c6
+    au Filetype julia hi juliaType guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeNum guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeString guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeRange guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeArray guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeBasic guifg=#bd93f9
+    au Filetype julia hi juliaBaseTypeRound guifg=#bd93f9
+    au Filetype julia hi juliaParamType guifg=#bd93f9
+    au Filetype julia hi juliaChar guifg=#f1fa8c
+    au Filetype julia hi juliaNumber guifg=#8be9fd
+    au Filetype julia hi juliaConstNum guifg=#8be9fd
+    au Filetype julia hi juliaFloat guifg=#8be9fd
+    au Filetype julia hi juliaConstGeneric guifg=#8be9fd
+    au Filetype julia hi juliaRangeKeyword guifg=#8be9fd
+    au Filetype julia hi juliaSymbol guifg=#8be9fd
+    au Filetype julia hi juliaOperator guifg=#f8f8f2
+    au Filetype julia hi juliaMacro gui=bold guifg=#ffb86c
+]])
 
 -- python files
-vim.cmd("hi pythonInclude gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonStatement gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonFunction gui=bold guifg=#50fa7b")
-vim.cmd("hi pythonBuiltin gui=NONE guifg=#ffb86c")
-vim.cmd("hi pythonRepeat gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonOperator gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonConditional gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonException gui=bold guifg=#ff79c6")
-vim.cmd("hi pythonNumber gui=NONE guifg=#8be9fd")
+vim.cmd([[
+    augroup python
+    autocmd!
+    au Filetype python hi pythonInclude gui=bold guifg=#ff79c6
+    au Filetype python hi pythonStatement gui=bold guifg=#ff79c6
+    au Filetype python hi pythonFunction gui=bold guifg=#50fa7b
+    au Filetype python hi pythonBuiltin gui=NONE guifg=#ffb86c
+    au Filetype python hi pythonRepeat gui=bold guifg=#ff79c6
+    au Filetype python hi pythonOperator gui=bold guifg=#ff79c6
+    au Filetype python hi pythonConditional gui=bold guifg=#ff79c6
+    au Filetype python hi pythonException gui=bold guifg=#ff79c6
+    au Filetype python hi pythonNumber gui=NONE guifg=#8be9fd
+]])
 
 -- snippet files
-vim.cmd("hi snippet gui=bold guifg=#ff79c6")
+vim.cmd([[
+    augroup snippet
+    autocmd!
+    au Filetype snippet hi snippet gui=bold guifg=#ff79c6
+]])
+
+-- git commit files
+vim.cmd([[
+    augroup gitcommit
+    autocmd!
+    au Filetype gitcommit hi gitcommitHeader gui=bold guifg=#bd93f9
+    au Filetype gitcommit hi gitcommitBranch gui=bold guifg=#ff79c6
+    au Filetype gitcommit hi gitcommitSelectedType gui=NONE guifg=#ffb86c
+    au Filetype gitcommit hi gitcommitSelectedFile gui=NONE guifg=#8be9fd
+    au Filetype gitcommit hi gitcommitUntrackedFile gui=NONE guifg=#8be9fd
+    au Filetype gitcommit hi ExtraWhitespace guibg=NONE"
+]])
+
+-- mail files
+vim.cmd([[
+    augroup mail
+    autocmd!
+
+    call matchadd('mailAttachment', '
+        \[Aa]ttaching\|
+        \[Aa]ttached\|
+        \[Aa]ttach\|
+        \cv\|
+        \CV\|
+        \[Ee]nclosing\|
+        \[Ee]nclosed\|
+        \[Ee]nclose\|
+        \[Ff]iles\|
+        \[Ff]ile\|
+        \[Ii]ncluding\|
+        \[Ii]ncluded\|
+        \[Ii]nclude\|
+        \[Pp]rinting\|
+        \[Pp]rinter\|
+        \[Pp]rint\|
+        \[Rr]esume\|
+        \[Ss]creenshots\|
+        \[Ss]creenshot',
+        \ -1)
+
+    call matchadd('mailHeaderKeyName', '
+        \^From:\|
+        \^To:\|
+        \^Cc:\|
+        \^Bcc:\|
+        \^Subject:\|
+        \^Reply-To:\|
+        \^In-Reply-To:',
+        \ -1)
+
+    au Filetype mail hi mailAttachment guifg=#ff7722
+    au Filetype mail hi ExtraWhitespace guibg=NONE
+    au Filetype mail hi mailHeaderKeyName guifg=#ff79c6 gui=bold
+    au Filetype mail hi mailSubject guifg=#8be9fd
+    au Filetype mail hi mailEmail guifg=#f1fa8c
+    au Filetype mail hi mailHeaderEmail guifg=#f1fa8c
+    au Filetype mail hi mailSignature guifg=#8be9fd
+    au Filetype mail hi mailQuoted1 guifg=#bd93f9
+    au Filetype mail hi mailQuoted2 guifg=#ffb86c
+    au Filetype mail hi mailQuoted3 guifg=#50fa7b
+    au Filetype mail hi mailQuoted4 guifg=#8be9fd
+    au Filetype mail set linebreak
+    au Filetype mail /\n\n--
+]])
+
+-- make files
+vim.cmd([[
+    augroup make
+    autocmd!
+    au Filetype make setlocal noexpandtab
+    au Filetype make hi makeSpecTarget guifg=#ff79c6 gui=bold
+    au Filetype make hi makeTarget guifg=#50fa7b gui=bold
+    au Filetype make hi makeIdent gui=bold
+]])
+
+-- org files
+vim.cmd([[
+    augroup org
+    autocmd!
+    au Filetype org inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
+    au Filetype org inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
+    au Filetype org setlocal nofoldenable
+    au Filetype org hi OrgTSDirective guifg=#ffb86c gui=bold
+    au Filetype org hi OrgTSHeadlineLevel1 guifg=#ff79c6 gui=bold
+    au Filetype org hi OrgTSHeadlineLevel2 guifg=#bd93f9 gui=bold
+    au Filetype org hi OrgTSHeadlineLevel3 guifg=#50fa7b
+    au Filetype org hi OrgTSHeadlineLevel4 guifg=#f1fa8c
+    au Filetype org hi OrgTSHeadlineLevel5 guifg=#8be9fd
+    au Filetype org hi OrgTSHeadlineLevel6 guifg=#ff79c6
+    au Filetype org hi OrgTSHeadlineLevel7 guifg=#bd93f9
+    au Filetype org hi OrgTSHeadlineLevel8 guifg=#50fa7b
+    au Filetype org call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
+    au Filetype org hi OrgDoneHeading guifg=#6272a4 guibg=NONE
+    au Filetype org call matchadd('OrgDone', '*\+ \(DONE\)', -1)
+    au Filetype org hi OrgDone guifg=#00dd00 guibg=NONE gui=bold
+    au Filetype org call matchadd('OrgLeadingStars', '*\+\(* \)\@=', -1)
+    au Filetype org hi OrgLeadingStars guifg=#181a26 guibg=NONE
+    au Filetype org call matchadd('OrgLeadingStar', '* ', -1)
+    au Filetype org hi OrgLeadingStar gui=bold
+    au Filetype org nnoremap T :let _s=@/<Bar>:s/ TODO \\| NOTE \\| DONE \\| NOW / /<Bar>:let @/=_s<CR>
+]])
+
+-- tex files
+vim.cmd([[
+    augroup tex
+    autocmd!
+    au Filetype tex syntax enable
+    au Filetype tex setlocal shiftwidth=2
+    au Filetype tex :ColorizerDetachFromBuffer
+    au Filetype tex let g:vimtex_view_method = 'zathura'
+    au Filetype tex let g:vimtex_matchparen_enabled = 0
+    au Filetype tex let g:vimtex_compiler_silent = 1
+    au Filetype tex let g:vimtex_quickfix_mode = 0
+    au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
+    au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+    au Filetype tex let g:tex_fast = 'M'
+    au Filetype tex let g:vimtex_indent_delims = {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
+    au Filetype tex hi QuickFixLine guifg=NONE gui=bold
+    au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
+    au Filetype tex hi texPartArgTitle gui=bold guifg=#ffff22
+    au Filetype tex hi texCmdInput gui=bold guifg=#ff79c6
+    au Filetype tex hi texCmdStyle gui=bold guifg=#bd93f9
+    au Filetype tex hi texFileArg guifg=#8be9fd
+    au Filetype tex hi texCmdEnv gui=bold guifg=#ff79c6
+    au Filetype tex hi texEnvArgName gui=bold guifg=#50fa7b
+    au Filetype tex hi texCmdTitle gui=bold guifg=#ff79c6
+    au Filetype tex hi texCmdAuthor gui=bold guifg=#ff79c6
+    au Filetype tex hi texAuthorArg guifg=#bd93f9
+    au Filetype tex hi texCmd gui=bold guifg=#ff79c6
+    au Filetype tex hi texRefArg guifg=#8be9fd
+    au Filetype tex hi texDelim guifg=#8be9fd
+    au Filetype tex hi texTabularChar gui=bold guifg=#ff0000
+    au Filetype tex hi texMathZoneTI guifg=#bd93f9
+    au Filetype tex hi texMathArg guifg=#bd93f9
+    au Filetype tex hi texMathGroup guifg=#bd93f9
+    au Filetype tex hi texMathZoneEnv guifg=#bd93f9
+    au Filetype tex hi texMathSuperSub gui=bold guifg=#6272a4
+    au Filetype tex hi texMathSub guifg=#bd93f9
+    au Filetype tex hi texMathSuper guifg=#bd93f9
+    au Filetype tex hi texMathCmd guifg=#bd93f9
+    au Filetype tex hi texSpecialChar guifg=#bd93f9
+    au Filetype tex hi texMathDelimZoneLD guifg=#ff0000
+    au Filetype tex hi texMathEnvArgName gui=bold guifg=#50fa7b
+    au Filetype tex hi texMathDelimZoneTI gui=bold guifg=#ff0000
+    au Filetype tex hi texTheoremEnvOpt gui=bold guifg=#ffff22
+    au Filetype tex hi texProofEnvOpt gui=bold guifg=#ffff22
+    au Filetype tex hi Special gui=NONE guifg=#f8f8f2
+    au Filetype tex call matchadd('texPartArgTitle', '\proofparagraph{\zs[^}]*', -1)
+    au Filetype tex call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
+    au Filetype tex hi texPageCmd gui=bold guifg=#ff0000
+    au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS
+    au Filetype tex nnoremap ,v :VimtexView
+    au Filetype tex nnoremap ,k :VimtexStopAll
+    au Filetype tex nnoremap ,w :VimtexErrors
+    au Filetype tex inoremap <C-L> <C-X><C-O>
+    au Filetype tex inoremap <C-J> <C-N>
+    au Filetype tex inoremap <C-K> <C-P>
+]])
+
+-- TODO add yankstack to nix packages
