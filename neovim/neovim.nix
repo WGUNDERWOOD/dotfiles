@@ -1,6 +1,7 @@
 {pkgs, ...}: {
 
   programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
 
   programs.neovim.plugins = [
     pkgs.vimPlugins.vim-startify

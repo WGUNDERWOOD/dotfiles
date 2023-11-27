@@ -7,8 +7,7 @@
             modifier = "Mod4";
             terminal = "alacritty";
             window = {border = 2; titlebar = false;};
-            gaps.smartBorders = "on";
-            #bars = [];
+            bars = [];
 
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";
@@ -93,4 +92,4 @@
         '';
     };
 
-                  }
+}

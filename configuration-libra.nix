@@ -69,6 +69,8 @@
     imports = [
       ./bash.nix
       ./sway.nix
+      ./waybar.nix
+      ./systemd.nix
       ./alacritty.nix
       ./neovim/neovim.nix
     ];
@@ -89,6 +91,7 @@
     home-manager
     firefox-bin
     wayland
+    waybar
     aspell
     bat
     diff-so-fancy
@@ -133,6 +136,7 @@
   ];
 
   programs.sway.enable = true;
+  programs.waybar.enable = true;
   programs.steam.enable = true;
   programs.neovim = {
     enable = true;
