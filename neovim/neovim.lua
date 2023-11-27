@@ -571,10 +571,10 @@ vim.cmd([[
     au Filetype tex call matchadd('texPartArgTitle', '\proofparagraph{\zs[^}]*', -1)
     au Filetype tex call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
     au Filetype tex hi texPageCmd gui=bold guifg=#ff0000
-    au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS
-    au Filetype tex nnoremap ,v :VimtexView
-    au Filetype tex nnoremap ,k :VimtexStopAll
-    au Filetype tex nnoremap ,w :VimtexErrors
+    au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS<CR>
+    au Filetype tex nnoremap ,v :VimtexView<CR>
+    au Filetype tex nnoremap ,k :VimtexStopAll<CR>
+    au Filetype tex nnoremap ,w :VimtexErrors<CR>
     au Filetype tex inoremap <C-L> <C-X><C-O>
     au Filetype tex inoremap <C-J> <C-N>
     au Filetype tex inoremap <C-K> <C-P>

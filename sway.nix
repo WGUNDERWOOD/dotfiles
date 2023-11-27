@@ -7,6 +7,7 @@
             modifier = "Mod4";
             terminal = "alacritty";
             window = {border = 2; titlebar = false;};
+            gaps.smartBorders = "on";
             bars = [];
             output."*".bg = "~/wallpaper.png fill";
 

@@ -110,6 +110,7 @@
     procs
     du-dust
     texlive.combined.scheme-full
+    inkscape
     rclone
     lutris
     tldr
