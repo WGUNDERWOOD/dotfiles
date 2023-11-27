@@ -125,8 +125,8 @@
     pandoc
     pdftk
     pplatex
-    flameshot
-    symlinks
+    grim
+    slurp
     ranger
     zoxide
     vlc

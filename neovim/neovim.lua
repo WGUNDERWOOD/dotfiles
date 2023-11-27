@@ -69,6 +69,7 @@ vim.cmd("hi ErrorMsg guifg=#ff8833 guibg=#181a26 gui=bold")
 vim.cmd("hi vimCommand gui=bold guifg=#ff79c6")
 vim.cmd("hi ExtraWhitespace guibg=#6272a4")
 vim.cmd("hi Search guibg=#50fa7b")
+vim.cmd("hi Special gui=NONE")
 vim.cmd("match ExtraWhitespace /\\s\\+$/")
 
 -- cursor
