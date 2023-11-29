@@ -105,8 +105,12 @@
     ocrmypdf
     pandoc
     pdftk
+    neofetch
+    libreoffice
+    vimiv-qt
     pplatex
     grim
+    vivid
     slurp
     ranger
     zoxide
@@ -134,6 +138,7 @@
   home-manager.users.will = { pkgs, ... }: {
     imports = [
       ./sway.nix
+      ./bash/bash.nix
       ./waybar.nix
       ./systemd.nix
       ./alacritty.nix
