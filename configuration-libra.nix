@@ -146,6 +146,7 @@
       ./starship/starship.nix
       ./cava/cava.nix
       ./latex/latex.nix
+      ./ripgrep.nix
     ];
 
     home.stateVersion = "23.05";
