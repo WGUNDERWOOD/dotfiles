@@ -6,16 +6,13 @@ echo "Remarkable files syncing to $loc"
 
 # list the remarkable files to sync
 files=(
-    #"Chess scorebook"
-    #"ORF 550 notes"
-    #"Quick sheets"
     #"KDE research scratch"
+    #"Teaching scratch"
     #"Regression research scratch"
     #"Martingales research scratch"
     #"Forests research scratch"
-    #"Seminar notes"
-    #"Teaching scratch"
-    "Useful results"
+    "Seminar notes"
+    #"Useful results"
 )
 
 # see all available files
@@ -31,7 +28,7 @@ for f in "${files[@]}"; do
         cd $loc
         rmapi get "$f" > /dev/null 2>&1
         python -m rmrl "$loc/$f.zip" > "$loc/$f.pdf"
-        rm "$loc/$f.zip"
+        #rm "$loc/$f.zip"
     )
 done
 
