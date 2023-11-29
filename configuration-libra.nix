@@ -74,6 +74,7 @@
       ./neovim/neovim.nix
       ./starship/starship.nix
       ./cava/cava.nix
+      ./latex/latex.nix
     ];
 
     home.stateVersion = "23.05";
