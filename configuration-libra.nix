@@ -67,15 +67,14 @@
   # home
   home-manager.users.will = { pkgs, ... }: {
     imports = [
-      ./bash.nix
       ./sway.nix
       ./waybar.nix
       ./systemd.nix
       ./alacritty.nix
       ./neovim/neovim.nix
       ./starship/starship.nix
+      ./cava/cava.nix
     ];
-
 
     home.stateVersion = "23.05";
   };
@@ -85,6 +84,7 @@
   nix.settings.experimental-features = "nix-command flakes";
 
   environment.systemPackages = with pkgs; [
+    fish
     alacritty
     vim
     wl-clipboard
@@ -99,6 +99,7 @@
     ripgrep
     fzf
     exa
+    cava
     fd
     bottom
     neomutt

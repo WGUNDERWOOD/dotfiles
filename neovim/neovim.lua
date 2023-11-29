@@ -497,6 +497,13 @@ vim.cmd([[
     au Filetype make hi makeIdent gui=bold
 ]])
 
+-- nix files
+vim.cmd([[
+    augroup nix
+    autocmd!
+    au Filetype nix hi nixStringDelimiter guifg=#f1fa8c
+]])
+
 -- org files
 vim.cmd([[
     augroup org
