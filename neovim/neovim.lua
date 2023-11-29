@@ -210,7 +210,14 @@ require('orgmode').setup({
 require("nvim-autopairs").setup {}
 
 -- colorizer
-require 'colorizer'.setup()
+require("colorizer").setup {
+    filetypes = { "*" },
+    user_default_options = {
+        RGB = false, -- #RGB hex codes
+        names = false, -- "Name" codes like Blue or blue
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+    }
+}
 
 -- lualine
 local custom_dracula = require('lualine.themes.dracula')

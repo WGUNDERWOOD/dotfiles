@@ -81,6 +81,7 @@
     isync
     gnumake
     source-code-pro
+    nix-tree
     spotify
     starship
     zathura
