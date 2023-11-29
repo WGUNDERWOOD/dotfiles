@@ -3,13 +3,17 @@
   programs.alacritty.settings = {
 
     scrolling.history = 10000;
+    draw_bold_text_with_bright_colors = true;
 
     font = {
       normal.family = "Source Code Pro";
       size = 12.0;
     };
 
-    draw_bold_text_with_bright_colors = true;
+    cursor.style = {
+      shape = "Block";
+      blinking = "On";
+    };
 
     colors = {
       primary = {
@@ -77,11 +81,6 @@
         cyan = "#a4ffff";
         white = "#ffffff";
       };
-    };
-
-    cursor.style = {
-      shape = "Block";
-      blinking = "On";
     };
   };
 }

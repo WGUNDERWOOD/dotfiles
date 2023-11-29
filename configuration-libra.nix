@@ -55,37 +55,11 @@
     xkbVariant = "";
   };
 
-  # user
-  users.users.will = {
-    isNormalUser = true;
-    description = "Will Underwood";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
-  };
-
-  services.getty.autologinUser = "will";
-
-  # home
-  home-manager.users.will = { pkgs, ... }: {
-    imports = [
-      ./sway.nix
-      ./waybar.nix
-      ./systemd.nix
-      ./alacritty.nix
-      ./neovim/neovim.nix
-      ./starship/starship.nix
-      ./cava/cava.nix
-      ./latex/latex.nix
-    ];
-
-    home.stateVersion = "23.05";
-  };
-
   # packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
   environment.systemPackages = with pkgs; [
-    fish
     alacritty
     vim
     wl-clipboard
@@ -146,6 +120,32 @@
     enable = true;
     defaultEditor = true;
   };
+
+  # user
+  users.users.will = {
+    isNormalUser = true;
+    description = "Will Underwood";
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
+  };
+
+  services.getty.autologinUser = "will";
+
+  # home
+  home-manager.users.will = { pkgs, ... }: {
+    imports = [
+      ./sway.nix
+      ./waybar.nix
+      ./systemd.nix
+      ./alacritty.nix
+      ./neovim/neovim.nix
+      ./starship/starship.nix
+      ./cava/cava.nix
+      ./latex/latex.nix
+    ];
+
+    home.stateVersion = "23.05";
+  };
+
 
   # release: do not edit without reading documentation
   system.stateVersion = "23.05";
