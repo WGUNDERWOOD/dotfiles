@@ -1,0 +1,88 @@
+format = """
+$hostname\
+$sudo\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+${custom.git_tag}\
+$git_state\
+$git_status\
+$git_metrics\
+$package\
+$nix_shell\
+$env_var\
+$jobs\
+$cmd_duration\
+$status\
+$character"""
+
+add_newline = false
+
+[sudo]
+format = "‍[[as](bold #bbbbbb) sudo ](bold #ff7722)"
+disabled = true
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+fish_style_pwd_dir_length = 4
+format = "[[$path/](bold #8be9fd) ](bold #bbbbbb)"
+
+[git_branch]
+format = "[on [$branch](bold bright-yellow) ](bold #bbbbbb)"
+ignore_branches = ["HEAD"]
+
+[git_commit]
+only_detached = true
+tag_disabled = true
+format = "[on [$hash $tag](bold yellow)](bold #bbbbbb)"
+
+[custom.git_tag]
+command = "echo \\($(git tag --points-at HEAD)\\)"
+when = "git describe --exact-match --tags $(git log -n1 --pretty='%h')"
+format = "[$output ](bold yellow)"
+
+[git_state]
+format = "\\([$state( $progress_current/$progress_total)](bold yellow)\\) "
+
+[git_status]
+style = "bold yellow"
+format = "([\\($all_status$ahead_behind\\)]($style) )"
+ahead = "[↑](bold #dddddd)"
+behind = "[↓](bold #dddddd)"
+diverged = "[↑↓](bold #dddddd)"
+conflicted = "[=](bold #ff7722)"
+up_to_date = ""
+untracked = "[?](bold #ddb3f9)"
+stashed = "[S](bold #dddddd)"
+staged = "[+](bold green)"
+modified = "[!](bold #ff7722 )"
+renamed = "[r](bold #ff7722 )"
+deleted = "[d](bold #ff7722 )"
+
+[git_metrics]
+disabled = true
+
+[package]
+disabled = true
+
+[jobs]
+number_threshold = 1
+format = "[[bg](bold #bbbbbb) $number](bold #ddb3f9) "
+disabled = true
+
+[cmd_duration]
+format = "[took [$duration](bold #ddb3f9) ](bold #bbbbbb)"
+min_time = 1
+
+[time]
+disabled = true
+
+[status]
+disabled = false
+format = "[$status( $common_meaning)( $signal_name)](bold #ff7722) "
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold #ff7722)"

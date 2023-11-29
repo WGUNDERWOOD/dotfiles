@@ -96,6 +96,7 @@ vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
 -- snippets
+-- TODO this is not nixy
 require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/github/dotfiles/neovim/snippets"})
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ?" ..
     "'<Plug>luasnip-expand-or-jump' : '<Tab>'")
@@ -560,11 +561,13 @@ vim.cmd([[
     au Filetype tex hi texMathSuperSub gui=bold guifg=#6272a4
     au Filetype tex hi texMathSub guifg=#bd93f9
     au Filetype tex hi texMathSuper guifg=#bd93f9
+    au Filetype tex hi texMathSymbol gui=NONE guifg=#ff79c6
     au Filetype tex hi texMathCmd guifg=#bd93f9
     au Filetype tex hi texSpecialChar guifg=#bd93f9
     au Filetype tex hi texMathDelimZoneLD guifg=#ff0000
     au Filetype tex hi texMathEnvArgName gui=bold guifg=#50fa7b
     au Filetype tex hi texMathDelimZoneTI gui=bold guifg=#ff0000
+    au Filetype tex hi texMathDelimZoneTD gui=bold guifg=#ff0000
     au Filetype tex hi texTheoremEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi texProofEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi Special gui=NONE guifg=#f8f8f2
@@ -575,6 +578,7 @@ vim.cmd([[
     au Filetype tex nnoremap ,v :VimtexView<CR>
     au Filetype tex nnoremap ,k :VimtexStopAll<CR>
     au Filetype tex nnoremap ,w :VimtexErrors<CR>
+    au Filetype tex nnoremap ,e V<plug>(vimtex-ae)
     au Filetype tex inoremap <C-L> <C-X><C-O>
     au Filetype tex inoremap <C-J> <C-N>
     au Filetype tex inoremap <C-K> <C-P>

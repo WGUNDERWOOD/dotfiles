@@ -73,6 +73,7 @@
       ./systemd.nix
       ./alacritty.nix
       ./neovim/neovim.nix
+      ./starship/starship.nix
     ];
 
 
