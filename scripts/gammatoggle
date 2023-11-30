@@ -1,0 +1,17 @@
+#!/usr/bin/sh
+
+status_file="$HOME/tmp/gammastatus"
+temp_night=2500
+temp_day=6500
+
+touch $status_file
+current_status=$(cat $status_file)
+
+if [ "$current_status" == "night" ]
+then
+    gammastep -PO $temp_day
+    echo "day" > $status_file
+else
+    gammastep -PO $temp_night
+    echo "night" > $status_file
+fi
