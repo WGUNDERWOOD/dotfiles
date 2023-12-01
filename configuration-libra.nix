@@ -20,7 +20,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.sway}/bin/sway";
+        command = "${pkgs.hyprland}/bin/Hyprland";
         user = "will";
       };
       default_session = initial_session;
@@ -116,9 +116,14 @@
     ranger
     zoxide
     vlc
+    zip
+    handlr
   ];
 
-  programs.sway.enable = true;
+  programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+  };
   programs.waybar.enable = true;
   programs.steam.enable = true;
   programs.neovim = {
@@ -138,7 +143,6 @@
   # home
   home-manager.users.will = { pkgs, ... }: {
     imports = [
-      ./sway.nix
       ./bash/bash.nix
       ./waybar.nix
       ./systemd.nix
@@ -147,6 +151,7 @@
       ./starship/starship.nix
       ./cava/cava.nix
       ./latex/latex.nix
+      ./desktop/desktop.nix
       ./ripgrep.nix
     ];
 
