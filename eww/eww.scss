@@ -1,7 +1,28 @@
 * { all: unset; }
 
-.barx {
+.bar {
   color: #dbdee9;
   background: #999999;
   border-radius: 20px;
 }
+
+.bound {
+  background: #ff0000;
+}
+
+.topbound {
+  background: #990000;
+}
+
+.bottombound {
+  background: #000099;
+}
+
+.leftbound {
+  background: #009900;
+}
+
+.rightbound {
+  background: #005555;
+}
+

@@ -119,6 +119,11 @@
     zip
     handlr
     eww-wayland
+    hyprpaper
+    swaylock
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xwayland
   ];
 
   programs.hyprland = {
@@ -130,6 +135,16 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+  };
+  security.pam.services.swaylock.text = "auth include login";
+
+  services.dbus.enable = true;
+  xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [
+          pkgs.xdg-desktop-portal-gtk
+      ];
   };
 
   # user
