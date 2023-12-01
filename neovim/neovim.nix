@@ -24,6 +24,7 @@
     pkgs.vimPlugins.vim-gitgutter
     pkgs.vimPlugins.vim-lastplace
     pkgs.vimPlugins.cmp-omni
+    pkgs.vimPlugins.yuck-vim
   ];
 
   programs.neovim.extraConfig = "luafile ${./neovim.lua}";

@@ -118,6 +118,7 @@
     vlc
     zip
     handlr
+    eww-wayland
   ];
 
   programs.hyprland = {
