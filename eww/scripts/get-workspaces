@@ -1,7 +1,11 @@
 #!/bin/bash
 
-workspaces (){
-	hyprctl workspaces -j | jq -c 'map(.id)'
+workspaces() {
+    A=$(hyprctl monitors -j | jq '.[].activeWorkspace.id')
+    W=$(hyprctl workspaces -j |
+        jq -c --arg A "$A" 'map(.id) | sort |
+        map(. | {id: (. % 10), active: (. | tostring == $A)})')
+    echo $W
 }
 
 workspaces
