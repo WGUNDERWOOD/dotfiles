@@ -1,28 +1,27 @@
-* { all: unset; }
+* {
+  all: unset;
+  font-family: "Source Code Pro";
+  font-size: 16pt;
+}
 
 .bar {
-  color: #dbdee9;
-  background: #999999;
-  border-radius: 20px;
+  color: #f8f8f2;
+  background: #080a16;
 }
 
-.bound {
-  background: #ff0000;
+.workspace {
+  background: #000000;
 }
 
-.topbound {
-  background: #990000;
+.workspace-current {
+  color: #ff92df;
+  font-weight: 600;
+  background: #2c2e3a;
+  border-bottom: 2px solid #ff92df;
 }
 
-.bottombound {
-  background: #000099;
+.time {
 }
 
-.leftbound {
-  background: #009900;
+.date {
 }
-
-.rightbound {
-  background: #005555;
-}
-

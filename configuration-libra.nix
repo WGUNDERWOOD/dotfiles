@@ -67,7 +67,7 @@
     home-manager
     firefox-bin
     wayland
-    waybar
+    #waybar
     aspell
     bat
     diff-so-fancy
@@ -88,6 +88,8 @@
     procs
     du-dust
     texlive.combined.scheme-full
+    jq
+    socat
     inkscape
     rclone
     lutris
@@ -130,7 +132,8 @@
       enable = true;
       xwayland.enable = true;
   };
-  programs.waybar.enable = true;
+  #programs.waybar.enable = true;
+  #programs.waybar.package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   programs.steam.enable = true;
   programs.neovim = {
     enable = true;
@@ -160,7 +163,7 @@
   home-manager.users.will = { pkgs, ... }: {
     imports = [
       ./bash/bash.nix
-      ./waybar.nix
+      #./waybar.nix
       ./systemd.nix
       ./alacritty.nix
       ./neovim/neovim.nix

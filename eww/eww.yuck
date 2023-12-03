@@ -3,54 +3,78 @@
   :monitor 0
   :geometry (geometry
               :width "100%"
-              :height "50px"
+              :height "38px"
               :anchor "bottom center")
-  (bound)
+  (bar)
 )
 
-
-(defwidget bound []
-  ; top and bottom space
-  (centerbox
-    :orientation "v"
-    (box :height 10 :class "topbound" :valign "start" :vexpand true)
-    ; left and right space
-    (centerbox
-      :orientation "h"
-      (box :width 10 :class "leftbound" :halign "start" :space-evenly false)
-      (bar)
-      (box :width 10 :class "rightbound" :halign "end")
-    )
-    (box :height 10 :class "bottombound" :valign "end" :vexpand true :space-evenly false)
-  )
-  ;(centerbox
-    ;:orientation "v"
-    ;:halign "center"
-    ;:hexpand true
-    ;:vexpand true
-    ;(box :height 1 :class "topbound" :valign "top")
-    ;(box :height 1 :class "midbound" :valign center)
-    ;(box :height 1 :class "bottombound" :valign "bottom")
-    ;)
-)
-
-(defwidget bar []
-  (centerbox
-    :class "bar"
-    :hexpand true
-    :vexpand true
-    :valign "fill"
-    :halign "fill"
-    (left)
-    (box :halign "fill")
-    (right)
-  )
-)
+(defwidget bar [] (centerbox :class "bar" (left) "" (right)))
 
 (defwidget left []
-  (box :halign "start" "left")
+  (box :halign "start"
+    (workspaces)
+  )
 )
 
 (defwidget right []
-  (box :halign "end" "right")
+  (box :halign "end"
+    :space-evenly false
+    :spacing 30
+    (disk)
+    (mem)
+    (cpu)
+    (net)
+    (time)
+    (date)
+  )
+)
+
+(deflisten get-workspaces :initial "[]" `bash ~/.config/eww/scripts/get-workspaces`)
+
+(defwidget workspaces []
+  (box
+    (for workspace in get-workspaces
+      (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+        :width 35
+        :class "workspace${workspace.current ? "-current" : ""}"
+        (label :text "${workspace.id}")
+      )
+    )
+  )
+)
+
+(defpoll time :interval "1s" :initial "" `date "+%H:%M"`)
+
+(defwidget time []
+  (box :class "time" (label :text "${time}"))
+)
+
+(defpoll date :interval "1s" `date "+%d %b %Y"`)
+
+(defwidget date []
+  (box :class "date" (label :text "${date}"))
+)
+
+(defwidget cpu []
+  (box
+    (label :text "CPU ")
+    (for core in {EWW_CPU["cores"]}
+      (box
+        :class "cpu-core"
+        (label :text "${core["usage"]} ")
+      )
+    )
+  )
+)
+
+(defwidget mem []
+  (box (label :text "Mem ${EWW_RAM['used_mem_perc']}"))
+)
+
+(defwidget net []
+  (box (label :text "Net ${EWW_NET['up']}"))
+)
+
+(defwidget disk []
+  (box (label :text "Sto ${EWW_DISK['used_perc']}"))
 )
