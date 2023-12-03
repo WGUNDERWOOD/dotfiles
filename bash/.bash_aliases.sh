@@ -1,6 +1,3 @@
-# .bash_aliases
-# TODO this should be .sh not .conf
-
 # exa
 alias l='exa'
 alias lg='exa --all --long --git --git-ignore'
@@ -13,44 +10,6 @@ alias lrz='fd -tf -X exa --long --sort size'
 alias lrc='ls -AiR1U ./ |
            sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" | 
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
-
-# rclone
-# TODO rclone config in nix with secrets
-# TODO move these functions to a script
-# TODO rclone other remotes
-# TODO filter files manage with nix
-rclgdpl() {
-    echo -e "\e[0;35m\033[1mrclone pull Google Drive\e[0;30m\033[0m";
-    rclone sync -i -u \
-        --exclude-from /home/will/github/dotfiles/rclone/rclone_excludes_google_drive.txt \
-        google_drive: \
-        ~/rclone/google_drive/;
-    #rclone sync -i -u --drive-shared-with-me \
-        #--exclude-from /home/will/github/dotfiles/rclone/rclone_excludes_google_drive.txt \
-        #google_drive: \
-        #~/rclone/google_drive/Shared/;
-}
-#rclgdps() {
-    #echo -e "\e[0;35m\033[1mrclone push Google Drive\e[0;30m\033[0m";
-    #rclone sync -i -u --drive-shared-with-me \
-        #--exclude-from /home/will/github/dotfiles/rclone/rclone_excludes_google_drive.txt \
-        #~/rclone/google_drive/ \
-        #google_drive:;
-#}
-#rclgdppl() {
-    #echo -e "\e[0;35m\033[1mrclone pull Google Drive Princeton\e[0;30m\033[0m";
-    #rclone sync -i -u --drive-shared-with-me \
-        #--exclude-from /home/will/github/dotfiles/rclone/rclone_excludes_google_drive_princeton.txt \
-        #google_drive_princeton: \
-        #~/rclone/google_drive_princeton/;
-#}
-#rclgdpps() {
-    #echo -e "\e[0;35m\033[1mrclone push Google Drive Princeton\e[0;30m\033[0m";
-    #rclone sync -i -u --drive-shared-with-me \
-        #--exclude-from /home/will/github/dotfiles/rclone/rclone_excludes_google_drive_princeton.txt \
-        #~/rclone/google_drive_princeton/ \
-        #google_drive_princeton:;
-#}
 
 # TODO write a simple "view file script"
 # TODO write a simple "edit file script"

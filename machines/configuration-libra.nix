@@ -169,6 +169,7 @@
       ../latex/latex.nix
       ../mime/mime.nix
       ../ripgrep/ripgrep.nix
+      ../rclone/rclone.nix
     ];
 
     home.stateVersion = "23.05";
