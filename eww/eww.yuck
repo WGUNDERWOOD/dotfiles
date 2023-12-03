@@ -61,14 +61,19 @@
     (for core in {EWW_CPU["cores"]}
       (box
         :class "cpu-core"
-        (label :text "${core["usage"]} ")
+        :width 1
+        ;(label :text "${core['usage'] < 10 ? "▁" : ""}") 
+        (label :text "${core['usage'] < 10 ? "▁" : ""}") 
+        
+
+        ;["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"]
       )
     )
   )
 )
 
 (defwidget mem []
-  (box (label :text "Mem ${EWW_RAM['used_mem_perc']}"))
+  (box (label :text "Mem ${round(EWW_RAM['used_mem_perc'], 0)}"))
 )
 
 (defwidget net []

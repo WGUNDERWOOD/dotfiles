@@ -27,7 +27,7 @@ disabled = true
 truncation_length = 1
 truncate_to_repo = false
 fish_style_pwd_dir_length = 4
-format = "[[$path/](bold #8be9fd) ](bold #bbbbbb)"
+format = "[[$path](bold #8be9fd) ](bold #bbbbbb)"
 
 [git_branch]
 format = "[on [$branch](bold bright-yellow) ](bold #bbbbbb)"
