@@ -163,14 +163,13 @@
   home-manager.users.will = { pkgs, ... }: {
     imports = [
       ./bash/bash.nix
-      #./waybar.nix
       ./systemd.nix
-      ./alacritty.nix
+      ./alacritty/alacritty.nix
       ./neovim/neovim.nix
       ./starship/starship.nix
       ./cava/cava.nix
       ./latex/latex.nix
-      ./desktop/desktop.nix
+      ./mime/mime.nix
       ./ripgrep.nix
     ];
 

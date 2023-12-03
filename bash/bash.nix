@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-    home.file.".bash_config.conf".source = ./.bash_config.conf;
-    home.file.".bash_aliases.conf".source = ./.bash_aliases.conf;
+    home.file.".bash_config.sh".source = ./.bash_config.sh;
+    home.file.".bash_aliases.sh".source = ./.bash_aliases.sh;
     programs.bash = {
         enable = true;
         enableCompletion = true;
@@ -8,8 +8,8 @@
             "g" = "git";
         };
         initExtra = ''
-            source $HOME/.bash_config.conf
-            source $HOME/.bash_aliases.conf
+            source $HOME/.bash_config.sh
+            source $HOME/.bash_aliases.sh
             '';
     };
 }
