@@ -132,8 +132,6 @@
       enable = true;
       xwayland.enable = true;
   };
-  #programs.waybar.enable = true;
-  #programs.waybar.package = inputs.hyprland.packages.${pkgs.system}.waybar-hyprland;
   programs.steam.enable = true;
   programs.neovim = {
     enable = true;
@@ -162,15 +160,15 @@
   # home
   home-manager.users.will = { pkgs, ... }: {
     imports = [
-      ./bash/bash.nix
-      ./systemd.nix
-      ./alacritty/alacritty.nix
-      ./neovim/neovim.nix
-      ./starship/starship.nix
-      ./cava/cava.nix
-      ./latex/latex.nix
-      ./mime/mime.nix
-      ./ripgrep.nix
+      ../bash/bash.nix
+      ../systemd/systemd.nix
+      ../alacritty/alacritty.nix
+      ../neovim/neovim.nix
+      ../starship/starship.nix
+      ../cava/cava.nix
+      ../latex/latex.nix
+      ../mime/mime.nix
+      ../ripgrep/ripgrep.nix
     ];
 
     home.stateVersion = "23.05";
