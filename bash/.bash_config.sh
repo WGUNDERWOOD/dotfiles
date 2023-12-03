@@ -9,14 +9,14 @@ bind -m vi-command 'Control-p: history-search-backward'
 bind -m vi-insert 'Control-p: history-search-backward'
 bind -m vi-command 'Control-n: history-search-forward'
 bind -m vi-insert 'Control-n: history-search-forward'
-#__git_complete g __git_main # TODO git autocompletion
+## TODO git autocompletion
+#__git_complete g __git_main
 
 # directories
 mkdir -p ~/mail/gmail/
 mkdir -p ~/mail/princeton/
 
-# TODO my scripts should be linked to .local/bin
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/scripts/
 export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 
 # history
