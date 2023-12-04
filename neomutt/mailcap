@@ -1,0 +1,16 @@
+# -*- conf -*-
+
+# text
+text/plain; bat %s
+text/html; firefox --new-window %s > /dev/null 2>&1 &; nametemplate=%s.html; test=test -n "$DISPLAY"; needsterminal;
+text/html; lynx -width=500 -dump %s; nametemplate=%s.html; copiousoutput
+
+# pdf
+application/pdf; zathura %s > /dev/null 2>&1 &
+application/octet-stream; zathura %s > /dev/null 2>&1 &
+
+# image
+image/*; vimiv %s > /dev/null 2>&1 &
+
+# docs
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s > /dev/null 2>&1 &

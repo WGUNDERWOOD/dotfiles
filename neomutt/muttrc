@@ -1,0 +1,99 @@
+# -*-conf-*-
+
+# muttrc
+
+# dracula theme
+source ~/.config/mutt/dracula.muttrc
+
+# bindings
+source ~/.config/mutt/bindings
+
+# personal
+set realname = "William G Underwood"
+
+# performance
+set read_inc = 100
+set sleep_time = 0
+set wait_key = no
+set header_cache = "~/Mail/cache"
+
+# save sent messages
+set record = "~/.cache/sentmail"
+
+# refresh
+set mail_check_stats = "yes"
+set mail_check_stats_interval = 30
+set timeout = 30
+
+# display
+set date_format = "%a %d %h %y  %H:%M"
+set status_format = "Emails: %?M?%M/?%m%?n?   New: %n?%?d?   Delete: %d?%?F?   Important: %F?%?t?   Tagged: %t?%?p?  Postponed: %p?   %*  Sort: %s/%S   Size: %?L?%L/?%l%?V?   %V?   %P"
+set index_format = "%3C   %D   %-30.30F   %s  %*   %c"
+set mark_old = no
+set help = "no"
+set status_on_top = "no"
+set wrap = 200
+set pager_index_lines = 5
+set pager_format = "%D   %-30.30F   %s %> %c   %P"
+set sort = "reverse-date"
+set sort_aux = "reverse-date"
+set auto_tag = "yes"
+
+# headers
+ignore *
+unignore From To Reply-To Subject Cc Date
+hdr_order Date From To Cc Subject
+
+# composition
+set editor = "nvim"
+set mime_forward = no
+set forward_format = "Fwd: %s"
+set forward_quote
+set include
+set abort_noattach = "ask-yes"
+set abort_noattach_regex = "\\<(attachment|attach|attached|attaching|enclose|enclosed|enclosing|print|printed|printing|file|files|CV|CVs|resume|resumes|screenshot|screenshots)\\>"
+set abort_unmodified = "ask-yes"
+set sig_on_top = "yes"
+set edit_headers = "yes"
+set autoedit = "no"
+set recall = "no"
+set askcc = "yes"
+
+# query
+set query_command="goobook query %s"
+
+# attachment viewing
+set attach_format = "%u%D%I %t%4n %T%.170d%> [%.7m/%.10M, %.6e%?C?, %C?, %s]"
+set mailcap_path = ~/.config/mutt/mailcap
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# sidebar items
+named-mailboxes \
+    "Gmail" "~/Mail/Gmail/INBOX" \
+    "  Sent" "~/Mail/Gmail/[Gmail].Sent\ Mail" \
+    "  Drafts" "~/Mail/Gmail/[Gmail].Drafts" \
+    "  Trash" "~/Mail/Gmail/[Gmail].Trash" \
+    "  Junk" "~/Mail/Gmail/[Gmail].Spam" \
+    "Princeton" "~/Mail/Princeton/INBOX" \
+    "  Sent" "~/Mail/Princeton/[Gmail].Sent\ Mail" \
+    "  Drafts" "~/Mail/Princeton/[Gmail].Drafts" \
+    "  Trash" "~/Mail/Princeton/[Gmail].Trash" \
+    "  Junk" "~/Mail/Princeton/[Gmail].Spam" \
+
+# sidebar settings
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+set sidebar_format = ' %D% %* %?N?%N/?%?S?%S? '
+
+# Spam tagging
+#spam "^From: "    "999"
+
+# set default account
+source /home/will/.config/mutt/accounts/gmail.muttrc
+
+# switch accounts
+folder-hook Mail/Princeton/* source ~/.config/mutt/accounts/princeton.muttrc
+folder-hook Mail/Gmail/* source ~/.config/mutt/accounts/gmail.muttrc
