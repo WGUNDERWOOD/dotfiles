@@ -173,6 +173,7 @@
       ../ripgrep/ripgrep.nix
       ../rclone/rclone.nix
       ../hyprland/hyprland.nix
+      ../neomutt/neomutt.nix
     ];
 
     home.stateVersion = "23.05";

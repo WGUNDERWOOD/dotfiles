@@ -1,41 +1,42 @@
 # -*- mode:conf; -*-
 # Princeton
+# TODO
 
 # read from local copy
-set spoolfile = "~/Mail/Princeton/INBOX"
-set mbox_type = Maildir
+#set spoolfile = "~/Mail/Princeton/INBOX"
+#set mbox_type = Maildir
 
 # outgoing
-set from = "`cat ~/.config/mutt/passwords/princeton_user.txt`"
-set smtp_url = "`echo smtps://$(cat ~/.config/mutt/passwords/princeton_user.txt)@smtp.gmail.com:465/`"
-set smtp_pass = "`gpg -q -d ~/.config/mutt/passwords/princeton_password.gpg`"
+#set from = "`cat ~/.config/mutt/passwords/princeton_user.txt`"
+#set smtp_url = "`echo smtps://$(cat ~/.config/mutt/passwords/princeton_user.txt)@smtp.gmail.com:465/`"
+#set smtp_pass = "`gpg -q -d ~/.config/mutt/passwords/princeton_password.gpg`"
 
 # sidebar colors
-color sidebar_indicator default color166
-color status default color166
+#color sidebar_indicator default color166
+#color status default color166
 
 # sync folders
-set postponed = "~/Mail/Princeton/[Gmail].Drafts"
-set trash = "~/Mail/Princeton/[Gmail].Trash"
-unset record
+#set postponed = "~/Mail/Princeton/[Gmail].Drafts"
+#set trash = "~/Mail/Princeton/[Gmail].Trash"
+#unset record
 
 # signature
-set signature = 'echo -e "William G Underwood\nPhD Candidate\nOperations Research and Financial Engineering\nPrinceton University\n$(cat ~/.config/mutt/passwords/princeton_user.txt)\n\n\n"|'
+#set signature = 'echo -e "William G Underwood\nPhD Candidate\nOperations Research and Financial Engineering\nPrinceton University\n$(cat ~/.config/mutt/passwords/princeton_user.txt)\n\n\n"|'
 
 # next account
-macro index,pager <space> '<enter-command>source ~/.config/mutt/accounts/gmail.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Gmail"
+#macro index,pager <space> '<enter-command>source ~/.config/mutt/accounts/gmail.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Gmail"
 
 # move spam
-macro index,pager J "<tag-pattern>~H 999<enter><tag-prefix-cond><save-message>~/Mail/Princeton/[Gmail].Spam<enter><end-cond>"
+#macro index,pager J "<tag-pattern>~H 999<enter><tag-prefix-cond><save-message>~/Mail/Princeton/[Gmail].Spam<enter><end-cond>"
 
 # move mail
-macro index,pager mi "<save-message>~/Mail/Princeton/INBOX<enter><enter>" "move message to inbox"
-macro index,pager ms "<save-message>~/Mail/Princeton/[Gmail].Sent<quote-char><space>Mail<enter><enter>" "move message to sent"
-macro index,pager mj "<save-message>~/Mail/Princeton/[Gmail].Spam<enter><enter>" "move message to junk"
+#macro index,pager mi "<save-message>~/Mail/Princeton/INBOX<enter><enter>" "move message to inbox"
+#macro index,pager ms "<save-message>~/Mail/Princeton/[Gmail].Sent<quote-char><space>Mail<enter><enter>" "move message to sent"
+#macro index,pager mj "<save-message>~/Mail/Princeton/[Gmail].Spam<enter><enter>" "move message to junk"
 
 # mailbox shortcuts
-macro index,pager gi "<change-folder>~/Mail/Princeton/INBOX<enter>" "go to inbox"
-macro index,pager gs "<change-folder>~/Mail/Princeton/[Gmail].Sent<quote-char><space>Mail<enter>" "go to sent"
-macro index,pager gd "<change-folder>~/Mail/Princeton/[Gmail].Drafts<enter>" "go to drafts"
-macro index,pager gt "<change-folder>~/Mail/Princeton/[Gmail].Trash<enter>" "go to trash"
-macro index,pager gj "<change-folder>~/Mail/Princeton/[Gmail].Spam<enter>" "go to junk"
+#macro index,pager gi "<change-folder>~/Mail/Princeton/INBOX<enter>" "go to inbox"
+#macro index,pager gs "<change-folder>~/Mail/Princeton/[Gmail].Sent<quote-char><space>Mail<enter>" "go to sent"
+#macro index,pager gd "<change-folder>~/Mail/Princeton/[Gmail].Drafts<enter>" "go to drafts"
+#macro index,pager gt "<change-folder>~/Mail/Princeton/[Gmail].Trash<enter>" "go to trash"
+#macro index,pager gj "<change-folder>~/Mail/Princeton/[Gmail].Spam<enter>" "go to junk"
