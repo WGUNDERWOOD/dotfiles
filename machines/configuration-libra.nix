@@ -75,6 +75,7 @@
     fzf
     exa
     cava
+    killall
     fd
     bottom
     neomutt
