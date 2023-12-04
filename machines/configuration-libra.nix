@@ -170,6 +170,7 @@
       ../mime/mime.nix
       ../ripgrep/ripgrep.nix
       ../rclone/rclone.nix
+      ../hyprland/hyprland.nix
     ];
 
     home.stateVersion = "23.05";
