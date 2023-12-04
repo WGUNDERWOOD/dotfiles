@@ -99,6 +99,7 @@
     pavucontrol
     diffpdf
     watchexec
+    phinger-cursors
     julia
     gammastep
     python3
