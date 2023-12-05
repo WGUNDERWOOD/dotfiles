@@ -175,6 +175,7 @@
       ../rclone/rclone.nix
       ../hyprland/hyprland.nix
       ../neomutt/neomutt.nix
+      ../bitwarden/bitwarden.nix
     ];
 
     home.stateVersion = "23.05";

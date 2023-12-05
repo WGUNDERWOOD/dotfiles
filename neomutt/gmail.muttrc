@@ -1,15 +1,14 @@
 # -*- mode:conf; -*-
 # Gmail
-# TODO
 
 # read from local copy
 set spoolfile = "~/mail/gmail/INBOX"
 set mbox_type = Maildir
 
 # outgoing
-set from = "`bw-get gmail_email`"
-#set smtp_url = "`echo smtps://$(cat ~/.config/mutt/passwords/gmail_user.txt)@smtp.gmail.com:465/`"
-#set smtp_pass = "`gpg -q -d ~/.config/mutt/passwords/gmail_password.gpg`"
+set from = "`bwget neomutt_gmail_email`"
+set smtp_url = "`echo smtps://$(bwget neomutt_gmail_email)@smtp.gmail.com:465/`"
+set smtp_pass = "`bwget neomutt_gmail_password`"
 
 # sidebar colors
 color sidebar_indicator default color25
@@ -21,9 +20,9 @@ set trash = "~/mail/gmail/[Gmail]/Trash"
 unset record
 
 # signature
-#set signature = 'echo -e "Will Underwood\n$(cat ~/.config/mutt/passwords/gmail_user.txt)\n\n\n"|'
+set signature = 'echo -e "Will Underwood\n$(bwget neomutt_gmail_email)\n\n\n"|'
 
-# next account
+# next account TODO
 #macro index,pager <space> '<enter-command>source ~/.config/mutt/accounts/princeton.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Princeton"
 
 # move spam
