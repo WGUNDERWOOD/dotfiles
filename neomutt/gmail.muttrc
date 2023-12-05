@@ -7,7 +7,7 @@ set spoolfile = "~/mail/gmail/INBOX"
 set mbox_type = Maildir
 
 # outgoing
-#set from = "`cat ~/.config/mutt/passwords/gmail_user.txt`"
+set from = "`bw-get gmail_email`"
 #set smtp_url = "`echo smtps://$(cat ~/.config/mutt/passwords/gmail_user.txt)@smtp.gmail.com:465/`"
 #set smtp_pass = "`gpg -q -d ~/.config/mutt/passwords/gmail_password.gpg`"
 

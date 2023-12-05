@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+SESSIONDIR="$HOME/.config/bitwarden"
+SESSIONFILE="$SESSIONDIR/session"
+mkdir -p $SESSIONDIR
+
+FLAG=true
+echo $1
+
+#echo "hi" > $SESSIONFILE
+#bw unlock --raw > $SESSIONFILE
+#echo $SESSIONFILE
+#cat $SESSIONFILE
+
+while $FLAG; do
+
+    #cat $SESSIONFILE
+    #echo
+    echo $(cat $SESSIONFILE)
+    echo
+    PASSWORD=$(bw get password $1 --session $(cat $SESSIONFILE) 2> /dev/null)
+    #echo $PASSWORD
+
+    if [ $? -eq 0 ]; then
+        echo $PASSWORD
+        FLAG=false
+    else
+        bw unlock --raw > $SESSIONFILE
+        echo $(cat $SESSIONFILE)
+        echo
+    fi
+done
