@@ -90,6 +90,7 @@
     du-dust
     texlive.combined.scheme-full
     jq
+    bitwarden-cli
     socat
     inkscape
     rclone
