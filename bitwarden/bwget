@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-HASH=$(shasum <<< $1 | cut -f 1 -d ' ')
-PWFILE="$HOME/tmp/$HASH"
+PWFILE="$HOME/tmp/bw/$1"
 mkdir -p $(dirname $PWFILE)
 
 # if password exists then read it

@@ -22,8 +22,8 @@ unset record
 # signature
 set signature = 'echo -e "Will Underwood\n$(bwget neomutt_gmail_email)\n\n\n"|'
 
-# next account TODO
-#macro index,pager <space> '<enter-command>source ~/.config/mutt/accounts/princeton.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Princeton"
+# next account
+macro index,pager <space> '<enter-command>source ~/.config/neomutt/princeton.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Princeton"
 
 # move spam
 macro index,pager J "<tag-pattern>~H 999<enter><tag-prefix-cond><save-message>~/mail/gmail/[Gmail]/Spam<enter><end-cond>"

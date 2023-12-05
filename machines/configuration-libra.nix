@@ -96,6 +96,7 @@
     rclone
     lutris
     tldr
+    goobook
     zoom-us
     steam
     pavucontrol
