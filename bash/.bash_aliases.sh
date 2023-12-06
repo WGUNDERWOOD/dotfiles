@@ -13,6 +13,7 @@ alias lrc='ls -AiR1U ./ |
 
 # TODO write a simple "view file script"
 # TODO write a simple "edit file script"
+# TODO check git repository status in waybar
 
 # programs
 alias b='bat --theme Dracula'

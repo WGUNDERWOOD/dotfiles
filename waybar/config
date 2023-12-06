@@ -7,7 +7,6 @@
     "custom/spotify"],
   "modules-center": [],
   "modules-right": [
-    "custom/separator",
     "memory",
     "custom/separator",
     "cpu",

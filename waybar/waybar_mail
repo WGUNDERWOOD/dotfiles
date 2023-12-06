@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mbsync -qqa
 COUNT=$(find ~/mail/princeton/INBOX/new/ ~/mail/gmail/INBOX/new/ -type f | wc -l)
 
 if [ "$COUNT" -ge "1" ]; then
@@ -7,5 +8,3 @@ if [ "$COUNT" -ge "1" ]; then
 else
     echo '{"text": "Mail", "class": "no_mail"}'
 fi
-
-mbsync -qqa

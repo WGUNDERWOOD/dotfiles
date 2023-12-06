@@ -60,9 +60,9 @@
                     "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | " +
                     "wl-copy -t image/png";
                 "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";
-                "${modifier}+Shift+Right" = "exec playerctl next";
-                "${modifier}+Shift+Left" = "exec playerctl previous";
-                "${modifier}+Shift+Down" = "exec playerctl play-pause";
+                "${modifier}+Right" = "exec playerctl next";
+                "${modifier}+Left" = "exec playerctl previous";
+                "${modifier}+Down" = "exec playerctl play-pause";
                 #"XF86MonBrightnessUp" = "exec \"brillo -A 1\"";
                 #"XF86MonBrightnessDown" = "exec \"brillo -U 1\"";
                 #"XF86AudioLowerVolume" = "exec \"pactl set-sink-volume 0 -5%\"";
