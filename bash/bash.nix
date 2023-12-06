@@ -3,6 +3,7 @@
     home.file.".bash_aliases.sh".source = ./.bash_aliases.sh;
     home.file."scripts/optpdf".source = ./optpdf;
     home.file."scripts/spell_check".source = ./spell_check;
+    home.file."scripts/spell_check_word".source = ./spell_check_word;
     programs.bash = {
         enable = true;
         enableCompletion = true;
