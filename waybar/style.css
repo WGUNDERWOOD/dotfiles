@@ -96,11 +96,6 @@
     padding: 0px 16px;
 }
 
-#custom-mail.inactive {
-    color: #ff713e;
-    padding: 0px 16px;
-}
-
 #custom-gammastep.day {
     color: #bbeeff;
     padding: 0px 16px;
@@ -138,7 +133,7 @@
 
 #custom-spotify {
     color: #8adfac;
-    font-size: 18px;
+    font-size: 19px;
     padding: 0px 8px;
 }
 

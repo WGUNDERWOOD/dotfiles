@@ -161,6 +161,7 @@
       ../waybar/waybar.nix
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
+      ../mbsync/mbsync.nix
     ];
 
     home.stateVersion = "23.05";

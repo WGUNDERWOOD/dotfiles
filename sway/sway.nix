@@ -1,5 +1,8 @@
 {pkgs, lib, ...}: {
     home.file."scripts/gammatoggle".source = ./gammatoggle;
+    home.file."scripts/sway_go_to_empty".source = ./sway_go_to_empty;
+    home.file."scripts/sway_move_to_empty".source = ./sway_move_to_empty;
+
     wayland.windowManager.sway = {
 
         enable = true;
@@ -34,6 +37,8 @@
                 "${modifier}+8" = "workspace number 8";
                 "${modifier}+9" = "workspace number 9";
                 "${modifier}+0" = "workspace number 10";
+                "${modifier}+o" = "exec $HOME/scripts/sway_go_to_empty";
+                "${modifier}+Shift+o" = "exec $HOME/scripts/sway_move_to_empty";
                 "${modifier}+Shift+1" = "move container to workspace number 1";
                 "${modifier}+Shift+2" = "move container to workspace number 2";
                 "${modifier}+Shift+3" = "move container to workspace number 3";
@@ -55,6 +60,9 @@
                     "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | " +
                     "wl-copy -t image/png";
                 "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";
+                "${modifier}+Shift+Right" = "exec playerctl next";
+                "${modifier}+Shift+Left" = "exec playerctl previous";
+                "${modifier}+Shift+Down" = "exec playerctl play-pause";
                 #"XF86MonBrightnessUp" = "exec \"brillo -A 1\"";
                 #"XF86MonBrightnessDown" = "exec \"brillo -U 1\"";
                 #"XF86AudioLowerVolume" = "exec \"pactl set-sink-volume 0 -5%\"";

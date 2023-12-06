@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+import json, subprocess
+
+workspaces = subprocess.check_output(['swaymsg', '-t', 'get_workspaces'])
+workspaces = json.loads(workspaces)
+busy = [w["num"] for w in workspaces if w["representation"] != None]
+first_empty = min([i for i in range(1, 10) if i not in busy])
+subprocess.call(["swaymsg", "move workspace number %i" % first_empty])

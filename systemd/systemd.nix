@@ -1,31 +1,17 @@
 {config, pkgs, lib, setEnvironment, ... }: {
     systemd.user = {
 
-        services.waybar = {
+        services.mbsync = {
             Unit = {
-                Description = pkgs.waybar.meta.description;
-                PartOf = ["graphical-session.target"];
-            };
-            Install = {
-                WantedBy = ["sway-session.target"];
+                Description = "mbsync start";
+                After = "network-online.target";
+                WantedBy = "default.target";
             };
             Service = {
-                ExecStart = "${pkgs.waybar}/bin/waybar";
-                RestartSec = 3;
-                Restart = "always";
+                Type = "oneshot";
+                ExecStart = "/bin/sh /etc/profile; mbsync -a";
             };
         };
-
-        # TODO mbsync
-        #services.mbsync = {
-            #description = "mbsync start";
-            #serviceConfig = {
-                #Type = "oneshot";
-                #ExecStart = "${pkgs.isync}/bin/mbsync -a";
-            #};
-            #after = ["network-online.target"];
-            #wantedBy = "default.target";
-        #};
 
         #timers.mbsync = {
             #description = "mbsync timer";

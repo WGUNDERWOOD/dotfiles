@@ -32,7 +32,10 @@
     "format": "|",
   },
   "custom/separatorleft": {
-    "format": "|",
+    "format": "{}",
+    "exec": "echo '|'",
+    "interval": 5,
+    "exec-if": "pgrep spotify",
   },
   "sway/workspaces": {
     "enable-bar-scroll": true,
@@ -66,7 +69,7 @@
   "custom/mail": {
       "format": "{}",
       "exec": "$HOME/scripts/waybar_mail",
-      "restart-interval": 10,
+      "restart-interval": 120,
       "return-type": "json",
   },
   "custom/gammastep": {
@@ -85,13 +88,13 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl play-pause",
-    "exec": "sleep 0.5 ; playerctl metadata -f '{{artist}}' | sed 's/&/&amp;/g'",
+    "exec": "sleep 0.5; playerctl metadata -f '{{artist}}' | sed 's/&/&amp;/g'",
     "exec-if": "pgrep spotify",
     "tooltip": false,
   },
   "disk": {
       "interval": 60,
-      "format": "Disk {percentage_free}%",
+      "format": "Disk {percentage_used}%",
       "path": "/"
   },
   "pulseaudio": {
