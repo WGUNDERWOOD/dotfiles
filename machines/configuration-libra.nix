@@ -102,6 +102,7 @@
     watchexec
     phinger-cursors
     julia
+    playerctl
     gammastep
     python3
     imagemagick

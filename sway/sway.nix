@@ -8,6 +8,7 @@
         config = rec {
             modifier = "Mod4";
             terminal = "alacritty";
+            gaps.smartBorders = "on";
             window = {border = 2; titlebar = false;};
             bars = [];
             output."*".bg = "~/wallpaper.png fill";

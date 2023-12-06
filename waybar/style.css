@@ -1,12 +1,12 @@
 * {
     font-family: "Source Code Pro";
     font-size: 20px;
-    background-color: #080a16;
+    background-color: #000000;
 }
 
 #workspaces {
     font-weight: 600;
-    background-color: #080a16;
+    background-color: #000000;
 }
 
 #workspaces button {
@@ -15,12 +15,12 @@
     border-left: none;
     border-right: none;
     color: #8298c4;
-    background-color: #080a16;
+    background-color: #000000;
 }
 
 #workspaces button.focused {
     border-bottom: 3px solid #ffaaff;
-    border-top: 3px solid #080a16;
+    border-top: 3px solid #000000;
     border-left: none;
     border-right: none;
     color: #ffaaff;
@@ -44,7 +44,7 @@
     text-shadow: inherit;
     background: none;
     border-bottom: 3px solid #ffaaff;
-    border-top: 3px solid #080a16;
+    border-top: 3px solid #000000;
     border-left: none;
     border-right: none;
 }
@@ -58,45 +58,101 @@
 
 #clock.time {
     color: #ffccdd;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #clock.date {
     color: #bbeeff;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #cpu {
     color: #ddbbff;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #memory {
     color: #bbeeff;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #temperature {
     color: #aaffcc;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #temperature.critical {
     color: #ff713e;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #custom-mail.new_mail {
     color: #ffaaff;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #custom-mail.no_mail {
     color: #ffccdd;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
 
 #custom-mail.inactive {
     color: #ff713e;
-    padding: 0px 12px;
+    padding: 0px 16px;
 }
+
+#custom-gammastep.day {
+    color: #bbeeff;
+    padding: 0px 16px;
+}
+
+#custom-gammastep.night {
+    color: #ffb86c;
+    padding: 0px 16px;
+}
+
+#network.wifi, #network.ethernet {
+    color: #ffccdd;
+    padding: 0px 16px;
+}
+
+#network.disabled, #network.disconnected {
+    color: #ff713e;
+    padding: 0px 16px;
+}
+
+#pulseaudio, #pulseaudio.bluetooth {
+    color: #aaffcc;
+    padding: 0px 16px;
+}
+
+#pulseaudio.muted {
+    color: #8298c4;
+    padding: 0px 16px;
+}
+
+#disk {
+    color: #f1faac;
+    padding: 0px 16px;
+}
+
+#custom-spotify {
+    color: #8adfac;
+    font-size: 18px;
+    padding: 0px 8px;
+}
+
+#custom-separator {
+    color: #34374a;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#custom-separatorleft {
+    color: #34374a;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 12px;
+    padding-right: 16px;
+}
+

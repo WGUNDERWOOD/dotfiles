@@ -1,9 +1,39 @@
 {
   "position": "bottom",
   "height": 40,
-  "modules-left": ["sway/workspaces"],
+  "modules-left": [
+    "sway/workspaces",
+    "custom/separatorleft",
+    "custom/spotify"],
   "modules-center": [],
-  "modules-right": ["memory", "cpu", "custom/mail", "temperature", "clock#time", "clock#date"],
+  "modules-right": [
+    "custom/separator",
+    "memory",
+    "custom/separator",
+    "cpu",
+    "custom/separator",
+    "disk",
+    "custom/separator",
+    "temperature",
+    "custom/separator",
+    "custom/mail",
+    "custom/separator",
+    "custom/gammastep",
+    "custom/separator",
+    "network",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "clock#time",
+    "custom/separator",
+    "clock#date"
+  ],
+  "custom/separator": {
+    "format": "|",
+  },
+  "custom/separatorleft": {
+    "format": "|",
+  },
   "sway/workspaces": {
     "enable-bar-scroll": true,
     "smooth-scrolling-threshold": 2,
@@ -11,39 +41,71 @@
     "format": "{icon}",
     "format-icons": { "10": "0" },
   },
-  "tray": {
-    "spacing": 0
-  },
   "clock#date": {
-    "format": "{:%a %d %b}",
+    "format": "{:%a %d %b %Y}",
   },
   "clock#time": {
     "format": "{:%H:%M}",
   },
   "cpu": {
-      "format": "CPU {usage}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
-      "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+      "format": "CPU {usage}%",
       "interval": 10,
+      "tooltip": false
   },
   "memory": {
       "interval": 10,
       "format": "RAM {percentage}%",
+      "tooltip": false
   },
   "temperature": {
       "critical-threshold": 80,
       "format-critical": "{temperatureC}°C",
-      "format": "{temperatureC}°C"
+      "format": "{temperatureC}°C",
+      "tooltip": false,
   },
   "custom/mail": {
+      "format": "{}",
       "exec": "$HOME/scripts/waybar_mail",
-      "restart-interval": 1,
+      "restart-interval": 10,
       "return-type": "json",
   },
-  "backlight": {
-    "format": "{percent}% {icon}",
-    "format-icons": [""],
-    "on-scroll-up": "brillo -A 0.5",
-    "on-scroll-down": "brillo -U 0.5"
+  "custom/gammastep": {
+      "exec": "$HOME/scripts/waybar_gammastep",
+      "restart-interval": 10,
+      "return-type": "json",
+  },
+  "network": {
+    "format": "Net",
+    "tooltip": false
+  },
+  "custom/spotify": {
+    "format": "{}",
+    "interval": 5,
+    "max-length": 50,
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl play-pause",
+    "exec": "sleep 0.5 ; playerctl metadata -f '{{artist}}' | sed 's/&/&amp;/g'",
+    "exec-if": "pgrep spotify",
+    "tooltip": false,
+  },
+  "disk": {
+      "interval": 60,
+      "format": "Disk {percentage_free}%",
+      "path": "/"
+  },
+  "pulseaudio": {
+    "format": "Vol {volume}%{icon}",
+    "format-bluetooth": "Vol {volume}% B",
+    "format-muted": "Mut {volume}%",
+    "format-icons": {
+      "headphone": " H",
+      "headset": " H",
+      "phone": " P",
+      "default": ""
+    },
+    "on-click": "pavucontrol",
+    "tooltip": false
   },
   "battery": {
     "states": {
@@ -54,45 +116,10 @@
     "format": "{capacity}% {icon}",
     "format-icons": ["", "", "", "", ""]
   },
-  "network": {
-    "format-wifi": "{essid} ({signalStrength}%)",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-    "format-disconnected": "Disconnected ⚠"
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [""],
+    "on-scroll-up": "brillo -A 0.5",
+    "on-scroll-down": "brillo -U 0.5"
   },
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": "",
-    "format-icons": {
-      "headphones": "",
-      "handsfree": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", ""]
-    },
-    "scroll-step": 1,
-    "on-click": "pactl set-sink-mute 0 toggle",
-    "on-click-right": "pavucontrol"
-  },
-  "mode": {
-    "format": "{}",
-    "max-length":50
-  },
-  "custom/spotify": {
-    "format": " {}",
-    "interval": 5,
-    "max-length": 100,
-    "on-click": "playerctl previous",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl play-pause",
-    "exec": "sleep 0.5 ; playerctl metadata -f '{{artist}}: {{title}}' | sed 's/&/&amp;/g'",
-    "exec-if": "pgrep spotify"
-  },
-  "custom/root": {
-    "format": "<b>\\</b> {}",
-    "interval": 60,
-    "exec": "df -h | gawk '$6 == \"/\" {print $3 \"/\" $2}'"
-  }
 }
