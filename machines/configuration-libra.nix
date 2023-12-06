@@ -69,6 +69,7 @@
     wayland
     waybar
     aspell
+    aspellDicts.en
     bat
     diff-so-fancy
     ripgrep
@@ -104,7 +105,7 @@
     julia
     playerctl
     gammastep
-    python3
+    (python3.withPackages(ps: with ps; [matplotlib]))
     imagemagick
     gimp
     lynx

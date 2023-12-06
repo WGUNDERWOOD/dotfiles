@@ -504,6 +504,13 @@ vim.cmd([[
     au Filetype make hi makeIdent gui=bold
 ]])
 
+-- text files
+vim.cmd([[
+    augroup text
+    autocmd!
+    au Filetype text setlocal linebreak
+]])
+
 -- nix files
 vim.cmd([[
     augroup nix
@@ -536,6 +543,7 @@ vim.cmd([[
     au Filetype org call matchadd('OrgLeadingStar', '* ', -1)
     au Filetype org hi OrgLeadingStar gui=bold
     au Filetype org nnoremap T :let _s=@/<Bar>:s/ TODO \\| NOTE \\| DONE \\| NOW / /<Bar>:let @/=_s<CR>
+    au Filetype org setlocal linebreak
 ]])
 
 -- tex files
