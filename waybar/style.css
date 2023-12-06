@@ -1,53 +1,102 @@
 * {
-    border: none;
-    border-radius: 5 5 0 0;
-    font-family: "SauceCodePro Nerd Font Mono";
-    font-size: 12px;
-    min-height: 0;
-}
-
-window#waybar {
-    background: rgba(43, 48, 59, 0);
-}
-
-#workspaces button {
-    padding: 0 3;
-    background: transparent;
-    border-bottom: 3px solid transparent;
-    color: #f8f8f2;
+    font-family: "Source Code Pro";
+    font-size: 20px;
+    background-color: #080a16;
 }
 
 #workspaces {
-    margin: 0 3;
+    font-weight: 600;
+    background-color: #080a16;
+}
+
+#workspaces button {
+    padding: 0px 8px;
+    border-radius: 1px;
+    border-left: none;
+    border-right: none;
+    color: #8298c4;
+    background-color: #080a16;
 }
 
 #workspaces button.focused {
-    background: #282a36;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 3px solid #ffaaff;
+    border-top: 3px solid #080a16;
+    border-left: none;
+    border-right: none;
+    color: #ffaaff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-spotify, #tray, #idle_inhibitor, #custom-root, #custom-home {
-    padding: 0 10px;
-    margin: 0 3px;
-    background-color: #282a36;
-    color: #81c1e4;
+#workspaces button.urgent {
+    border-left: none;
+    border-right: none;
+    color: #ff713e;
 }
 
-#mode {
-    padding: 0 10px;
-    margin: 0 3px;
-    color: #282a36;
-    background-color: #50fa7b;
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: none;
+    border: inherit;
 }
 
-#window {
-    color: #81c1e4;
+#workspaces button.focused:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: none;
+    border-bottom: 3px solid #ffaaff;
+    border-top: 3px solid #080a16;
+    border-left: none;
+    border-right: none;
 }
 
-#battery.charging {
-    color: #ff79c6;
+#workspaces button.urgent:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: none;
+    border: inherit;
 }
 
-#battery.critical:not(.charging) {
-    color: #f53c3c
+#clock.time {
+    color: #ffccdd;
+    padding: 0px 12px;
+}
+
+#clock.date {
+    color: #bbeeff;
+    padding: 0px 12px;
+}
+
+#cpu {
+    color: #ddbbff;
+    padding: 0px 12px;
+}
+
+#memory {
+    color: #bbeeff;
+    padding: 0px 12px;
+}
+
+#temperature {
+    color: #aaffcc;
+    padding: 0px 12px;
+}
+
+#temperature.critical {
+    color: #ff713e;
+    padding: 0px 12px;
+}
+
+#custom-mail.new_mail {
+    color: #ffaaff;
+    padding: 0px 12px;
+}
+
+#custom-mail.no_mail {
+    color: #ffccdd;
+    padding: 0px 12px;
+}
+
+#custom-mail.inactive {
+    color: #ff713e;
+    padding: 0px 12px;
 }
