@@ -20,7 +20,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
+        command = "${pkgs.sway}/bin/sway";
         user = "will";
       };
       default_session = initial_session;
@@ -67,7 +67,7 @@
     home-manager
     firefox-bin
     wayland
-    #waybar
+    waybar
     aspell
     bat
     diff-so-fancy
@@ -89,9 +89,7 @@
     procs
     du-dust
     texlive.combined.scheme-full
-    jq
     bitwarden-cli
-    socat
     inkscape
     rclone
     lutris
@@ -120,22 +118,15 @@
     vivid
     slurp
     ranger
-    zoxide
     vlc
     zip
     handlr
     eww-wayland
-    hyprpaper
+    sway
     swaylock
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    xwayland
   ];
 
-  programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-  };
+  programs.sway.enable = true;
   programs.steam.enable = true;
   programs.neovim = {
     enable = true;
@@ -174,7 +165,7 @@
       ../mime/mime.nix
       ../ripgrep/ripgrep.nix
       ../rclone/rclone.nix
-      ../hyprland/hyprland.nix
+      ../sway/sway.nix
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
     ];

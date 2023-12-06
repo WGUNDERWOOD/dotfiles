@@ -1,5 +1,6 @@
 {config, pkgs, lib, setEnvironment, ... }: {
   systemd.user.services = {
+    # TODO remove
     waybar = {
       Unit = {
         Description = pkgs.waybar.meta.description;
@@ -14,5 +15,6 @@
         Restart = "always";
       };
     };
+    # TODO mbsync
   };
 }

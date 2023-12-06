@@ -29,6 +29,12 @@ alias cava='cava -p ~/cava.conf'
 #alias rp='rg_git' # TODO
 li() { command libreoffice "$@" & }
 alias neofetch='neofetch --config ~/neofetch.conf'
+alias rcgdpl='rclone_google_drive_pull.sh'
+alias rcgdps='rclone_google_drive_push.sh'
+alias rcgdppl='rclone_google_drive_princeton_pull.sh'
+alias rcgdpps='rclone_google_drive_princeton_push.sh'
+alias rcdbppl='rclone_dropbox_princeton_pull.sh'
+alias rcdbpps='rclone_dropbox_princeton_push.sh'
 #alias repos='(cd ~/Documents && git_status_all)' # TODO
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO
 vv() { command vimiv "$@" & }
