@@ -121,7 +121,6 @@
     vlc
     zip
     handlr
-    eww-wayland
     sway
     swaylock
   ];
@@ -133,15 +132,7 @@
     defaultEditor = true;
   };
   security.pam.services.swaylock.text = "auth include login";
-
   services.dbus.enable = true;
-  xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
-      ];
-  };
 
   # user
   users.users.will = {
@@ -168,6 +159,7 @@
       ../sway/sway.nix
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
+      ../waybar/waybar.nix
     ];
 
     home.stateVersion = "23.05";
