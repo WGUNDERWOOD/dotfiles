@@ -158,9 +158,9 @@
       ../ripgrep/ripgrep.nix
       ../rclone/rclone.nix
       ../sway/sway.nix
+      ../waybar/waybar.nix
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
-      ../waybar/waybar.nix
     ];
 
     home.stateVersion = "23.05";
