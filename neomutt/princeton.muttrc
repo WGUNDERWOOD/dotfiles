@@ -6,9 +6,9 @@ set spoolfile = "~/mail/princeton/INBOX"
 set mbox_type = Maildir
 
 # outgoing
-set from = "`bwget neomutt_princeton_email`"
-set smtp_url = "`echo smtps://$(bwget neomutt_princeton_email)@smtp.gmail.com:465/`"
-set smtp_pass = "`bwget neomutt_princeton_password`"
+set from = "`cat $HOME/tmp/bw/neomutt_princeton_email`"
+set smtp_url = "`echo smtps://$(cat $HOME/tmp/bw/neomutt_princeton_email)@smtp.gmail.com:465/`"
+set smtp_pass = "`cat $HOME/tmp/bw/neomutt_princeton_password`"
 
 # sidebar colors
 color sidebar_indicator default color166
@@ -20,7 +20,7 @@ set trash = "~/mail/princeton/[Gmail]/Trash"
 unset record
 
 # signature
-set signature = 'echo -e "William G Underwood\nPhD Candidate\nOperations Research and Financial Engineering\nPrinceton University\n$(bwget neomutt_princeton_email)\n\n\n"|'
+set signature = 'echo -e "William G Underwood\nPhD Candidate\nOperations Research and Financial Engineering\nPrinceton University\n$(cat $HOME/tmp/bw/neomutt_princeton_email)\n\n\n"|'
 
 # next account
 macro index,pager <space> '<enter-command>source ~/.config/neomutt/gmail.muttrc<enter><change-folder>!<enter>;<check-stats><sync-mailbox>' "switch to Gmail"
