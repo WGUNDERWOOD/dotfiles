@@ -2,7 +2,6 @@
     font-family: "Source Code Pro";
     font-size: 20px;
     background-color: #000000;
-    font-weight: 500;
 }
 
 #workspaces {
@@ -60,82 +59,98 @@
 #clock.time {
     color: #ffccdd;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #clock.date {
     color: #bbeeff;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #cpu {
     color: #ddbbff;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #memory {
     color: #bbeeff;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #temperature {
     color: #aaffcc;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #temperature.critical {
     color: #ff713e;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #custom-mail.new_mail {
     color: #ffaaff;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #custom-mail.no_mail {
     color: #ffccdd;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #custom-gammastep.day {
     color: #bbeeff;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #custom-gammastep.night {
     color: #ffb86c;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #network.wifi, #network.ethernet {
     color: #ffccdd;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #network.disabled, #network.disconnected {
     color: #ff713e;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #pulseaudio, #pulseaudio.bluetooth {
     color: #aaffcc;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #pulseaudio.muted {
     color: #8298c4;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #disk {
     color: #f1faac;
     padding: 0px 16px;
+    font-weight: 500;
 }
 
 #custom-spotify {
     color: #8adfac;
     font-size: 19px;
     padding: 0px 8px;
+    font-weight: 500;
 }
 
 #custom-separator {
@@ -151,4 +166,3 @@
     padding-left: 12px;
     padding-right: 16px;
 }
-
