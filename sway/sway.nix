@@ -18,6 +18,7 @@
 
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";
+                "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
                 "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
                 "${modifier}+p" = "kill";
@@ -56,7 +57,7 @@
                 "${modifier}+n" = "workspace prev";
                 "${modifier}+Shift+m" = "move container to workspace next";
                 "${modifier}+Shift+n" = "move container to workspace prev";
-                "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" " +
+                "${modifier}+s" = "exec grim -g \"$(slurp)\" " +
                     "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | " +
                     "wl-copy -t image/png";
                 "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";

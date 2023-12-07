@@ -163,6 +163,7 @@
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
       ../mbsync/mbsync.nix
+      ../zathura/zathura.nix
     ];
 
     home.stateVersion = "23.05";
