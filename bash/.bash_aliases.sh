@@ -22,10 +22,10 @@ alias g='git'
 alias m='(cd ~/downloads; neomutt)'
 alias n='nvim'
 z() { command zathura "$@" & }
-#alias bibd='bibtex-download' # TODO
+alias bibd='bibtex-download'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
-#alias cf='source ~/scripts/cd_fuzzy' # TODO
+alias cf='source ~/scripts/cd_fuzzy'
 #alias fp='fd_git' # TODO
 #alias rp='rg_git' # TODO
 li() { command libreoffice "$@" & }

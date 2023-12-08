@@ -87,6 +87,7 @@
     spotify
     starship
     zathura
+    screen
     procs
     du-dust
     texlive.combined.scheme-full
@@ -105,7 +106,13 @@
     julia
     playerctl
     gammastep
-    (python3.withPackages(ps: with ps; [matplotlib]))
+    (python3.withPackages(ps: with ps; [
+                          matplotlib
+                          habanero
+                          pyperclip
+                          unidecode
+                          colorama
+    ]))
     imagemagick
     gimp
     lynx
