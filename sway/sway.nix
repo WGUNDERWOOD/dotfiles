@@ -1,12 +1,17 @@
 {pkgs, lib, ...}: {
+    home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
     home.file."scripts/gammatoggle".source = ./gammatoggle;
     home.file."scripts/sway_go_to_empty".source = ./sway_go_to_empty;
     home.file."scripts/sway_move_to_empty".source = ./sway_move_to_empty;
+    home.pointerCursor = {
+        gtk.enable = true;
+        package = pkgs.phinger-cursors;
+        name = "phinger-cursors";
+    };
 
     wayland.windowManager.sway = {
 
         enable = true;
-        # TODO cursors
 
         config = rec {
             modifier = "Mod4";
@@ -51,8 +56,8 @@
                 "${modifier}+Shift+9" = "move container to workspace number 9";
                 "${modifier}+Shift+0" = "move container to workspace number 10";
                 "${modifier}+Shift+r" = "reload";
-                "${modifier}+u" = "resize shrink width 3 px or 3 ppt";
-                "${modifier}+i" = "resize grow width 3 px or 3 ppt";
+                "${modifier}+u" = "resize shrink width 3 px";
+                "${modifier}+i" = "resize grow width 3 px";
                 "${modifier}+m" = "workspace next";
                 "${modifier}+n" = "workspace prev";
                 "${modifier}+Shift+m" = "move container to workspace next";

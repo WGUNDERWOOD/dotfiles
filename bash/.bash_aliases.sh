@@ -38,7 +38,6 @@ alias rcdbppl='rclone_dropbox_princeton_pull.sh'
 alias rcdbpps='rclone_dropbox_princeton_push.sh'
 #alias repos='(cd ~/Documents && git_status_all)' # TODO
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO
-vv() { command vimiv "$@" & }
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 alias nixr='sudo nixos-rebuild switch'
 

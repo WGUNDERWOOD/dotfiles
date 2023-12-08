@@ -31,7 +31,6 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 export LS_COLORS="$(vivid generate dracula)"
-export XCURSOR_SIZE="32"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:
     caret=01;32:locus=01:quote=01'
 export FZF_DEFAULT_OPTS='--color=fg:#dddddd,bg:#181a26,hl:#bd93f9

@@ -114,7 +114,7 @@
     pdftk
     neofetch
     libreoffice
-    vimiv-qt
+    feh
     pplatex
     grim
     vivid
@@ -164,6 +164,7 @@
       ../bitwarden/bitwarden.nix
       ../mbsync/mbsync.nix
       ../zathura/zathura.nix
+      ../feh/feh.nix
     ];
 
     home.stateVersion = "23.05";
