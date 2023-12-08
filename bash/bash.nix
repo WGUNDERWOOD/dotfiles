@@ -6,6 +6,8 @@
     home.file."scripts/cd_fuzzy".source = ./cd_fuzzy;
     home.file."scripts/zathura_fuzzy".source = ./zathura_fuzzy;
     home.file."scripts/feh_fuzzy".source = ./feh_fuzzy;
+    home.file."scripts/fd_git".source = ./fd_git;
+    home.file."scripts/rg_git".source = ./rg_git;
     programs.bash = {
         enable = true;
         enableCompletion = true;
