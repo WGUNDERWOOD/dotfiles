@@ -1,5 +1,6 @@
 {pkgs, lib, ...}: {
     home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+    home.file.".config/swaylock/config".source = ./swaylock_config;
     home.file."scripts/gammatoggle".source = ./gammatoggle;
     home.file."scripts/sway_go_to_empty".source = ./sway_go_to_empty;
     home.file."scripts/sway_move_to_empty".source = ./sway_move_to_empty;
@@ -25,8 +26,8 @@
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+d" = "exec $HOME/scripts/rofi_start";
-                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
-                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
+                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock --config $HOME/.config/swaylock/config && systemctl suspend\"";
+                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock --config $HOME/.config/swaylock/config\"";
                 "${modifier}+p" = "kill";
                 "${modifier}+Shift+h" = "move left";
                 "${modifier}+Shift+j" = "move down";
@@ -123,9 +124,11 @@
 
         extraConfig =
             ''
+            seat * hide_cursor 2000
+            seat * hide_cursor when-typing enable
             input type:keyboard {
                 repeat_delay 200
-                    repeat_rate 50
+                repeat_rate 50
             }
             workspace 1
             exec echo "day" > $HOME/tmp/gammastatus

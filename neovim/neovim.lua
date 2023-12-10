@@ -604,5 +604,3 @@ vim.cmd([[
     au Filetype tex inoremap <C-J> <C-N>
     au Filetype tex inoremap <C-K> <C-P>
 ]])
-
--- TODO add yankstack to nix packages

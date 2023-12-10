@@ -9,7 +9,6 @@ bind -m vi-command 'Control-p: history-search-backward'
 bind -m vi-insert 'Control-p: history-search-backward'
 bind -m vi-command 'Control-n: history-search-forward'
 bind -m vi-insert 'Control-n: history-search-forward'
-## TODO git autocompletion
 #__git_complete g __git_main
 
 # directories

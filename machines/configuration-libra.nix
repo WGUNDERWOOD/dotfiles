@@ -134,7 +134,6 @@
     ranger
     vlc
     zip
-    handlr
     sway
     swaylock
   ];
