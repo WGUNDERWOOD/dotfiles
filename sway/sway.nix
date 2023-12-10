@@ -25,7 +25,6 @@
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+d" = "exec $HOME/scripts/rofi_start";
-                # TODO rofi needs fzf colors
                 "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
                 "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
                 "${modifier}+p" = "kill";
@@ -81,7 +80,6 @@
                 #"XF86AudioPause" = "exec \"playerctl pause\"";
                 #"XF86AudioNext" = "exec \"playerctl next\"";
                 #"XF86AudioPrev" = "exec \"playerctl previous\"";
-                # TODO waybar attach separator to spotify
             };
 
             colors = {

@@ -100,6 +100,7 @@
     rclone
     lutris
     tldr
+    hyperfine
     goobook
     zoom-us
     steam

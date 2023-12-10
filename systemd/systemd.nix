@@ -5,22 +5,21 @@
             Unit = {
                 Description = "mbsync start";
                 After = "network-online.target";
-                WantedBy = "default.target";
             };
             Service = {
                 Type = "oneshot";
-                ExecStart = "/bin/sh /etc/profile; mbsync -a";
+                ExecStart = "${pkgs.isync}/bin/mbsync -a";
             };
         };
 
-        #timers.mbsync = {
-            #description = "mbsync timer";
-            #timerConfig = {
-                #OnBootSec = "2m";
-                #OnUnitActiveSec = "2m";
-                #Unit = "mbsync.service";
-            #};
-            #wantedBy = [ "timers.target" ];
-        #};
+        timers.mbsync = {
+            Unit = {
+                description = "mbsync timer";
+            };
+            Timer = {
+                OnBootSec = "1m";
+                OnUnitActiveSec = "1m";
+            };
+        };
     };
 }

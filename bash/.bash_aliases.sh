@@ -11,8 +11,6 @@ alias lrc='ls -AiR1U ./ |
            sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" | 
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
 
-# TODO check git repository statuses in waybar
-
 # programs
 alias b='bat --theme Dracula'
 alias c='cd'
