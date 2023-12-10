@@ -27,5 +27,20 @@
                 WantedBy = ["timers.target"];
             };
         };
+
+        services.waybar = {
+            Unit = {
+                Description = "waybar";
+                PartOf = ["graphical-session.target"];
+            };
+            Install = {
+                WantedBy = ["sway-session.target"];
+            };
+            Service = {
+                ExecStart = "${pkgs.waybar}/bin/waybar";
+                RestartSec = 3;
+                Restart = "always";
+            };
+        };
     };
 }

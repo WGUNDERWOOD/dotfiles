@@ -17,6 +17,8 @@
     "custom/separator",
     "temperature",
     "custom/separator",
+    "custom/mail",
+    "custom/separator",
     "custom/gammastep",
     "custom/separator",
     "network",

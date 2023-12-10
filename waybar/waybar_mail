@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-mbsync -qqa
+STATUS=$(systemctl is-active --user mbsync.timer)
 COUNT=$(find ~/mail/princeton/INBOX/new/ ~/mail/gmail/INBOX/new/ -type f | wc -l)
 
-if [ "$COUNT" -ge "1" ]; then
-    echo '{"text": "Mail '$COUNT'", "class": "new_mail"}'
+
+if [ "$STATUS" = "active" ]; then
+    if [ "$COUNT" -ge "1" ]; then
+        echo '{"text": "Mail '$COUNT'", "class": "new_mail"}'
+    else
+        echo '{"text": "Mail", "class": "no_mail"}'
+    fi
 else
-    echo '{"text": "Mail", "class": "no_mail"}'
+    echo '{"text": "Mail", "class": "inactive"}'
 fi

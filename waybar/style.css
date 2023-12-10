@@ -104,6 +104,12 @@
     font-weight: 500;
 }
 
+#custom-mail.inactive {
+    color: #ff713e;
+    padding: 0px 16px;
+    font-weight: 500;
+}
+
 #custom-gammastep.day {
     color: #bbeeff;
     padding: 0px 16px;

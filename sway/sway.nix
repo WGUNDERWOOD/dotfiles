@@ -129,7 +129,6 @@
             }
             workspace 1
             exec echo "day" > $HOME/tmp/gammastatus
-            exec waybar
         '';
     };
 
