@@ -117,13 +117,13 @@
 }
 
 #custom-repos.dirty {
-    color: #ff713e;
+    color: #ffaaff;
     padding: 0px 16px;
     font-weight: 500;
 }
 
 #custom-repos.clean {
-    color: #bbeeff;
+    color: #ffccdd;
     padding: 0px 16px;
     font-weight: 500;
 }
