@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Firefox",
+        "command": "firefox"
+    },
+    {
+        "name": "Spotify",
+        "command": "pgrep spotify || (swaymsg workspace number 10 && spotify)"
+    },
+    {
+        "name": "Neovim",
+        "command": "alacritty -e bash -c 'nvim'"
+    },
+    {
+        "name": "Zathura",
+        "command": "alacritty -e bash -c '$HOME/scripts/zathura_fuzzy'"
+    },
+    {
+        "name": "Gimp",
+        "command": "gimp"
+    },
+    {
+        "name": "Feh",
+        "command": "alacritty -e bash -c '$HOME/scripts/feh_fuzzy'"
+    }
+]

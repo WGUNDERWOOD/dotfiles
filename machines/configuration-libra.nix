@@ -88,9 +88,13 @@
     starship
     zathura
     screen
+    lame
+    file
+    rofi-wayland
     procs
     du-dust
     texlive.combined.scheme-full
+    jq
     bitwarden-cli
     inkscape
     rclone
@@ -172,6 +176,7 @@
       ../mbsync/mbsync.nix
       ../zathura/zathura.nix
       ../feh/feh.nix
+      ../rofi/rofi.nix
     ];
 
     home.stateVersion = "23.05";

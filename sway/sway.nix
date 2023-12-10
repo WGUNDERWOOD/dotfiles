@@ -24,6 +24,7 @@
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
+                "${modifier}+d" = "exec $HOME/scripts/rofi_start";
                 "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
                 "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
                 "${modifier}+p" = "kill";
@@ -56,8 +57,8 @@
                 "${modifier}+Shift+9" = "move container to workspace number 9";
                 "${modifier}+Shift+0" = "move container to workspace number 10";
                 "${modifier}+Shift+r" = "reload";
-                "${modifier}+u" = "resize shrink width 3 px";
-                "${modifier}+i" = "resize grow width 3 px";
+                "${modifier}+u" = "resize shrink width 3 px or 3 ppt";
+                "${modifier}+i" = "resize grow width 3 px or 3 ppt";
                 "${modifier}+m" = "workspace next";
                 "${modifier}+n" = "workspace prev";
                 "${modifier}+Shift+m" = "move container to workspace next";
