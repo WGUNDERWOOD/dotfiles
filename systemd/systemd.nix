@@ -10,15 +10,21 @@
                 Type = "oneshot";
                 ExecStart = "${pkgs.isync}/bin/mbsync -a";
             };
+            Install = {
+                WantedBy = ["default.target"];
+            };
         };
 
         timers.mbsync = {
             Unit = {
-                description = "mbsync timer";
+                Description = "mbsync timer";
             };
             Timer = {
                 OnBootSec = "1m";
                 OnUnitActiveSec = "1m";
+            };
+            Install = {
+                WantedBy = ["timers.target"];
             };
         };
     };
