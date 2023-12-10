@@ -9,11 +9,11 @@
     },
     {
         "name": "Neovim",
-        "command": "alacritty -e bash -c 'nvim'"
+        "command": "alacritty -e bash -c 'source $HOME/.bashrc && nvim'"
     },
     {
         "name": "Zathura",
-        "command": "alacritty -e bash -c '$HOME/scripts/zathura_fuzzy'"
+        "command": "alacritty -e bash -c 'source $HOME/.bashrc && $HOME/scripts/zathura_fuzzy'"
     },
     {
         "name": "Gimp",
@@ -21,6 +21,6 @@
     },
     {
         "name": "Feh",
-        "command": "alacritty -e bash -c '$HOME/scripts/feh_fuzzy'"
+        "command": "alacritty -e bash -c 'source $HOME/.bashrc && $HOME/scripts/feh_fuzzy'"
     }
 ]

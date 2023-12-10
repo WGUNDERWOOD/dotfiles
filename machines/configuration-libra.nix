@@ -177,6 +177,7 @@
       ../zathura/zathura.nix
       ../feh/feh.nix
       ../rofi/rofi.nix
+      ../git/git.nix
     ];
 
     home.stateVersion = "23.05";

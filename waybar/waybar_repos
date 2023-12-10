@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+STATUS=$($HOME/scripts/repos | wc -l)
+
+if [ "$STATUS" -ge "1" ]; then
+    echo '{"text": "Git '$STATUS'", "class": "dirty"}'
+else
+    echo '{"text": "Git", "class": "clean"}'
+fi

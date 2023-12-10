@@ -116,6 +116,18 @@
     font-weight: 500;
 }
 
+#custom-repos.dirty {
+    color: #ff713e;
+    padding: 0px 16px;
+    font-weight: 500;
+}
+
+#custom-repos.clean {
+    color: #bbeeff;
+    padding: 0px 16px;
+    font-weight: 500;
+}
+
 #network.wifi, #network.ethernet {
     color: #ffccdd;
     padding: 0px 16px;

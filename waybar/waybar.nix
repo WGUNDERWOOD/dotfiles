@@ -4,4 +4,5 @@
     home.file.".config/waybar/style.css".source = ./style.css;
     home.file."scripts/waybar_gammastep".source = ./waybar_gammastep;
     home.file."scripts/waybar_mail".source = ./waybar_mail;
+    home.file."scripts/waybar_repos".source = ./waybar_repos;
 }

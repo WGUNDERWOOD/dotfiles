@@ -13,6 +13,8 @@
     "custom/separator",
     "disk",
     "custom/separator",
+    "custom/repos",
+    "custom/separator",
     "temperature",
     "custom/separator",
     "custom/mail",
@@ -74,6 +76,11 @@
   "custom/gammastep": {
       "exec": "$HOME/scripts/waybar_gammastep",
       "restart-interval": 10,
+      "return-type": "json",
+  },
+  "custom/repos": {
+      "exec": "$HOME/scripts/waybar_repos",
+      "restart-interval": 60,
       "return-type": "json",
   },
   "network": {

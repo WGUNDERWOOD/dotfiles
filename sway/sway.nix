@@ -25,6 +25,7 @@
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+d" = "exec $HOME/scripts/rofi_start";
+                # TODO rofi needs fzf colors
                 "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
                 "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
                 "${modifier}+p" = "kill";
@@ -69,15 +70,18 @@
                 "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";
                 "${modifier}+Right" = "exec playerctl next";
                 "${modifier}+Left" = "exec playerctl previous";
-                "${modifier}+Down" = "exec playerctl play-pause";
+                "${modifier}+space" = "exec playerctl play-pause";
+                "${modifier}+Down" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
+                "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
+                "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
+                "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
                 #"XF86MonBrightnessUp" = "exec \"brillo -A 1\"";
                 #"XF86MonBrightnessDown" = "exec \"brillo -U 1\"";
-                #"XF86AudioLowerVolume" = "exec \"pactl set-sink-volume 0 -5%\"";
-                #"XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume 0 +5%\"";
                 #"XF86AudioPlay" = "exec \"playerctl play\"";
                 #"XF86AudioPause" = "exec \"playerctl pause\"";
                 #"XF86AudioNext" = "exec \"playerctl next\"";
                 #"XF86AudioPrev" = "exec \"playerctl previous\"";
+                # TODO waybar attach separator to spotify
             };
 
             colors = {

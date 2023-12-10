@@ -96,8 +96,7 @@ vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
 -- snippets
--- TODO move these snippet files using nix
-require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/github/dotfiles/neovim/snippets"})
+require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/.config/nvim/snippets/"})
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ?" ..
     "'<Plug>luasnip-expand-or-jump' : '<Tab>'")
 vim.cmd("inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>")

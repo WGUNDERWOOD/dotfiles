@@ -1,6 +1,5 @@
 # general settings
 ############################################################
-# TODO remove emails and passwords before adding to nix!
 Create Near
 SyncState *
 
