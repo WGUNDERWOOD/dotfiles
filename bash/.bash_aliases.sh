@@ -8,7 +8,7 @@ alias ll='exa --all --long --git'
 alias lz='exa --all --long --sort size'
 alias lrz='fd -tf -X exa --long --sort size'
 alias lrc='ls -AiR1U ./ |
-           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" | 
+           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
 
 # programs
@@ -37,6 +37,7 @@ alias rcps='rcgdps && rcgdpps && rcdbpps'
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 alias nixr='sudo nixos-rebuild switch'
+alias nixq='nix-env -qa | fzf'
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'
@@ -53,8 +54,8 @@ gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 # cd aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-alias cddown='cd ~/downloads/'
-alias cdconf='cd ~/.config/'
+alias cddow='cd ~/downloads/'
+alias cdcon='cd ~/.config/'
 alias cdrc='cd ~/rclone/'
 alias cdgd='cd ~/rclone/google_drive/'
 alias cdgdp='cd ~/rclone/google_drive_princeton/'

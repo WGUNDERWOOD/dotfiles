@@ -9,7 +9,6 @@ bind -m vi-command 'Control-p: history-search-backward'
 bind -m vi-insert 'Control-p: history-search-backward'
 bind -m vi-command 'Control-n: history-search-forward'
 bind -m vi-insert 'Control-n: history-search-forward'
-#__git_complete g __git_main
 
 # directories
 mkdir -p ~/mail/gmail/
@@ -20,6 +19,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 
 # history
 HISTCONTROL=ignoreboth
+source "$(fzf-share)/key-bindings.bash"
+source "$(fzf-share)/completion.bash"
 
 # colors
 export LESS_TERMCAP_mb=$'\e[1;32m'

@@ -546,13 +546,14 @@ vim.cmd([[
 ]])
 
 -- tex files
+vim.g.vimtex_view_method = 'zathura_simple'
+vim.g.vimtex_view_general_viewer = 'zathura'
 vim.cmd([[
     augroup tex
     autocmd!
     au Filetype tex syntax enable
     au Filetype tex setlocal shiftwidth=2
     au Filetype tex :ColorizerDetachFromBuffer
-    au Filetype tex let g:vimtex_view_general_viewer = 'zathura'
     au Filetype tex let g:vimtex_matchparen_enabled = 0
     au Filetype tex let g:vimtex_compiler_silent = 1
     au Filetype tex let g:vimtex_quickfix_mode = 0

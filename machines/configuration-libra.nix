@@ -135,6 +135,7 @@
     vlc
     zip
     sway
+    wine
     swaylock
   ];
 
@@ -178,6 +179,7 @@
       ../feh/feh.nix
       ../rofi/rofi.nix
       ../git/git.nix
+      ../vivid/vivid.nix
     ];
 
     home.stateVersion = "23.05";
