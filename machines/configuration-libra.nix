@@ -92,9 +92,11 @@
     file
     rofi-wayland
     procs
+    procps
     du-dust
     texlive.combined.scheme-full
     jq
+    nix-index
     bitwarden-cli
     inkscape
     rclone

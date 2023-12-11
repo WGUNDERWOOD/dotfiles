@@ -8,6 +8,9 @@
     home.file."scripts/feh_fuzzy".source = ./feh_fuzzy;
     home.file."scripts/fd_git".source = ./fd_git;
     home.file."scripts/rg_git".source = ./rg_git;
+    home.file."scripts/todo_finder".source = ./todo_finder;
+    home.file."scripts/longest_lines".source = ./longest_lines;
+
     programs.bash = {
         enable = true;
         enableCompletion = true;
