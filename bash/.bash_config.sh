@@ -19,6 +19,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 
 # history
 HISTCONTROL=ignoreboth
+PROMPT_COMMAND='history -a'
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 
