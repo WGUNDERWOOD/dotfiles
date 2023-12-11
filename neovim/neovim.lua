@@ -88,6 +88,11 @@ vim.cmd("set guicursor+=o:hor50-CursorPending")
 vim.cmd("set guicursor+=i:ver100-CursorInsert")
 vim.cmd("set guicursor+=a:blinkwait300-blinkon200-blinkoff150")
 
+-- ignore missing language providers
+vim.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+
 -- git conflicts
 map("n", "gc", "/=======\\|<<<<<<<\\|>>>>>>><CR>")
 vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")

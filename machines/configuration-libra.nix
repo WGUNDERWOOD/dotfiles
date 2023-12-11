@@ -84,6 +84,9 @@
     gnumake
     source-code-pro
     nix-tree
+    tree-sitter
+    nodejs-slim
+    gcc
     spotify
     starship
     zathura
