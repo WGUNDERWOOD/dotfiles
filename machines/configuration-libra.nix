@@ -87,6 +87,7 @@
     tree-sitter
     nodejs-slim
     gcc
+    todoist
     spotify
     starship
     zathura

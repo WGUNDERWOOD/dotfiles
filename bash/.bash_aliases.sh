@@ -45,11 +45,11 @@ alias timenow='date +"%Y/%m/%d%n%H:%M:%S.%3N%n%:z"'
 gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 
 # todoist
-#alias tt='todoist-cli sync && todoist-cli --color list --filter "(overdue | today | p1)"' # TODO
-#alias tl='todoist-cli sync && todoist-cli --color list' # TODO
-#tq() { command todoist-cli quick "$@" && todoist-cli sync & } # TODO
-#tc() { command todoist-cli close "$@" && todoist-cli sync & } # TODO
-#td() { command todoist-cli delete "$@" && todoist-cli sync & } # TODO
+alias tt='todoist sync && todoist --color list --filter "(overdue | today | p1)"'
+alias tl='todoist sync && todoist --color list'
+tq() { command todoist quick "$@" && todoist sync & }
+tc() { command todoist close "$@" && todoist sync & }
+td() { command todoist delete "$@" && todoist sync & }
 
 # cd aliases
 alias ..='cd ..'
