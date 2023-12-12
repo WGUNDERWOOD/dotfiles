@@ -26,8 +26,8 @@
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+d" = "exec $HOME/scripts/rofi_start";
-                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock --config $HOME/.config/swaylock/config && systemctl suspend\"";
-                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock --config $HOME/.config/swaylock/config\"";
+                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f --config $HOME/.config/swaylock/config && systemctl suspend\"";
+                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f --config $HOME/.config/swaylock/config\"";
                 "${modifier}+p" = "kill";
                 "${modifier}+Shift+h" = "move left";
                 "${modifier}+Shift+j" = "move down";

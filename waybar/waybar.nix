@@ -50,25 +50,30 @@
         };
         "clock#date" = {
             "format" = "{:%a %d %b %Y}";
+            "on-click" = "${pkgs.firefox}/bin/firefox https://calendar.google.com";
         };
         "clock#time" = {
             "format" = "{:%H:%M}";
+            "on-click" = "${pkgs.firefox}/bin/firefox https://app.todoist.com/app/upcoming";
         };
         "cpu" = {
             "format" = "CPU {usage}%";
             "interval" = 10;
             "tooltip" = false;
+            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
         "memory" = {
             "interval" = 10;
             "format" = "RAM {percentage}%";
             "tooltip" = false;
+            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
         "temperature" = {
             "critical-threshold" = 80;
             "format-critical" = "{temperatureC}°C";
             "format" = "{temperatureC}°C";
             "tooltip" = false;
+            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
         "custom/mail" = {
             "format" = "{}";
@@ -122,6 +127,7 @@
         "network" = {
             "format" = "Net";
             "tooltip" = false;
+            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
         "custom/spotify" = {
             "format" = "{}";
@@ -141,6 +147,7 @@
             "interval" = 60;
             "format" = "Disk {percentage_used}%";
             "path" = "/";
+            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
         "pulseaudio" = {
             "format" = "Vol {volume}%{icon}";
@@ -152,7 +159,7 @@
                 "phone" = " P";
                 "default" = "";
             };
-            "on-click" = "pavucontrol";
+            "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
             "tooltip" = false;
         };
         "battery" = {
@@ -178,6 +185,7 @@
             font-family: "Source Code Pro";
             font-size: 20px;
             background-color: #000000;
+            border-top: 1px solid #000000
         }
 
         #workspaces {
