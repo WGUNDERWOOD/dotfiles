@@ -5,22 +5,42 @@
             Unit = {
                 Description = "mbsync start";
                 After = "network-online.target";
-                WantedBy = "default.target";
             };
             Service = {
                 Type = "oneshot";
-                ExecStart = "/bin/sh /etc/profile; mbsync -a";
+                ExecStart = "${pkgs.isync}/bin/mbsync -a";
+            };
+            Install = {
+                WantedBy = ["default.target"];
             };
         };
 
-        #timers.mbsync = {
-            #description = "mbsync timer";
-            #timerConfig = {
-                #OnBootSec = "2m";
-                #OnUnitActiveSec = "2m";
-                #Unit = "mbsync.service";
-            #};
-            #wantedBy = [ "timers.target" ];
-        #};
+        timers.mbsync = {
+            Unit = {
+                Description = "mbsync timer";
+            };
+            Timer = {
+                OnBootSec = "1m";
+                OnUnitActiveSec = "1m";
+            };
+            Install = {
+                WantedBy = ["timers.target"];
+            };
+        };
+
+        services.waybar = {
+            Unit = {
+                Description = "waybar";
+                PartOf = ["graphical-session.target"];
+            };
+            Install = {
+                WantedBy = ["sway-session.target"];
+            };
+            Service = {
+                ExecStart = "${pkgs.waybar}/bin/waybar";
+                RestartSec = 3;
+                Restart = "always";
+            };
+        };
     };
 }

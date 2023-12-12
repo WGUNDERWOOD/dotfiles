@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git_root=$(git rev-parse --show-toplevel)
+rg $1 $git_root

@@ -61,7 +61,7 @@ set recall = "no"
 set askcc = "yes"
 
 # query
-set query_command="goobook query %s" # TODO goobook config in nix
+set query_command="goobook query %s"
 
 # attachment viewing
 set attach_format = "%u%D%I %t%4n %T%.170d%> [%.7m/%.10M, %.6e%?C?, %C?, %s]"

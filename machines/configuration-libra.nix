@@ -84,17 +84,29 @@
     gnumake
     source-code-pro
     nix-tree
+    tree-sitter
+    nodejs-slim
+    gcc
+    todoist
     spotify
     starship
     zathura
+    screen
+    lame
+    file
+    rofi-wayland
     procs
+    procps
     du-dust
     texlive.combined.scheme-full
+    jq
+    nix-index
     bitwarden-cli
     inkscape
     rclone
     lutris
     tldr
+    hyperfine
     goobook
     zoom-us
     steam
@@ -105,7 +117,13 @@
     julia
     playerctl
     gammastep
-    (python3.withPackages(ps: with ps; [matplotlib]))
+    (python3.withPackages(ps: with ps; [
+                          matplotlib
+                          habanero
+                          pyperclip
+                          unidecode
+                          colorama
+    ]))
     imagemagick
     gimp
     lynx
@@ -114,7 +132,7 @@
     pdftk
     neofetch
     libreoffice
-    vimiv-qt
+    feh
     pplatex
     grim
     vivid
@@ -122,8 +140,8 @@
     ranger
     vlc
     zip
-    handlr
     sway
+    wine
     swaylock
   ];
 
@@ -163,6 +181,11 @@
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
       ../mbsync/mbsync.nix
+      ../zathura/zathura.nix
+      ../feh/feh.nix
+      ../rofi/rofi.nix
+      ../git/git.nix
+      ../vivid/vivid.nix
     ];
 
     home.stateVersion = "23.05";

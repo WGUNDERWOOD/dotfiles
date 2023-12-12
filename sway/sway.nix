@@ -1,12 +1,18 @@
 {pkgs, lib, ...}: {
+    home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+    home.file.".config/swaylock/config".source = ./swaylock_config;
     home.file."scripts/gammatoggle".source = ./gammatoggle;
     home.file."scripts/sway_go_to_empty".source = ./sway_go_to_empty;
     home.file."scripts/sway_move_to_empty".source = ./sway_move_to_empty;
+    home.pointerCursor = {
+        gtk.enable = true;
+        package = pkgs.phinger-cursors;
+        name = "phinger-cursors";
+    };
 
     wayland.windowManager.sway = {
 
         enable = true;
-        # TODO cursors
 
         config = rec {
             modifier = "Mod4";
@@ -18,8 +24,10 @@
 
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";
-                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f -c 000000 && systemctl suspend\"";
-                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f -c 000000\"";
+                "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
+                "${modifier}+d" = "exec $HOME/scripts/rofi_start";
+                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f --config $HOME/.config/swaylock/config && systemctl suspend\"";
+                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f --config $HOME/.config/swaylock/config\"";
                 "${modifier}+p" = "kill";
                 "${modifier}+Shift+h" = "move left";
                 "${modifier}+Shift+j" = "move down";
@@ -56,17 +64,19 @@
                 "${modifier}+n" = "workspace prev";
                 "${modifier}+Shift+m" = "move container to workspace next";
                 "${modifier}+Shift+n" = "move container to workspace prev";
-                "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" " +
+                "${modifier}+s" = "exec grim -g \"$(slurp)\" " +
                     "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | " +
                     "wl-copy -t image/png";
                 "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";
                 "${modifier}+Right" = "exec playerctl next";
                 "${modifier}+Left" = "exec playerctl previous";
-                "${modifier}+Down" = "exec playerctl play-pause";
+                "${modifier}+space" = "exec playerctl play-pause";
+                "${modifier}+Down" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
+                "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
+                "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
+                "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
                 #"XF86MonBrightnessUp" = "exec \"brillo -A 1\"";
                 #"XF86MonBrightnessDown" = "exec \"brillo -U 1\"";
-                #"XF86AudioLowerVolume" = "exec \"pactl set-sink-volume 0 -5%\"";
-                #"XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume 0 +5%\"";
                 #"XF86AudioPlay" = "exec \"playerctl play\"";
                 #"XF86AudioPause" = "exec \"playerctl pause\"";
                 #"XF86AudioNext" = "exec \"playerctl next\"";
@@ -114,13 +124,14 @@
 
         extraConfig =
             ''
+            seat * hide_cursor 2000
+            seat * hide_cursor when-typing enable
             input type:keyboard {
                 repeat_delay 200
-                    repeat_rate 50
+                repeat_rate 50
             }
             workspace 1
             exec echo "day" > $HOME/tmp/gammastatus
-            exec waybar
         '';
     };
 

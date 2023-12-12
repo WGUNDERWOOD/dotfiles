@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-STATUS=$(cat "$HOME/tmp/gammastatus")
-echo '{"text": "Gam", "class": "'$STATUS'"}'

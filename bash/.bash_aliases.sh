@@ -8,12 +8,8 @@ alias ll='exa --all --long --git'
 alias lz='exa --all --long --sort size'
 alias lrz='fd -tf -X exa --long --sort size'
 alias lrc='ls -AiR1U ./ |
-           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" | 
+           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
-
-# TODO write a simple "view file script"
-# TODO write a simple "edit file script"
-# TODO check git repository status in waybar
 
 # programs
 alias b='bat --theme Dracula'
@@ -22,12 +18,12 @@ alias g='git'
 alias m='(cd ~/downloads; neomutt)'
 alias n='nvim'
 z() { command zathura "$@" & }
-#alias bibd='bibtex-download' # TODO
+alias bibd='bibtex-download'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
-#alias cf='source ~/scripts/cd_fuzzy' # TODO
-#alias fp='fd_git' # TODO
-#alias rp='rg_git' # TODO
+alias cf='source ~/scripts/cd_fuzzy'
+alias fp='fd_git'
+alias rp='rg_git'
 li() { command libreoffice "$@" & }
 alias neofetch='neofetch --config ~/neofetch.conf'
 alias rcgdpl='rclone_google_drive_pull.sh'
@@ -36,11 +32,12 @@ alias rcgdppl='rclone_google_drive_princeton_pull.sh'
 alias rcgdpps='rclone_google_drive_princeton_push.sh'
 alias rcdbppl='rclone_dropbox_princeton_pull.sh'
 alias rcdbpps='rclone_dropbox_princeton_push.sh'
-#alias repos='(cd ~/Documents && git_status_all)' # TODO
-#alias reposf='(cd ~/Documents && git_status_all -f)' # TODO
-vv() { command vimiv "$@" & }
+alias rcpl='rcgdpl && rcgdppl && rcdbppl'
+alias rcps='rcgdps && rcgdpps && rcdbpps'
+#alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 alias nixr='sudo nixos-rebuild switch'
+alias nixq='nix-env -qa | fzf'
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'
@@ -48,44 +45,43 @@ alias timenow='date +"%Y/%m/%d%n%H:%M:%S.%3N%n%:z"'
 gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 
 # todoist
-#alias tt='todoist-cli sync && todoist-cli --color list --filter "(overdue | today | p1)"' # TODO
-#alias tl='todoist-cli sync && todoist-cli --color list' # TODO
-#tq() { command todoist-cli quick "$@" && todoist-cli sync & } # TODO
-#tc() { command todoist-cli close "$@" && todoist-cli sync & } # TODO
-#td() { command todoist-cli delete "$@" && todoist-cli sync & } # TODO
+alias tt='todoist sync && todoist --color list --filter "(overdue | today | p1)"'
+alias tl='todoist sync && todoist --color list'
+tq() { command todoist quick "$@" && todoist sync & }
+tc() { command todoist close "$@" && todoist sync & }
+td() { command todoist delete "$@" && todoist sync & }
 
 # cd aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-#alias cddown='cd ~/Downloads/'
-#alias cdconf='cd ~/.config/'
-#alias cddoc='cd ~/Documents/'
-#alias cdgd='cd ~/odrive/Google\ Drive/'
-#alias cdgdp='cd ~/odrive/Google\ Drive\ Princeton/'
+alias cddow='cd ~/downloads/'
+alias cdcon='cd ~/.config/'
+alias cdrc='cd ~/rclone/'
+alias cdgd='cd ~/rclone/google_drive/'
+alias cdgdp='cd ~/rclone/google_drive_princeton/'
+alias cddbp='cd ~/rclone/dropbox_princeton/'
+alias cdgh='cd ~/github/'
+alias cddot='cd ~/github/dotfiles/'
+alias cdjob='cd ~/github/job-search-2023/'
+alias cdcv='cd ~/github/wgu-cv/'
+alias cdov='cd ~/overleaf/'
+alias cdnot='cd ~/github/notes/'
 #alias cdhe='cd ~/odrive/Google\ Drive/Health'
-#alias cdgh='cd ~/Documents/github'
 #alias cdmon='cd ~/Documents/github/MondrianForests.jl'
 #alias cdaoc='cd ~/Documents/github/advent-of-code-2021'
 #alias cdrem='cd ~/Documents/remarkable'
 #alias cdox='cd ~/odrive/Google\ Drive/Education/Oxford/'
 #alias cdoxlec='cd ~/odrive/Google\ Drive/Education/Oxford/Oxford\ Lecture\ Notes'
 #alias cdtextbk='cd ~/odrive/Google\ Drive/Education/Textbooks\ and\ Extra\ Notes'
-#alias cddb='cd ~/odrive/Dropbox/'
-#alias cddbp='cd ~/odrive/Dropbox\ Princeton/'
 #alias cdmot='cd ~/Documents/github/motifcluster'
 #alias cdwp='cd ~/Pictures/wallpapers'
 #alias cdweb='cd ~/Documents/github/wgunderwood.github.io'
-#alias cddot='cd ~/Documents/github/dotfiles'
 #alias cdk='cd ~/Documents/github/research-dyadic-kde/'
 #alias cdd='cd ~/Documents/github/DyadicKDE.jl/'
 #alias cdr='cd ~/Documents/github/research-dyadic-regression/'
 #alias cdf='cd ~/Documents/github/research-random-forests/'
 #alias cdm='cd ~/Documents/github/research-martingale-yurinskii/'
-#alias cdjob='cd ~/Documents/github/job-search-2023'
 #alias cdac='cd ~/odrive/Dropbox\ Princeton/Underwood_Academic_Applications_2023'
-#alias cdcv='cd ~/Documents/github/wgu-cv'
-#alias cdpic='cd ~/Pictures'
-#alias cdov='cd ~/Documents/overleaf'
 #alias cdovk='cd ~/Documents/overleaf/CFU_2021_DyadicKDE'
 #alias cdovm='cd ~/Documents/overleaf/CMU_2022_SAMartingale/'
 #alias cdovf='cd ~/Documents/overleaf/CKU_2022_MondrianRF/'
@@ -94,12 +90,9 @@ alias ...='cd ../..'
 #alias cdmat='cd ~/odrive/Dropbox\ Princeton/00000_shared--CFF_2018_RandPartitioning/'
 #alias cdric='cd ~/odrive/Dropbox\ Princeton/0000_shared--Cattaneo-Masini_2021_SA-Martingale/'
 #alias cdjas='cd ~/odrive/Dropbox\ Princeton/0000_shared--CKU_2022_Mondrian/'
-#alias cdjob='cd ~/Documents/github/job-search-2023'
 #alias cdte='cd ~/odrive/Dropbox\ Princeton/2023Fall_ORF498/'
-#alias cdts='cd ~/odrive/Google\ Drive/Career/Two\ Sigma'
 #alias cdrv='cd ~/odrive/Google\ Drive/Education/Princeton/Reviewing/'
 #alias cdtax='cd ~/odrive/Google\ Drive/Finances/Tax/Tax\ 2022'
 #alias cdnot='cd ~/odrive/Google\ Drive/Notes'
 #alias cdtr='cd ~/odrive/Google\ Drive/Travel'
 #alias cdsco='cd ~/Documents/github/music-scores/'
-#alias cdfel='cd ~/Documents/github/fellowship-applications/'

@@ -88,6 +88,11 @@ vim.cmd("set guicursor+=o:hor50-CursorPending")
 vim.cmd("set guicursor+=i:ver100-CursorInsert")
 vim.cmd("set guicursor+=a:blinkwait300-blinkon200-blinkoff150")
 
+-- ignore missing language providers
+vim.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+
 -- git conflicts
 map("n", "gc", "/=======\\|<<<<<<<\\|>>>>>>><CR>")
 vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
@@ -96,8 +101,7 @@ vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
 -- snippets
--- TODO move these snippet files using nix
-require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/github/dotfiles/neovim/snippets"})
+require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/.config/nvim/snippets/"})
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ?" ..
     "'<Plug>luasnip-expand-or-jump' : '<Tab>'")
 vim.cmd("inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>")
@@ -547,13 +551,14 @@ vim.cmd([[
 ]])
 
 -- tex files
+vim.g.vimtex_view_method = 'zathura_simple'
+vim.g.vimtex_view_general_viewer = 'zathura'
 vim.cmd([[
     augroup tex
     autocmd!
     au Filetype tex syntax enable
     au Filetype tex setlocal shiftwidth=2
     au Filetype tex :ColorizerDetachFromBuffer
-    au Filetype tex let g:vimtex_view_general_viewer = 'zathura'
     au Filetype tex let g:vimtex_matchparen_enabled = 0
     au Filetype tex let g:vimtex_compiler_silent = 1
     au Filetype tex let g:vimtex_quickfix_mode = 0
@@ -605,5 +610,3 @@ vim.cmd([[
     au Filetype tex inoremap <C-J> <C-N>
     au Filetype tex inoremap <C-K> <C-P>
 ]])
-
--- TODO add yankstack to nix packages
