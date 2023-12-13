@@ -76,7 +76,6 @@
     fzf
     exa
     cava
-    killall
     fd
     bottom
     neomutt
@@ -88,6 +87,8 @@
     nodejs-slim
     gcc
     todoist
+    lm_sensors
+    bundix
     spotify
     starship
     zathura
