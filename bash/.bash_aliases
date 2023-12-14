@@ -9,6 +9,9 @@ alias ltt='exa --tree'
 alias ll='exa --all --long --git'
 alias lz='exa --all --long --sort size'
 alias lrz='fd -tf -X exa --long --sort size'
+alias lrc='ls -AiR1U ./ |
+           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
+           sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
 
 # one letter aliases
 alias b='bat --theme Dracula'
