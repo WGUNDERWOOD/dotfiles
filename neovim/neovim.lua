@@ -239,7 +239,7 @@ require('lualine').setup {
     options = {theme  = custom_dracula, icons_enabled = false},
     sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff'},
+        lualine_b = {'branch', 'diff', 'searchcount'},
         lualine_c = {'filename'},
         lualine_x = {'filetype'},
         lualine_y = {'progress'},
