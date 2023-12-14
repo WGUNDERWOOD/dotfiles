@@ -27,5 +27,5 @@ while true; do
         echo "$inactive"
     fi
 
-    sleep 5
+    sleep 30
 done
