@@ -131,7 +131,6 @@
     ocrmypdf
     pandoc
     pdftk
-    neofetch
     libreoffice
     feh
     pplatex

@@ -25,7 +25,6 @@ alias cf='source ~/scripts/cd_fuzzy'
 alias fp='fd_git'
 alias rp='rg_git'
 li() { command libreoffice "$@" & }
-alias neofetch='neofetch --config ~/neofetch.conf'
 alias rcgdpl='rclone_google_drive_pull.sh'
 alias rcgdps='rclone_google_drive_push.sh'
 alias rcgdppl='rclone_google_drive_princeton_pull.sh'
