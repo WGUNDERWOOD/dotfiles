@@ -27,4 +27,11 @@ call matchadd('OrgLeadingStar', '* ', -1)
 highlight OrgLeadingStar gui=bold
 
 " remove todo heading
-nnoremap T :set nohlsearch<CR> :s/ TODO \\| NOTE \\| DONE \\| NOW / /<CR> /^^<CR> :hlsearch<CR>
+function! RemoveOrgTodoHeader()
+  normal mz
+  normal 0
+  s/ TODO \| NOTE \| DONE \| NOW / /e
+  normal `z
+endfun
+command RemoveOrgTodoHeader call RemoveOrgTodoHeader()
+nnoremap T :RemoveOrgTodoHeader<CR>
