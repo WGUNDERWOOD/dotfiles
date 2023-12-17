@@ -523,6 +523,16 @@ vim.cmd([[
 ]])
 
 -- org files
+vim.cmd [[
+    function! RemoveOrgTodoHeader()
+        normal mz
+        normal 0
+        s/ TODO \| NOTE \| DONE \| NOW / /e
+        normal `z
+    endfun
+    command RemoveOrgTodoHeader call RemoveOrgTodoHeader()
+]]
+
 vim.cmd([[
     augroup org
     autocmd!
@@ -546,7 +556,7 @@ vim.cmd([[
     au Filetype org hi OrgLeadingStars guifg=#181a26 guibg=NONE
     au Filetype org call matchadd('OrgLeadingStar', '* ', -1)
     au Filetype org hi OrgLeadingStar gui=bold
-    au Filetype org nnoremap T :let _s=@/<Bar>:s/ TODO \\| NOTE \\| DONE \\| NOW / /<Bar>:let @/=_s<CR>
+    au Filetype org nnoremap T :RemoveOrgTodoHeader<CR>
     au Filetype org setlocal linebreak
 ]])
 
