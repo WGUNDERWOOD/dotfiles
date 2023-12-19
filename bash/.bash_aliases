@@ -36,6 +36,7 @@ alias gl='glances --disable-bg -t 2'
 li() { command libreoffice "$@" & }
 alias lnb='find . -xtype l' # broken symlinks
 alias neofetch='neofetch --config ~/neofetch.conf'
+alias no='nvim notes.org'
 alias or='odrive refresh .'
 alias pipes='pipes -p 5 -R -t 1 -r 10000 && clear'
 alias repos='(cd ~/Documents && git_status_all)'
