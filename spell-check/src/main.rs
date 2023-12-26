@@ -1,10 +1,11 @@
-use ispell::SpellLauncher;
 use regex::Regex;
 use std::collections::HashMap;
 use std::env;
 use std::fs;
 use std::io;
 use std::path;
+use std::process::Command;
+use std::process::Stdio;
 
 // path for wordlist file
 const WORDLIST_PATH: &str = "./wordlist.txt";
@@ -27,28 +28,34 @@ fn main() {
 
     // read from wordlist and rewrite wordlist file
     let (accept, reject) = read_wordlist();
+    write_temp_files(&accept, &reject);
     rewrite_wordlist(&accept, &reject);
     check_accept_are_errors(&accept);
-    check_reject_are_ok(&reject);
+    check_reject_are_ok();
 
     for filename in filenames {
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
-        let mistakes = spell_check_get_mistakes(&file, &accept, &reject);
+        let mistakes = spell_check_get_mistakes(filename, &file, &reject);
 
         // output results
         if !mistakes.is_empty() {
             println!("{}", String::new() + YELLOW + filename + RESET);
             for m in mistakes {
-                print!("{}", String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET);
+                print!(
+                    "{}",
+                    String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
+                );
 
                 let mut formatted: String = m.2.to_string();
                 for w in m.1 {
                     let colored_w = String::new() + RED + &w + RESET;
                     formatted = formatted.replace(&w, &colored_w);
                 }
-                print!("{}\n", &formatted);
+                println!("{}", &formatted);
             }
         }
+
+        clean_up();
     }
 }
 
@@ -73,8 +80,8 @@ fn read_wordlist() -> (Vec<String>, Vec<String>) {
     let wordlist = fs::read_to_string(WORDLIST_PATH).unwrap();
     let wordlist_split: Vec<&str> = wordlist.split("\n\n").collect();
     assert!(wordlist_split.len() == 2, "Incorrectly formatted wordlist");
-    let mut accept: Vec<String> = wordlist_split[0].split("\n").map(str::to_string).collect();
-    let mut reject: Vec<String> = wordlist_split[1].split("\n").map(str::to_string).collect();
+    let mut accept: Vec<String> = wordlist_split[0].split('\n').map(str::to_string).collect();
+    let mut reject: Vec<String> = wordlist_split[1].split('\n').map(str::to_string).collect();
     assert!(accept[0] == "# accept", "Incorrectly formatted wordlist");
     assert!(reject[0] == "# reject", "Incorrectly formatted wordlist");
     accept.remove(0);
@@ -113,25 +120,32 @@ fn rewrite_wordlist(accept: &Vec<String>, reject: &Vec<String>) {
 }
 
 fn spell_check_get_mistakes(
+    filename: &str,
     file: &str,
-    accept: &Vec<String>,
     reject: &Vec<String>,
 ) -> Vec<(usize, Vec<String>, String)> {
-
-    // add accept list to aspell
-    let mut checker = SpellLauncher::new().aspell().launch().unwrap();
-    for w in accept {
-        checker.add_word(w).unwrap();
-    }
-
     // run aspell to get mistakes
-    // TODO try calling this without using the rust ispell packages
-    let ms = checker.check(&file.replace("\n", " ")).unwrap();
-    let mut ms: Vec<String> = ms.iter().map(|x| x.misspelled.clone()).collect();
+    fs::copy(filename, ".spell_file.tmp").unwrap();
+    let output_cat = Command::new("cat")
+        .arg(".spell_file.tmp")
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output_aspell = Command::new("aspell")
+        .args(["--home-dir=.", "--personal=.spell_accept.tmp", "-t", "list"])
+        .stdin(Stdio::from(output_cat.stdout.unwrap()))
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output = output_aspell.wait_with_output().unwrap();
+    let output_string = String::from_utf8_lossy(&output.stdout);
+    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
 
-    ms.append(&mut reject.clone());
+    // format mistakes
+    ms.append(&mut reject.to_owned());
     ms.sort();
     ms.dedup();
+    ms.retain(|x| !x.is_empty());
     let ms_re: Vec<Regex> = ms
         .iter()
         .map(|w| Regex::new(&(String::new() + r"\b" + w + r"\b")).unwrap())
@@ -140,13 +154,12 @@ fn spell_check_get_mistakes(
     // format mistakes as (line number, mistake words, line from file)
     let mut mistakes: Vec<(usize, Vec<String>, String)> = vec![];
     let lines: Vec<&str> = file.lines().collect();
-    for i in 0..lines.len() {
-        let l = lines[i];
+    for (i, l) in lines.iter().enumerate() {
         let words: Vec<String> = (0..ms.len())
             .filter(|&j| ms_re[j].is_match(l))
             .map(|j| ms[j].clone())
             .collect();
-        if !words.is_empty(){
+        if !words.is_empty() {
             mistakes.push((i, words, l.to_string()));
         }
     }
@@ -154,9 +167,21 @@ fn spell_check_get_mistakes(
 }
 
 fn check_accept_are_errors(accept: &Vec<String>) {
-    let mut checker = SpellLauncher::new().aspell().launch().unwrap();
-    let ms = checker.check(&accept.join(" ")).unwrap();
-    let ms: Vec<String> = ms.iter().map(|x| x.misspelled.clone()).collect();
+    let output_tail = Command::new("tail")
+        .args(["-n", "+2", ".spell_accept.tmp"])
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output_aspell = Command::new("aspell")
+        .args(["--home-dir=.", "-t", "list"])
+        .stdin(Stdio::from(output_tail.stdout.unwrap()))
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output = output_aspell.wait_with_output().unwrap();
+    let output_string = String::from_utf8_lossy(&output.stdout);
+    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
+    ms.retain(|x| !x.is_empty());
     for w in accept {
         if !ms.contains(w) {
             println!("{} does not need to be on accept list", w);
@@ -165,12 +190,39 @@ fn check_accept_are_errors(accept: &Vec<String>) {
     assert!(&ms == accept, "Accept list contains unnecessary words.")
 }
 
-fn check_reject_are_ok(reject: &Vec<String>) {
-    let mut checker = SpellLauncher::new().aspell().launch().unwrap();
-    let ms = checker.check(&reject.join(" ")).unwrap();
-    let ms: Vec<String> = ms.iter().map(|x| x.misspelled.clone()).collect();
+fn check_reject_are_ok() {
+    let output_tail = Command::new("tail")
+        .args(["-n", "+2", ".spell_reject.tmp"])
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output_aspell = Command::new("aspell")
+        .args(["--home-dir=.", "-t", "list"])
+        .stdin(Stdio::from(output_tail.stdout.unwrap()))
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+    let output = output_aspell.wait_with_output().unwrap();
+    let output_string = String::from_utf8_lossy(&output.stdout);
+    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
+    ms.retain(|x| !x.is_empty());
     for w in &ms {
         println!("{} does not need to be on reject list", w)
     }
     assert!(ms.is_empty(), "Reject list contains unnecessary words.")
+}
+
+fn write_temp_files(accept: &[String], reject: &[String]) {
+    let spell_accept: String =
+        String::new() + "personal_ws-1.1 en 1000 utf-8\n" + &accept.join("\n");
+    let spell_reject: String =
+        String::new() + "personal_ws-1.1 en 1000 utf-8\n" + &reject.join("\n");
+    fs::write(".spell_accept.tmp", spell_accept).unwrap();
+    fs::write(".spell_reject.tmp", spell_reject).unwrap();
+}
+
+fn clean_up() {
+    fs::remove_file(".spell_file.tmp").unwrap();
+    fs::remove_file(".spell_accept.tmp").unwrap();
+    fs::remove_file(".spell_reject.tmp").unwrap();
 }
