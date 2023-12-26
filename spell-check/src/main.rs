@@ -1,5 +1,3 @@
-
-
 use ispell::SpellLauncher;
 use regex::Regex;
 use std::collections::HashMap;
@@ -8,7 +6,14 @@ use std::fs;
 use std::io;
 use std::path;
 
+// path for wordlist file
 const WORDLIST_PATH: &str = "./wordlist.txt";
+
+// declare colors
+const YELLOW: &str = "\x1b[33m\x1b[1m";
+const GREEN: &str = "\x1b[32m\x1b[1m";
+const RED: &str = "\x1b[31m\x1b[1m";
+const RESET: &str = "\x1b[00m\x1b[0m";
 
 fn main() {
     // get filenames from arguments
@@ -23,18 +28,27 @@ fn main() {
     // read from wordlist and rewrite wordlist file
     let (accept, reject) = read_wordlist();
     rewrite_wordlist(&accept, &reject);
+    check_accept_are_errors(&accept);
+    check_reject_are_ok(&reject);
 
     for filename in filenames {
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
-
-        // check spelling using accept list
         let mistakes = spell_check_get_mistakes(&file, &accept, &reject);
 
-        // check aspell interprets accept list as errors
-        check_accept_are_errors(&accept);
+        // output results
+        if !mistakes.is_empty() {
+            println!("{}", String::new() + YELLOW + filename + RESET);
+            for m in mistakes {
+                print!("{}", String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET);
 
-        // check aspell interprets reject list as ok
-        check_reject_are_ok(&reject);
+                let mut formatted: String = m.2.to_string();
+                for w in m.1 {
+                    let colored_w = String::new() + RED + &w + RESET;
+                    formatted = formatted.replace(&w, &colored_w);
+                }
+                print!("{}\n", &formatted);
+            }
+        }
     }
 }
 
@@ -102,15 +116,19 @@ fn spell_check_get_mistakes(
     file: &str,
     accept: &Vec<String>,
     reject: &Vec<String>,
-) -> Vec<(usize, String, String)> {
+) -> Vec<(usize, Vec<String>, String)> {
+
     // add accept list to aspell
     let mut checker = SpellLauncher::new().aspell().launch().unwrap();
     for w in accept {
         checker.add_word(w).unwrap();
     }
+
     // run aspell to get mistakes
+    // TODO try calling this without using the rust ispell packages
     let ms = checker.check(&file.replace("\n", " ")).unwrap();
     let mut ms: Vec<String> = ms.iter().map(|x| x.misspelled.clone()).collect();
+
     ms.append(&mut reject.clone());
     ms.sort();
     ms.dedup();
@@ -119,19 +137,19 @@ fn spell_check_get_mistakes(
         .map(|w| Regex::new(&(String::new() + r"\b" + w + r"\b")).unwrap())
         .collect();
 
-    // format mistakes as (line number, mistake word, line from file)
-    let mut mistakes: Vec<(usize, String, String)> = vec![];
+    // format mistakes as (line number, mistake words, line from file)
+    let mut mistakes: Vec<(usize, Vec<String>, String)> = vec![];
     let lines: Vec<&str> = file.lines().collect();
     for i in 0..lines.len() {
         let l = lines[i];
-        for j in 0..ms.len() {
-            if ms_re[j].is_match(l) {
-                mistakes.push((i, ms[j].clone(), l.to_string()));
-            }
+        let words: Vec<String> = (0..ms.len())
+            .filter(|&j| ms_re[j].is_match(l))
+            .map(|j| ms[j].clone())
+            .collect();
+        if !words.is_empty(){
+            mistakes.push((i, words, l.to_string()));
         }
     }
-
-    //dbg!(&mistakes);
     mistakes
 }
 
@@ -156,16 +174,3 @@ fn check_reject_are_ok(reject: &Vec<String>) {
     }
     assert!(ms.is_empty(), "Reject list contains unnecessary words.")
 }
-
-//# output results
-//if len(mistakes) > 0:
-//header = "\033[0;33m\033[1m" + check + "\033[00m\033[0m"
-//print(header)
-
-//for m in mistakes:
-//linenum = "\033[0;32m\033[1m" + str(m[0] + 1) + ":\033[00m\033[0m"
-//word = m[1]
-//line = m[2]
-//line = re.sub(word, "\033[0;31m\033[1m" + word + "\033[00m\033[0m", line)
-//print(linenum + " " + line)
-//
