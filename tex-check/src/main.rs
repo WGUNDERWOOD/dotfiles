@@ -6,10 +6,11 @@ use std::fs;
 const MATCH: [&str; 4] = ["error", "warn", "overfull", "underfull"];
 
 // declare non matches
-const NOMATCH: [&str; 3] = [
+const NOMATCH: [&str; 4] = [
     "Package: infwarerr",
     "file:line:error style",
     "pgfplots.errorbars.code.tex",
+    "warning\\$ -- 0",
 ];
 
 // declare colors
