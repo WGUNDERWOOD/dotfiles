@@ -10,8 +10,8 @@ if not os.path.exists("./wordlist.txt"):
     generate_wordlist = input("Generate a new wordlist.txt? [y/n] ")
     if generate_wordlist == "y":
         with open("./wordlist.txt", "w") as f:
-            f.writelines("# whitelist" + "\n\n")
-            f.writelines("# blacklist" + "\n")
+            f.writelines("# accept" + "\n\n")
+            f.writelines("# reject" + "\n")
         print("Generated a new wordlist!")
     else:
         raise FileNotFoundError("Skipping wordlist.txt generation.")
@@ -27,21 +27,21 @@ with open("./wordlist.txt", "r") as f:
 
 # check format of wordlist
 assert len(wordlist) == 2, "Incorrectly formatted wordlist"
-whitelist = wordlist[0].split("\n")
-blacklist = wordlist[1].split("\n")
-assert whitelist[0] == "# whitelist"
-assert blacklist[0] == "# blacklist"
-whitelist = whitelist[1:]
-blacklist = blacklist[1:]
-whitelist = list(filter(None, whitelist))
-blacklist = list(filter(None, blacklist))
+accept = wordlist[0].split("\n")
+reject = wordlist[1].split("\n")
+assert accept[0] == "# accept"
+assert reject[0] == "# reject"
+accept = accept[1:]
+reject = reject[1:]
+accept = list(filter(None, accept))
+reject = list(filter(None, reject))
 
-# check whitelist and blacklist unique
-whitelist = sorted(whitelist, key=str.lower)
-blacklist = sorted(blacklist, key=str.lower)
+# check accept and reject unique
+accept = sorted(accept, key=str.lower)
+reject = sorted(reject, key=str.lower)
 unique_words = dict()
 
-for w in whitelist + blacklist:
+for w in accept + reject:
     if w in unique_words:
         raise ValueError(w + " is duplicated in wordlist")
     else:
@@ -49,78 +49,78 @@ for w in whitelist + blacklist:
 
 # rewrite wordlist
 with open("./wordlist.txt", "w") as f:
-    f.writelines("# whitelist" + "\n")
-    for l in whitelist:
+    f.writelines("# accept" + "\n")
+    for l in accept:
         f.writelines(l + "\n")
     f.writelines("\n")
-    f.writelines("# blacklist" + "\n")
-    for l in blacklist:
+    f.writelines("# reject" + "\n")
+    for l in reject:
         f.writelines(l + "\n")
 
-# write temp whitelist
-with open("./.spell_whitelist.tmp", "w") as f:
+# write temp accept
+with open("./.spell_accept.tmp", "w") as f:
     f.writelines("personal_ws-1.1 en 1000 utf-8" + "\n")
-    for l in whitelist:
+    for l in accept:
         f.writelines(l + "\n")
 
-# write temp blacklist
-with open("./.spell_blacklist.tmp", "w") as f:
+# write temp reject
+with open("./.spell_reject.tmp", "w") as f:
     f.writelines("personal_ws-1.1 en 1000 utf-8" + "\n")
-    for l in blacklist:
+    for l in reject:
         f.writelines(l + "\n")
 
 # write temp check
 cmd = ["cp", check, ".spell_check.tmp"]
 output = subprocess.check_output(cmd)
 
-# aspell with whitelist
-whitelist_mistakes = subprocess.check_output(
+# aspell with accept
+accept_mistakes = subprocess.check_output(
     'bash -c "cat .spell_check.tmp | \
-    aspell --home-dir=. --personal=.spell_whitelist.tmp -t list"',
+    aspell --home-dir=. --personal=.spell_accept.tmp -t list"',
     shell=True)
-whitelist_mistakes = whitelist_mistakes.decode("utf-8").split("\n")
-whitelist_mistakes = list(filter(None, whitelist_mistakes))
-whitelist_mistakes = list(set(whitelist_mistakes))
+accept_mistakes = accept_mistakes.decode("utf-8").split("\n")
+accept_mistakes = list(filter(None, accept_mistakes))
+accept_mistakes = list(set(accept_mistakes))
 
 # format mistakes
 mistakes = []
 with open(check, "r") as f:
     fsplit = f.read().split("\n")
     for l in range(len(fsplit)):
-        for w in whitelist_mistakes + blacklist:
+        for w in accept_mistakes + reject:
             if re.search(r"\b" + w + r"\b", fsplit[l]):
                 mistakes += [[l, w, fsplit[l]]]
 
-# check aspell treats whitelist as errors
-aspell_whitelist_errors = subprocess.check_output(
-    'bash -c "cat .spell_whitelist.tmp | \
+# check aspell treats accept as errors
+aspell_accept_errors = subprocess.check_output(
+    'bash -c "cat .spell_accept.tmp | \
     tail -n +2 | \
     aspell --home-dir=. -t list"',
     shell=True)
-aspell_whitelist_errors = aspell_whitelist_errors.decode("ascii").split("\n")
-aspell_whitelist_errors = list(filter(None, aspell_whitelist_errors))
-assert whitelist == aspell_whitelist_errors, "Whitelist should be treated as errors by aspell"
+aspell_accept_errors = aspell_accept_errors.decode("ascii").split("\n")
+aspell_accept_errors = list(filter(None, aspell_accept_errors))
+assert accept == aspell_accept_errors, "accept should be treated as errors by aspell"
 
-# check aspell treats blacklist as ok
-aspell_blacklist_errors = subprocess.check_output(
-    'bash -c "cat .spell_blacklist.tmp | \
+# check aspell treats reject as ok
+aspell_reject_errors = subprocess.check_output(
+    'bash -c "cat .spell_reject.tmp | \
     tail -n +2 | \
     aspell --home-dir=. -t list"',
     shell=True)
-aspell_blacklist_errors = aspell_blacklist_errors.decode("ascii").split("\n")
-aspell_blacklist_errors = list(filter(None, aspell_blacklist_errors))
-assert aspell_blacklist_errors == [], "Blacklist should be treated as correct by aspell"
+aspell_reject_errors = aspell_reject_errors.decode("ascii").split("\n")
+aspell_reject_errors = list(filter(None, aspell_reject_errors))
+assert aspell_reject_errors == [], "reject should be treated as correct by aspell"
 
 # clean up
 try:
-    os.remove(".spell_whitelist.tmp")
+    os.remove(".spell_accept.tmp")
 except:
-    "No .spell_whitelist.tmp file to clean"
+    "No .spell_accept.tmp file to clean"
 
 try:
-    os.remove(".spell_blacklist.tmp")
+    os.remove(".spell_reject.tmp")
 except:
-    "No .spell_blacklist.tmp file to clean"
+    "No .spell_reject.tmp file to clean"
 
 try:
     os.remove(".spell_check.tmp")

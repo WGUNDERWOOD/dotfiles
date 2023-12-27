@@ -184,7 +184,7 @@ vim.cmd("call matchadd('Todo', 'TODO\\|BUG\\|\\\\TODO', -1)")
 vim.cmd("call matchadd('Done', 'DONE\\|YES', -1)")
 vim.cmd("call matchadd('Now', 'NOW', -1)")
 vim.cmd("call matchadd('Note', 'NOTE\\|BOUGHT\\|ARRIVED\\|CHECK\\|BASKET\\|" ..
-        "WRAPPED\\|MAYBE\\|DRAFT\\|EMAILED', -1)")
+        "WRAPPED\\|MAYBE\\|DRAFT\\|EMAILED\\|PACKED', -1)")
 vim.cmd("call matchadd('Later', 'LATER', -1)")
 vim.cmd("call matchadd('No', 'NO\\s', -1)")
 
