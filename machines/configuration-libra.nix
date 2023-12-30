@@ -90,6 +90,8 @@
     lm_sensors
     bundix
     spotify
+    rustc
+    cargo
     starship
     zathura
     screen
@@ -143,6 +145,7 @@
     sway
     wine
     swaylock
+    (callPackage ../todo-finder/todo-finder.nix { })
   ];
 
   programs.sway.enable = true;
