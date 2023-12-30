@@ -38,6 +38,7 @@ alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 
 alias nixr='sudo nixos-rebuild switch'
 alias nixq='nix-env -qa | fzf'
 alias nixg='nix-store --gc'
+alias nixs='nix-shell'
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'

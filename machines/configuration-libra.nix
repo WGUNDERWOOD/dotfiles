@@ -79,6 +79,8 @@
     diff-so-fancy
     ripgrep
     fzf
+    bundler
+    ruby
     exa
     cava
     fd
