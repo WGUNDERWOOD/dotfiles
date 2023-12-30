@@ -20,6 +20,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.autochdir = true
+vim.g.yankring_clipboard_monitor = 0
 
 -- mappings
 map("n", "<Tab>", "==")
@@ -92,6 +93,20 @@ vim.cmd("set guicursor+=a:blinkwait300-blinkon200-blinkoff150")
 vim.loaded_python3_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
+
+-- toggle colorcolumn
+vim.cmd("hi ColorColumn guibg=#292c3f")
+vim.cmd [[
+    function! ToggleColorColumn ( )
+        if &colorcolumn == ""
+            set colorcolumn=80
+        else
+            set colorcolumn=
+        endif
+    endfunction
+    command ToggleColorColumn call ToggleColorColumn()
+    nnoremap <Space>m :ToggleColorColumn<CR>
+]]
 
 -- git conflicts
 map("n", "gc", "/=======\\|<<<<<<<\\|>>>>>>><CR>")
@@ -197,7 +212,7 @@ require('orgmode').setup({
     org_log_done=false,
     org_indent_mode='noindent',
     org_todo_keywords={'TODO(t)', 'NOTE(n)', 'NOW(w)', 'BUG(b)', 'LATER(l)',
-    'CHECK(c)', 'YES(Y)', 'NO(N)', 'MAYBE(M)', '|', 'DONE(d)'},
+    'CHECK(c)', 'YES(Y)', 'NO(O)', 'MAYBE(M)', '|', 'DONE(d)'},
     org_blank_before_new_entry = {
         heading = false,
         plain_list_item = false,

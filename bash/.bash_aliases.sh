@@ -37,6 +37,7 @@ alias rcps='rcgdps && rcgdpps && rcdbpps'
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 alias nixr='sudo nixos-rebuild switch'
 alias nixq='nix-env -qa | fzf'
+alias nixg='nix-store --gc'
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'

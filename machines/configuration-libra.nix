@@ -55,6 +55,11 @@
     xkbVariant = "";
   };
 
+  # environment variables
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "0";
+  };
+
   # packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -126,6 +131,7 @@
                           pyperclip
                           unidecode
                           colorama
+                          # TODO remove some of these now
     ]))
     imagemagick
     gimp
@@ -145,6 +151,7 @@
     sway
     wine
     swaylock
+    #numbat # TODO needs newer channel
     (callPackage ../todo-finder/todo-finder.nix { })
   ];
 
