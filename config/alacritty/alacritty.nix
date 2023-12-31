@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, osConfig, ...}: {
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
 
@@ -7,7 +7,7 @@
 
     font = {
       normal.family = "Source Code Pro";
-      size = 12.0;
+      size = (if osConfig.networking.hostName == "libra" then 12.0 else 14.0);
     };
 
     cursor.style = {
