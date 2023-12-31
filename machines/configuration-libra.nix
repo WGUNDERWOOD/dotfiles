@@ -82,7 +82,6 @@
     bundler
     ruby
     exa
-    cava
     fd
     bottom
     neomutt
@@ -189,7 +188,6 @@
       ../alacritty/alacritty.nix
       ../neovim/neovim.nix
       ../starship/starship.nix
-      ../cava/cava.nix
       ../latex/latex.nix
       ../mime/mime.nix
       ../ripgrep/ripgrep.nix
