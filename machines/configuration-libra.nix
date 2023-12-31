@@ -152,6 +152,7 @@
     ranger
     vlc
     zip
+    unzip
     sway
     wine
     swaylock
