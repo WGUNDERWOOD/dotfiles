@@ -1,0 +1,6 @@
+# accept
+integrably
+nondecreasing
+
+# reject
+bad

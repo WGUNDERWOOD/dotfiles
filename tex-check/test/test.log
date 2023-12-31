@@ -1,0 +1,9 @@
+here is an error
+we can ignore this line as no issues
+here is a warning or even warn which we want to log
+this line is fine
+this line has Package: infwarerr which we safely ignore
+this line has pgfplots.errorbars.code.tex which we also ignore
+this line has file:line:error style which we can ignore
+here is an uppercase ERROR
+and a mixed case WaRniNG
