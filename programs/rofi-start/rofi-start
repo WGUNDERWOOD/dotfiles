@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# TODO simplify this
+
 cwd=$(echo $(dirname $0))
 
 # Use rofi_tasks.json as default, otherwise use incoming path

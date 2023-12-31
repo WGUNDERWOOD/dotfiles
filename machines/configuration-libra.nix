@@ -156,10 +156,10 @@
     wine
     swaylock
     #numbat # TODO needs newer channel
-    (callPackage ../todo-finder/todo-finder.nix { })
-    (callPackage ../spell-check/spell-check.nix { })
-    (callPackage ../tex-check/tex-check.nix { })
-    (callPackage ../long-lines/long-lines.nix { })
+    (callPackage ../programs/todo-finder/todo-finder.nix { })
+    (callPackage ../programs/spell-check/spell-check.nix { })
+    (callPackage ../programs/tex-check/tex-check.nix { })
+    (callPackage ../programs/long-lines/long-lines.nix { })
   ];
 
   programs.sway.enable = true;
@@ -184,24 +184,24 @@
   home-manager.users.will = { pkgs, ... }: {
     imports = [
       ../bash/bash.nix
-      ../systemd/systemd.nix
-      ../alacritty/alacritty.nix
-      ../neovim/neovim.nix
-      ../starship/starship.nix
+      ../config/systemd/systemd.nix
+      ../config/alacritty/alacritty.nix
+      ../config/neovim/neovim.nix
+      ../config/starship/starship.nix
       ../latex/latex.nix
-      ../mime/mime.nix
-      ../ripgrep/ripgrep.nix
+      ../config/mime/mime.nix
+      ../config/ripgrep/ripgrep.nix
       ../rclone/rclone.nix
       ../sway/sway.nix
-      ../waybar/waybar.nix
-      ../neomutt/neomutt.nix
+      ../config/waybar/waybar.nix
+      ../config/neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
-      ../mbsync/mbsync.nix
-      ../zathura/zathura.nix
-      ../feh/feh.nix
-      ../rofi/rofi.nix
+      ../config/mbsync/mbsync.nix
+      ../config/zathura/zathura.nix
+      ../config/feh/feh.nix
+      ../config/rofi/rofi.nix
       ../git/git.nix
-      ../vivid/vivid.nix
+      ../config/vivid/vivid.nix
     ];
 
     home.stateVersion = "23.05";
