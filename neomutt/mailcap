@@ -2,7 +2,6 @@
 
 # text
 text/plain; less %s
-#text/html; vimb %s &; nametemplate=%s.html; test=test -n "$DISPLAY"; needsterminal;
 text/html; firefox --new-window %s > /dev/null 2>&1 &; nametemplate=%s.html; test=test -n "$DISPLAY"; needsterminal;
 text/html; lynx -width=500 -dump %s; nametemplate=%s.html; copiousoutput
 

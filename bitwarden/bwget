@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+PWFILE="$HOME/tmp/bw/$1"
+mkdir -p $(dirname $PWFILE)
+
+# if password exists then read it
+if [[ -e $PWFILE ]]; then
+    cat $PWFILE
+else
+    PW=$(bw get password $1)
+    if [ $? == 0 ]; then
+        echo $PW > $PWFILE
+        cat $PWFILE
+    fi
+fi

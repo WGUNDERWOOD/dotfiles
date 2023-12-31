@@ -1,0 +1,51 @@
+# general settings
+############################################################
+# TODO remove emails and passwords before adding to nix!
+Create Near
+SyncState *
+
+# gmail
+############################################################
+IMAPAccount gmail
+SSLType IMAPS
+Host imap.gmail.com
+UserCmd "bwget neomutt_gmail_email"
+PassCmd "bwget neomutt_gmail_password"
+
+IMAPStore gmail-far
+Account gmail
+
+MaildirStore gmail-near
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/INBOX/
+SubFolders Verbatim
+
+Channel gmail
+Far :gmail-far:
+Near :gmail-near:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important" !"[Gmail]/Starred"
+Expunge None
+CopyArrivalDate yes
+
+# gmail
+############################################################
+IMAPAccount princeton
+SSLType IMAPS
+Host imap.gmail.com
+UserCmd "bwget neomutt_princeton_email"
+PassCmd "bwget neomutt_princeton_password"
+
+IMAPStore princeton-far
+Account princeton
+
+MaildirStore princeton-near
+Path ~/mail/princeton/
+Inbox ~/mail/princeton/INBOX/
+SubFolders Verbatim
+
+Channel princeton
+Far :princeton-far:
+Near :princeton-near:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important" !"[Gmail]/Starred"
+Expunge None
+CopyArrivalDate yes
