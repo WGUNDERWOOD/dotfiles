@@ -35,10 +35,10 @@ alias rcpl='rcgdpl && rcgdppl && rcdbppl'
 alias rcps='rcgdps && rcgdpps && rcdbpps'
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
-alias nixr='sudo nixos-rebuild switch'
-alias nixq='nix-env -qa | fzf'
-alias nixg='nix-store --gc'
-alias nixs='nix-shell'
+alias nxr='sudo nixos-rebuild switch'
+alias nxq='nix-env -qa | fzf'
+alias nxg='nix-store --gc'
+alias nxs='nix-shell'
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'
@@ -97,3 +97,8 @@ alias cdnot='cd ~/github/notes/'
 #alias cdnot='cd ~/odrive/Google\ Drive/Notes'
 #alias cdtr='cd ~/odrive/Google\ Drive/Travel'
 #alias cdsco='cd ~/Documents/github/music-scores/'
+
+# alias completion
+source $(which complete_alias)
+complete -F _complete_alias g
+complete -F _complete_alias bm

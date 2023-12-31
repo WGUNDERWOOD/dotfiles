@@ -124,6 +124,8 @@
     diffpdf
     watchexec
     phinger-cursors
+    bash-completion
+    complete-alias
     julia
     playerctl
     gammastep
@@ -133,7 +135,7 @@
                           pyperclip
                           unidecode
                           colorama
-                          # TODO remove some of these now
+                          # TODO can probably remove some of these now
     ]))
     imagemagick
     gimp
@@ -155,6 +157,9 @@
     swaylock
     #numbat # TODO needs newer channel
     (callPackage ../todo-finder/todo-finder.nix { })
+    (callPackage ../spell-check/spell-check.nix { })
+    (callPackage ../tex-check/tex-check.nix { })
+    (callPackage ../long-lines/long-lines.nix { })
   ];
 
   programs.sway.enable = true;
