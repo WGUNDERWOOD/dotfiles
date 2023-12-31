@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+import os.path
+import subprocess
+import re
+import sys
+
+match = [
+        "error",
+        "warn",
+        "overfull",
+        "underfull",
+        ]
+
+nomatch = [
+        "Package: infwarerr",
+        "warning\$ -- 0",
+        "file:line:error style",
+        "pgfplots.errorbars.code.tex",
+        ]
+
+# check correct format
+check = sys.argv[1]
+if not check.endswith((".log", ".blg")):
+    raise ValueError("File is wrong format")
+
+# check file exists
+if not os.path.exists(check):
+    raise FileNotFoundError("File to check does not exist")
+
+# read file
+warnings = []
+with open(check, "r") as f:
+    imax = 0
+    ls = f.read().splitlines()
+
+# check for matches
+for i in range(len(ls)):
+    l = ls[i]
+    for w in match:
+        if re.search(w, l, re.IGNORECASE):
+            if i > imax:
+                warnings += [[i, l]]
+                imax = i
+
+# remove non-matches
+new_warnings = warnings.copy()
+for i in range(len(warnings)):
+    w = warnings[i]
+    for v in nomatch:
+        if re.search(v, w[1]):
+            new_warnings[i] = None
+
+warnings = [w for w in new_warnings if w is not None]
+
+# output results
+if len(warnings) > 0:
+    header = "\033[0;33m\033[1m" + check + "\033[00m\033[0m"
+    print(header)
+
+for w in warnings:
+    linenum = "\033[0;32m\033[1m" + str(w[0] + 1) + ":\033[00m\033[0m"
+    line = "\033[0;31m\033[1m" + w[1] + "\033[00m\033[0m"
+    print(linenum + " " + line)

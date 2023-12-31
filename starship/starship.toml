@@ -79,6 +79,9 @@ min_time = 1
 [time]
 disabled = true
 
+[nix_shell]
+format = '[nix](bold #7bb9ed) '
+
 [status]
 disabled = false
 format = "[$status( $common_meaning)( $signal_name)](bold #ff7722) "

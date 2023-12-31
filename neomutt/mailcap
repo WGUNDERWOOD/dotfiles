@@ -10,7 +10,7 @@ application/pdf; zathura %s > /dev/null 2>&1 &
 application/octet-stream; zathura %s > /dev/null 2>&1 &
 
 # image
-image/*; vimiv %s > /dev/null 2>&1 &
+image/*; feh %s > /dev/null 2>&1 &
 
 # docs
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s > /dev/null 2>&1 &

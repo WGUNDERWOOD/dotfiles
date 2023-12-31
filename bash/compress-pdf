@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# TODO detect no inputs and warn
+
+# colors
+RED='\033[1;31m'
+YELLOW='\033[1;33m'
+PURPLE='\033[1;34m'
+PINK='\033[1;35m'
+GREEN='\033[1;32m'
+RESET='\033[0m'
+
+# get quality level from flags
+quality='perfect'
+while getopts 'hl' flag; do
+    case "${flag}" in
+        h) quality='high' ;;
+        l) quality='low' ;;
+        *) exit 1 ;;
+    esac
+done
+
+# get file to process
+shift $(($OPTIND - 1))
+infile="$*"
+
+# error if not a pdf
+if [ "${infile: -4}" != ".pdf" ]; then
+    printf "${PURPLE}${infile} ${RED}is not a pdf${RESET}\n"
+    exit 1
+fi
+
+# make temporary working directory
+tempdir=$(mktemp -d)
+infilebase="$(basename "$infile" .pdf)"
+tempfile="${tempdir}/${infilebase}_cmp.pdf"
+outfile="$infilebase"_cmp.pdf
+insize=$(stat -c "%s" "${infile}")
+insizeh=$(du -h "${infile}" | cut -f -1)
+printf "${YELLOW}Compressing: ${PURPLE}$infile${RESET}\n"
+printf "${YELLOW}Quality: ${PURPLE}$quality${RESET}\n"
+printf "${YELLOW}Initial size: ${PINK}$insizeh${RESET}\n"
+
+# perfect quality optimization
+optimize_perfect() {
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+        -dDetectDuplicateImages -dCompressFonts=true \
+        -sOutputFile="${tempfile}" "${infile}"
+}
+
+# high quality optimization
+optimize_high() {
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+        -dDetectDuplicateImages -dCompressFonts=true \
+        -dPDFSETTINGS=/ebook \
+        -sOutputFile="${tempfile}" "${infile}"
+}
+
+# low quality optimization
+optimize_low() {
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+        -dDetectDuplicateImages -dCompressFonts=true \
+        -dPDFSETTINGS=/screen \
+        -sOutputFile="${tempfile}" "${infile}"
+}
+
+# run the selected optimizer
+case $quality in
+  perfect) optimize_perfect ;;
+  high) optimize_perfect ;;
+  low) optimize_high ;;
+esac
+
+# get new size
+tempsize=$(stat -c "%s" "${tempfile}")
+tempsizeh=$(du -h "${tempfile}" | cut -f -1)
+
+# handle new size
+if [ "${tempsize}" -eq 0 ]; then
+    echo "No output, keeping original"
+    printf "${RED}No output, keeping original${RESET}\n"
+    exit 1;
+fi
+if [ ${tempsize} -ge ${insize} ]; then
+    printf "${YELLOW}Final size: ${RED}$tempsizeh${RESET}\n"
+    printf "${RED}Didn't make smaller, keeping original${RESET}\n"
+    exit 1;
+else
+    reduction=$(expr $tempsize '*' 100 / $insize)
+    printf "${YELLOW}Final size: ${GREEN}$tempsizeh ($reduction%%)${RESET}\n"
+    cp "$tempfile" "$outfile"
+    printf "${YELLOW}New file: ${GREEN}$outfile${RESET}\n"
+fi
+
+# clean up
+rm -r $tempdir
+exit 0

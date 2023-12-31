@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+GITDIRS="$HOME/github/ $HOME/overleaf/"
+
+find $GITDIRS -maxdepth 1 -mindepth 1 -type d -exec bash -c \
+    'cd {} &&
+    [ -d .git/ ] &&
+    [[ -n $(git status -s) ]] &&
+    echo -e "\e[0;31m\033[1m$(pwd)\e[0;30m\033[0m"' \
+    \;

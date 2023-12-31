@@ -9,8 +9,6 @@ bind -m vi-command 'Control-p: history-search-backward'
 bind -m vi-insert 'Control-p: history-search-backward'
 bind -m vi-command 'Control-n: history-search-forward'
 bind -m vi-insert 'Control-n: history-search-forward'
-## TODO git autocompletion
-#__git_complete g __git_main
 
 # directories
 mkdir -p ~/mail/gmail/
@@ -21,6 +19,9 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 
 # history
 HISTCONTROL=ignoreboth
+PROMPT_COMMAND='history -a'
+source "$(fzf-share)/key-bindings.bash"
+source "$(fzf-share)/completion.bash"
 
 # colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -31,7 +32,6 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 export LS_COLORS="$(vivid generate dracula)"
-export XCURSOR_SIZE="32"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:
     caret=01;32:locus=01:quote=01'
 export FZF_DEFAULT_OPTS='--color=fg:#dddddd,bg:#181a26,hl:#bd93f9

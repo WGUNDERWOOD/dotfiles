@@ -55,6 +55,11 @@
     xkbVariant = "";
   };
 
+  # environment variables
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "0";
+  };
+
   # packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -69,13 +74,15 @@
     wayland
     waybar
     aspell
+    aspellDicts.en
     bat
     diff-so-fancy
     ripgrep
     fzf
+    bundler
+    ruby
     exa
     cava
-    killall
     fd
     bottom
     neomutt
@@ -83,17 +90,33 @@
     gnumake
     source-code-pro
     nix-tree
+    tree-sitter
+    nodejs-slim
+    gcc
+    todoist
+    lm_sensors
+    bundix
     spotify
+    rustc
+    cargo
     starship
     zathura
+    screen
+    lame
+    file
+    rofi-wayland
     procs
+    procps
     du-dust
     texlive.combined.scheme-full
+    jq
+    nix-index
     bitwarden-cli
     inkscape
     rclone
     lutris
     tldr
+    hyperfine
     goobook
     zoom-us
     steam
@@ -101,18 +124,27 @@
     diffpdf
     watchexec
     phinger-cursors
+    bash-completion
+    complete-alias
     julia
+    playerctl
     gammastep
-    python3
+    (python3.withPackages(ps: with ps; [
+                          matplotlib
+                          habanero
+                          pyperclip
+                          unidecode
+                          colorama
+                          # TODO can probably remove some of these now
+    ]))
     imagemagick
     gimp
     lynx
     ocrmypdf
     pandoc
     pdftk
-    neofetch
     libreoffice
-    vimiv-qt
+    feh
     pplatex
     grim
     vivid
@@ -120,10 +152,15 @@
     ranger
     vlc
     zip
-    handlr
-    eww-wayland
+    unzip
     sway
+    wine
     swaylock
+    #numbat # TODO needs newer channel
+    (callPackage ../todo-finder/todo-finder.nix { })
+    (callPackage ../spell-check/spell-check.nix { })
+    (callPackage ../tex-check/tex-check.nix { })
+    (callPackage ../long-lines/long-lines.nix { })
   ];
 
   programs.sway.enable = true;
@@ -133,15 +170,7 @@
     defaultEditor = true;
   };
   security.pam.services.swaylock.text = "auth include login";
-
   services.dbus.enable = true;
-  xdg.portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
-      ];
-  };
 
   # user
   users.users.will = {
@@ -166,8 +195,15 @@
       ../ripgrep/ripgrep.nix
       ../rclone/rclone.nix
       ../sway/sway.nix
+      ../waybar/waybar.nix
       ../neomutt/neomutt.nix
       ../bitwarden/bitwarden.nix
+      ../mbsync/mbsync.nix
+      ../zathura/zathura.nix
+      ../feh/feh.nix
+      ../rofi/rofi.nix
+      ../git/git.nix
+      ../vivid/vivid.nix
     ];
 
     home.stateVersion = "23.05";
