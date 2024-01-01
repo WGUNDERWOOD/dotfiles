@@ -1,4 +1,5 @@
 # TODO decide where this file should live in repo
+# TODO tidy all of this file
 
 { config, pkgs, ... }:
 
@@ -14,8 +15,11 @@
 
   # video and sound
   hardware.opengl.driSupport32Bit = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
+  services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+  };
 
   # greeter
   services.greetd = {
@@ -48,7 +52,18 @@
   };
 
   # fonts
-  fonts.fonts = with pkgs; [ source-code-pro ];
+  fonts.fonts = with pkgs; [
+      source-code-pro
+      fira
+  ];
+
+  # screen sharing
+  xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+  };
+
 
   # keymap
   services.xserver = {
@@ -65,7 +80,6 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
-
   environment.systemPackages =
       let
       commonPackages = with pkgs; [
@@ -75,6 +89,7 @@
           git
           home-manager
           firefox-bin
+          pulseaudio
           wayland
           waybar
           aspell
