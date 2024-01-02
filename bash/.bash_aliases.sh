@@ -23,6 +23,7 @@ alias bm='btm'
 alias cava='cava -p ~/cava.conf'
 alias fp='fd_git'
 alias rp='rg_git'
+alias cpdf='compress-pdf'
 li() { command libreoffice "$@" & }
 alias rcgdpl='rclone_google_drive_pull.sh'
 alias rcgdps='rclone_google_drive_push.sh'
