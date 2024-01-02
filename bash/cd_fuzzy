@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-file=$(find $HOME -type f -print | fzf --tac)
-dir=$(dirname "$file")
-echo "$dir"
-[[ -n "$file" ]] && cd "$dir"

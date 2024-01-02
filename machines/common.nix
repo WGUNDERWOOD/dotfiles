@@ -52,9 +52,10 @@
   };
 
   # fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
       source-code-pro
       fira
+      libre-baskerville
   ];
 
   # screen sharing
@@ -89,6 +90,8 @@
           git
           home-manager
           firefox-bin
+          ghostscript
+          fdupes
           pulseaudio
           wayland
           waybar
@@ -100,7 +103,7 @@
           fzf
           bundler
           ruby
-          exa
+          eza
           fd
           bottom
           neomutt
@@ -136,7 +139,6 @@
           tldr
           hyperfine
           goobook
-          zoom-us
           steam
           pavucontrol
           diffpdf
@@ -179,6 +181,7 @@
           (callPackage ../programs/spell-check/spell-check.nix { })
           (callPackage ../programs/tex-check/tex-check.nix { })
           (callPackage ../programs/long-lines/long-lines.nix { })
+          (callPackage ../programs/cd-fuzzy.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages
@@ -195,6 +198,7 @@
     enable = true;
     defaultEditor = true;
   };
+
   security.pam.services.swaylock.text = "auth include login";
   services.dbus.enable = true;
 
@@ -231,10 +235,10 @@
       ../config/vivid/vivid.nix
     ];
 
+    # original release: do not edit
     home.stateVersion = "23.05";
   };
 
-
-  # release: do not edit without reading documentation
+  # original release: do not edit
   system.stateVersion = "23.05";
 }

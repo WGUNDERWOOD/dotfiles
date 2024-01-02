@@ -21,7 +21,6 @@ z() { command zathura "$@" & }
 alias bibd='bibtex-download'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
-alias cf='source ~/scripts/cd_fuzzy'
 alias fp='fd_git'
 alias rp='rg_git'
 li() { command libreoffice "$@" & }

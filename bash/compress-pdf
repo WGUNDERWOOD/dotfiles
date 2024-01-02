@@ -33,7 +33,7 @@ fi
 tempdir=$(mktemp -d)
 infilebase="$(basename "$infile" .pdf)"
 tempfile="${tempdir}/${infilebase}_cmp.pdf"
-outfile="$infilebase"_cmp.pdf
+outfile="$infilebase".pdf
 insize=$(stat -c "%s" "${infile}")
 insizeh=$(du -h "${infile}" | cut -f -1)
 printf "${YELLOW}Compressing: ${PURPLE}$infile${RESET}\n"
@@ -78,12 +78,10 @@ tempsizeh=$(du -h "${tempfile}" | cut -f -1)
 if [ "${tempsize}" -eq 0 ]; then
     echo "No output, keeping original"
     printf "${RED}No output, keeping original${RESET}\n"
-    exit 1;
 fi
 if [ ${tempsize} -ge ${insize} ]; then
     printf "${YELLOW}Final size: ${RED}$tempsizeh${RESET}\n"
     printf "${RED}Didn't make smaller, keeping original${RESET}\n"
-    exit 1;
 else
     reduction=$(expr $tempsize '*' 100 / $insize)
     printf "${YELLOW}Final size: ${GREEN}$tempsizeh ($reduction%%)${RESET}\n"

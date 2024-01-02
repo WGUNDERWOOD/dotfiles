@@ -10,6 +10,21 @@
         name = "phinger-cursors";
     };
 
+    services.swayidle = {
+        enable = true;
+        timeouts = [
+        {
+            timeout = 1800;
+            command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+        {
+            timeout = 2400;
+            command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
+            resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+        }
+        ];
+    };
+
     wayland.windowManager.sway = {
 
         enable = true;
@@ -26,8 +41,8 @@
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
                 "${modifier}+d" = "exec $HOME/scripts/rofi-start";
-                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f --config $HOME/.config/swaylock/config && systemctl suspend\"";
-                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f --config $HOME/.config/swaylock/config\"";
+                "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f && systemctl suspend\"";
+                "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f\"";
                 "${modifier}+p" = "kill";
                 "${modifier}+Shift+h" = "move left";
                 "${modifier}+Shift+j" = "move down";
