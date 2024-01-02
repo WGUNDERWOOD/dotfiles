@@ -176,12 +176,13 @@
           sway
           wine
           swaylock
-          #numbat # TODO needs newer channel
+          numbat
           (callPackage ../programs/todo-finder/todo-finder.nix { })
           (callPackage ../programs/spell-check/spell-check.nix { })
           (callPackage ../programs/tex-check/tex-check.nix { })
           (callPackage ../programs/long-lines/long-lines.nix { })
           (callPackage ../programs/cd-fuzzy.nix { })
+          (callPackage ../programs/compress-pdf/compress-pdf.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages

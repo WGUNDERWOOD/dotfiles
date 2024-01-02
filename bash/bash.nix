@@ -6,7 +6,6 @@
     home.file."scripts/feh_fuzzy".source = ./feh_fuzzy;
     home.file."scripts/fd_git".source = ./fd_git;
     home.file."scripts/rg_git".source = ./rg_git;
-    home.file."scripts/compress-pdf".source = ./compress-pdf;
 
     programs.bash = {
         enable = true;

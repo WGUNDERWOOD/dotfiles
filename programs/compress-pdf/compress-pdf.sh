@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
 # TODO detect no inputs and warn
+# TODO handle multiple inputs
+# TODO output one line per file
 
 # colors
 RED='\033[1;31m'
@@ -20,12 +21,18 @@ while getopts 'hl' flag; do
 done
 
 # get file to process
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 infile="$*"
+
+# error if no file provided
+if [ "$infile" == "" ]; then
+    printf "%bno input file specified%b\n" "$RED" "$RESET"
+    exit 1
+fi
 
 # error if not a pdf
 if [ "${infile: -4}" != ".pdf" ]; then
-    printf "${PURPLE}${infile} ${RED}is not a pdf${RESET}\n"
+    printf "%b%s %bis not a pdf%b\n" "$PURPLE" "$infile" "$RED" "$RESET"
     exit 1
 fi
 
@@ -36,9 +43,9 @@ tempfile="${tempdir}/${infilebase}_cmp.pdf"
 outfile="$infilebase".pdf
 insize=$(stat -c "%s" "${infile}")
 insizeh=$(du -h "${infile}" | cut -f -1)
-printf "${YELLOW}Compressing: ${PURPLE}$infile${RESET}\n"
-printf "${YELLOW}Quality: ${PURPLE}$quality${RESET}\n"
-printf "${YELLOW}Initial size: ${PINK}$insizeh${RESET}\n"
+printf "%bCompressing: %b%s%b\n" "$YELLOW" "$PURPLE" "$infile" "$RESET"
+printf "%bQuality: %b%s%b\n" "$YELLOW" "$PURPLE" "$quality" "$RESET"
+printf "%bInitial size: %b%s%b\n" "$YELLOW" "$PINK" "$insizeh" "$RESET"
 
 # perfect quality optimization
 optimize_perfect() {
@@ -66,8 +73,8 @@ optimize_low() {
 # run the selected optimizer
 case $quality in
   perfect) optimize_perfect ;;
-  high) optimize_perfect ;;
-  low) optimize_high ;;
+  high) optimize_high ;;
+  low) optimize_low ;;
 esac
 
 # get new size
@@ -75,20 +82,20 @@ tempsize=$(stat -c "%s" "${tempfile}")
 tempsizeh=$(du -h "${tempfile}" | cut -f -1)
 
 # handle new size
-if [ "${tempsize}" -eq 0 ]; then
+if [ "$tempsize" -eq 0 ]; then
     echo "No output, keeping original"
-    printf "${RED}No output, keeping original${RESET}\n"
+    printf "%bNo output, keeping original%b\n" "$RED" "$RESET"
 fi
-if [ ${tempsize} -ge ${insize} ]; then
-    printf "${YELLOW}Final size: ${RED}$tempsizeh${RESET}\n"
-    printf "${RED}Didn't make smaller, keeping original${RESET}\n"
+if [ "$tempsize" -ge "$insize" ]; then
+    printf "%bFinal size: %b%s%b\n" "$YELLOW" "$RED" "$tempsizeh" "$RESET"
+    printf "%bDidn't make smaller, keeping original%b\n" "$RED" "$RESET"
 else
-    reduction=$(expr $tempsize '*' 100 / $insize)
-    printf "${YELLOW}Final size: ${GREEN}$tempsizeh ($reduction%%)${RESET}\n"
+    percentage=$(("$tempsize" * 100 / "$insize"))
+    printf "%bFinal size: %b%s (%s%%)%b\n" "$YELLOW" "$GREEN" "$tempsizeh" "$percentage" "$RESET"
     cp "$tempfile" "$outfile"
-    printf "${YELLOW}New file: ${GREEN}$outfile${RESET}\n"
+    printf "%bNew file: %b%s%b\n" "$YELLOW" "$GREEN" "$outfile" "$RESET"
 fi
 
 # clean up
-rm -r $tempdir
+rm -r "$tempdir"
 exit 0
