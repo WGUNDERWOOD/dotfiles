@@ -81,6 +81,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
+  # TODO pull these out into their own files
   environment.systemPackages =
       let
       commonPackages = with pkgs; [
@@ -149,14 +150,7 @@
           julia
           playerctl
           gammastep
-          (python3.withPackages(ps: with ps; [
-                                matplotlib
-                                habanero
-                                pyperclip
-                                unidecode
-                                colorama
-                                # TODO remove after packaging python scripts
-          ]))
+          (python3.withPackages(ps: with ps; [ ]))
           imagemagick
           gimp
           lynx
@@ -188,6 +182,9 @@
           (callPackage ../programs/compress-pdf/compress-pdf.nix { })
           (callPackage ../programs/bw-get.nix { })
           (callPackage ../programs/repos.nix { })
+          (callPackage ../programs/tex-clean.nix { })
+          (callPackage ../programs/latexindent-fast.nix { })
+          (callPackage ../programs/bib-down/bib-down.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages

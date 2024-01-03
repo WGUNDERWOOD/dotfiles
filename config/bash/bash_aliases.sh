@@ -18,13 +18,14 @@ alias g='git'
 alias m='(cd ~/downloads; neomutt)'
 alias n='nvim'
 z() { command zathura "$@" & }
-alias bibd='bibtex-download'
+alias bbd='bib-down'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
 fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
 rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
 alias cpdf='compress-pdf'
 li() { command libreoffice "$@" & }
+tex-labels() { command grep -o -e "\\\label{[^}]*}" "$@" | grep --color -P "(?<={)[^}]*(?=})"; }
 alias rcgdpl='rclone_google_drive_pull.sh'
 alias rcgdps='rclone_google_drive_push.sh'
 alias rcgdppl='rclone_google_drive_princeton_pull.sh'
@@ -35,11 +36,14 @@ alias rcpl='rcgdpl && rcgdppl && rcdbppl'
 alias rcps='rcgdps && rcgdpps && rcdbpps'
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
+
+# nix
 alias nxr='sudo nixos-rebuild switch'
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-store --gc'
 alias nxs='nix-shell'
 nxp() { ls -l "$(which "$@")"; }
+nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'

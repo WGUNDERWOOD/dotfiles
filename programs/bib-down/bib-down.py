@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# TODO split the resulting text into multiple lines
 
 import sys
 from habanero import Crossref, cn
