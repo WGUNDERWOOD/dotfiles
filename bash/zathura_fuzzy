@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-file=$(find $HOME -type f -name '*.pdf' -print | fzf --tac)
-echo $file
-[[ -n "$file" ]] && screen -d -m zathura "$file" && sleep 0.1

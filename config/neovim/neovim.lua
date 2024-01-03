@@ -343,7 +343,7 @@ vim.cmd [[
 vim.cmd [[
     function! CheckSpellingUnderCursor ( )
         let word = expand("<cword>")
-        let check = system("spell_check_word '" . word . "'")
+        let check = system("spell-check-word '" . word . "'")
         echom check
     endfunction
     command CheckSpellingUnderCursor call CheckSpellingUnderCursor()

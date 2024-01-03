@@ -182,7 +182,12 @@
           (callPackage ../programs/tex-check/tex-check.nix { })
           (callPackage ../programs/long-lines/long-lines.nix { })
           (callPackage ../programs/cd-fuzzy.nix { })
+          (callPackage ../programs/feh-fuzzy.nix { })
+          (callPackage ../programs/zathura-fuzzy.nix { })
+          (callPackage ../programs/spell-check-word.nix { })
           (callPackage ../programs/compress-pdf/compress-pdf.nix { })
+          (callPackage ../programs/bw-get.nix { })
+          (callPackage ../programs/repos.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages
@@ -215,7 +220,7 @@
   # home
   home-manager.users.will = { pkgs, osConfig, ... }: {
     imports = [
-      ../bash/bash.nix
+      ../config/bash/bash.nix
       ../config/systemd/systemd.nix
       ../config/alacritty/alacritty.nix
       ../config/neovim/neovim.nix
@@ -227,12 +232,11 @@
       ../sway/sway.nix
       ../config/waybar/waybar.nix
       ../config/neomutt/neomutt.nix
-      ../bitwarden/bitwarden.nix
       ../config/mbsync/mbsync.nix
       ../config/zathura/zathura.nix
       ../config/feh/feh.nix
       ../config/rofi/rofi.nix
-      ../git/git.nix
+      ../config/git/git.nix
       ../config/vivid/vivid.nix
     ];
 

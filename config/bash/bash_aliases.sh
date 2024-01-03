@@ -21,8 +21,8 @@ z() { command zathura "$@" & }
 alias bibd='bibtex-download'
 alias bm='btm'
 alias cava='cava -p ~/cava.conf'
-alias fp='fd_git'
-alias rp='rg_git'
+fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
+rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
 alias cpdf='compress-pdf'
 li() { command libreoffice "$@" & }
 alias rcgdpl='rclone_google_drive_pull.sh'
@@ -39,6 +39,7 @@ alias nxr='sudo nixos-rebuild switch'
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-store --gc'
 alias nxs='nix-shell'
+nxp() { ls -l "$(which "$@")"; }
 
 # shortcuts
 alias psgrep='ps -aux | grep -v "grep" | grep'

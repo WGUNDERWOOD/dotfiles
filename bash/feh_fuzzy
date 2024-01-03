@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-file=$(find $HOME -type f \
-    \( -name '*.png' -or -name '*.svg' -or -name '*.jpg' -or -name '*.jpeg' \) \
-    -print | fzf --tac)
-
-echo $file
-[[ -n "$file" ]] && screen -d -m feh "$file" && sleep 0.1
