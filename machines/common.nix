@@ -164,6 +164,8 @@
           vivid
           slurp
           ranger
+          poppler_utils
+          pngquant
           vlc
           zip
           unzip

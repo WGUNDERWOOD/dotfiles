@@ -1,3 +1,7 @@
+#!usr/bin/env bash
+
+# TODO allow multiple runs
+
 # colors
 RED='\033[1;31m'
 YELLOW='\033[1;33m'

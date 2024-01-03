@@ -20,6 +20,7 @@ alias n='nvim'
 z() { command zathura "$@" & }
 alias bbd='bib-down'
 alias bm='btm'
+alias no='nvim notes.org'
 alias cava='cava -p ~/cava.conf'
 fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
 rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
