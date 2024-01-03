@@ -38,7 +38,7 @@
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";
                 "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
-                "${modifier}+d" = "exec $HOME/scripts/rofi-start";
+                "${modifier}+d" = "exec rofi-start";
                 "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f && systemctl suspend\"";
                 "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f\"";
                 "${modifier}+p" = "kill";

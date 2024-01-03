@@ -188,6 +188,7 @@
           (callPackage ../programs/gammatoggle.nix { })
           (callPackage ../programs/sway-empty/sway-empty.nix { })
           (callPackage ../programs/rclone-sync/rclone-sync.nix { })
+          (callPackage ../programs/rofi-start/rofi-start.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages
