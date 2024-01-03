@@ -150,7 +150,7 @@
           julia
           playerctl
           gammastep
-          (python3.withPackages(ps: with ps; [ ]))
+          python3
           imagemagick
           gimp
           lynx
@@ -185,6 +185,9 @@
           (callPackage ../programs/tex-clean.nix { })
           (callPackage ../programs/latexindent-fast.nix { })
           (callPackage ../programs/bib-down/bib-down.nix { })
+          (callPackage ../programs/gammatoggle.nix { })
+          (callPackage ../programs/sway-empty/sway-empty.nix { })
+          (callPackage ../programs/rclone-sync/rclone-sync.nix { })
       ];
       libraPackages = with pkgs; [
       # TODO remove if I don't need machine-specific packages
@@ -215,6 +218,7 @@
   services.getty.autologinUser = "will";
 
   # home
+  # TODO put this in a separate file too
   home-manager.users.will = { pkgs, osConfig, ... }: {
     imports = [
       ../config/bash/bash.nix
@@ -222,11 +226,11 @@
       ../config/alacritty/alacritty.nix
       ../config/neovim/neovim.nix
       ../config/starship/starship.nix
-      ../latex/latex.nix
+      ../config/latex/latex.nix
       ../config/mime/mime.nix
       ../config/ripgrep/ripgrep.nix
-      ../rclone/rclone.nix
-      ../sway/sway.nix
+      ../config/rclone/rclone.nix
+      ../config/sway/sway.nix
       ../config/waybar/waybar.nix
       ../config/neomutt/neomutt.nix
       ../config/mbsync/mbsync.nix

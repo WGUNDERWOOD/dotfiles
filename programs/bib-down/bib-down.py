@@ -1,4 +1,7 @@
+#!usr/bin/env python3
+
 # TODO split the resulting text into multiple lines
+# TODO print the results in reverse order so easy to read
 
 import sys
 from habanero import Crossref, cn

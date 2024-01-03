@@ -1,9 +1,8 @@
 {pkgs, lib, ...}: {
-    home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+    home.file.".icons/default".source =
+        "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+    # TODO put swaylock config in nix directly
     home.file.".config/swaylock/config".source = ./swaylock_config;
-    home.file."scripts/gammatoggle".source = ./gammatoggle;
-    home.file."scripts/sway_go_to_empty".source = ./sway_go_to_empty;
-    home.file."scripts/sway_move_to_empty".source = ./sway_move_to_empty;
     home.pointerCursor = {
         gtk.enable = true;
         package = pkgs.phinger-cursors;
@@ -60,8 +59,8 @@
                 "${modifier}+8" = "workspace number 8";
                 "${modifier}+9" = "workspace number 9";
                 "${modifier}+0" = "workspace number 10";
-                "${modifier}+o" = "exec $HOME/scripts/sway_go_to_empty";
-                "${modifier}+Shift+o" = "exec $HOME/scripts/sway_move_to_empty";
+                "${modifier}+o" = "exec sway-empty -g";
+                "${modifier}+Shift+o" = "exec sway-empty -m";
                 "${modifier}+Shift+1" = "move container to workspace number 1";
                 "${modifier}+Shift+2" = "move container to workspace number 2";
                 "${modifier}+Shift+3" = "move container to workspace number 3";
@@ -82,7 +81,7 @@
                 "${modifier}+s" = "exec grim -g \"$(slurp)\" " +
                     "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | " +
                     "wl-copy -t image/png";
-                "${modifier}+Shift+g" = "exec $HOME/scripts/gammatoggle";
+                "${modifier}+Shift+g" = "exec gammatoggle";
                 "${modifier}+Right" = "exec playerctl next";
                 "${modifier}+Left" = "exec playerctl previous";
                 "${modifier}+space" = "exec playerctl play-pause";

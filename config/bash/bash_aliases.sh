@@ -26,12 +26,12 @@ rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
 alias cpdf='compress-pdf'
 li() { command libreoffice "$@" & }
 tex-labels() { command grep -o -e "\\\label{[^}]*}" "$@" | grep --color -P "(?<={)[^}]*(?=})"; }
-alias rcgdpl='rclone_google_drive_pull.sh'
-alias rcgdps='rclone_google_drive_push.sh'
-alias rcgdppl='rclone_google_drive_princeton_pull.sh'
-alias rcgdpps='rclone_google_drive_princeton_push.sh'
-alias rcdbppl='rclone_dropbox_princeton_pull.sh'
-alias rcdbpps='rclone_dropbox_princeton_push.sh'
+alias rcgdpl='rclone-sync -gl'
+alias rcgdps='rclone-sync -gs'
+alias rcgdppl='rclone-sync -pl'
+alias rcgdpps='rclone-sync -ps'
+alias rcdbppl='rclone-sync -dl'
+alias rcdbpps='rclone-sync -ds'
 alias rcpl='rcgdpl && rcgdppl && rcdbppl'
 alias rcps='rcgdps && rcgdpps && rcdbpps'
 #alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
