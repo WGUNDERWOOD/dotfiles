@@ -231,6 +231,7 @@
       ../config/ripgrep/ripgrep.nix
       ../config/rclone/rclone.nix
       ../config/sway/sway.nix
+      ../config/sway/swaylock.nix
       ../config/waybar/waybar.nix
       ../config/neomutt/neomutt.nix
       ../config/mbsync/mbsync.nix

@@ -1,8 +1,7 @@
 {pkgs, lib, ...}: {
     home.file.".icons/default".source =
         "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
-    # TODO put swaylock config in nix directly
-    home.file.".config/swaylock/config".source = ./swaylock_config;
+
     home.pointerCursor = {
         gtk.enable = true;
         package = pkgs.phinger-cursors;
