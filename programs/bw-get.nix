@@ -4,7 +4,6 @@ pkgs.writeShellApplication {
     name = "bw-get";
     runtimeInputs = with pkgs; [ bitwarden-cli coreutils ];
     text = ''
-        # TODO get color output from bitwarden
         # declare items to get from bitwarden
         PWLIST=(
                 "neomutt_gmail_email" \
