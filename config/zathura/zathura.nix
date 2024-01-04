@@ -14,6 +14,7 @@
         map = zoom in
         map u zoom out
         map i zoom in
+        unmap d
         set show-recent 200
         set font "Source Code Pro 14"
         set scroll-step 100
