@@ -20,8 +20,8 @@
                 Description = "mbsync timer";
             };
             Timer = {
-                OnBootSec = "1m";
-                OnUnitActiveSec = "1m";
+                OnBootSec = "30s";
+                OnUnitActiveSec = "15s";
             };
             Install = {
                 WantedBy = ["timers.target"];
