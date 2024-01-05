@@ -2,5 +2,8 @@
 
 {
   networking.hostName = "libra";
-  imports = [ ./common.nix ];
+  imports = [
+      ../machines/hardware-configuration-libra.nix
+      ../config/config.nix
+  ];
 }
