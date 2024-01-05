@@ -35,7 +35,6 @@ alias rcdbppl='rclone-sync -dl'
 alias rcdbpps='rclone-sync -ds'
 alias rcpl='rcgdpl && rcgdppl && rcdbppl'
 alias rcps='rcgdps && rcgdpps && rcdbpps'
-#alias reposf='(cd ~/Documents && git_status_all -f)' # TODO git fetch all repos
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 
 # nix
