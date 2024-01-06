@@ -48,13 +48,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # fonts
-  fonts.packages = with pkgs; [
-      source-code-pro
-      fira
-      libre-baskerville
-  ];
-
   # keymap
   services.xserver = {layout = "us"; xkbVariant = "";};
 
@@ -107,7 +100,9 @@
     ];
 
     # original release: do not edit
-    home.stateVersion = (if osConfig.networking.hostName == "libra"
-            then "23.05" else "23.11");
+    home.stateVersion = "23.05";
   };
+
+  # original release: do not edit
+  system.stateVersion = "23.05";
 }
