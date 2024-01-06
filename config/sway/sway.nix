@@ -103,12 +103,8 @@
                 "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
                 "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
                 "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
-                #"XF86MonBrightnessUp" = "exec \"brillo -A 1\"";
-                #"XF86MonBrightnessDown" = "exec \"brillo -U 1\"";
-                #"XF86AudioPlay" = "exec \"playerctl play\"";
-                #"XF86AudioPause" = "exec \"playerctl pause\"";
-                #"XF86AudioNext" = "exec \"playerctl next\"";
-                #"XF86AudioPrev" = "exec \"playerctl previous\"";
+                "XF86MonBrightnessUp" = "exec \"brillo -A 10\"";
+                "XF86MonBrightnessDown" = "exec \"brillo -U 10\"";
             };
 
             colors = {

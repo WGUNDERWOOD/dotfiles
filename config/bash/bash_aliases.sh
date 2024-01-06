@@ -42,6 +42,7 @@ alias nxr='sudo nixos-rebuild switch'
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-store --gc'
 alias nxs='nix-shell'
+alias nxu='nixos-update'
 nxp() { ls -l "$(which "$@")"; }
 nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }
 

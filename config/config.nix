@@ -61,6 +61,7 @@
   # environment variables
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "0";
+    GDK_DPI_SCALE = (if config.networking.hostName == "libra" then "1" else "1.3");
   };
 
   # packages
@@ -78,7 +79,7 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
   };
 
   # home

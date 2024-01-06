@@ -35,6 +35,7 @@ with pkgs; [
     gnumake
     source-code-pro
     nix-tree
+    brillo
     tree-sitter
     nodejs-slim
     gcc
