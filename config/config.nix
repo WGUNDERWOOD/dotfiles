@@ -107,9 +107,7 @@
     ];
 
     # original release: do not edit
-    home.stateVersion = "23.05";
+    home.stateVersion = (if osConfig.networking.hostName == "libra"
+            then "23.05" else "23.11");
   };
-
-  # original release: do not edit
-  system.stateVersion = "23.05";
 }
