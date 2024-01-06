@@ -450,6 +450,7 @@ vim.cmd([[
 ]])
 
 -- git commit files
+-- TODO git commit diff header too dark
 vim.cmd([[
     augroup gitcommit
     autocmd!
