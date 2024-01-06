@@ -48,6 +48,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # fonts
+  fonts.packages = with pkgs; [
+      source-code-pro
+      fira
+      libre-baskerville
+  ];
+
   # keymap
   services.xserver = {layout = "us"; xkbVariant = "";};
 

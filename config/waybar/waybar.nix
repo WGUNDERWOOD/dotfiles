@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{pkgs, osConfig, ...}: {
     programs.waybar.enable = true;
     programs.waybar.settings.mainbar = {
         position = "bottom";
-        height = 40;
+        height = (if osConfig.networking.hostName == "libra" then 40 else 20);
         modules-left = [
             "sway/workspaces"
             "custom/separatorleft"
@@ -176,12 +176,21 @@
     };
 
     programs.waybar.style =
+        let
+        fontsize = (if osConfig.networking.hostName == "libra" then "20.0" else "14.0");
+        bordertoplarge = (if osConfig.networking.hostName == "libra" then "3px" else "2px");
+        bordertopsmall = (if osConfig.networking.hostName == "libra" then "1px" else "0px");
+        paddinglarge = (if osConfig.networking.hostName == "libra" then "16px" else "10px");
+        paddingmedium = (if osConfig.networking.hostName == "libra" then "12px" else "6px");
+        paddingsmall = (if osConfig.networking.hostName == "libra" then "8px" else "4px");
+        spotifyfontsize = (if osConfig.networking.hostName == "libra" then "19px" else "13px");
+        in
         ''
         * {
             font-family: "Source Code Pro";
-            font-size: 20px;
+            font-size: ${fontsize};
             background-color: #000000;
-            border-top: 1px solid #000000
+            border-top: ${bordertopsmall} solid #000000
         }
 
         #workspaces {
@@ -190,7 +199,7 @@
         }
 
         #workspaces button {
-            padding: 0px 8px;
+            padding: 0px ${paddingsmall};
             border-radius: 1px;
             border-left: none;
             border-right: none;
@@ -200,7 +209,7 @@
 
         #workspaces button.focused {
             border-bottom: 3px solid #ffaaff;
-            border-top: 3px solid #000000;
+            border-top: ${bordertoplarge} solid #000000;
             border-left: none;
             border-right: none;
             color: #ffaaff;
@@ -224,7 +233,7 @@
             text-shadow: inherit;
             background: none;
             border-bottom: 3px solid #ffaaff;
-            border-top: 3px solid #000000;
+            border-top: ${bordertoplarge} solid #000000;
             border-left: none;
             border-right: none;
         }
@@ -238,131 +247,131 @@
 
         #clock.time {
             color: #ffbbdd;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #clock.date {
             color: #ddbbff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #cpu {
             color: #ddbbff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #memory {
             color: #bbeeff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #temperature {
             color: #aaffcc;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #temperature.critical {
             color: #ff713e;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.new_mail {
             color: #ffaaff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.no_mail {
             color: #ffccdd;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.inactive {
             color: #ff713e;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-gammastep.day {
             color: #bbeeff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-gammastep.night {
             color: #ffb86c;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-repos.dirty {
             color: #ffaaff;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-repos.clean {
             color: #ffccdd;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #network.wifi, #network.ethernet {
             color: #ffccdd;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #network.disabled, #network.disconnected {
             color: #ff713e;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #pulseaudio, #pulseaudio.bluetooth {
             color: #8adfac;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #pulseaudio.muted {
             color: #8298c4;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #disk {
             color: #f1faac;
-            padding: 0px 16px;
+            padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-spotify {
             color: #8adfac;
-            font-size: 19px;
-            padding: 0px 8px;
+            font-size: ${spotifyfontsize};
+            padding: 0px ${paddingsmall};
             font-weight: 500;
         }
 
         #custom-separator {
             color: #34374a;
-            font-size: 20px;
+            font-size: ${fontsize};
             font-weight: 600;
         }
 
         #custom-separatorleft {
             color: #34374a;
-            font-size: 20px;
+            font-size: ${fontsize};
             font-weight: 600;
-            padding-left: 12px;
-            padding-right: 16px;
+            padding-left: ${paddingmedium};
+            padding-right: ${paddinglarge};
         }
         '';
 }
