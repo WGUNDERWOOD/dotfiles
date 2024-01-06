@@ -137,7 +137,7 @@
 
         extraConfig =
             ''
-            seat * hide_cursor 2000
+            seat * hide_cursor 1800
             seat * hide_cursor when-typing enable
             input type:keyboard {
                 repeat_delay 200
