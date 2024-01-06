@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: {
+{pkgs, lib, osConfig, ...}: {
     home.file.".icons/default".source =
         "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
@@ -33,7 +33,22 @@
             gaps.smartBorders = "on";
             window = {border = 2; titlebar = false;};
             bars = [];
-            output."*".bg = "~/wallpaper.png fill";
+            output = {"*" = {bg =  "~/wallpaper.png fill";};}
+            // ( if osConfig.networking.hostName == "libra"
+            then {
+                "DP-1" = {
+                    pos = "0,0";
+                    res = "2560x1440";
+                    scale = "1";
+                };
+            }
+            else {
+                "eDP-1" = {
+                    pos = "0,0";
+                    res = "2560x1440";
+                    scale = "1";
+                };
+            });
 
             keybindings = lib.mkOptionDefault {
                 "${modifier}+Shift+f" = "exec firefox";

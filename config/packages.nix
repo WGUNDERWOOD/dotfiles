@@ -1,11 +1,19 @@
 { pkgs, ... }:
 with pkgs; [
+    
+    # graphical
+    firefox-bin
+    spotify
+    lutris
+    steam
+    gimp
+    vlc
+
     alacritty
     vim
     wl-clipboard
     git
     home-manager
-    firefox-bin
     ghostscript
     fdupes
     pulseaudio
@@ -33,7 +41,6 @@ with pkgs; [
     todoist
     lm_sensors
     bundix
-    spotify
     rustc
     cargo
     starship
@@ -51,11 +58,9 @@ with pkgs; [
     bitwarden-cli
     inkscape
     rclone
-    lutris
     tldr
     hyperfine
     goobook
-    steam
     pavucontrol
     diffpdf
     watchexec
@@ -67,7 +72,6 @@ with pkgs; [
     gammastep
     python3
     imagemagick
-    gimp
     lynx
     ocrmypdf
     pandoc
@@ -81,11 +85,10 @@ with pkgs; [
     ranger
     poppler_utils
     pngquant
-    vlc
     zip
     unzip
     sway
     wine
-    swaylock
     numbat
+    swaylock
 ]

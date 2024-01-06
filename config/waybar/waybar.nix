@@ -2,7 +2,7 @@
     programs.waybar.enable = true;
     programs.waybar.settings.mainbar = {
         position = "bottom";
-        height = (if osConfig.networking.hostName == "libra" then 40 else 30);
+        height = (if osConfig.networking.hostName == "libra" then 40 else 50);
         modules-left = [
             "sway/workspaces"
             "custom/separatorleft"
@@ -177,13 +177,14 @@
 
     programs.waybar.style =
         let
-        fontsize = (if osConfig.networking.hostName == "libra" then "20.0" else "14.0");
-        bordertoplarge = (if osConfig.networking.hostName == "libra" then "3px" else "2px");
-        bordertopsmall = (if osConfig.networking.hostName == "libra" then "1px" else "0px");
-        paddinglarge = (if osConfig.networking.hostName == "libra" then "16px" else "10px");
-        paddingmedium = (if osConfig.networking.hostName == "libra" then "12px" else "6px");
-        paddingsmall = (if osConfig.networking.hostName == "libra" then "8px" else "4px");
-        spotifyfontsize = (if osConfig.networking.hostName == "libra" then "19px" else "13px");
+        fontsize = (if osConfig.networking.hostName == "libra" then "20.0" else "24.0");
+        bordertoplarge = (if osConfig.networking.hostName == "libra" then "3px" else "3px");
+        bordertopsmall = (if osConfig.networking.hostName == "libra" then "1px" else "1px");
+        paddinglarge = (if osConfig.networking.hostName == "libra" then "16px" else "18px");
+        paddingmedium = (if osConfig.networking.hostName == "libra" then "12px" else "14px");
+        paddingsmall = (if osConfig.networking.hostName == "libra" then "8px" else "10px");
+        paddingtiny = (if osConfig.networking.hostName == "libra" then "0px" else "1px");
+        spotifyfontsize = (if osConfig.networking.hostName == "libra" then "19px" else "23px");
         in
         ''
         * {
@@ -199,7 +200,7 @@
         }
 
         #workspaces button {
-            padding: 0px ${paddingsmall};
+            padding: 0px ${paddingsmall} ${paddingtiny} ${paddingsmall};
             border-radius: 1px;
             border-left: none;
             border-right: none;
