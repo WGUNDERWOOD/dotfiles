@@ -2,7 +2,7 @@
     programs.waybar.enable = true;
     programs.waybar.settings.mainbar = {
         position = "bottom";
-        height = (if osConfig.networking.hostName == "libra" then 40 else 20);
+        height = (if osConfig.networking.hostName == "libra" then 40 else 30);
         modules-left = [
             "sway/workspaces"
             "custom/separatorleft"
@@ -208,7 +208,7 @@
         }
 
         #workspaces button.focused {
-            border-bottom: 3px solid #ffaaff;
+            border-bottom: ${bordertoplarge} solid #ffaaff;
             border-top: ${bordertoplarge} solid #000000;
             border-left: none;
             border-right: none;
@@ -232,7 +232,7 @@
             box-shadow: inherit;
             text-shadow: inherit;
             background: none;
-            border-bottom: 3px solid #ffaaff;
+            border-bottom: ${bordertoplarge} solid #ffaaff;
             border-top: ${bordertoplarge} solid #000000;
             border-left: none;
             border-right: none;
