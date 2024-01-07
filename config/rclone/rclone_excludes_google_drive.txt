@@ -24,3 +24,4 @@ Germany 2023 Tour Photos/**
 *.synctex.gz
 *.toc
 *.xdv
+*.partial

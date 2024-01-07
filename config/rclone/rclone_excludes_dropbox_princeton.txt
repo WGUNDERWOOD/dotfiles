@@ -25,3 +25,4 @@
 *.synctex.gz
 *.toc
 *.xdv
+*.partial

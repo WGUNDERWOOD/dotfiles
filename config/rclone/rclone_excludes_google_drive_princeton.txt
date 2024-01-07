@@ -23,3 +23,4 @@ Shared/**
 *.synctex.gz
 *.toc
 *.xdv
+*.partial
