@@ -103,8 +103,8 @@
                 "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
                 "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
                 "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
-                "XF86MonBrightnessUp" = "exec \"brillo -A 10\"";
-                "XF86MonBrightnessDown" = "exec \"brillo -U 10\"";
+                "XF86MonBrightnessUp" = "exec \"brillo -A 5\"";
+                "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
             };
 
             colors = {
