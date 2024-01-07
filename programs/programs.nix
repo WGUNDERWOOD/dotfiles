@@ -19,5 +19,7 @@
         (callPackage ../programs/rclone-sync/rclone-sync.nix { })
         (callPackage ../programs/rofi-start/rofi-start.nix { })
         (callPackage ../programs/nixos-update.nix { })
+        (callPackage ../programs/compress-mp3.nix { })
+        (callPackage ../programs/pdf-insert-blank-pages.nix { })
     ]
 

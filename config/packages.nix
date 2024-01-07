@@ -26,6 +26,7 @@ with pkgs; [
     ripgrep
     fzf
     bundler
+    ffmpeg
     ruby
     eza
     fd

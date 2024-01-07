@@ -4,8 +4,8 @@
         ignore-empty-password = true;
         indicator-radius = 120;
         indicator-thickness = 30;
-        color = "181a26";
-        inside-color = "1F202A";
+        color = "162416";
+        inside-color = "192719";
         line-color = "1F202A";
         ring-color = "bd93f9";
         text-color = "00000000";
