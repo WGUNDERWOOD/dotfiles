@@ -9,25 +9,53 @@
             "custom/spotify"
         ];
         "modules-center" = [];
-        "modules-right" = [
-            "memory"
-            "custom/separator"
-            "cpu"
-            "custom/separator"
-            "disk"
-            "custom/separator"
-            "custom/mail"
-            "custom/separator"
-            "custom/gammastep"
-            "custom/separator"
-            "network"
-            "custom/separator"
-            "pulseaudio"
-            "custom/separator"
-            "clock#time"
-            "custom/separator"
-            "clock#date"
-        ];
+        "modules-right" = (if osConfig.networking.hostName == "libra" then
+            # libra modules right
+            [
+                "memory"
+                "custom/separator"
+                "cpu"
+                "custom/separator"
+                "disk"
+                "custom/separator"
+                "custom/mail"
+                "custom/separator"
+                "custom/gammastep"
+                "custom/separator"
+                "network"
+                "custom/separator"
+                "pulseaudio"
+                "custom/separator"
+                "clock#time"
+                "custom/separator"
+                "clock#date"
+            ]
+            else
+            # xanth modules right
+            [
+                "memory"
+                "custom/separator"
+                "cpu"
+                "custom/separator"
+                "disk"
+                "custom/separator"
+                "battery"
+                "custom/separator"
+                "backlight"
+                "custom/separator"
+                "custom/mail"
+                "custom/separator"
+                "custom/gammastep"
+                "custom/separator"
+                "network"
+                "custom/separator"
+                "pulseaudio"
+                "custom/separator"
+                "clock#time"
+                "custom/separator"
+                "clock#date"
+            ]
+        );
         "custom/separator" = {
             "format" = "|";
         };
@@ -156,22 +184,18 @@
                 "default" = "";
             };
             "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
+            "on-scroll-up" = "";
+            "on-scroll-down" = "";
             "tooltip" = false;
         };
         "battery" = {
-            "states" = {
-                "good" = 95;
-                "warning" = 30;
-                "critical" = 15;
-            };
-            "format" = "{capacity}% {icon}";
-            "format-icons" = ["" "" "" "" ""];
+            "states" = {"warning" = 30;};
+            "full-at" = 95;
+            "format" = "Bat {capacity}%";
+            "format-charging" = "Chg {capacity}%";
         };
         "backlight" = {
-            "format" = "{percent}% {icon}";
-            "format-icons" = [""];
-            "on-scroll-up" = "brillo -A 0.5";
-            "on-scroll-down" = "brillo -U 0.5";
+            "format" = "Bkl {percent}%";
         };
     };
 
@@ -350,6 +374,24 @@
 
         #disk {
             color: #f1faac;
+            padding: 0px ${paddinglarge};
+            font-weight: 500;
+        }
+
+        #battery {
+            color: #ddbbff;
+            padding: 0px ${paddinglarge};
+            font-weight: 500;
+        }
+
+        #battery.warning {
+            color: #ff713e;
+            padding: 0px ${paddinglarge};
+            font-weight: 500;
+        }
+
+        #backlight {
+            color: #8adfac;
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
