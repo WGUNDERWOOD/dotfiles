@@ -14,6 +14,7 @@
   hardware.opengl.driSupport32Bit = true;
   services.pipewire = {enable = true; alsa.enable = true; pulse.enable = true;};
   services.dbus.enable = true;
+  services.udev.packages = [ pkgs.brillo ];
   xdg.portal = {
       enable = true;
       wlr.enable = true;
