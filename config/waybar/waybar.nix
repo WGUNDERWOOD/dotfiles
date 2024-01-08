@@ -189,7 +189,7 @@
             "tooltip" = false;
         };
         "battery" = {
-            "states" = {"warning" = 30;};
+            "states" = {"warning" = 25;};
             "full-at" = 95;
             "format" = "Bat {capacity}%";
             "format-charging" = "Chg {capacity}%";
