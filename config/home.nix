@@ -1,0 +1,22 @@
+{ ... }:
+[
+    ../config/bash/bash.nix
+    ../config/systemd/systemd.nix
+    ../config/alacritty/alacritty.nix
+    ../config/neovim/neovim.nix
+    ../config/starship/starship.nix
+    ../config/latex/latex.nix
+    ../config/mime/mime.nix
+    ../config/ripgrep/ripgrep.nix
+    ../config/rclone/rclone.nix
+    ../config/sway/sway.nix
+    ../config/sway/swaylock.nix
+    ../config/waybar/waybar.nix
+    ../config/neomutt/neomutt.nix
+    ../config/mbsync/mbsync.nix
+    ../config/zathura/zathura.nix
+    ../config/feh/feh.nix
+    ../config/rofi/rofi.nix
+    ../config/git/git.nix
+    ../config/vivid/vivid.nix
+]

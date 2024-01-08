@@ -1,6 +1,3 @@
-# TODO decide where this file should live in repo
-# TODO tidy all of this file
-
 { config, pkgs, ... }:
 
 {
@@ -18,7 +15,7 @@
   xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
   };
 
   # greeter
@@ -30,31 +27,6 @@
       default_session = initial_session;
     };
   };
-
-  # network
-  networking.networkmanager.enable = true;
-
-  # locale
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # fonts
-  fonts.packages = with pkgs; [
-      source-code-pro
-      fira
-      libre-baskerville
-  ];
 
   # keymap
   services.xserver = {layout = "us"; xkbVariant = "";};
@@ -75,8 +47,11 @@
   programs.steam.enable = true;
   programs.neovim = {enable = true; defaultEditor = true;};
   security.pam.services.swaylock.text = "auth include login";
+  networking.networkmanager.enable = true;
+  fonts.packages = with pkgs; [ source-code-pro fira libre-baskerville ];
 
   # user
+  time.timeZone = "America/New_York";
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
@@ -84,34 +59,9 @@
   };
 
   # home
-  # TODO put this in a separate file too
   home-manager.users.will = { pkgs, osConfig, ... }: {
-    imports = [
-      ../config/bash/bash.nix
-      ../config/systemd/systemd.nix
-      ../config/alacritty/alacritty.nix
-      ../config/neovim/neovim.nix
-      ../config/starship/starship.nix
-      ../config/latex/latex.nix
-      ../config/mime/mime.nix
-      ../config/ripgrep/ripgrep.nix
-      ../config/rclone/rclone.nix
-      ../config/sway/sway.nix
-      ../config/sway/swaylock.nix
-      ../config/waybar/waybar.nix
-      ../config/neomutt/neomutt.nix
-      ../config/mbsync/mbsync.nix
-      ../config/zathura/zathura.nix
-      ../config/feh/feh.nix
-      ../config/rofi/rofi.nix
-      ../config/git/git.nix
-      ../config/vivid/vivid.nix
-    ];
-
-    # original release: do not edit
-    home.stateVersion = "23.05";
+    imports = ( import ../config/home.nix { } );
+    home.stateVersion = "23.05"; # original release: do not edit
   };
-
-  # original release: do not edit
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.05"; # original release: do not edit
 }

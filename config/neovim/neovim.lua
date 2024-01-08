@@ -450,7 +450,6 @@ vim.cmd([[
 ]])
 
 -- git commit files
--- TODO git commit diff header too dark
 vim.cmd([[
     augroup gitcommit
     autocmd!
@@ -459,6 +458,7 @@ vim.cmd([[
     au Filetype gitcommit hi gitcommitSelectedType gui=NONE guifg=#ffb86c
     au Filetype gitcommit hi gitcommitSelectedFile gui=NONE guifg=#8be9fd
     au Filetype gitcommit hi gitcommitUntrackedFile gui=NONE guifg=#8be9fd
+    au Filetype gitcommit hi diffFile gui=NONE guifg=#ff79c6
     au Filetype gitcommit hi ExtraWhitespace guibg=NONE"
 ]])
 
