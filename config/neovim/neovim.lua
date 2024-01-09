@@ -592,7 +592,7 @@ vim.cmd([[
     au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
     au Filetype tex let g:tex_fast = 'M'
     au Filetype tex let g:vimtex_indent_delims = {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
-    au Filetype tex hi QuickFixLine guifg=NONE gui=bold
+    au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
     au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
     au Filetype tex hi texPartArgTitle gui=bold guifg=#ffff22
     au Filetype tex hi texCmdInput gui=bold guifg=#ff79c6
