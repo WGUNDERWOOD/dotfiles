@@ -6,4 +6,10 @@ this line has Package: infwarerr which we safely ignore
 this line has pgfplots.errorbars.code.tex which we also ignore
 this line has file:line:error style which we can ignore
 here is an uppercase ERROR
+here is an error and a warning on the same line
+here is a warning and an overfull on the same line
+here is an underfull and an error on the same line
 and a mixed case WaRniNG
+here is an overfull
+or an underfull
+and also an overfull and an UNDERFULL together
