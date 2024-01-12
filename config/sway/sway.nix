@@ -158,6 +158,8 @@
             ''
             seat * hide_cursor 1800
             seat * hide_cursor when-typing enable
+            for_window [class=".*"] inhibit_idle fullscreen
+            for_window [app_id=".*"] inhibit_idle fullscreen
             input type:keyboard {
                 repeat_delay 200
                 repeat_rate 50

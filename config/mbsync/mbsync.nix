@@ -26,7 +26,7 @@
             Far :gmail-far:
             Near :gmail-near:
             Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important" !"[Gmail]/Starred"
-            Expunge None
+            Expunge Both
             CopyArrivalDate yes
 
             # gmail
@@ -48,7 +48,7 @@
             Far :princeton-far:
             Near :princeton-near:
             Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important" !"[Gmail]/Starred"
-            Expunge None
+            Expunge Both
             CopyArrivalDate yes
             '';
     };
