@@ -624,8 +624,8 @@ vim.cmd([[
     au Filetype tex hi texTheoremEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi texProofEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi Special gui=NONE guifg=#f8f8f2
-    au Filetype tex call matchadd('texPartArgTitle', '\\proofparagraph{\zs[^}][^}]*\ze}', -1)
-    au Filetype tex call matchadd('texPartArgTitle', '\\begin{frame}\(\[.*\]\)\?{\zs[^}][^}]*\ze}', -1)
+    au Filetype tex call matchadd('texPartArgTitle', '^[^%]*\\proofparagraph{\zs[^}][^}]*\ze}', -1)
+    au Filetype tex call matchadd('texPartArgTitle', '^[^%]*\\begin{frame}\(\[.*\]\)\?{\zs[^}][^}]*\ze}', -1)
     au Filetype tex call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
     au Filetype tex hi texPageCmd gui=bold guifg=#ff0000
     au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS<CR>
