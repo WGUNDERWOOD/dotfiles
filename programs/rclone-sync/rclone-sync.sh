@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# TODO make the output terser
 
 EXCLUDEDIR="$HOME/.config/rclone/"
 

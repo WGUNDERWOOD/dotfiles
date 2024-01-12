@@ -59,51 +59,46 @@ tq() { command todoist quick "$@" && todoist sync & }
 tc() { command todoist close "$@" && todoist sync & }
 td() { command todoist delete "$@" && todoist sync & }
 
-# cd aliases
+# cd local
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cddow='cd ~/downloads/'
 alias cdcon='cd ~/.config/'
+
+# cd rclone
 alias cdrc='cd ~/rclone/'
 alias cdgd='cd ~/rclone/google_drive/'
 alias cdgdp='cd ~/rclone/google_drive_princeton/'
 alias cddbp='cd ~/rclone/dropbox_princeton/'
+
+# cd google drive
+alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes/'
+alias cdtextbk='cd ~/rclone/google_drive/Education/Textbooks\ and\ Extra\ Notes/'
+alias cdpton='cd ~/rclone/google_drive/Education/Princeton/'
+alias cdtax='cd ~/rclone/google_drive/Finances/Tax/'
+
+# cd github
 alias cdgh='cd ~/github/'
 alias cddot='cd ~/github/dotfiles/'
 alias cdjob='cd ~/github/job-search-2023/'
 alias cdcv='cd ~/github/wgu-cv/'
-alias cdov='cd ~/overleaf/'
 alias cdnot='cd ~/github/notes/'
-#alias cdhe='cd ~/odrive/Google\ Drive/Health'
-#alias cdmon='cd ~/Documents/github/MondrianForests.jl'
-#alias cdaoc='cd ~/Documents/github/advent-of-code-2021'
-#alias cdrem='cd ~/Documents/remarkable'
-#alias cdox='cd ~/odrive/Google\ Drive/Education/Oxford/'
-#alias cdoxlec='cd ~/odrive/Google\ Drive/Education/Oxford/Oxford\ Lecture\ Notes'
-#alias cdtextbk='cd ~/odrive/Google\ Drive/Education/Textbooks\ and\ Extra\ Notes'
-#alias cdmot='cd ~/Documents/github/motifcluster'
-#alias cdwp='cd ~/Pictures/wallpapers'
-#alias cdweb='cd ~/Documents/github/wgunderwood.github.io'
-#alias cdk='cd ~/Documents/github/research-dyadic-kde/'
-#alias cdd='cd ~/Documents/github/DyadicKDE.jl/'
-#alias cdr='cd ~/Documents/github/research-dyadic-regression/'
-#alias cdf='cd ~/Documents/github/research-random-forests/'
-#alias cdm='cd ~/Documents/github/research-martingale-yurinskii/'
-#alias cdac='cd ~/odrive/Dropbox\ Princeton/Underwood_Academic_Applications_2023'
-#alias cdovk='cd ~/Documents/overleaf/CFU_2021_DyadicKDE'
-#alias cdovm='cd ~/Documents/overleaf/CMU_2022_SAMartingale/'
-#alias cdovf='cd ~/Documents/overleaf/CKU_2022_MondrianRF/'
-#alias cdpton='cd ~/odrive/Google\ Drive/Education/Princeton'
-#alias cdpub='cd ~/odrive/Google\ Drive/Publications/'
-#alias cdmat='cd ~/odrive/Dropbox\ Princeton/00000_shared--CFF_2018_RandPartitioning/'
-#alias cdric='cd ~/odrive/Dropbox\ Princeton/0000_shared--Cattaneo-Masini_2021_SA-Martingale/'
-#alias cdjas='cd ~/odrive/Dropbox\ Princeton/0000_shared--CKU_2022_Mondrian/'
-#alias cdte='cd ~/odrive/Dropbox\ Princeton/2023Fall_ORF498/'
-#alias cdrv='cd ~/odrive/Google\ Drive/Education/Princeton/Reviewing/'
-#alias cdtax='cd ~/odrive/Google\ Drive/Finances/Tax/Tax\ 2022'
-#alias cdnot='cd ~/odrive/Google\ Drive/Notes'
-#alias cdtr='cd ~/odrive/Google\ Drive/Travel'
-#alias cdsco='cd ~/Documents/github/music-scores/'
+alias cdtr='cd ~/github/notes/travel/'
+alias cdweb='cd ~/github/wgunderwood.github.io/'
+alias cdsco='cd ~/github/music-scores/'
+alias cdmon='cd ~/github/MondrianForests.jl/'
+alias cdmot='cd ~/github/motifcluster/'
+alias cddy='cd ~/github/DyadicKDE.jl/'
+
+# cd research github
+alias cdrem='cd ~/github/research-martingale-yurinskii/'
+alias cdref='cd ~/github/research-random-forests/'
+
+# cd overleaf
+alias cdov='cd ~/overleaf/'
+alias cdovm='cd ~/overleaf/CMU_2022_SAMartingale/'
+alias cdovf='cd ~/overleaf/CKU_2023_MondrianRF/'
+alias cdovh='cd ~/overleaf/CMU_2023_HigherOrderLindeberg/'
 
 # alias completion
 source $(which complete_alias)

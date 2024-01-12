@@ -113,7 +113,7 @@ text:
     foreground: white
 
 markup:
-  foreground: orange
+  foreground: purple
 
 programming:
   foreground: yellow
