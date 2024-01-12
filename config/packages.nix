@@ -20,6 +20,7 @@ with pkgs; [
     wayland
     waybar
     aspell
+    pastel
     aspellDicts.en
     bat
     diff-so-fancy
