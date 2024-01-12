@@ -18,13 +18,13 @@
                 "custom/separator"
                 "disk"
                 "custom/separator"
+                "pulseaudio"
+                "custom/separator"
                 "custom/mail"
                 "custom/separator"
                 "custom/gammastep"
                 "custom/separator"
                 "network"
-                "custom/separator"
-                "pulseaudio"
                 "custom/separator"
                 "clock#time"
                 "custom/separator"
@@ -39,6 +39,8 @@
                 "custom/separator"
                 "disk"
                 "custom/separator"
+                "pulseaudio"
+                "custom/separator"
                 "battery"
                 "custom/separator"
                 "backlight"
@@ -48,8 +50,6 @@
                 "custom/gammastep"
                 "custom/separator"
                 "network"
-                "custom/separator"
-                "pulseaudio"
                 "custom/separator"
                 "clock#time"
                 "custom/separator"
@@ -89,13 +89,6 @@
         "memory" = {
             "interval" = 10;
             "format" = "RAM {percentage}%";
-            "tooltip" = false;
-            "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
-        };
-        "temperature" = {
-            "critical-threshold" = 80;
-            "format-critical" = "{temperatureC}°C";
-            "format" = "{temperatureC}°C";
             "tooltip" = false;
             "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
         };
@@ -210,18 +203,35 @@
         paddingsmall = (if osConfig.networking.hostName == "libra" then "8px" else "10px");
         paddingtiny = (if osConfig.networking.hostName == "libra" then "0px" else "1px");
         spotifyfontsize = (if osConfig.networking.hostName == "libra" then "19px" else "23px");
+        color-black = "#000000";
+        color-mid-gray = "#8298c4";
+        color-hot-pink = "#ffaaff";
+
+        color-pastel-jordy-blue =     "#a3c4f3";
+        color-pastel-champagne-pink = "#fde4cf";
+        color-pastel-non-photo-blue = "#90dbf4";
+        color-pastel-celadon =        "#b9fbc0";
+
+        color-pastel-tea-rose-red =   "#ffcfd2";
+        color-pastel-lemon-chiffon =  "#fbf8cc";
+
+        color-pastel-pink-lavender =  "#f1c0e8";
+        color-pastel-electric-blue =  "#8eecf5";
+        color-pastel-salmon-pink =    "#fed4d1";
+        color-pastel-aquamarine =     "#98f5e1";
+        color-pastel-mauve =          "#cfbaf0";
         in
         ''
         * {
             font-family: "Source Code Pro";
             font-size: ${fontsize};
-            background-color: #000000;
-            border-top: ${bordertopsmall} solid #000000
+            background-color: ${color-black};
+            border-top: ${bordertopsmall} solid ${color-black}
         }
 
         #workspaces {
             font-weight: 600;
-            background-color: #000000;
+            background-color: ${color-black};
         }
 
         #workspaces button {
@@ -229,16 +239,16 @@
             border-radius: 1px;
             border-left: none;
             border-right: none;
-            color: #8298c4;
-            background-color: #000000;
+            color: ${color-mid-gray};
+            background-color: ${color-black};
         }
 
         #workspaces button.focused {
-            border-bottom: ${bordertoplarge} solid #ffaaff;
-            border-top: ${bordertoplarge} solid #000000;
+            border-bottom: ${bordertoplarge} solid ${color-hot-pink};
+            border-top: ${bordertoplarge} solid ${color-black};
             border-left: none;
             border-right: none;
-            color: #ffaaff;
+            color: ${color-hot-pink};
         }
 
         #workspaces button.urgent {
@@ -258,8 +268,8 @@
             box-shadow: inherit;
             text-shadow: inherit;
             background: none;
-            border-bottom: ${bordertoplarge} solid #ffaaff;
-            border-top: ${bordertoplarge} solid #000000;
+            border-bottom: ${bordertoplarge} solid ${color-hot-pink};
+            border-top: ${bordertoplarge} solid ${color-black};
             border-left: none;
             border-right: none;
         }
@@ -272,49 +282,37 @@
         }
 
         #clock.time {
-            color: #ffbbdd;
+            color: ${color-pastel-aquamarine};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #clock.date {
-            color: #ddbbff;
+            color: ${color-pastel-mauve};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #cpu {
-            color: #ddbbff;
+            color: ${color-pastel-champagne-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #memory {
-            color: #bbeeff;
-            padding: 0px ${paddinglarge};
-            font-weight: 500;
-        }
-
-        #temperature {
-            color: #aaffcc;
-            padding: 0px ${paddinglarge};
-            font-weight: 500;
-        }
-
-        #temperature.critical {
-            color: #ff713e;
+            color: ${color-pastel-jordy-blue};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.new_mail {
-            color: #ffaaff;
+            color: ${color-hot-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.no_mail {
-            color: #ffccdd;
+            color: ${color-pastel-pink-lavender};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -326,7 +324,7 @@
         }
 
         #custom-gammastep.day {
-            color: #bbeeff;
+            color: ${color-pastel-electric-blue};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -338,7 +336,7 @@
         }
 
         #custom-repos.dirty {
-            color: #ffaaff;
+            color: ${color-hot-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -350,7 +348,7 @@
         }
 
         #network.wifi, #network.ethernet {
-            color: #ffccdd;
+            color: ${color-pastel-salmon-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -362,25 +360,25 @@
         }
 
         #pulseaudio, #pulseaudio.bluetooth {
-            color: #8adfac;
+            color: ${color-pastel-celadon};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #pulseaudio.muted {
-            color: #8298c4;
+            color: ${color-mid-gray};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #disk {
-            color: #f1faac;
+            color: ${color-pastel-non-photo-blue};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #battery {
-            color: #ddbbff;
+            color: ${color-pastel-tea-rose-red};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -392,19 +390,19 @@
         }
 
         #battery.charging.warning {
-            color: #ddbbff;
+            color: ${color-pastel-tea-rose-red};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #backlight {
-            color: #8adfac;
+            color: ${color-pastel-lemon-chiffon};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-spotify {
-            color: #8adfac;
+            color: ${color-pastel-celadon};
             font-size: ${spotifyfontsize};
             padding: 0px ${paddingsmall};
             font-weight: 500;
