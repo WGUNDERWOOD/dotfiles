@@ -122,25 +122,6 @@
             "restart-interval" = 10;
             "return-type" = "json";
         };
-        "custom/repos" = {
-            "exec" = pkgs.writeShellScript "waybar-repos"
-                ''
-                GITDIRS="$HOME/github/ $HOME/overleaf/"
-                STATUS=$(${pkgs.findutils}/bin/find \
-                        $GITDIRS -maxdepth 1 -mindepth 1 -type d -exec \
-                        ${pkgs.bash}/bin/bash -c \
-                        'cd {} && [ -d .git/ ] && \
-                        [[ -n $(${pkgs.git}/bin/git status -s) ]] && pwd' \
-                        \; | ${pkgs.coreutils}/bin/wc -l)
-                if [ "$STATUS" -ge "1" ]; then
-                    echo '{"text": "Git '$STATUS'", "class": "dirty"}'
-                else
-                    echo '{"text": "Git", "class": "clean"}'
-                fi
-                '';
-            "restart-interval" = 60;
-            "return-type" = "json";
-        };
         "network" = {
             "format" = "Net";
             "tooltip" = false;
@@ -205,21 +186,15 @@
         spotifyfontsize = (if osConfig.networking.hostName == "libra" then "19px" else "23px");
         color-black = "#000000";
         color-mid-gray = "#8298c4";
+        color-dark-gray = "#34374a";
         color-hot-pink = "#ffaaff";
-
-        color-pastel-jordy-blue =     "#a3c4f3";
-        color-pastel-champagne-pink = "#fde4cf";
-        color-pastel-non-photo-blue = "#90dbf4";
-        color-pastel-celadon =        "#b9fbc0";
-
-        color-pastel-tea-rose-red =   "#ffcfd2";
-        color-pastel-lemon-chiffon =  "#fbf8cc";
-
-        color-pastel-pink-lavender =  "#f1c0e8";
-        color-pastel-electric-blue =  "#8eecf5";
-        color-pastel-salmon-pink =    "#fed4d1";
-        color-pastel-aquamarine =     "#98f5e1";
-        color-pastel-mauve =          "#cfbaf0";
+        color-alert = "#ff713e";
+        color-night = "#ffb86c";
+        color-pastel-yellow = "#f4f5cc";
+        color-pastel-pink = "#ffc5ee";
+        color-pastel-blue = "#8ee8fa";
+        color-pastel-green = "#a9f4b0";
+        color-pastel-purple = "#dfc2ff";
         in
         ''
         * {
@@ -254,7 +229,7 @@
         #workspaces button.urgent {
             border-left: none;
             border-right: none;
-            color: #ff713e;
+            color: ${color-alert};
         }
 
         #workspaces button:hover {
@@ -282,25 +257,25 @@
         }
 
         #clock.time {
-            color: ${color-pastel-aquamarine};
+            color: ${color-pastel-green};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #clock.date {
-            color: ${color-pastel-mauve};
+            color: ${color-pastel-purple};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #cpu {
-            color: ${color-pastel-champagne-pink};
+            color: ${color-pastel-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #memory {
-            color: ${color-pastel-jordy-blue};
+            color: ${color-pastel-yellow};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -312,55 +287,43 @@
         }
 
         #custom-mail.no_mail {
-            color: ${color-pastel-pink-lavender};
+            color: ${color-pastel-pink};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-mail.inactive {
-            color: #ff713e;
+            color: ${color-alert};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-gammastep.day {
-            color: ${color-pastel-electric-blue};
+            color: ${color-pastel-blue};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-gammastep.night {
-            color: #ffb86c;
-            padding: 0px ${paddinglarge};
-            font-weight: 500;
-        }
-
-        #custom-repos.dirty {
-            color: ${color-hot-pink};
-            padding: 0px ${paddinglarge};
-            font-weight: 500;
-        }
-
-        #custom-repos.clean {
-            color: #ffccdd;
+            color: ${color-night};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #network.wifi, #network.ethernet {
-            color: ${color-pastel-salmon-pink};
+            color: ${color-pastel-yellow};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #network.disabled, #network.disconnected {
-            color: #ff713e;
+            color: ${color-alert};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #pulseaudio, #pulseaudio.bluetooth {
-            color: ${color-pastel-celadon};
+            color: ${color-pastel-green};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
@@ -372,50 +335,50 @@
         }
 
         #disk {
-            color: ${color-pastel-non-photo-blue};
+            color: ${color-pastel-blue};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #battery {
-            color: ${color-pastel-tea-rose-red};
+            color: ${color-pastel-purple};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #battery.warning {
-            color: #ff713e;
+            color: ${color-alert};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #battery.charging.warning {
-            color: ${color-pastel-tea-rose-red};
+            color: ${color-pastel-purple};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #backlight {
-            color: ${color-pastel-lemon-chiffon};
+            color: ${color-pastel-yellow};
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }
 
         #custom-spotify {
-            color: ${color-pastel-celadon};
+            color: ${color-pastel-green};
             font-size: ${spotifyfontsize};
             padding: 0px ${paddingsmall};
             font-weight: 500;
         }
 
         #custom-separator {
-            color: #34374a;
+            color: ${color-dark-gray};
             font-size: ${fontsize};
             font-weight: 600;
         }
 
         #custom-separatorleft {
-            color: #34374a;
+            color: ${color-dark-gray};
             font-size: ${fontsize};
             font-weight: 600;
             padding-left: ${paddingmedium};

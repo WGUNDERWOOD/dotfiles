@@ -164,6 +164,10 @@
                 repeat_delay 200
                 repeat_rate 50
             }
+            input type:touchpad {
+                pointer_accel 0.5
+                natural_scroll enabled
+            }
             workspace 1
             exec echo "day" > $HOME/tmp/gammastatus
             exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
