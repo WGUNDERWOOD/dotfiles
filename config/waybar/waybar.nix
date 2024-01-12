@@ -193,6 +193,7 @@
             "full-at" = 95;
             "format" = "Bat {capacity}%";
             "format-charging" = "Chg {capacity}%";
+            "interval" = 30;
         };
         "backlight" = {
             "format" = "Bkl {percent}%";
@@ -386,6 +387,12 @@
 
         #battery.warning {
             color: #ff713e;
+            padding: 0px ${paddinglarge};
+            font-weight: 500;
+        }
+
+        #battery.charging.warning {
+            color: #ddbbff;
             padding: 0px ${paddinglarge};
             font-weight: 500;
         }

@@ -21,6 +21,12 @@
             resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
         }
         ];
+        events = [
+        {
+            event = "before-sleep";
+            command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+        ];
     };
 
     wayland.windowManager.sway = {
@@ -103,6 +109,8 @@
                 "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
                 "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
                 "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
+                "XF86AudioMute" = "exec \"pactl set-sink-mute @DEFAULT_SINK@ toggle\"";
+                "XF86AudioMicMute" = "exec \"pactl set-source-mute @DEFAULT_SOURCE@ toggle\"";
                 "XF86MonBrightnessUp" = "exec \"brillo -A 5\"";
                 "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
             };
