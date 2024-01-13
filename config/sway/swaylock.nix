@@ -4,8 +4,9 @@
         ignore-empty-password = true;
         indicator-radius = 120;
         indicator-thickness = 30;
-        color = "162416";
-        inside-color = "192719";
+        image = "~/wallpaper_blur.png";
+        #color = "181a26";
+        inside-color = "181a26";
         line-color = "1F202A";
         ring-color = "bd93f9";
         text-color = "00000000";
