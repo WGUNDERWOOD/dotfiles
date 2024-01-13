@@ -4,10 +4,12 @@ pkgs.writeShellApplication {
     name = "player-art";
     runtimeInputs = with pkgs; [ coreutils curl procps feh playerctl ];
     text = ''
-        URL_FILE="$HOME/.config/player-art-url.tmp"
-        IMG_FILE="$HOME/.config/player-art-img.tmp"
+        DIR="$HOME/tmp/player-art"
+        URL_FILE="$DIR/player-art-url.tmp"
+        IMG_FILE="$DIR/player-art-img.tmp"
 
         # get art url and image or exit if nothing is playing
+        mkdir -p "$DIR"
         playerctl metadata mpris:artUrl > "$URL_FILE" || exit 1
         curl "$(cat "$URL_FILE")" --output "$IMG_FILE"
 
