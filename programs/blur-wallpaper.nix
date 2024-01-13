@@ -2,7 +2,7 @@
 
 pkgs.writeShellApplication {
     name = "blur-wallpaper";
-    runtimeInputs = with pkgs; [ imagemagick ];
+    runtimeInputs = with pkgs; [ imagemagick coreutils ];
     text = ''
         # pass radius as argument e.g. 50
         if ! [[ $1 =~ [0-9]+ ]]; then

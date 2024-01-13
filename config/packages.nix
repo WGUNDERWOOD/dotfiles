@@ -1,97 +1,94 @@
 { pkgs, ... }:
 with pkgs; [
-    
-    # graphical
-    firefox-bin
-    spotify
-    lutris
-    steam
-    gimp
-    vlc
-
     alacritty
-    vim
-    wl-clipboard
-    git
-    home-manager
-    ghostscript
-    fdupes
-    pulseaudio
-    wayland
-    waybar
     aspell
-    pastel
     aspellDicts.en
+    bash-completion
     bat
-    diff-so-fancy
-    ripgrep
-    fzf
+    bitwarden-cli
+    bottom
+    brillo
+    bundix
     bundler
-    ffmpeg
-    ruby
+    cargo
+    complete-alias
+    diff-so-fancy
+    diffpdf
+    du-dust
     eza
     fd
-    bottom
-    neomutt
-    isync
-    gnumake
-    source-code-pro
-    nix-tree
-    brillo
-    tree-sitter
-    nodejs-slim
-    gcc
-    todoist
-    lm_sensors
-    bundix
-    rustc
-    cargo
-    starship
-    zathura
-    screen
-    lame
+    fdupes
+    feh
+    ffmpeg
     file
-    rofi-wayland
-    procs
-    procps
-    du-dust
-    texlive.combined.scheme-full
-    jq
-    nix-index
-    bitwarden-cli
-    inkscape
-    rclone
-    tldr
-    hyperfine
-    goobook
-    pavucontrol
-    diffpdf
-    watchexec
-    phinger-cursors
-    bash-completion
-    complete-alias
-    julia
-    playerctl
+    firefox-bin
+    fzf
     gammastep
-    python3
+    gcc
+    ghostscript
+    gimp
+    git
+    gnumake
+    goobook
+    grim
+    home-manager
+    hyperfine
     imagemagick
+    inkscape
+    isync
+    jq
+    julia
+    lame
+    libreoffice
+    lm_sensors
+    lutris
     lynx
+    neomutt
+    nix-index
+    nix-tree
+    nodejs-slim
+    numbat
     ocrmypdf
     pandoc
+    pastel
+    pavucontrol
     pdftk
-    libreoffice
-    feh
-    pplatex
-    grim
-    vivid
-    slurp
-    ranger
-    poppler_utils
+    phinger-cursors
+    playerctl
     pngquant
-    zip
-    unzip
+    poppler_utils
+    pplatex
+    procps
+    procs
+    pulseaudio
+    python3
+    ranger
+    rclone
+    ripgrep
+    rofi-wayland
+    ruby
+    rustc
+    screen
+    slurp
+    source-code-pro
+    spotify
+    starship
+    steam
     sway
-    wine
-    numbat
     swaylock
+    texlive.combined.scheme-full
+    tldr
+    todoist
+    tree-sitter
+    unzip
+    vim
+    vivid
+    vlc
+    watchexec
+    waybar
+    wayland
+    wine
+    wl-clipboard
+    zathura
+    zip
 ]

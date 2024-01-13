@@ -12,6 +12,7 @@
         (callPackage ../programs/long-lines/long-lines.nix { })
         (callPackage ../programs/nixos-update.nix { })
         (callPackage ../programs/pdf-insert-blank-pages.nix { })
+        (callPackage ../programs/player-art.nix { })
         (callPackage ../programs/rclone-sync/rclone-sync.nix { })
         (callPackage ../programs/repos.nix { })
         (callPackage ../programs/rofi-start/rofi-start.nix { })

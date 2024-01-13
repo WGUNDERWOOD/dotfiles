@@ -192,7 +192,7 @@
         color-night = "#ffb86c";
         color-pastel-yellow = "#f4f5cc";
         color-pastel-pink = "#f8ceeb";
-        color-pastel-blue = "#9fdbe7";
+        color-pastel-blue = "#a4e0e7";
         color-pastel-green = "#a9f4b0";
         color-pastel-purple = "#dfc2ff";
         in
