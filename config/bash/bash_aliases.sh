@@ -42,6 +42,7 @@ alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 
 # nix
 alias nxr='sudo nixos-rebuild switch'
 alias nxq='nix-env -qa | fzf'
+alias nxg='nix-collect-garbage --delete-old && sudo nix-collect-garbage --delete-old'
 alias nxs='nix-shell'
 alias nxu='nixos-update'
 alias nxb='nix-build'
