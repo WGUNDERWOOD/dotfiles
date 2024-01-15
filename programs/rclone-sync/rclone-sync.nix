@@ -1,7 +1,6 @@
-{ pkgs ? import <nixpkgs> { } }:
-
+{pkgs ? import <nixpkgs> {}}:
 pkgs.writeShellApplication {
-    name = "rclone-sync";
-    runtimeInputs = with pkgs; [ rclone ];
-    text = builtins.readFile ./rclone-sync.sh;
+  name = "rclone-sync";
+  runtimeInputs = with pkgs; [rclone];
+  text = builtins.readFile ./rclone-sync.sh;
 }

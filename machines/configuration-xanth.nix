@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   networking.hostName = "xanth";
   imports = [
-      ../machines/hardware-configuration-xanth.nix
-      ../config/config.nix
+    ../machines/hardware-configuration-xanth.nix
+    ../config/config.nix
   ];
 }

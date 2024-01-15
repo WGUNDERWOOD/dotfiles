@@ -1,35 +1,39 @@
-{pkgs, lib, osConfig, ...}: {
-    home.file.".icons/default".source =
-        "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: {
+  home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
-    home.pointerCursor = {
-        gtk.enable = true;
-        package = pkgs.phinger-cursors;
-        name = "phinger-cursors";
-    };
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.phinger-cursors;
+    name = "phinger-cursors";
+  };
 
-    services.swayidle = {
-        enable = true;
-        timeouts = [
-        {
-            timeout = 1800;
-            command = "${pkgs.swaylock}/bin/swaylock -f";
-        }
-        {
-            timeout = 2400;
-            command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
-            resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
-        }
-        ];
-        events = [
-        {
-            event = "before-sleep";
-            command = "${pkgs.swaylock}/bin/swaylock -f";
-        }
-        ];
-    };
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 1800;
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        timeout = 2400;
+        command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+    ];
+  };
 
-    wayland.windowManager.sway = {
+  wayland.windowManager.sway = {
 
         enable = true;
 
@@ -115,65 +119,63 @@
                 "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
                 "Shift+XF86MonBrightnessUp" = "exec \"brillo -S 100\"";
                 "Shift+XF86MonBrightnessDown" = "exec \"brillo -S 10\"";
-            };
+      };
 
-            colors = {
-                focused = {
-                    border = "#ffa9e6";
-                    background = "#ffa9e6";
-                    text = "#f8f8f2";
-                    indicator = "#ffa9e6";
-                    childBorder =  "#ffa9e6";
-                };
-                focusedInactive = {
-                    border = "#000000";
-                    background = "#000000";
-                    text = "#f8f8f2";
-                    indicator = "#000000";
-                    childBorder =  "#000000";
-                };
-                unfocused = {
-                    border = "#000000";
-                    background = "#000000";
-                    text = "#888888";
-                    indicator = "#000000";
-                    childBorder =  "#000000";
-                };
-                urgent = {
-                    border = "#ff8833";
-                    background = "#ff8833";
-                    text = "#f8f8f2";
-                    indicator = "#ff8833";
-                    childBorder =  "#ff8833";
-                };
-                placeholder = {
-                    border = "#000000";
-                    background = "#000000";
-                    text = "#888888";
-                    indicator = "#000000";
-                    childBorder =  "#000000";
-                };
-            };
+      colors = {
+        focused = {
+          border = "#ffa9e6";
+          background = "#ffa9e6";
+          text = "#f8f8f2";
+          indicator = "#ffa9e6";
+          childBorder = "#ffa9e6";
         };
-
-        extraConfig =
-            ''
-            seat * hide_cursor 1800
-            seat * hide_cursor when-typing enable
-            for_window [class=".*"] inhibit_idle fullscreen
-            for_window [app_id=".*"] inhibit_idle fullscreen
-            input type:keyboard {
-                repeat_delay 200
-                repeat_rate 50
-            }
-            input type:touchpad {
-                pointer_accel 0.5
-                natural_scroll enabled
-            }
-            workspace 1
-            exec echo "day" > $HOME/tmp/gammastatus
-            exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
-        '';
+        focusedInactive = {
+          border = "#000000";
+          background = "#000000";
+          text = "#f8f8f2";
+          indicator = "#000000";
+          childBorder = "#000000";
+        };
+        unfocused = {
+          border = "#000000";
+          background = "#000000";
+          text = "#888888";
+          indicator = "#000000";
+          childBorder = "#000000";
+        };
+        urgent = {
+          border = "#ff8833";
+          background = "#ff8833";
+          text = "#f8f8f2";
+          indicator = "#ff8833";
+          childBorder = "#ff8833";
+        };
+        placeholder = {
+          border = "#000000";
+          background = "#000000";
+          text = "#888888";
+          indicator = "#000000";
+          childBorder = "#000000";
+        };
+      };
     };
 
+    extraConfig = ''
+      seat * hide_cursor 1800
+      seat * hide_cursor when-typing enable
+      for_window [class=".*"] inhibit_idle fullscreen
+      for_window [app_id=".*"] inhibit_idle fullscreen
+      input type:keyboard {
+          repeat_delay 200
+          repeat_rate 50
+      }
+      input type:touchpad {
+          pointer_accel 0.5
+          natural_scroll enabled
+      }
+      workspace 1
+      exec echo "day" > $HOME/tmp/gammastatus
+      exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
+    '';
+  };
 }
