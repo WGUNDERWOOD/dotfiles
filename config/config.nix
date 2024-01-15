@@ -82,7 +82,7 @@
     osConfig,
     ...
   }: {
-    imports = (import ../config/home.nix {});
+    imports = import ../config/home.nix {};
     home.stateVersion = "23.05"; # original release: do not edit
   };
   system.stateVersion = "23.05"; # original release: do not edit
