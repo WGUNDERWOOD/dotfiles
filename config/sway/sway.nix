@@ -113,6 +113,8 @@
                 "XF86AudioMicMute" = "exec \"pactl set-source-mute @DEFAULT_SOURCE@ toggle\"";
                 "XF86MonBrightnessUp" = "exec \"brillo -A 5\"";
                 "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
+                "Shift+XF86MonBrightnessUp" = "exec \"brillo -S 100\"";
+                "Shift+XF86MonBrightnessDown" = "exec \"brillo -S 10\"";
             };
 
             colors = {
