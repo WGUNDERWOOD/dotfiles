@@ -110,7 +110,7 @@
                     echo '{"text": "Mail", "class": "inactive"}'
                 fi
                 '';
-            "restart-interval" = 120;
+            "restart-interval" = 10;
             "return-type" = "json";
         };
         "custom/gammastep" = {
