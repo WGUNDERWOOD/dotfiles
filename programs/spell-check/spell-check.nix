@@ -1,8 +1,7 @@
-{ pkgs ? import <nixpkgs> { } }:
-
+{pkgs ? import <nixpkgs> {}}:
 pkgs.rustPlatform.buildRustPackage rec {
-    pname = "spell-check";
-    version = "0.1.0";
-    cargoLock.lockFile = ./Cargo.lock;
-    src = pkgs.lib.cleanSource ./.;
+  pname = "spell-check";
+  version = "0.1.0";
+  cargoLock.lockFile = ./Cargo.lock;
+  src = pkgs.lib.cleanSource ./.;
 }

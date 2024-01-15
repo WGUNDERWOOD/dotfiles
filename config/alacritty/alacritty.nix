@@ -1,13 +1,20 @@
-{config, pkgs, osConfig, ...}: {
+{
+  config,
+  pkgs,
+  osConfig,
+  ...
+}: {
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
-
     scrolling.history = 10000;
     draw_bold_text_with_bright_colors = true;
 
     font = {
       normal.family = "Source Code Pro";
-      size = (if osConfig.networking.hostName == "libra" then 12.0 else 14.0);
+      size =
+        if osConfig.networking.hostName == "libra"
+        then 12.0
+        else 14.0;
     };
 
     cursor.style = {
