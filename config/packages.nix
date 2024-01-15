@@ -1,6 +1,7 @@
 {pkgs, ...}:
 with pkgs; [
   alacritty
+  alejandra
   aspell
   aspellDicts.en
   bash-completion
