@@ -68,6 +68,7 @@ for infile in "$@"; do
 
     # set up variables and get initial file size
     infilebase="$(basename "$infile" .pdf)"
+    outdir="$(dirname "$infile")"
     cmpfile="${tempdir}/${infilebase}_cmp.pdf"
     outfile="$infilebase".pdf
     insize=$(du -b "${infile}" | cut -f -1)
@@ -98,7 +99,7 @@ for infile in "$@"; do
     else
         cmppercent=$(("$cmpsize" * 100 / "$insize"))
         printf "%b%s (%s%%)%b\n" "$GREEN" "$cmpsizeh" "$cmppercent" "$RESET"
-        cp "$cmpfile" "$outfile"
+        cp "$cmpfile" "$outdir/$outfile"
     fi
 
 done
