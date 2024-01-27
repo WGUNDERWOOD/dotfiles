@@ -27,6 +27,7 @@ alias cava='cava -p ~/cava.conf'
 fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
 rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
 alias cpdf='compress-pdf'
+alias rpdf='rename-pdf'
 li() { command libreoffice "$@" & }
 tex-labels() { command grep -o -e "\\\label{[^}]*}" "$@" | grep --color -P "(?<={)[^}]*(?=})"; }
 alias rcgdpl='rclone-sync -gl'

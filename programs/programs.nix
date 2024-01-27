@@ -14,6 +14,7 @@ with pkgs; [
   (callPackage ../programs/pdf-insert-blank-pages.nix {})
   (callPackage ../programs/player-art.nix {})
   (callPackage ../programs/rclone-sync/rclone-sync.nix {})
+  (callPackage ../programs/rename-pdf/rename-pdf.nix {})
   (callPackage ../programs/repos.nix {})
   (callPackage ../programs/rofi-start/rofi-start.nix {})
   (callPackage ../programs/spell-check/spell-check.nix {})
