@@ -182,6 +182,7 @@
       workspace 1
       exec echo "day" > $HOME/tmp/gammastatus
       exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
+      exec "swaylock -f"
     '';
   };
 }
