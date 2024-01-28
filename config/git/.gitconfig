@@ -1,6 +1,5 @@
 ; -*- conf -*-
 
-; TODO put this in nix
 [user]
   email = "42812654+WGUNDERWOOD@users.noreply.github.com"
   name = "William G Underwood"
