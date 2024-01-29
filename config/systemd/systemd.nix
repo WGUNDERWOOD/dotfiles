@@ -13,7 +13,11 @@
       };
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.isync}/bin/mbsync -a && ${pkgs.coreutils}/bin/date +'%s' > $$HOME/tmp/mbsync_last_sync_time";
+        ExecStart =
+            "${pkgs.bash}/bin/bash -c \" " +
+            "${pkgs.isync}/bin/mbsync -a; " +
+            " ${pkgs.coreutils}/bin/date +\\'%%s\\'" +
+            " > /home/will/tmp/mbsync_last_sync_time \" ";
       };
       Install = {
         WantedBy = ["default.target"];

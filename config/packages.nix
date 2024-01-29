@@ -63,6 +63,7 @@ with pkgs; [
   procs
   pulseaudio
   python3
+  R
   ranger
   rclone
   ripgrep
