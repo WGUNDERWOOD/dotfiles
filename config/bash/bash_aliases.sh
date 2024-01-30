@@ -21,7 +21,7 @@ z() { command zathura "$@" & }
 alias bbd='bib-down'
 alias bm='btm'
 alias no='nvim notes.org'
-alias tc='tex-clean'
+alias texc='tex-clean'
 alias pla='player-art'
 alias cava='cava -p ~/cava.conf'
 fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
