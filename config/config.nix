@@ -24,6 +24,14 @@
     extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-wlr];
   };
 
+  # printing
+  services.printing.enable = true;
+  services.avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+  };
+
   # greeter
   services.getty.autologinUser = "will";
   services.greetd = {
