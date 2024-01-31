@@ -92,6 +92,10 @@ alias cdsco='cd ~/github/music-scores/'
 alias cdmon='cd ~/github/MondrianForests.jl/'
 alias cdmot='cd ~/github/motifcluster/'
 alias cddy='cd ~/github/DyadicKDE.jl/'
+alias cdte='cd ~/github/orf-499-spring-2024/'
+
+# cd dropbox
+alias cdted='cd ~/rclone/dropbox_princeton/2024Spring_ORF499/'
 
 # cd research github
 alias cdrem='cd ~/github/research-martingale-yurinskii/'
