@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # video and sound
+  # hardware
   hardware.opengl.driSupport32Bit = true;
   services.pipewire = {
     enable = true;
@@ -23,6 +23,7 @@
     wlr.enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-wlr];
   };
+  services.printing.enable = true;
 
   # greeter
   services.getty.autologinUser = "will";
