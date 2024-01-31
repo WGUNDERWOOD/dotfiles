@@ -1,22 +1,22 @@
 {...}: [
-  ../config/alacritty/alacritty.nix
+  ../config/alacritty.nix
   ../config/bash/bash.nix
-  ../config/feh/feh.nix
+  ../config/feh.nix
   ../config/git/git.nix
   ../config/julia/julia.nix
   ../config/latex/latex.nix
-  ../config/mbsync/mbsync.nix
-  ../config/mime/mime.nix
+  ../config/mbsync.nix
+  ../config/mime.nix
   ../config/neomutt/neomutt.nix
   ../config/neovim/neovim.nix
   ../config/rclone/rclone.nix
-  ../config/ripgrep/ripgrep.nix
+  ../config/ripgrep.nix
   ../config/rofi/rofi.nix
   ../config/starship/starship.nix
-  ../config/sway/sway.nix
-  ../config/sway/swaylock.nix
-  ../config/systemd/systemd.nix
+  ../config/sway.nix
+  ../config/swaylock.nix
+  ../config/systemd.nix
   ../config/vivid/vivid.nix
-  ../config/waybar/waybar.nix
-  ../config/zathura/zathura.nix
+  ../config/waybar.nix
+  ../config/zathura.nix
 ]
