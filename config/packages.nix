@@ -39,6 +39,7 @@ with pkgs; [
   isync
   jq
   julia
+  just
   lame
   libreoffice
   lm_sensors
@@ -50,6 +51,7 @@ with pkgs; [
   nodejs-slim
   numbat
   ocrmypdf
+  ouch
   pandoc
   pastel
   pavucontrol
@@ -71,6 +73,7 @@ with pkgs; [
   ruby
   rustc
   screen
+  silicon
   slurp
   source-code-pro
   spotify
