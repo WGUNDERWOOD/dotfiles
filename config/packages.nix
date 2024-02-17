@@ -82,6 +82,7 @@ with pkgs; [
   tldr
   todoist
   tree-sitter
+  urlscan
   unzip
   vim
   vivid
