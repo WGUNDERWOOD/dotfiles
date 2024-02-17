@@ -69,12 +69,23 @@ for infile in "$@"; do
     # set up variables and get initial file size
     infilebase="$(basename "$infile" .pdf)"
     outdir="$(dirname "$infile")"
+    shafile="${outdir}/${infilebase}.pdf.sha256"
     cmpfile="${tempdir}/${infilebase}_cmp.pdf"
     outfile="$infilebase".pdf
     insize=$(du -b "${infile}" | cut -f -1)
     insizeh=$(du -bh "${infile}" | cut -f -1)
     printf "%b%-40.40s  %b%-4.4s %b-> %b" \
         "$PURPLE" "$infile" "$PINK" "$insizeh" "$WHITE" "$RESET"
+
+    # exit if a sha matches
+    sha="$(sha256sum "$infile")"
+    if [ -f "$shafile" ]; then
+        oldsha="$(cat "$shafile")"
+        if [ "$sha" == "$oldsha" ]; then
+            printf "%b%s%b\n" "$RED" "SHA match" "$RESET"
+            exit 0
+        fi
+    fi
 
     # run the selected optimizer
     case $quality in
@@ -87,15 +98,16 @@ for infile in "$@"; do
     cmpsize=$(du -b "${cmpfile}" | cut -f -1)
     cmpsizeh=$(du -bh "${cmpfile}" | cut -f -1)
 
-    # first compression size is zero
+    # first compression size is zero, keep original
     if [ "$cmpsize" -eq 0 ]; then
         printf "%bNo output, keeping original%b\n" "$RED" "$RESET"
 
-    # first compression size is larger
+    # first compression size is larger, keep original and save hash
     elif [ "$cmpsize" -ge "$insize" ]; then
+        echo "$sha" > "$shafile"
         printf "%b%s%b\n" "$RED" "$cmpsizeh" "$RESET"
 
-    # first compression size is a little smaller
+    # first compression size is smaller, keep compressed file
     else
         cmppercent=$(("$cmpsize" * 100 / "$insize"))
         printf "%b%s (%s%%)%b\n" "$GREEN" "$cmpsizeh" "$cmppercent" "$RESET"
