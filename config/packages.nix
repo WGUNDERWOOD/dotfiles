@@ -10,7 +10,6 @@ with pkgs; [
   bottom
   brillo
   bundix
-  bundler
   cargo
   complete-alias
   diff-so-fancy
@@ -78,8 +77,6 @@ with pkgs; [
   source-code-pro
   spotify
   starship
-  steam
-  sway
   swaylock
   texlive.combined.scheme-full
   tldr

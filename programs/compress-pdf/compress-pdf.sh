@@ -82,7 +82,7 @@ for infile in "$@"; do
     if [ -f "$shafile" ]; then
         oldsha="$(cat "$shafile")"
         if [ "$sha" == "$oldsha" ]; then
-            printf "%b%s%b\n" "$RED" "SHA match" "$RESET"
+            printf "%b%s%b\n" "$GREEN" "SHA match" "$RESET"
             exit 0
         fi
     fi
