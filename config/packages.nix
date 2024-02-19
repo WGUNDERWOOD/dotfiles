@@ -10,7 +10,6 @@ with pkgs; [
   bottom
   brillo
   bundix
-  cargo
   complete-alias
   diff-so-fancy
   diffpdf
@@ -70,7 +69,6 @@ with pkgs; [
   ripgrep
   rofi-wayland
   ruby
-  rustc
   screen
   silicon
   slurp
