@@ -64,7 +64,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
   environment.systemPackages =
-    (import ../config/packages.nix pkgs)
+    (import ./packages.nix pkgs)
     ++ (import ../programs/programs.nix pkgs);
   programs.sway.enable = true;
   programs.steam.enable = true;
@@ -90,7 +90,7 @@
     osConfig,
     ...
   }: {
-    imports = import ../config/home.nix {};
+    imports = import ./home.nix {};
     home.stateVersion = "23.05"; # original release: do not edit
   };
   system.stateVersion = "23.05"; # original release: do not edit
