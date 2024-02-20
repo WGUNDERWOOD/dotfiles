@@ -8,6 +8,15 @@
   programs.neovim.defaultEditor = true;
 
   programs.neovim.plugins = let
+    vim-searchindex = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-searchindex";
+      src = pkgs.fetchFromGitHub {
+        owner = "google";
+        repo = "vim-searchindex";
+        rev = "b0788c8213210b3bd23b62847dd5a9ebbe4ad648";
+        sha256 = "sha256-gDbzUF6KqBloY4dIzZrjiSq5sMGs09awH+SKTOscMKk=";
+      };
+    };
     vim-yankstack = pkgs.vimUtils.buildVimPlugin {
       name = "vim-yankstack";
       src = pkgs.fetchFromGitHub {
@@ -18,27 +27,27 @@
       };
     };
   in [
-    pkgs.vimPlugins.vim-startify
+    pkgs.vimPlugins.cmp-omni
+    pkgs.vimPlugins.cmp-rg
+    pkgs.vimPlugins.cmp_luasnip
     pkgs.vimPlugins.dracula-nvim
+    pkgs.vimPlugins.fzf-lua
     pkgs.vimPlugins.leap-nvim
-    pkgs.vimPlugins.vim-repeat
+    pkgs.vimPlugins.lualine-nvim
+    pkgs.vimPlugins.luasnip
+    pkgs.vimPlugins.neomake
+    pkgs.vimPlugins.nvim-autopairs
+    pkgs.vimPlugins.nvim-cmp
+    pkgs.vimPlugins.nvim-colorizer-lua
     pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     pkgs.vimPlugins.orgmode
-    pkgs.vimPlugins.fzf-lua
-    pkgs.vimPlugins.YankRing-vim
-    pkgs.vimPlugins.nvim-autopairs
-    pkgs.vimPlugins.nvim-colorizer-lua
-    pkgs.vimPlugins.vimtex
-    pkgs.vimPlugins.lualine-nvim
-    pkgs.vimPlugins.neomake
-    pkgs.vimPlugins.luasnip
-    pkgs.vimPlugins.nvim-cmp
-    pkgs.vimPlugins.cmp_luasnip
-    pkgs.vimPlugins.cmp-rg
     pkgs.vimPlugins.vim-gitgutter
     pkgs.vimPlugins.vim-lastplace
-    pkgs.vimPlugins.cmp-omni
+    pkgs.vimPlugins.vim-repeat
+    pkgs.vimPlugins.vim-startify
+    pkgs.vimPlugins.vimtex
     pkgs.vimPlugins.yuck-vim
+    vim-searchindex
     vim-yankstack
   ];
 
