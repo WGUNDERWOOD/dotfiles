@@ -27,9 +27,9 @@
   # printing
   services.printing.enable = true;
   services.avahi = {
-      enable = true;
-      nssmdns = true;
-      openFirewall = true;
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
   };
 
   # greeter

@@ -5,13 +5,13 @@ pkgs.python3Packages.buildPythonApplication rec {
   src = ./.;
   postInstall = "mv -v $out/bin/rename-pdf.py $out/bin/rename-pdf";
   prettyErrors = pkgs.python3Packages.buildPythonPackage rec {
-      pname = "pretty_errors";
-      version = "1.2.25";
-      src = pkgs.python3Packages.fetchPypi {
-          inherit pname version;
-          sha256 = "sha256-oWulx1LIfCY7+S+LS1hiTjseKScak5H1ZPErhuk8Z1U=";
-      };
-      doCheck = false;
+    pname = "pretty_errors";
+    version = "1.2.25";
+    src = pkgs.python3Packages.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-oWulx1LIfCY7+S+LS1hiTjseKScak5H1ZPErhuk8Z1U=";
+    };
+    doCheck = false;
   };
   propagatedBuildInputs = with pkgs.python3Packages; [
     prettyErrors

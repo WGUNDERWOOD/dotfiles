@@ -56,7 +56,7 @@ alias timenow='date +"%Y/%m/%d%n%H:%M:%S.%3N%n%:z"'
 gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 
 # todoist
-alias t='rg --sort path -t org TODO $HOME/github'
+alias t='rg --sort path -t org TODO $HOME/github $HOME/overleaf'
 alias tt='todoist sync && todoist --color list --filter "(overdue | today | p1)"'
 alias tl='todoist sync && todoist --color list'
 tq() { command todoist quick "$@" && todoist sync & }
