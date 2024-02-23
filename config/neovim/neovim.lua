@@ -105,7 +105,7 @@ vim.cmd [[
         endif
     endfunction
     command ToggleColorColumn call ToggleColorColumn()
-    nnoremap <Space>m :ToggleColorColumn<CR>
+    nnoremap <Space>cc :ToggleColorColumn<CR>
 ]]
 
 -- git conflicts

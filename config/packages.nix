@@ -67,6 +67,7 @@ with pkgs; [
   ranger
   rclone
   ripgrep
+  rm-improved
   rofi-wayland
   ruby
   screen
