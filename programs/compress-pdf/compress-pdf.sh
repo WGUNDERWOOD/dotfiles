@@ -22,7 +22,12 @@ done
 shift $((OPTIND - 1))
 
 # print script name and quality
-printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET"
+case $quality in
+    perfect) printf "%bcompress-pdf %b\n" "$YELLOW" "$RESET" ;;
+    high) printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET" ;;
+    low) printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET" ;;
+esac
+
 
 # error if no files provided
 if [[ -z "$*" ]]; then
