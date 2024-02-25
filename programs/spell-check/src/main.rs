@@ -54,9 +54,8 @@ fn main() {
                 println!("{}", &formatted);
             }
         }
-
-        clean_up();
     }
+    clean_up();
 }
 
 fn make_wordlist() {
