@@ -4,8 +4,7 @@ pkgs.rustPlatform.buildRustPackage rec {
   version = "0.1.0";
   propagatedBuildInputs = with pkgs; [
       coreutils
-      aspell
-      aspellDicts.en
+      (aspellWithDicts (d: [d.en]))
   ];
   cargoLock.lockFile = ./Cargo.lock;
   src = pkgs.lib.cleanSource ./.;
