@@ -82,41 +82,47 @@ for infile in "$@"; do
     printf "%b%-40.40s  %b%-4.4s %b-> %b" \
         "$PURPLE" "$infile" "$PINK" "$insizeh" "$WHITE" "$RESET"
 
-    # exit if a sha matches
+    # check if a sha matches
     sha="$(sha256sum "$infile")"
+    shamatch="false"
     if [ -f "$shafile" ]; then
         oldsha="$(cat "$shafile")"
         if [ "$sha" == "$oldsha" ]; then
+            shamatch="true"
             printf "%b%s%b\n" "$GREEN" "SHA match" "$RESET"
-            exit 0
         fi
     fi
 
-    # run the selected optimizer
-    case $quality in
-        perfect) optimize_perfect ;;
-        high) optimize_high ;;
-        low) optimize_low ;;
-    esac
+    # if no sha match then run the optimizer
+    if [ "$shamatch" != "true" ]; then
 
-    # get first compression size
-    cmpsize=$(du -b "${cmpfile}" | cut -f -1)
-    cmpsizeh=$(du -bh "${cmpfile}" | cut -f -1)
+        # run the selected optimizer
+        case $quality in
+            perfect) optimize_perfect ;;
+            high) optimize_high ;;
+            low) optimize_low ;;
+        esac
 
-    # first compression size is zero, keep original
-    if [ "$cmpsize" -eq 0 ]; then
-        printf "%bNo output, keeping original%b\n" "$RED" "$RESET"
+        # get first compression size
+        cmpsize=$(du -b "${cmpfile}" | cut -f -1)
+        cmpsizeh=$(du -bh "${cmpfile}" | cut -f -1)
 
-    # first compression size is larger, keep original and save hash
-    elif [ "$cmpsize" -ge "$insize" ]; then
-        echo "$sha" > "$shafile"
-        printf "%b%s%b\n" "$RED" "$cmpsizeh" "$RESET"
+        # first compression size is zero, keep original
+        if [ "$cmpsize" -eq 0 ]; then
+            printf "%bNo output, keeping original%b\n" "$RED" "$RESET"
 
-    # first compression size is smaller, keep compressed file
-    else
-        cmppercent=$(("$cmpsize" * 100 / "$insize"))
-        printf "%b%s (%s%%)%b\n" "$GREEN" "$cmpsizeh" "$cmppercent" "$RESET"
-        cp "$cmpfile" "$outdir/$outfile"
+        # first compression size is larger, keep original and save hash
+        elif [ "$cmpsize" -ge "$insize" ]; then
+            echo "$sha" > "$shafile"
+            printf "%b%s%b\n" "$RED" "$cmpsizeh" "$RESET"
+
+        # first compression size is smaller, keep compressed file
+        else
+            cmppercent=$(("$cmpsize" * 100 / "$insize"))
+            printf "%b%s (%s%%)%b\n" "$GREEN" "$cmpsizeh" "$cmppercent" "$RESET"
+            cp "$cmpfile" "$outdir/$outfile"
+        fi
+
     fi
 
 done
