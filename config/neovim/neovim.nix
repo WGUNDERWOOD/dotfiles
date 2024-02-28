@@ -42,6 +42,7 @@
     pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     pkgs.vimPlugins.orgmode
     pkgs.vimPlugins.vim-gitgutter
+    pkgs.vimPlugins.vim-just
     pkgs.vimPlugins.vim-lastplace
     pkgs.vimPlugins.vim-repeat
     pkgs.vimPlugins.vim-startify
