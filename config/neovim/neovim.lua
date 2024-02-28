@@ -195,13 +195,14 @@ vim.cmd("hi Note guifg=#ffff22 guibg=NONE gui=bold")
 vim.cmd("hi Done guifg=#00dd00 guibg=NONE gui=bold")
 vim.cmd("hi Later guifg=#6272a4 guibg=NONE gui=bold")
 vim.cmd("hi No guifg=#ff3333 guibg=NONE gui=bold")
-vim.cmd("call matchadd('Todo', 'TODO\\|BUG\\|\\\\TODO', -1)")
-vim.cmd("call matchadd('Done', 'DONE\\|YES', -1)")
-vim.cmd("call matchadd('Now', 'NOW', -1)")
-vim.cmd("call matchadd('Note', 'NOTE\\|BOUGHT\\|ARRIVED\\|CHECK\\|BASKET\\|" ..
-        "WRAPPED\\|MAYBE\\|DRAFT\\|EMAILED\\|PACKED', -1)")
-vim.cmd("call matchadd('Later', 'LATER', -1)")
-vim.cmd("call matchadd('No', 'NO\\s', -1)")
+vim.cmd("call matchadd('Todo', '\\<TODO\\>\\|\\<BUG\\>\\|\\\\TODO', -1)")
+vim.cmd("call matchadd('Done', '\\<DONE\\>\\|\\<YES\\>', -1)")
+vim.cmd("call matchadd('Now', '\\<NOW\\>', -1)")
+vim.cmd("call matchadd('Note', '\\<NOTE\\>\\|\\<BOUGHT\\>\\|\\<ARRIVED\\>\\|" ..
+        "\\<CHECK\\>\\|\\<BASKET\\>\\|\\<WRAPPED\\>\\|\\<MAYBE\\>\\|" ..
+        "\\<DRAFT\\>\\|\\<EMAILED\\>\\|\\<PACKED\\>', -1)")
+vim.cmd("call matchadd('Later', '\\<LATER\\>', -1)")
+vim.cmd("call matchadd('No', '\\<NO\\>', -1)")
 
 -- lastplace
 vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,mail"
@@ -272,7 +273,8 @@ local cmp = require("cmp")
 local has_words_before = function()
     unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    local lines = vim.api.nvim_buf_get_lines(0, line - 1, line, true)
+    return col ~= 0 and lines[1]:sub(col, col):match("%s") == nil
 end
 cmp.setup({
     mapping = {

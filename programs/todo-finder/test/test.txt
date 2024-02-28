@@ -4,3 +4,6 @@ here is a TODO in the middle of the line
 a TODONOTE should also be flagged
 but a todo should not be, nor should TOD or N OTE
 here is a NOW and and another NOW and a TODO on the same line
+ACKNOWLEDGMENT is fine
+ACKNOWLEDGMENTS is also fine
+NOTES is fine too

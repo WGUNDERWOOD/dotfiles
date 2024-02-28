@@ -3,7 +3,7 @@ use std::fs;
 
 // declare keywords
 const KEYWORDS: [&str; 5] = ["TODO", "BUG", "NOTE", "NOW", "XXX"];
-const EXCLUDES: [&str; 1] = ["\\newcommand{\\TODO}"];
+const EXCLUDES: [&str; 3] = ["\\newcommand{\\TODO}", "NOTES", "ACKNOWLEDGMENT"];
 
 // declare colors
 const YELLOW: &str = "\x1b[33m\x1b[1m";

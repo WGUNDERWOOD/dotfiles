@@ -94,6 +94,7 @@ alias cdmon='cd ~/github/MondrianForests.jl/'
 alias cdmot='cd ~/github/motifcluster/'
 alias cddy='cd ~/github/DyadicKDE.jl/'
 alias cdte='cd ~/github/orf-499-spring-2024/'
+alias cdrv='cd ~/github/reviewing/'
 
 # cd dropbox
 alias cdted='cd ~/rclone/dropbox_princeton/2024Spring_ORF499/'
