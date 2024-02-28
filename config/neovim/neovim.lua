@@ -174,11 +174,6 @@ vim.g.gitgutter_enabled = false
 vim.g.gitgutter_map_keys = false
 map("n", "<Space>gg", ":GitGutterToggle <CR>")
 
--- make
-map("n", "<Space>mm", ":NeomakeSh make <CR>")
-map("n", "<Space>mc", ":NeomakeSh make clean <CR>")
-map("n", "<Space>mf", ":update <CR> :silent! make format <CR> :edit<CR>")
-
 -- leap
 vim.cmd("hi LeapBackdrop guifg=#6272a4 guibg=NONE gui=NONE")
 vim.cmd("hi LeapLabelPrimary guifg=#50fa7b guibg=NONE gui=bold")
@@ -516,14 +511,12 @@ vim.cmd([[
     au Filetype mail /\n\n--
 ]])
 
--- make files
+-- just files
 vim.cmd([[
-    augroup make
+    augroup just
     autocmd!
-    au Filetype make setlocal noexpandtab
-    au Filetype make hi makeSpecTarget guifg=#ff79c6 gui=bold
-    au Filetype make hi makeTarget guifg=#50fa7b gui=bold
-    au Filetype make hi makeIdent gui=bold
+    au Filetype just hi justAssignment guifg=#f8f8f2 gui=bold
+    au Filetype just hi justFunction guifg=#ff79c6 gui=bold
 ]])
 
 -- text files

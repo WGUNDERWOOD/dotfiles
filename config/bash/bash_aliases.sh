@@ -15,6 +15,7 @@ alias lrc='ls -AiR1U ./ |
 alias b='bat --theme Dracula'
 alias c='cd'
 alias g='git'
+alias j='just'
 alias m='(cd ~/downloads; neomutt)'
 alias n='nvim'
 z() { command zathura "$@" & }
