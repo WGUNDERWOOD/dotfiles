@@ -112,6 +112,7 @@ alias cdovh='cd ~/overleaf/CMU_2023_HigherOrderLindeberg/'
 
 # alias completion
 source $(which complete_alias)
+complete -F _complete_alias bm
 complete -F _complete_alias c
 complete -F _complete_alias g
-complete -F _complete_alias bm
+complete -F _complete_alias j
