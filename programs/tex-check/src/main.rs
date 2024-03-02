@@ -8,11 +8,12 @@ const MATCH_WARNING: [&str; 1] = ["warn"];
 const MATCH_OTHER: [&str; 2] = ["overfull", "underfull"];
 
 // declare non matches
-const NOMATCH: [&str; 4] = [
+const NOMATCH: [&str; 5] = [
     "Package: infwarerr",
     "file:line:error style",
     "pgfplots.errorbars.code.tex",
     "warning\\$ -- 0",
+    "Package caption Warning: Unknown document class",
 ];
 
 // declare colors
