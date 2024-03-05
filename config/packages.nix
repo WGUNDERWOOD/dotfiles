@@ -10,6 +10,7 @@ with pkgs; [
   bottom
   brillo
   bundix
+  chafa
   complete-alias
   diff-so-fancy
   diffpdf
