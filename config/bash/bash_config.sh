@@ -23,6 +23,9 @@ PROMPT_COMMAND='history -a'
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 
+# zoxide
+eval "$(zoxide init --cmd c bash)"
+
 # colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'

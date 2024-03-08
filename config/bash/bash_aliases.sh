@@ -13,11 +13,11 @@ alias lrc='ls -AiR1U ./ |
 
 # programs
 alias b='bat --theme Dracula'
-alias c='cd'
 alias g='git'
 alias j='just'
 alias m='(cd ~/downloads; neomutt)'
 alias n='nvim'
+alias r='ranger'
 z() { command zathura "$@" & }
 alias bbd='bib-down'
 alias bm='btm'

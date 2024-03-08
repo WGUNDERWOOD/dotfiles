@@ -94,4 +94,5 @@ with pkgs; [
   wl-clipboard
   zathura
   zip
+  zoxide
 ]
