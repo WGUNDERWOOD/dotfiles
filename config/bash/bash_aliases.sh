@@ -13,6 +13,8 @@ alias lrc='ls -AiR1U ./ |
 
 # programs
 alias b='bat --theme Dracula'
+alias c='cd'
+alias ci='cdi'
 alias g='git'
 alias j='just'
 alias m='(cd ~/downloads; neomutt)'
