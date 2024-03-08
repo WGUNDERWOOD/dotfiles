@@ -15,7 +15,7 @@
         Type = "oneshot";
         ExecStart =
           "${pkgs.bash}/bin/bash -c \" "
-          + "${pkgs.isync}/bin/mbsync -a; "
+          + "${pkgs.isync}/bin/mbsync -a && "
           + " ${pkgs.coreutils}/bin/date +\\'%%s\\'"
           + " > /home/will/tmp/mbsync_last_sync_time \" ";
       };
