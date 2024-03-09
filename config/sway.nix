@@ -17,7 +17,10 @@
     timeouts = [
       {
         timeout = 1800;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command =
+            if osConfig.networking.hostName == "xanth"
+                then "${pkgs.swaylock}/bin/swaylock -f"
+            else "";
       }
       {
         timeout = 2400;
@@ -28,7 +31,10 @@
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command =
+            if osConfig.networking.hostName == "xanth"
+                then "${pkgs.swaylock}/bin/swaylock -f"
+            else "";
       }
     ];
   };
@@ -69,7 +75,10 @@
         "${modifier}+Shift+f" = "exec firefox";
         "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
         "${modifier}+d" = "exec rofi-start";
-        "${modifier}+Shift+Ctrl+k" = "exec \"swaylock -f && systemctl suspend\"";
+        "${modifier}+Shift+Ctrl+k" =
+            if osConfig.networking.hostName == "xanth"
+                then "exec \"swaylock -f && systemctl suspend\""
+                else "exec systemctl suspend\"";
         "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f\"";
         "${modifier}+p" = "kill";
         "${modifier}+Shift+h" = "move left";
