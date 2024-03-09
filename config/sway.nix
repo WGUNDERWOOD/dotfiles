@@ -78,7 +78,7 @@
         "${modifier}+Shift+Ctrl+k" =
             if osConfig.networking.hostName == "xanth"
                 then "exec \"swaylock -f && systemctl suspend\""
-                else "exec systemctl suspend\"";
+                else "exec \"systemctl suspend\"";
         "${modifier}+Shift+Ctrl+l" = "exec \"swaylock -f\"";
         "${modifier}+p" = "kill";
         "${modifier}+Shift+h" = "move left";
