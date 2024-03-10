@@ -23,6 +23,10 @@ fn main() {
     println!("{}", String::new() + PINK + "long-lines" + RESET);
 
     for filename in filenames {
+
+        // print the file name
+        println!("{}", String::new() + YELLOW + filename + RESET);
+
         // read lines from file
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
         let lines: Vec<&str> = file.lines().collect();
@@ -32,11 +36,6 @@ fn main() {
         let mut order: Vec<usize> = (0..n).collect();
         order.sort_by_key(|&i| lines[i].len());
         let sorted_lines: Vec<&str> = order.iter().map(|&i| lines[i]).collect();
-
-        // if any line is long, print the file name
-        if sorted_lines[n - 1].len() > MAX_LEN {
-            println!("{}", String::new() + YELLOW + filename + RESET)
-        }
 
         // display all the long lines
         for i in 0..n {

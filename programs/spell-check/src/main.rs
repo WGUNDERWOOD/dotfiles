@@ -39,25 +39,25 @@ fn main() {
     check_reject_are_ok();
 
     for filename in filenames {
+
+        // print filename and read file
+        println!("{}", String::new() + YELLOW + filename + RESET);
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
         let mistakes = spell_check_get_mistakes(filename, &file, &reject);
 
         // output results
-        if !mistakes.is_empty() {
-            println!("{}", String::new() + YELLOW + filename + RESET);
-            for m in mistakes {
-                print!(
-                    "{}",
-                    String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
+        for m in mistakes {
+            print!(
+                "{}",
+                String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
                 );
 
-                let mut formatted: String = m.2.to_string();
-                for w in m.1 {
-                    let colored_w = String::new() + RED + &w + RESET;
-                    formatted = formatted.replace(&w, &colored_w);
-                }
-                println!("{}", &formatted);
+            let mut formatted: String = m.2.to_string();
+            for w in m.1 {
+                let colored_w = String::new() + RED + &w + RESET;
+                formatted = formatted.replace(&w, &colored_w);
             }
+            println!("{}", &formatted);
         }
     }
     clean_up();
@@ -127,7 +127,7 @@ fn spell_check_get_mistakes(
     filename: &str,
     file: &str,
     reject: &Vec<String>,
-) -> Vec<(usize, Vec<String>, String)> {
+    ) -> Vec<(usize, Vec<String>, String)> {
     // run aspell to get mistakes
     fs::copy(filename, ".spell_file.tmp").unwrap();
     let output_cat = Command::new("cat")
