@@ -1,4 +1,6 @@
 import sys
+import os
+import shutil
 import re
 
 def remove_extra_newlines(file):
@@ -8,7 +10,8 @@ def remove_tabs(file):
     return re.sub("\t", TAB * " ", file)
 
 def remove_comment(line):
-    return re.sub("%.*", "", line)
+    new_line = re.sub("\\\%", "", line)
+    return re.sub("%.*", "", new_line)
 
 def get_back(line):
     # no deindentation for ending document
@@ -49,13 +52,13 @@ def get_diff(line):
 
 # set constants
 TAB = 2
-OPENS = ["(", "[", "{", "``"]
-CLOSES = [")", "]", "}", "''"]
+OPENS = ["(", "[", "{"]
+CLOSES = [")", "]", "}"]
 LISTS = ["itemize", "enumerate", "description"]
 
 # open file
 filename = sys.argv[1]
-file = open(filename, "r").read().strip("\n")
+file = open(filename, "r").read()
 
 # preformat
 file = remove_extra_newlines(file)
@@ -73,6 +76,7 @@ for i in range(len(lines)):
     back = get_back(line)
     diff = get_diff(line)
     indent = count - back
+    assert indent >= 0
     indents[i] = indent
     count += diff
 
@@ -88,8 +92,9 @@ for i in range(len(lines)):
     if new_line != "":
         new_line = (indents[i] * TAB * " ") + new_line
     new_lines[i] = new_line
-    print(new_line)
 
-# backup original file
-# TODO do this with absolute paths
-# TODO handle files in other dirs
+# backup original file and write
+filepath = os.path.abspath(filename)
+shutil.copy(filepath, filepath + ".bak")
+new_file = "\n".join(new_lines)
+open(filepath + "_new.tex", "w").write(new_file)
