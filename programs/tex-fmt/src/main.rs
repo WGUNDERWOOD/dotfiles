@@ -9,6 +9,10 @@ const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
 const LISTS: [&str; 3] = ["itemize", "enumerate", "description"];
 
+const YELLOW: &str = "\x1b[33m\x1b[1m";
+const PINK: &str = "\x1b[35m\x1b[1m";
+const RESET: &str = "\x1b[00m\x1b[0m";
+
 #[derive(Parser)]
 struct Cli {
     #[arg(long, short, help="Print to stdout, do not modify files")]
@@ -150,7 +154,14 @@ fn main() {
              || f.ends_with(".bib")
              || f.ends_with(".cls")));
 
+    // print script name
+    println!("{}", String::new() + PINK + "tex-fmt" + RESET);
+
     for filename in filenames {
+
+        // print file name
+        println!("{}", String::new() + YELLOW + &filename + RESET);
+
         // read lines from file
         let mut file = fs::read_to_string(&filename)
             .expect("Should have read the file");
@@ -174,7 +185,7 @@ fn main() {
             let back = get_back(line_strip);
             let diff = get_diff(line_strip);
             let indent: i32 = count - back;
-            if debug {
+            if !debug {
                 assert!(indent >= 0)
             };
             indents[i] = indent;
@@ -191,7 +202,7 @@ fn main() {
         }
 
         // check indents return to zero
-        if debug {
+        if !debug {
             assert!(indents.first().unwrap() == &0);
             assert!(indents.last().unwrap() == &0);
         }
