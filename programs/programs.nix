@@ -19,6 +19,7 @@ with pkgs; [
   (callPackage ../programs/spell-check/spell-check.nix {})
   (callPackage ../programs/spell-check-word.nix {})
   (callPackage ../programs/sway-empty/sway-empty.nix {})
+  (callPackage ../programs/tex-build/tex-build.nix {})
   (callPackage ../programs/tex-check/tex-check.nix {})
   (callPackage ../programs/tex-clean.nix {})
   (callPackage ../programs/tex-fmt/tex-fmt.nix {})

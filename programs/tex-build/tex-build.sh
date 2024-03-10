@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o pipefail
-
 # colors
 RED='\033[1;31m'
 PURPLE='\033[1;34m'
 RESET='\033[0m'
 
 # get flags from user
+pdf="-pdf"
 quiet="-quiet"
 report="-rc-report-"
 warn="-Werror"
+esc=""
+norc=""
 
 while getopts 'lxenvw' flag; do
     case "${flag}" in
@@ -28,7 +28,6 @@ done
 shift $((OPTIND - 1))
 
 # get around empty flags
-if [[ -z "$pdf" ]]; then pdf="-pdf"; fi
 if [[ -z "$quiet" ]]; then quiet="$pdf"; fi
 if [[ -z "$report" ]]; then report="$pdf"; fi
 if [[ -z "$warn" ]]; then warn="$pdf"; fi
