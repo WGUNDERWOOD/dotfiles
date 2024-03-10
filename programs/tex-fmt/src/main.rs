@@ -1,13 +1,21 @@
 use core::cmp::max;
 use lazy_static::lazy_static;
 use regex::Regex;
-use std::env;
 use std::fs;
+use clap::Parser;
 
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
 const LISTS: [&str; 3] = ["itemize", "enumerate", "description"];
+
+#[derive(Parser)]
+struct Cli {
+    #[arg(long, short, help="Print to stdout, do not modify files")]
+    dryrun: bool,
+    #[arg(required = true)]
+    filenames: Vec<String>,
+}
 
 lazy_static! {
     static ref RE_NEWLINES: Regex = Regex::new(r"\n\n\n+").unwrap();
@@ -15,10 +23,14 @@ lazy_static! {
     static ref RE_PERCENT: Regex = Regex::new(r"\\\%").unwrap();
     static ref RE_COMMENT: Regex = Regex::new(r"\%.*").unwrap();
     static ref RE_ITEM: Regex = Regex::new(r".*\\item.*").unwrap();
-    static ref RE_DOCUMENT_BEGIN: Regex = Regex::new(r".*\\begin\{document\}.*").unwrap();
-    static ref RE_DOCUMENT_END: Regex = Regex::new(r".*\\end\{document\}.*").unwrap();
-    static ref RE_ENV_BEGIN: Regex = Regex::new(r".*\\begin\{[a-z\*]*\}.*").unwrap();
-    static ref RE_ENV_END: Regex = Regex::new(r".*\\end\{[a-z\*]*\}.*").unwrap();
+    static ref RE_DOCUMENT_BEGIN: Regex =
+        Regex::new(r".*\\begin\{document\}.*").unwrap();
+    static ref RE_DOCUMENT_END: Regex =
+        Regex::new(r".*\\end\{document\}.*").unwrap();
+    static ref RE_ENV_BEGIN: Regex =
+        Regex::new(r".*\\begin\{[a-z\*]*\}.*").unwrap();
+    static ref RE_ENV_END: Regex =
+        Regex::new(r".*\\end\{[a-z\*]*\}.*").unwrap();
     static ref RE_LISTS_BEGIN: Vec<Regex> = LISTS
         .iter()
         .map(|l| Regex::new(&format!(r".*\\begin\{{{}}}.*", l)).unwrap())
@@ -118,18 +130,21 @@ fn get_diff(line: &str) -> i32 {
 }
 
 fn main() {
-    // get filenames from arguments
-    let args: Vec<String> = env::args().collect();
-    assert!(args.len() >= 2, "No file provided");
-    let filenames = &args[1..];
 
-    // check files are correct format
-    // TODO handle bib files too
-    assert!(filenames.iter().all(|f| f.ends_with(".tex")));
+    // get arguments
+    let args = Cli::parse();
+    let dryrun = args.dryrun;
+    let filenames = args.filenames;
+
+    // check files are in correct format
+    assert!(filenames
+        .iter()
+        .all(|f| f.ends_with(".tex") || f.ends_with(".bib")));
 
     for filename in filenames {
         // read lines from file
-        let mut file = fs::read_to_string(filename).expect("Should have read the file");
+        let mut file = fs::read_to_string(&filename)
+            .expect("Should have read the file");
 
         // preformat
         file = remove_extra_newlines(&file);
@@ -168,13 +183,20 @@ fn main() {
         assert!(indents.first().unwrap() == &0);
         assert!(indents.last().unwrap() == &0);
 
-        // backup original file and write
-        let filepath = fs::canonicalize(filename).unwrap();
-        let mut bak = filepath.clone().into_os_string().into_string().unwrap();
-        bak.push_str(".bak");
-        fs::copy(filepath.clone(), &bak).unwrap();
+        // prepare indented file
         let mut new_file = new_lines.join("\n");
         new_file.push('\n');
-        fs::write(filepath, new_file).unwrap();
+
+        if dryrun {
+            // print new file
+            println!("{}", &new_file);
+        } else {
+            // backup original file and write new file
+            let filepath = fs::canonicalize(&filename).unwrap();
+            let mut bak = filepath.clone().into_os_string().into_string().unwrap();
+            bak.push_str(".bak");
+            fs::copy(filepath.clone(), &bak).unwrap();
+            fs::write(filepath, new_file).unwrap();
+        }
     }
 }
