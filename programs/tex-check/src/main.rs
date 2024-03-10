@@ -30,7 +30,7 @@ fn main() {
     assert!(args.len() >= 2, "No file provided");
     let filenames = &args[1..];
 
-    // check file is correct format
+    // check files are correct format
     assert!(filenames
         .iter()
         .all(|f| f.ends_with(".log") || f.ends_with(".blg")));
@@ -43,7 +43,7 @@ fn main() {
 
     for filename in filenames {
         // read lines from file
-        let file = fs::read_to_string(filename).expect("Should have been able to read the file");
+        let file = fs::read_to_string(filename).expect("Should have read the file");
         let lines: Vec<&str> = file.lines().collect();
         // warning is (line number, line contents, match type)
         let mut warnings: Vec<(usize, &str, &str)> = vec![];

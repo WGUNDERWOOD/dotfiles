@@ -1,13 +1,7 @@
 {pkgs ? import <nixpkgs> {}}:
-pkgs.python3Packages.buildPythonApplication rec {
+pkgs.rustPlatform.buildRustPackage rec {
   pname = "tex-fmt";
   version = "0.1.0";
-  src = ./.;
-  postInstall = "mv -v $out/bin/tex-fmt.py $out/bin/tex-fmt";
-  #propagatedBuildInputs = with pkgs.python3Packages; [
-    #habanero
-    #pyperclip
-    #unidecode
-    #colorama
-  #];
+  cargoLock.lockFile = ./Cargo.lock;
+  src = pkgs.lib.cleanSource ./.;
 }

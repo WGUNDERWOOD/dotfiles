@@ -4,8 +4,6 @@ use regex::Regex;
 use std::env;
 use std::fs;
 
-// TODO add sha files to make faster
-
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
