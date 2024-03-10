@@ -26,7 +26,6 @@ const CYAN: &str = "\x1b[36m\x1b[1m";
 const RESET: &str = "\x1b[00m\x1b[0m";
 
 fn main() {
-
     // get filenames from arguments
     let args: Vec<String> = env::args().collect();
     assert!(args.len() >= 2, "No file provided");
@@ -34,8 +33,8 @@ fn main() {
 
     // check files are correct format
     assert!(filenames
-            .iter()
-            .all(|f| f.ends_with(".log") || f.ends_with(".blg")));
+        .iter()
+        .all(|f| f.ends_with(".log") || f.ends_with(".blg")));
 
     // print script name
     println!("{}", String::new() + PINK + "tex-check" + RESET);
@@ -47,7 +46,6 @@ fn main() {
     let nomatches = NOMATCH.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
 
     for filename in filenames {
-
         // read lines from file
         println!("{}", String::new() + YELLOW + filename + RESET);
         let file = fs::read_to_string(filename).expect("Should have read the file");
@@ -96,7 +94,7 @@ fn main() {
             print!(
                 "{}",
                 String::new() + GREEN + &(w.0 + 1).to_string() + ": " + RESET
-                );
+            );
             let color = match w.2 {
                 "error" => RED,
                 "warning" => PURPLE,
@@ -107,5 +105,4 @@ fn main() {
             println!();
         }
     }
-
 }

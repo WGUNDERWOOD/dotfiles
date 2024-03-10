@@ -13,7 +13,6 @@ const PURPLE: &str = "\x1b[34m";
 const RESET: &str = "\x1b[00m\x1b[0m";
 
 fn main() {
-
     // get filenames from arguments
     let args: Vec<String> = env::args().collect();
     assert!(args.len() >= 2, "No file provided");
@@ -23,7 +22,6 @@ fn main() {
     println!("{}", String::new() + PINK + "long-lines" + RESET);
 
     for filename in filenames {
-
         // print the file name
         println!("{}", String::new() + YELLOW + filename + RESET);
 

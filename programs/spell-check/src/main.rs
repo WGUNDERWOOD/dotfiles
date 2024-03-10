@@ -18,7 +18,6 @@ const RED: &str = "\x1b[31m\x1b[1m";
 const RESET: &str = "\x1b[00m\x1b[0m";
 
 fn main() {
-
     // get filenames from arguments
     let args: Vec<String> = env::args().collect();
     assert!(args.len() >= 2, "No file provided");
@@ -39,7 +38,6 @@ fn main() {
     check_reject_are_ok();
 
     for filename in filenames {
-
         // print filename and read file
         println!("{}", String::new() + YELLOW + filename + RESET);
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
@@ -50,7 +48,7 @@ fn main() {
             print!(
                 "{}",
                 String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
-                );
+            );
 
             let mut formatted: String = m.2.to_string();
             for w in m.1 {
@@ -127,7 +125,7 @@ fn spell_check_get_mistakes(
     filename: &str,
     file: &str,
     reject: &Vec<String>,
-    ) -> Vec<(usize, Vec<String>, String)> {
+) -> Vec<(usize, Vec<String>, String)> {
     // run aspell to get mistakes
     fs::copy(filename, ".spell_file.tmp").unwrap();
     let output_cat = Command::new("cat")
