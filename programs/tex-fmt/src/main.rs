@@ -12,7 +12,9 @@ const LISTS: [&str; 3] = ["itemize", "enumerate", "description"];
 #[derive(Parser)]
 struct Cli {
     #[arg(long, short, help="Print to stdout, do not modify files")]
-    dryrun: bool,
+    print: bool,
+    #[arg(long, short, help="Debug mode, disable checks and do not modify files")]
+    debug: bool,
     #[arg(required = true)]
     filenames: Vec<String>,
 }
@@ -133,8 +135,12 @@ fn main() {
 
     // get arguments
     let args = Cli::parse();
-    let dryrun = args.dryrun;
+    let debug = args.debug;
+    let mut print = args.print;
     let filenames = args.filenames;
+    if debug {
+        print = true;
+    };
 
     // check files are in correct format
     assert!(filenames
@@ -168,7 +174,9 @@ fn main() {
             let back = get_back(line_strip);
             let diff = get_diff(line_strip);
             let indent: i32 = count - back;
-            assert!(indent >= 0);
+            if debug {
+                assert!(indent >= 0)
+            };
             indents[i] = indent;
             count += diff;
 
@@ -183,14 +191,16 @@ fn main() {
         }
 
         // check indents return to zero
-        assert!(indents.first().unwrap() == &0);
-        assert!(indents.last().unwrap() == &0);
+        if debug {
+            assert!(indents.first().unwrap() == &0);
+            assert!(indents.last().unwrap() == &0);
+        }
 
         // prepare indented file
         let mut new_file = new_lines.join("\n");
         new_file.push('\n');
 
-        if dryrun {
+        if print {
             // print new file
             println!("{}", &new_file);
         } else {
