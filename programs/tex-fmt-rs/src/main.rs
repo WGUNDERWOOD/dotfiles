@@ -4,6 +4,8 @@ use regex::Regex;
 use std::env;
 use std::fs;
 
+// TODO add sha files to make faster
+
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
@@ -51,7 +53,9 @@ fn get_back(line: &str) -> i32 {
 
     // list environments get double indents for indenting items
     for re_list_end in RE_LISTS_END.iter() {
-        if re_list_end.is_match(line) {return 2};
+        if re_list_end.is_match(line) {
+            return 2;
+        };
     }
 
     // other environments get single indents
@@ -86,11 +90,15 @@ fn get_diff(line: &str) -> i32 {
     // list environments get double indents
     let mut diff: i32 = 0;
     for re_list_begin in RE_LISTS_BEGIN.iter() {
-        if re_list_begin.is_match(line) {diff += 1};
+        if re_list_begin.is_match(line) {
+            diff += 1
+        };
     }
 
     for re_list_end in RE_LISTS_END.iter() {
-        if re_list_end.is_match(line) {diff -= 1};
+        if re_list_end.is_match(line) {
+            diff -= 1
+        };
     }
 
     // other environments get single indents
@@ -130,12 +138,15 @@ fn main() {
         file = remove_tabs(&file);
         let lines: Vec<&str> = file.lines().collect();
 
-        // calculate indents
+        // set up variables
         let mut count: i32 = 0;
         let n_lines = lines.len();
         let mut indents: Vec<i32> = vec![0; lines.len()];
+        let mut new_lines = vec!["".to_owned(); n_lines];
 
+        // main loop through file
         for i in 0..n_lines {
+            // calculate indent
             let line = lines[i];
             let line = &remove_comment(line);
             let back = get_back(line);
@@ -144,17 +155,8 @@ fn main() {
             assert!(indent >= 0);
             indents[i] = indent;
             count += diff;
-        }
 
-        // check indents return to zero
-        assert!(indents.first().unwrap() == &0);
-        assert!(indents.last().unwrap() == &0);
-
-        // apply indents
-        // TODO include in the main loop
-        let mut new_lines = vec!["".to_owned(); n_lines];
-        for i in 0..n_lines {
-            let line = lines[i];
+            // apply indent
             let mut new_line = line.trim_start().to_string();
             if !new_line.is_empty() {
                 let n_spaces = indents[i] * TAB;
@@ -164,6 +166,10 @@ fn main() {
             new_lines[i] = new_line
         }
 
+        // check indents return to zero
+        assert!(indents.first().unwrap() == &0);
+        assert!(indents.last().unwrap() == &0);
+
         // backup original file and write
         let filepath = fs::canonicalize(filename).unwrap();
         let mut bak = filepath.clone().into_os_string().into_string().unwrap();
@@ -171,10 +177,6 @@ fn main() {
         fs::copy(filepath.clone(), &bak).unwrap();
         let mut new_file = new_lines.join("\n");
         new_file.push('\n');
-        dbg!(&new_file);
         fs::write(filepath, new_file).unwrap();
-
-        // TODO add sha files to make faster
-
     }
 }
