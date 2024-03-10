@@ -22,29 +22,29 @@
 \end{align}
 
 \begin{itemize}
-  \item Item one
+  \item Item one % trailing comment with ]) brackets
   \item Item two on
-    multiple lines
+  multiple lines
   \item
   \item Item three
-    \begin{itemize}
-      \item Subitem one of item two
-      \item Subitem two of item two
-      \item Percentages: 95
-      \item Percentages and comments: (95)
-    \end{itemize}
-  \item Item four
+  \begin{itemize}
+    \item Subitem one of item two
+    \item Subitem two of item two
+  \end{itemize}
+  \item Item four % trailing comment with [( brackets
 \end{itemize}
 
-\begin{theorem}[Pythagoras]
+\begin{theorem}[Pythagoras]%
   \label{thm:pythagoras}
 
   For a right triangle with hypotenuse $c$ and other sides $a$ and $b$,
   we have
-
+  %
   \begin{align*}
     a^2 + b^2 = c^2
   \end{align*}
+  %
+  % some comments
 
 \end{theorem}
 
@@ -54,11 +54,5 @@ and is broken over two lines}.
 \emph{This line contains only
   emphasized text,
 and is broken over three lines}.
-
-\begin{theorem}[Central limit theorem for the centered
-  Mondrian random forest estimator]
-  \label{thm:clt}
-  Stuff here
-\end{theorem}
 
 \end{document}

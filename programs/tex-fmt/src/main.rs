@@ -146,9 +146,9 @@ fn main() {
         for i in 0..n_lines {
             // calculate indent
             let line = lines[i];
-            let line = &remove_comment(line);
-            let back = get_back(line);
-            let diff = get_diff(line);
+            let line_strip = &remove_comment(line);
+            let back = get_back(line_strip);
+            let diff = get_diff(line_strip);
             let indent: i32 = count - back;
             assert!(indent >= 0);
             indents[i] = indent;
