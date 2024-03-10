@@ -139,7 +139,10 @@ fn main() {
     // check files are in correct format
     assert!(filenames
         .iter()
-        .all(|f| f.ends_with(".tex") || f.ends_with(".bib")));
+        .all(|f|
+             f.ends_with(".tex")
+             || f.ends_with(".bib")
+             || f.ends_with(".cls")));
 
     for filename in filenames {
         // read lines from file
