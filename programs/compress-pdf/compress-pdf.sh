@@ -21,18 +21,18 @@ done
 
 shift $((OPTIND - 1))
 
-# print script name and quality
-case $quality in
-    perfect) printf "%bcompress-pdf %b\n" "$YELLOW" "$RESET" ;;
-    high) printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET" ;;
-    low) printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET" ;;
-esac
-
 # error if no files provided
 if [[ -z "$*" ]]; then
     printf "%bno input file(s) specified%b\n" "$RED" "$RESET"
     exit 1
 fi
+
+# print script name and quality
+case $quality in
+    perfect) printf "%bcompress-pdf %b\n" "$PINK" "$RESET" ;;
+    high) printf "%bcompress-pdf (%s) %b\n" "$PINK" "$quality" "$RESET" ;;
+    low) printf "%bcompress-pdf (%s) %b\n" "$PINK" "$quality" "$RESET" ;;
+esac
 
 # make temporary working directory
 tempdir=$(mktemp -d)
@@ -63,7 +63,7 @@ optimize_low() {
 # error if not all files are pdfs
 for infile in "$@"; do
     if [ "${infile: -4}" != ".pdf" ]; then
-        printf "%b%s %bis not a pdf%b\n" "$PURPLE" "$infile" "$RED" "$RESET"
+        printf "%b%s %bis not a pdf%b\n" "$YELLOW" "$infile" "$RED" "$RESET"
         exit 1
     fi
 done
@@ -79,7 +79,7 @@ for infile in "$@"; do
     insize=$(du -b "${infile}" | cut -f -1)
     insizeh=$(du -bh "${infile}" | cut -f -1)
     printf "%b%-40.40s  %b%-4.4s %b-> %b" \
-        "$PURPLE" "$infile" "$PINK" "$insizeh" "$WHITE" "$RESET"
+        "$YELLOW" "$infile" "$PURPLE" "$insizeh" "$WHITE" "$RESET"
 
     # check if a sha matches
     sha="$(sha256sum "$infile")"
