@@ -18,6 +18,7 @@ const NOMATCH: [&str; 5] = [
 
 // declare colors
 const YELLOW: &str = "\x1b[33m\x1b[1m";
+const PINK: &str = "\x1b[35m\x1b[1m";
 const GREEN: &str = "\x1b[32m\x1b[1m";
 const RED: &str = "\x1b[31m\x1b[1m";
 const PURPLE: &str = "\x1b[34m\x1b[1m";
@@ -25,6 +26,7 @@ const CYAN: &str = "\x1b[36m\x1b[1m";
 const RESET: &str = "\x1b[00m\x1b[0m";
 
 fn main() {
+
     // get filenames from arguments
     let args: Vec<String> = env::args().collect();
     assert!(args.len() >= 2, "No file provided");
@@ -34,6 +36,9 @@ fn main() {
     assert!(filenames
         .iter()
         .all(|f| f.ends_with(".log") || f.ends_with(".blg")));
+
+    // print script name
+    println!("{}", String::new() + PINK + "tex-check" + RESET);
 
     // get regexes
     let match_errors = MATCH_ERROR.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());

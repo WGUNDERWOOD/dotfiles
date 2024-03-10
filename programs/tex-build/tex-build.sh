@@ -2,7 +2,8 @@
 
 # colors
 RED='\033[1;31m'
-PURPLE='\033[1;34m'
+YELLOW='\033[1;33m'
+PINK='\033[1;35m'
 RESET='\033[0m'
 
 # get flags from user
@@ -43,17 +44,20 @@ fi
 # error if not all files are tex
 for file in "$@"; do
     if [ "${file: -4}" != ".tex" ]; then
-        printf "%b%s %bis not a tex file%b\n" "$PURPLE" "$file" "$RED" "$RESET"
+        printf "%b%s %bis not a tex file%b\n" "$YELLOW" "$file" "$RED" "$RESET"
         exit 1
     fi
 done
+
+# print script name
+printf "%b%s%b\n" "$PINK" "tex-build" "$RESET"
 
 for file in "$@"; do
 
     # get absolute paths and print file
     filepath="$(realpath "$file")"
     dir="$(dirname "$filepath")"
-    printf "%b%s%b\n" "$PURPLE" "$file" "$RESET"
+    printf "%b%s%b\n" "$YELLOW" "$file" "$RESET"
 
     # run latexmk
     (
