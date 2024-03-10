@@ -1,3 +1,5 @@
+#!usr/bin/env python3
+
 import sys
 import os
 import shutil
@@ -97,4 +99,8 @@ for i in range(len(lines)):
 filepath = os.path.abspath(filename)
 shutil.copy(filepath, filepath + ".bak")
 new_file = "\n".join(new_lines)
-open(filepath + "_new.tex", "w").write(new_file)
+open(filepath, "w").write(new_file)
+
+# TODO make this work with multiple files
+# TODO add sha files to make faster
+# TODO write this in rust
