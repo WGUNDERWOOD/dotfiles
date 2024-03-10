@@ -28,7 +28,6 @@ case $quality in
     low) printf "%bcompress-pdf (%s) %b\n" "$YELLOW" "$quality" "$RESET" ;;
 esac
 
-
 # error if no files provided
 if [[ -z "$*" ]]; then
     printf "%bno input file(s) specified%b\n" "$RED" "$RESET"
