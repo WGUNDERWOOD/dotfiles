@@ -183,6 +183,12 @@ vim.keymap.set('n', 'F', function ()
     require('leap').leap { target_windows = { current_window } }
 end)
 
+-- just
+map("n", "<Space>jj",
+    ":echo 'just' | silent exec '!(just &) > /dev/null' <CR>")
+map("n", "<Space>jc",
+    ":echo 'just clean' | silent exec '!(just clean &) > /dev/null' <CR>")
+
 -- todo highlighting
 vim.cmd("hi Todo guifg=#FF7722 guibg=NONE gui=bold")
 vim.cmd("hi Now guifg=#8be9fd guibg=NONE gui=bold")
