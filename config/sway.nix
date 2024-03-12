@@ -121,9 +121,9 @@
           + "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | "
           + "wl-copy -t image/png";
         "${modifier}+Shift+g" = "exec gammatoggle";
-        "${modifier}+Right" = "exec playerctl next";
-        "${modifier}+Left" = "exec playerctl previous";
-        "${modifier}+space" = "exec playerctl play-pause";
+        "${modifier}+Right" = "exec playerctl -p spotify next";
+        "${modifier}+Left" = "exec playerctl -p spotify previous";
+        "${modifier}+space" = "exec playerctl -p spotify play-pause";
         "${modifier}+Down" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
         "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
         "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";

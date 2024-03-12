@@ -21,7 +21,7 @@ with pkgs; [
   (callPackage ../programs/sway-empty/sway-empty.nix {})
   (callPackage ../programs/tex-build/tex-build.nix {})
   (callPackage ../programs/tex-check/tex-check.nix {})
-  (callPackage ../programs/tex-clean.nix {})
+  (callPackage ../programs/tex-clean/tex-clean.nix {})
   (callPackage ../programs/tex-fmt/tex-fmt.nix {})
   (callPackage ../programs/todo-finder/todo-finder.nix {})
   (callPackage ../programs/zathura-fuzzy.nix {})
