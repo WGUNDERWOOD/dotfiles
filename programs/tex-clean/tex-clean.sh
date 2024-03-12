@@ -6,23 +6,25 @@ PINK='\033[1;35m'
 RESET='\033[0m'
 
 printf "%b%s%b\n" "$PINK" "tex-clean" "$RESET"
-inputs="$@"
+inputs=("$@")
 
-if [[ -z "$inputs" ]]; then
-    inputs="$(pwd)"
+if [[ ${#inputs[@]} == 0 ]]; then
+    inputs=("$(pwd)")
 fi
 
-for input in $inputs; do
+for input in "${inputs[@]}"; do
 
     if [ -d "$input" ]; then
-        dir="$(realpath $input)"
+        dir="$(realpath "$input")"
     elif [ -f "$input" ]; then
-        dir="$(realpath $(dirname $input))"
+        dir="$(realpath "$(dirname "$input")")"
     else
         printf "%b%s %bis not a file or directory%b\n" \
             "$YELLOW" "$input" "$RED" "$RESET"
         exit 1
     fi
+
+    printf "%b%s%b\n" "$YELLOW" "$(realpath "$input")" "$RESET"
 
     rm -rfv \
         "$dir"/auto/ \
