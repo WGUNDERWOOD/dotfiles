@@ -3,7 +3,9 @@ use core::cmp::max;
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::fs;
-
+use std::env::temp_dir;
+use std::path;
+ 
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
@@ -209,11 +211,15 @@ fn main() {
             // print new file
             println!("{}", &new_file);
         } else {
-            // backup original file and write new file
-            let filepath = fs::canonicalize(&filename).unwrap();
-            let mut bak = filepath.clone().into_os_string().into_string().unwrap();
-            bak.push_str(".bak");
-            fs::copy(filepath.clone(), &bak).unwrap();
+            // backup original file
+            let filepath = path::Path::new(&filename).canonicalize().unwrap();
+            let mut fileback = temp_dir();
+            fileback.push("tex-fmt");
+            fs::create_dir_all(&fileback).unwrap();
+            fileback.push(filepath.file_name().unwrap());
+            fs::copy(filepath.clone(), &fileback).unwrap();
+
+            // write new file
             fs::write(filepath, new_file).unwrap();
         }
     }
