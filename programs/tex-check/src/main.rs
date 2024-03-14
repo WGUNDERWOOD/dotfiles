@@ -3,17 +3,18 @@ use std::env;
 use std::fs;
 
 // declare matches
-const MATCH_ERROR: [&str; 1] = ["error"];
+const MATCH_ERROR: [&str; 2] = ["error", "Missing delimiter"];
 const MATCH_WARNING: [&str; 1] = ["warn"];
 const MATCH_OTHER: [&str; 2] = ["overfull", "underfull"];
 
 // declare non matches
-const NOMATCH: [&str; 5] = [
+const NOMATCH: [&str; 6] = [
     "Package: infwarerr",
     "file:line:error style",
     "pgfplots.errorbars.code.tex",
     "warning\\$ -- 0",
     "Package caption Warning: Unknown document class",
+    "font should be expanded before its first use",
 ];
 
 // declare colors

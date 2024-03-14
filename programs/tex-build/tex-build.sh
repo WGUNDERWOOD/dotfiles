@@ -10,7 +10,7 @@ RESET='\033[0m'
 pdf="-pdf"
 quiet="-quiet"
 report="-rc-report-"
-warn="-Werror"
+warn=""
 esc=""
 norc=""
 
@@ -21,7 +21,7 @@ while getopts 'lxenvw' flag; do
         e) esc="-shell-escape" ;;
         n) norc="-norc" ;;
         v) quiet=""; report="" ;;
-        w) warn="" ;;
+        w) warn="-Werror" ;;
         *) exit 1 ;;
     esac
 done
