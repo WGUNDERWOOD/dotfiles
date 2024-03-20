@@ -2,10 +2,10 @@ use clap::Parser;
 use core::cmp::max;
 use lazy_static::lazy_static;
 use regex::Regex;
-use std::fs;
 use std::env::temp_dir;
+use std::fs;
 use std::path;
- 
+
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
@@ -157,7 +157,9 @@ fn main() {
 
     for filename in filenames {
         // print file name
-        println!("{}", String::new() + YELLOW + &filename + RESET);
+        if debug {
+            println!("{}", String::new() + YELLOW + &filename + RESET);
+        }
 
         // read lines from file
         let mut file = fs::read_to_string(&filename).expect("Should have read the file");
