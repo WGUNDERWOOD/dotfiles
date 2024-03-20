@@ -22,13 +22,14 @@ fn main() {
     println!("{}", String::new() + PINK + "todo-finder" + RESET);
 
     for filename in filenames {
-
-        // print file name
-        println!("{}", String::new() + YELLOW + filename + RESET);
-
         // read lines from file
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
         let lines: Vec<&str> = file.lines().collect();
+
+        // print file name if any matches
+        if lines.iter().any(|l| check_match(l)) {
+            println!("{}", String::new() + YELLOW + filename + RESET)
+        }
 
         // print formatted lines
         for i in 0..lines.len() {
