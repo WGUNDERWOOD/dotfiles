@@ -62,9 +62,9 @@ for file in "$@"; do
     # run latexmk
     (
     cd "$dir"
-    latexmk "$pdf" "$quiet" "$report" "$warn" "$esc" "$norc" "$filepath" | \
-        rg -v "Latexmk: Nothing to do for" | \
-        (rg --color never "^." || true)
+    (latexmk "$pdf" "$quiet" "$report" "$warn" \
+        "$esc" "$norc" "$filepath" 2>&1) | \
+        { grep -v -e "Latexmk: Nothing to do for" -e "^$" || true; }
     )
 
 done
