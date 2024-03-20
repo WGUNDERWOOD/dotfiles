@@ -48,7 +48,6 @@ fn main() {
 
     for filename in filenames {
         // read lines from file
-        println!("{}", String::new() + YELLOW + filename + RESET);
         let file = fs::read_to_string(filename).expect("Should have read the file");
         let lines: Vec<&str> = file.lines().collect();
         // warning is (line number, line contents, match type)
@@ -91,19 +90,22 @@ fn main() {
         warnings.retain(|w| !w.1.is_empty());
 
         // output results
-        for w in &warnings {
-            print!(
-                "{}",
-                String::new() + GREEN + &(w.0 + 1).to_string() + ": " + RESET
-            );
-            let color = match w.2 {
-                "error" => RED,
-                "warning" => PURPLE,
-                "other" => CYAN,
-                &_ => panic!(),
-            };
-            print!("{}", String::new() + color + w.1 + RESET);
-            println!();
+        if !warnings.is_empty() {
+            println!("{}", String::new() + YELLOW + filename + RESET);
+            for w in &warnings {
+                print!(
+                    "{}",
+                    String::new() + GREEN + &(w.0 + 1).to_string() + ": " + RESET
+                );
+                let color = match w.2 {
+                    "error" => RED,
+                    "warning" => PURPLE,
+                    "other" => CYAN,
+                    &_ => panic!(),
+                };
+                print!("{}", String::new() + color + w.1 + RESET);
+                println!();
+            }
         }
     }
 }

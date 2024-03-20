@@ -94,6 +94,9 @@ vim.loaded_python3_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
+-- no comments on new line
+vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o")
+
 -- toggle colorcolumn
 vim.cmd("hi ColorColumn guibg=#292c3f")
 vim.cmd [[
