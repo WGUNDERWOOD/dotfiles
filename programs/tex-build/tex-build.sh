@@ -59,12 +59,19 @@ for file in "$@"; do
     dir="$(dirname "$filepath")"
     printf "%b%s%b\n" "$YELLOW" "$file" "$RESET"
 
+    # set basic grep colors
+    GREP_COLORS_BASE=":mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
+
     # run latexmk
     (
     cd "$dir"
     (latexmk "$pdf" "$quiet" "$report" "$warn" \
         "$esc" "$norc" "$filepath" 2>&1) | \
-        { grep -v -e "Latexmk: Nothing to do for" -e "^$" || true; }
+        { grep --line-buffered -v -e "^Latexmk: Nothing to do for " -e "^$" || true; } | \
+        { GREP_COLORS="ms=01;34$GREP_COLORS_BASE" \
+            grep --line-buffered --color=always -E "Latexmk:|$" || true; } | \
+        { GREP_COLORS="ms=01;36$GREP_COLORS_BASE" \
+            grep --line-buffered --color=always -E "Run number .*|$" || true; }
     )
 
 done
