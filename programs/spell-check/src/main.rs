@@ -38,24 +38,26 @@ fn main() {
     check_reject_are_ok();
 
     for filename in filenames {
-        // print filename and read file
-        println!("{}", String::new() + YELLOW + filename + RESET);
+        // read file
         let file = fs::read_to_string(filename).expect("Should have been able to read the file");
         let mistakes = spell_check_get_mistakes(filename, &file, &reject);
 
         // output results
-        for m in mistakes {
-            print!(
-                "{}",
-                String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
-            );
+        if !mistakes.is_empty() {
+            println!("{}", String::new() + YELLOW + filename + RESET);
+            for m in mistakes {
+                print!(
+                    "{}",
+                    String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
+                );
 
-            let mut formatted: String = m.2.to_string();
-            for w in m.1 {
-                let colored_w = String::new() + RED + &w + RESET;
-                formatted = formatted.replace(&w, &colored_w);
+                let mut formatted: String = m.2.to_string();
+                for w in m.1 {
+                    let colored_w = String::new() + RED + &w + RESET;
+                    formatted = formatted.replace(&w, &colored_w);
+                }
+                println!("{}", &formatted);
             }
-            println!("{}", &formatted);
         }
     }
     clean_up();
