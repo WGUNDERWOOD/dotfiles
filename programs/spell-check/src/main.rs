@@ -42,7 +42,6 @@ fn main() {
     } else {
         Language::British
     };
-    dbg!(&lang);
 
     // print script name
     println!("{}", String::new() + PINK + "spell-check" + RESET);
