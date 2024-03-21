@@ -1,27 +1,48 @@
 use regex::Regex;
 use std::collections::HashMap;
-use std::env;
 use std::fs;
 use std::io;
 use std::path;
 use std::process::Command;
 use std::process::Stdio;
+use clap::Parser;
 
-// path for wordlist file
 const WORDLIST_PATH: &str = "./wordlist.txt";
-
-// declare colors
 const YELLOW: &str = "\x1b[33m\x1b[1m";
 const PINK: &str = "\x1b[35m\x1b[1m";
 const GREEN: &str = "\x1b[32m\x1b[1m";
 const RED: &str = "\x1b[31m\x1b[1m";
 const RESET: &str = "\x1b[00m\x1b[0m";
 
+#[derive(Parser)]
+struct Cli {
+    #[arg(long, short, help = "Use American English")]
+    american: bool,
+    #[arg(long, short, help = "Use British English")]
+    british: bool,
+    #[arg(required = true)]
+    filenames: Vec<String>,
+}
+
+#[derive(Debug)]
+enum Language {
+    British,
+    American,
+}
+
 fn main() {
-    // get filenames from arguments
-    let args: Vec<String> = env::args().collect();
-    assert!(args.len() >= 2, "No file provided");
-    let filenames = &args[1..];
+
+    // get arguments
+    let args = Cli::parse();
+    let filenames = args.filenames;
+    let lang = if args.british {
+        Language::British
+    } else if args.american {
+        Language::American
+    } else {
+        Language::British
+    };
+    dbg!(&lang);
 
     // print script name
     println!("{}", String::new() + PINK + "spell-check" + RESET);
@@ -34,17 +55,17 @@ fn main() {
     let (accept, reject) = read_wordlist();
     write_temp_files(&accept, &reject);
     rewrite_wordlist(&accept, &reject);
-    check_accept_are_errors(&accept);
-    check_reject_are_ok();
+    check_accept_are_errors(&lang, &accept);
+    check_reject_are_ok(&lang);
 
     for filename in filenames {
         // read file
-        let file = fs::read_to_string(filename).expect("Should have been able to read the file");
-        let mistakes = spell_check_get_mistakes(filename, &file, &reject);
+        let file = fs::read_to_string(&filename).expect("Should have been able to read the file");
+        let mistakes = spell_check_get_mistakes(&filename, &lang, &file, &reject);
 
         // output results
         if !mistakes.is_empty() {
-            println!("{}", String::new() + YELLOW + filename + RESET);
+            println!("{}", String::new() + YELLOW + &filename + RESET);
             for m in mistakes {
                 print!(
                     "{}",
@@ -125,6 +146,7 @@ fn rewrite_wordlist(accept: &Vec<String>, reject: &Vec<String>) {
 
 fn spell_check_get_mistakes(
     filename: &str,
+    lang: &Language,
     file: &str,
     reject: &Vec<String>,
 ) -> Vec<(usize, Vec<String>, String)> {
@@ -136,7 +158,8 @@ fn spell_check_get_mistakes(
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "--personal=.spell_accept.tmp", "-t", "list"])
+        .args(["--home-dir=.", "--personal=.spell_accept.tmp", "-t", "list",
+              &get_aspell_lang_arg(&lang)])
         .stdin(Stdio::from(output_cat.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()
@@ -170,14 +193,14 @@ fn spell_check_get_mistakes(
     mistakes
 }
 
-fn check_accept_are_errors(accept: &Vec<String>) {
+fn check_accept_are_errors(lang: &Language, accept: &Vec<String>) {
     let output_tail = Command::new("tail")
         .args(["-n", "+2", ".spell_accept.tmp"])
         .stdout(Stdio::piped())
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "-t", "list"])
+        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(&lang)])
         .stdin(Stdio::from(output_tail.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()
@@ -194,14 +217,14 @@ fn check_accept_are_errors(accept: &Vec<String>) {
     assert!(&ms == accept, "Accept list contains unnecessary words.")
 }
 
-fn check_reject_are_ok() {
+fn check_reject_are_ok(lang: &Language) {
     let output_tail = Command::new("tail")
         .args(["-n", "+2", ".spell_reject.tmp"])
         .stdout(Stdio::piped())
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "-t", "list"])
+        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(&lang)])
         .stdin(Stdio::from(output_tail.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()
@@ -229,4 +252,11 @@ fn clean_up() {
     fs::remove_file(".spell_file.tmp").unwrap();
     fs::remove_file(".spell_accept.tmp").unwrap();
     fs::remove_file(".spell_reject.tmp").unwrap();
+}
+
+fn get_aspell_lang_arg(lang: &Language) -> &'static str {
+    match lang {
+        Language::American => "--lang=en_US",
+        Language::British => "--lang=en_GB",
+    }
 }

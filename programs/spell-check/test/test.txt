@@ -5,3 +5,6 @@ no mistakes here
 threee wroods rong
 this line is fine
 integrably is unusual but correct
+summarize is American
+summarise is British
+at least one of summarise and summarize is wrong
