@@ -157,7 +157,7 @@ map("n", "<Space>fa", ":lua require'fzf-lua'.files({prompt='All files> '," ..
     "-E '*.po' -E '*.fdb_latexmk' -E '*.mat' -E '*.jsonlz4' -E '*.mp4'" ..
     "-E '*.pptx' -E '*.bin' -E '*.gif' -E '*.HEIC' -E '*.MOV' -E '*.PNG'" ..
     "-E '*.JPG' -E '*.mov' -E '/vendor/*' -E '/target/*' -E '*.m4a'" ..
-    "-E '*.docx' -E '*.xlsx' -E '*.ppt' -E '*.log' -E '*.eps' -E '*.aux'" ..
+    "-E '*.docx' -E '*.xlsx' -E '*.ppt' -E '*.eps' -E '*.aux'" ..
     "-E '*.p' -E '*.fig'\"" ..
     "}) <CR>")
 map("n", "<Space>pf", ":lua require'fzf-lua'.git_files({prompt='Project files> '," ..
