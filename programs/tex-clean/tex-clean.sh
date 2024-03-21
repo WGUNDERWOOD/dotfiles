@@ -24,8 +24,6 @@ for input in "${inputs[@]}"; do
         exit 1
     fi
 
-    printf "%b%s%b\n" "$YELLOW" "$(realpath "$input")" "$RESET"
-
     rm -rfv \
         "$dir"/auto/ \
         "$dir"/*.aux \
