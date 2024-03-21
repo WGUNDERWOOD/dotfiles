@@ -9,7 +9,7 @@ use std::path;
 const TAB: i32 = 2;
 const OPENS: [char; 3] = ['(', '[', '{'];
 const CLOSES: [char; 3] = [')', ']', '}'];
-const LISTS: [&str; 3] = ["itemize", "enumerate", "description", "inlineroman"];
+const LISTS: [&str; 4] = ["itemize", "enumerate", "description", "inlineroman"];
 
 const YELLOW: &str = "\x1b[33m\x1b[1m";
 const PINK: &str = "\x1b[35m\x1b[1m";
