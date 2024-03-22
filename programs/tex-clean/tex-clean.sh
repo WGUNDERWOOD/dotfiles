@@ -48,6 +48,7 @@ for input in "${inputs[@]}"; do
         "$dir"/*.sha256 \
         "$dir"/*.snm \
         "$dir"/*.synctex.gz \
+        "$dir"/*.thm \
         "$dir"/*.toc \
         "$dir"/*.xdv \
 
