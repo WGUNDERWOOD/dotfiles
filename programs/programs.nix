@@ -8,6 +8,7 @@ with pkgs; [
   (callPackage ../programs/compress-mp3.nix {})
   (callPackage ../programs/feh-fuzzy.nix {})
   (callPackage ../programs/gammatoggle.nix {})
+  (callPackage ../programs/img-diff/img-diff.nix {})
   (callPackage ../programs/long-lines/long-lines.nix {})
   (callPackage ../programs/nixos-update.nix {})
   (callPackage ../programs/pdf-insert-blank-pages.nix {})
