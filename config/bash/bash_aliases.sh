@@ -48,7 +48,7 @@ alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 
 # nix
 nxr() {
     DOTS="$HOME/github/dotfiles"
-    alejandra -c "$DOTS" &&
+    alejandra -cq "$DOTS" &&
         sudo nixos-rebuild switch --flake "$DOTS#$HOSTNAME"
 }
 alias nxq='nix-env -qa | fzf'
