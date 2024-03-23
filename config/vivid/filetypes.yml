@@ -412,6 +412,7 @@ unimportant:
       - .out
       - .snm
       - .synctex.gz
+      - .thm
       - .toc
       - .pytxcode
     llvm:
