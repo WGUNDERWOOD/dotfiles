@@ -15,6 +15,7 @@ alias lrc='ls -AiR1U ./ |
 alias b='bat --theme Dracula'
 alias c='cd'
 alias ci='cdi'
+f() { command feh "$@" & }
 alias g='git'
 alias j='just'
 alias m='(cd ~/downloads; neomutt)'
@@ -114,9 +115,11 @@ alias cdovm='cd ~/overleaf/CMU_2022_SAMartingale/'
 alias cdovf='cd ~/overleaf/CKU_2023_MondrianRF/'
 alias cdovh='cd ~/overleaf/CMU_2023_HigherOrderLindeberg/'
 
-# alias completion
+# completion
 source $(which complete_alias)
 complete -F _complete_alias bm
 complete -F _complete_alias c
 complete -F _complete_alias g
 complete -F _complete_alias j
+complete -f -o plusdirs -X '!*.pdf' zathura
+complete -f -o plusdirs -X '!*.pdf' z
