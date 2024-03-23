@@ -46,11 +46,14 @@ alias rcps='rcgdps && rcgdpps && rcdbpps'
 alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 
 # nix
-alias nxr='sudo nixos-rebuild switch'
+nxr() {
+    DOTS="$HOME/github/dotfiles"
+    alejandra -c "$DOTS" &&
+        sudo nixos-rebuild switch --flake "$DOTS#$HOSTNAME"
+}
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-collect-garbage --delete-old && sudo nix-collect-garbage --delete-old'
 alias nxs='nix-shell'
-alias nxu='nixos-update'
 alias nxb='nix-build'
 nxp() { ls -l "$(which "$@")"; }
 nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }

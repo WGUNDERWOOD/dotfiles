@@ -72,6 +72,7 @@
   security.pam.services.swaylock.text = "auth include login";
   networking.networkmanager.enable = true;
   fonts.packages = with pkgs; [source-code-pro fira libre-baskerville];
+  nix.optimise.automatic = true;
 
   # user
   time.timeZone = "America/New_York";
