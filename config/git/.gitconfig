@@ -15,6 +15,7 @@
     co = "checkout"
     di = "diff"
     dipdf = "difftool --tool diffpdf"
+    diimg = "difftool --tool img-diff"
     din = "diff --name-only"
     dic = "diff --compact-summary"
     dis = "diff --staged"
@@ -40,6 +41,9 @@
 
 [difftool "diffpdf"]
     cmd = diffpdf "$LOCAL" "$REMOTE"
+
+[difftool "img-diff"]
+    cmd = img-diff "$LOCAL" "$REMOTE"
 
 [pull]
     rebase = false
