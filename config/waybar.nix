@@ -144,12 +144,9 @@
       "format" = "{}";
       "interval" = 1;
       "max-length" = 50;
-      "on-click" =
-          "${pkgs.playerctl}/bin/playerctl -p spotify previous";
-      "on-click-right" =
-          "${pkgs.playerctl}/bin/playerctl -p spotify next";
-      "on-click-middle" =
-          "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+      "on-click" = "${pkgs.playerctl}/bin/playerctl -p spotify previous";
+      "on-click-right" = "${pkgs.playerctl}/bin/playerctl -p spotify next";
+      "on-click-middle" = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
       "exec" = ''
         ${pkgs.playerctl}/bin/playerctl -p spotify metadata -f '{{artist}}' | \
         ${pkgs.gnused}/bin/sed 's/&/&amp;/g'

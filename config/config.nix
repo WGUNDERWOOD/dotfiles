@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-
   # boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -54,7 +53,9 @@
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "0";
     GDK_DPI_SCALE =
-      if config.networking.hostName == "xanth" then "1.3" else "1";
+      if config.networking.hostName == "xanth"
+      then "1.3"
+      else "1";
   };
 
   # packages
