@@ -134,7 +134,7 @@ programming:
     javascript: [.js, .htc]
     julia: [.jl]
     kotlin: [.kt, .kts]
-    latex: [.tex, .ltx, .bib, .cls, .sty, .bst]
+    latex: [.tex, .ltx, .bib, .cls, .sty, .bst, .dbj]
     less: [.less]
     llvm: [.ll, .mir]
     lisp: [.lisp, .el]
