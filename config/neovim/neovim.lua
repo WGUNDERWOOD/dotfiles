@@ -347,15 +347,26 @@ vim.cmd [[
     nnoremap gl :GoToLongestLine<CR>
 ]]
 
--- check spelling under cursor
+-- check spelling under cursor (british)
 vim.cmd [[
-    function! CheckSpellingUnderCursor ( )
+    function! CheckSpellingUnderCursorGB ( )
         let word = expand("<cword>")
-        let check = system("spell-check-word '" . word . "'")
+        let check = system("spell-check-word -b '" . word . "'")
         echom check
     endfunction
-    command CheckSpellingUnderCursor call CheckSpellingUnderCursor()
-    nnoremap <Space>cs :CheckSpellingUnderCursor<CR>
+    command CheckSpellingUnderCursorGB call CheckSpellingUnderCursorGB()
+    nnoremap <Space>cs :CheckSpellingUnderCursorGB<CR>
+]]
+
+-- check spelling under cursor (american)
+vim.cmd [[
+    function! CheckSpellingUnderCursorUS ( )
+        let word = expand("<cword>")
+        let check = system("spell-check-word -a '" . word . "'")
+        echom check
+    endfunction
+    command CheckSpellingUnderCursorUS call CheckSpellingUnderCursorUS()
+    nnoremap <Space>cS :CheckSpellingUnderCursorUS<CR>
 ]]
 
 -- bib files
