@@ -52,7 +52,7 @@
           "custom/separator"
           "battery"
           "custom/separator"
-          "backlight"
+          "custom/backlight"
           "custom/separator"
           "custom/mail"
           "custom/separator"
@@ -182,8 +182,24 @@
       "format-charging" = "Chg {capacity}%";
       "interval" = 30;
     };
-    "backlight" = {
-      "format" = "Bkl {percent}%";
+    "custom/backlight" = {
+      "format" = "{}";
+      "exec" =
+        pkgs.writeShellScript "waybar-backlight"
+        ''
+          DISPLAY="$(${pkgs.sway}/bin/swaymsg -r -t get_outputs)"
+          DISPLAY="$(echo $DISPLAY | ${pkgs.jq}/bin/jq 'map(select(.name=="eDP-1"))')"
+          DISPLAY="$(echo $DISPLAY | ${pkgs.jq}/bin/jq '.[0] | .active')"
+          if [ "$DISPLAY" == "true" ]; then
+              BRIGHTNESS="$(${pkgs.brillo}/bin/brillo -G)"
+              BRIGHTNESS="''${BRIGHTNESS%.*}"
+              echo '{"text": "'Bkl $BRIGHTNESS%'", "class": "on"}'
+          else
+              echo '{"text": "'Bkl'", "class": "off"}'
+          fi
+        '';
+      "return-type" = "json";
+      "restart-interval" = 1;
     };
   };
 
@@ -393,8 +409,14 @@
         font-weight: 500;
     }
 
-    #backlight {
+    #custom-backlight.on {
         color: ${color-pastel-yellow};
+        padding: 0px ${paddinglarge};
+        font-weight: 500;
+    }
+
+    #custom-backlight.off {
+        color: ${color-mid-gray};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
