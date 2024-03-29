@@ -159,6 +159,7 @@
       "format" = "Disk {percentage_used}%";
       "path" = "/";
       "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
+      "tooltip" = false;
     };
     "pulseaudio" = {
       "format" = "Vol {volume}%{icon}";
@@ -181,6 +182,7 @@
       "format" = "Bat {capacity}%";
       "format-charging" = "Chg {capacity}%";
       "interval" = 30;
+      "tooltip" = false;
     };
     "custom/backlight" = {
       "format" = "{}";
