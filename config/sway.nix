@@ -134,6 +134,7 @@
         "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
         "Shift+XF86MonBrightnessUp" = "exec \"brillo -S 100\"";
         "Shift+XF86MonBrightnessDown" = "exec \"brillo -S 10\"";
+        "XF86Display" = "exec \"sway output eDP-1 toggle\"";
       };
 
       colors = {
