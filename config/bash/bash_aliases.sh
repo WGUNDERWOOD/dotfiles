@@ -51,6 +51,11 @@ nxr() {
     alejandra -cq "$DOTS" &&
         sudo nixos-rebuild switch --flake "$DOTS#$HOSTNAME"
 }
+nxu() {
+    DOTS="$HOME/github/dotfiles"
+    alejandra -cq "$DOTS" &&
+        nix flake update "$DOTS"
+}
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-collect-garbage --delete-old && sudo nix-collect-garbage --delete-old'
 alias nxs='nix-shell'
