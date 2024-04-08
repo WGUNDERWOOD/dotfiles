@@ -76,7 +76,7 @@
   nix.optimise.automatic = true;
 
   # user
-  time.timeZone = "America/New_York";
+  services.automatic-timezoned.enable = true;
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
