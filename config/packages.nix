@@ -74,7 +74,6 @@ with pkgs; [
   screen
   silicon
   slurp
-  source-code-pro
   spotify
   starship
   swaylock
