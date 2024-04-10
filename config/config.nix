@@ -72,11 +72,11 @@
   };
   security.pam.services.swaylock.text = "auth include login";
   networking.networkmanager.enable = true;
+  services.ntp.enable = true;
   fonts.packages = with pkgs; [source-code-pro fira libre-baskerville];
   nix.optimise.automatic = true;
 
   # user
-  services.automatic-timezoned.enable = true;
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
