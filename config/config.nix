@@ -51,6 +51,21 @@
 
   # environment variables
   environment.sessionVariables = {
+    # xdg standard
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    # program home directories
+    HISTFILE = "$XDG_STATE_HOME/bash/history";
+    LESSHISTFILE = "$XDG_CACHE_HOME/less/history";
+    BUNDLE_USER_CONFIG = "$XDG_CONFIG_HOME/bundle";
+    BUNDLE_USER_CACHE = "$XDG_CACHE_HOME/bundle";
+    BUNDLE_USER_PLUGIN = "$XDG_DATA_HOME/bundle";
+    CARGO_HOME = "$XDG_DATA_HOME/cargo";
+    PYTHONSTARTUP = "$XDG_CONFIG_HOME/python/pythonrc.py";
+    JULIA_DEPOT_PATH = "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH";
+    # display settings
     MOZ_ENABLE_WAYLAND = "0";
     GDK_DPI_SCALE =
       if config.networking.hostName == "xanth"

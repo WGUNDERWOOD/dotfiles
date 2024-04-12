@@ -20,6 +20,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
 # history
 HISTCONTROL=ignoreboth
 PROMPT_COMMAND='history -a'
+mkdir -p "$XDG_STATE_HOME/bash/"
+mkdir -p "$XDG_CACHE_HOME/less/"
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 

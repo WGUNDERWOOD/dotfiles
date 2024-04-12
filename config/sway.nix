@@ -4,16 +4,6 @@
   osConfig,
   ...
 }: {
-  home.file.".icons/default".source =
-    "${pkgs.phinger-cursors}/share/icons/"
-    + "phinger-cursors";
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.phinger-cursors;
-    name = "phinger-cursors";
-  };
-
   services.swayidle = {
     enable = true;
     timeouts = [
@@ -40,6 +30,10 @@
       }
     ];
   };
+
+  home.file.".local/share/icons/default".source =
+    "${pkgs.phinger-cursors}/share/icons/"
+    + "phinger-cursors";
 
   wayland.windowManager.sway = {
     enable = true;
