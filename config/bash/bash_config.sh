@@ -11,6 +11,7 @@ bind -m vi-command 'Control-n: history-search-forward'
 bind -m vi-insert 'Control-n: history-search-forward'
 
 # directories
+rmdir ~/Downloads
 mkdir -p ~/mail/gmail/
 mkdir -p ~/mail/princeton/
 
