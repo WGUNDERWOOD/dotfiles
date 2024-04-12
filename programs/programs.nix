@@ -10,7 +10,6 @@ with pkgs; [
   (callPackage ../programs/gammatoggle.nix {})
   (callPackage ../programs/img-diff/img-diff.nix {})
   (callPackage ../programs/long-lines/long-lines.nix {})
-  (callPackage ../programs/nixos-update.nix {})
   (callPackage ../programs/pdf-insert-blank-pages.nix {})
   (callPackage ../programs/player-art.nix {})
   (callPackage ../programs/rclone-sync/rclone-sync.nix {})

@@ -1,8 +1,16 @@
 {pkgs, ...}: rec {
-  home.file.".config/nvim/snippets/mail.snippets".source = ./snippets/mail.snippets;
-  home.file.".config/nvim/snippets/org.snippets".source = ./snippets/org.snippets;
-  home.file.".config/nvim/snippets/sh.snippets".source = ./snippets/sh.snippets;
-  home.file.".config/nvim/snippets/tex.snippets".source = ./snippets/tex.snippets;
+  home.file.".config/nvim/snippets/mail.snippets" = {
+    source = ./snippets/mail.snippets;
+  };
+  home.file.".config/nvim/snippets/org.snippets" = {
+    source = ./snippets/org.snippets;
+  };
+  home.file.".config/nvim/snippets/sh.snippets" = {
+    source = ./snippets/sh.snippets;
+  };
+  home.file.".config/nvim/snippets/tex.snippets" = {
+    source = ./snippets/tex.snippets;
+  };
 
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;

@@ -35,10 +35,14 @@ lazy_static! {
     static ref RE_PERCENT: Regex = Regex::new(r"\\\%").unwrap();
     static ref RE_COMMENT: Regex = Regex::new(r"\%.*").unwrap();
     static ref RE_ITEM: Regex = Regex::new(r".*\\item.*").unwrap();
-    static ref RE_DOCUMENT_BEGIN: Regex = Regex::new(r".*\\begin\{document\}.*").unwrap();
-    static ref RE_DOCUMENT_END: Regex = Regex::new(r".*\\end\{document\}.*").unwrap();
-    static ref RE_ENV_BEGIN: Regex = Regex::new(r".*\\begin\{[a-z\*]*\}.*").unwrap();
-    static ref RE_ENV_END: Regex = Regex::new(r".*\\end\{[a-z\*]*\}.*").unwrap();
+    static ref RE_DOCUMENT_BEGIN: Regex =
+        Regex::new(r".*\\begin\{document\}.*").unwrap();
+    static ref RE_DOCUMENT_END: Regex =
+        Regex::new(r".*\\end\{document\}.*").unwrap();
+    static ref RE_ENV_BEGIN: Regex =
+        Regex::new(r".*\\begin\{[a-z\*]*\}.*").unwrap();
+    static ref RE_ENV_END: Regex =
+        Regex::new(r".*\\end\{[a-z\*]*\}.*").unwrap();
     static ref RE_LISTS_BEGIN: Vec<Regex> = LISTS
         .iter()
         .map(|l| Regex::new(&format!(r".*\\begin\{{{}}}.*", l)).unwrap())
@@ -148,9 +152,9 @@ fn main() {
     };
 
     // check files are in correct format
-    assert!(filenames
-        .iter()
-        .all(|f| f.ends_with(".tex") || f.ends_with(".bib") || f.ends_with(".cls")));
+    assert!(filenames.iter().all(|f| f.ends_with(".tex")
+        || f.ends_with(".bib")
+        || f.ends_with(".cls")));
 
     // print script name
     println!("{}", String::new() + PINK + "tex-fmt" + RESET);
@@ -162,7 +166,8 @@ fn main() {
         }
 
         // read lines from file
-        let mut file = fs::read_to_string(&filename).expect("Should have read the file");
+        let mut file =
+            fs::read_to_string(&filename).expect("Should have read the file");
 
         // preformat
         file = remove_extra_newlines(&file);

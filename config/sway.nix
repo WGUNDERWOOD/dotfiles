@@ -4,7 +4,9 @@
   osConfig,
   ...
 }: {
-  home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+  home.file.".icons/default".source =
+    "${pkgs.phinger-cursors}/share/icons/"
+    + "phinger-cursors";
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -73,7 +75,9 @@
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+f" = "exec firefox";
-        "${modifier}+Shift+s" = "exec pgrep spotify || (swaymsg workspace number 10 && spotify)";
+        "${modifier}+Shift+s" =
+          "exec pgrep spotify || "
+          + "(swaymsg workspace number 10 && spotify)";
         "${modifier}+d" = "exec rofi-start";
         "${modifier}+Shift+Ctrl+k" =
           if osConfig.networking.hostName == "xanth"
@@ -124,12 +128,20 @@
         "${modifier}+Right" = "exec playerctl -p spotify next";
         "${modifier}+Left" = "exec playerctl -p spotify previous";
         "${modifier}+space" = "exec playerctl -p spotify play-pause";
-        "${modifier}+Down" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
+        "${modifier}+Down" =
+          "exec \"pactl set-sink-volume "
+          + "@DEFAULT_SINK@ -5%\"";
         "${modifier}+Up" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
-        "XF86AudioLowerVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ -5%\"";
-        "XF86AudioRaiseVolume" = "exec \"pactl set-sink-volume @DEFAULT_SINK@ +5%\"";
+        "XF86AudioLowerVolume" =
+          "exec \"pactl set-sink-volume "
+          + "@DEFAULT_SINK@ -5%\"";
+        "XF86AudioRaiseVolume" =
+          "exec \"pactl set-sink-volume "
+          + "@DEFAULT_SINK@ +5%\"";
         "XF86AudioMute" = "exec \"pactl set-sink-mute @DEFAULT_SINK@ toggle\"";
-        "XF86AudioMicMute" = "exec \"pactl set-source-mute @DEFAULT_SOURCE@ toggle\"";
+        "XF86AudioMicMute" =
+          "exec \"pactl set-source-mute "
+          + "@DEFAULT_SOURCE@ toggle\"";
         "XF86MonBrightnessUp" = "exec \"brillo -A 5\"";
         "XF86MonBrightnessDown" = "exec \"brillo -U 5\"";
         "Shift+XF86MonBrightnessUp" = "exec \"brillo -S 100\"";

@@ -116,7 +116,8 @@ programming:
     crystal: [.cr]
     csharp: [.cs, .csx]
     css: [.css, .sass, .scss]
-    cxx: [.c, .cpp, .cc, .cp, .cxx, .c++, .h, .hh, .hpp, .hxx, .h++, .inc, .inl, .ipp, .def]
+    cxx: [.c, .cpp, .cc, .cp, .cxx, .c++, .h, .hh, .hpp, .hxx, .h++, .inc,
+      .inl, .ipp, .def]
     d: [.d, .di]
     dart: [.dart]
     diff: [.diff, .patch]

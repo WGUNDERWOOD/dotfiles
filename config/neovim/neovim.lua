@@ -1,6 +1,7 @@
 -- helper function
 function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+  vim.api.nvim_set_keymap(mode, shortcut, command,
+      { noremap = true, silent = true })
 end
 
 -- basics
@@ -119,7 +120,8 @@ vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
 
 -- snippets
-require("luasnip.loaders.from_snipmate").lazy_load({paths = "~/.config/nvim/snippets/"})
+require("luasnip.loaders.from_snipmate").lazy_load({paths =
+    "~/.config/nvim/snippets/"})
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ?" ..
     "'<Plug>luasnip-expand-or-jump' : '<Tab>'")
 vim.cmd("inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>")
@@ -160,15 +162,19 @@ map("n", "<Space>fa", ":lua require'fzf-lua'.files({prompt='All files> '," ..
     "-E '*.docx' -E '*.xlsx' -E '*.ppt' -E '*.eps' -E '*.aux'" ..
     "-E '*.p' -E '*.fig'\"" ..
     "}) <CR>")
-map("n", "<Space>pf", ":lua require'fzf-lua'.git_files({prompt='Project files> '," ..
+map("n", "<Space>pf",
+    ":lua require'fzf-lua'.git_files({prompt='Project files> '," ..
     "cwd = '`git rev-parse --show-toplevel`'," ..
     "show_cwd_header=false}) <CR>")
-map("n", "<Space>bb", ":lua require'fzf-lua'.oldfiles({prompt='Recent files> '," ..
+map("n", "<Space>bb",
+    ":lua require'fzf-lua'.oldfiles({prompt='Recent files> '," ..
     "file_ignore_patterns = { '%COMMIT_EDITMSG$' }," ..
     "include_current_session=true}) <CR>")
-map("n", "<Space>gc", ":lua require'fzf-lua'.git_commits({prompt='Commits> '," ..
+map("n", "<Space>gc",
+    ":lua require'fzf-lua'.git_commits({prompt='Commits> '," ..
     "show_cwd_header=false}) <CR>")
-map("n", "<Space>/", ":lua require'fzf-lua'.grep_project({prompt='Project> '," ..
+map("n", "<Space>/",
+    ":lua require'fzf-lua'.grep_project({prompt='Project> '," ..
     "cwd = '`git rev-parse --show-toplevel`'," ..
     "no_header_i=true, no_header=true}) <CR>")
 
@@ -270,7 +276,8 @@ require('lualine').setup {
 }
 
 -- luasnip with snipmate
-require("luasnip").setup({update_events = {"TextChanged", "TextChangedI"}, history = true})
+require("luasnip").setup({update_events = {"TextChanged", "TextChangedI"},
+                          history = true})
 require("luasnip.loaders.from_snipmate").lazy_load({paths = "./snippets"})
 
 -- autocompletion with nvim_cmp
@@ -288,7 +295,8 @@ cmp.setup({
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             else
-                local keys = vim.api.nvim_replace_termcodes('<C-X><C-O>', false, false, true)
+                local keys = vim.api.nvim_replace_termcodes(
+                    '<C-X><C-O>', false, false, true)
                 vim.api.nvim_feedkeys(keys, "n", {})
             end
         end, { "i", "s" }),
@@ -608,7 +616,8 @@ vim.cmd([[
     au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
     au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
     au Filetype tex let g:tex_fast = 'M'
-    au Filetype tex let g:vimtex_indent_delims = {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
+    au Filetype tex let g:vimtex_indent_delims = 
+        \ {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
     au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
     au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
     au Filetype tex hi texPartArgTitle gui=bold guifg=#ffff22
@@ -641,9 +650,12 @@ vim.cmd([[
     au Filetype tex hi texTheoremEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi texProofEnvOpt gui=bold guifg=#ffff22
     au Filetype tex hi Special gui=NONE guifg=#f8f8f2
-    au Filetype tex call matchadd('texPartArgTitle', '^[^%]*\\proofparagraph{\zs[^}][^}]*\ze}', -1)
-    au Filetype tex call matchadd('texPartArgTitle', '^[^%]*\\begin{frame}\(\[.*\]\)\?{\zs[^}][^}]*\ze}', -1)
-    au Filetype tex call matchadd('texPageCmd', '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
+    au Filetype tex call matchadd('texPartArgTitle',
+        \ '^[^%]*\\proofparagraph{\zs[^}][^}]*\ze}', -1)
+    au Filetype tex call matchadd('texPartArgTitle',
+        \ '^[^%]*\\begin{frame}\(\[.*\]\)\?{\zs[^}][^}]*\ze}', -1)
+    au Filetype tex call matchadd('texPageCmd',
+        \ '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
     au Filetype tex hi texPageCmd gui=bold guifg=#ff0000
     au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS<CR>
     au Filetype tex nnoremap ,v :VimtexView<CR>

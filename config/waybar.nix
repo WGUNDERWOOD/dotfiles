@@ -87,31 +87,38 @@
     };
     "clock#time" = {
       "format" = "{:%H:%M}";
-      "on-click" = "${pkgs.firefox}/bin/firefox https://app.todoist.com/app/upcoming";
+      "on-click" =
+        "${pkgs.firefox}/bin/firefox "
+        + "https://app.todoist.com/app/upcoming";
     };
     "cpu" = {
       "format" = "CPU {usage}%";
       "interval" = 10;
       "tooltip" = false;
-      "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
+      "on-click" =
+        "${pkgs.alacritty}/bin/alacritty -e "
+        + "'${pkgs.bottom}/bin/btm'";
     };
     "memory" = {
       "interval" = 10;
       "format" = "RAM {percentage}%";
       "tooltip" = false;
-      "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
+      "on-click" =
+        "${pkgs.alacritty}/bin/alacritty -e "
+        + "'${pkgs.bottom}/bin/btm'";
     };
     "custom/mail" = {
       "format" = "{}";
       "exec" =
         pkgs.writeShellScript "waybar-mail"
         ''
-          CURRENT_TIME=$(${pkgs.coreutils}/bin/date +'%s')
-          LAST_SYNC_TIME=$(${pkgs.coreutils}/bin/cat $HOME/tmp/mbsync_last_sync_time)
+          CURRENT_TIME="$(${pkgs.coreutils}/bin/date +'%s')"
+          LAST_SYNC_TIME="$(${pkgs.coreutils}/bin/cat \
+              $HOME/tmp/mbsync_last_sync_time)"
           ELAPSED_TIME=$((CURRENT_TIME - LAST_SYNC_TIME))
           COUNT=$(${pkgs.findutils}/bin/find \
-                  ~/mail/princeton/INBOX/new/ ~/mail/gmail/INBOX/new/ -type f | \
-                  ${pkgs.coreutils}/bin/wc -l)
+              ~/mail/princeton/INBOX/new/ ~/mail/gmail/INBOX/new/ -type f | \
+              ${pkgs.coreutils}/bin/wc -l)
           if (( "$ELAPSED_TIME" < 120 )); then
               if [ "$COUNT" -ge "1" ]; then
                   echo '{"text": "Mail '$COUNT'", "class": "new_mail"}'
@@ -138,7 +145,9 @@
     "network" = {
       "format" = "Net";
       "tooltip" = false;
-      "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
+      "on-click" =
+        "${pkgs.alacritty}/bin/alacritty -e "
+        + "'${pkgs.bottom}/bin/btm'";
     };
     "custom/spotify" = {
       "format" = "{}";
@@ -146,7 +155,9 @@
       "max-length" = 50;
       "on-click" = "${pkgs.playerctl}/bin/playerctl -p spotify previous";
       "on-click-right" = "${pkgs.playerctl}/bin/playerctl -p spotify next";
-      "on-click-middle" = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+      "on-click-middle" =
+        "${pkgs.playerctl}/bin/playerctl -p "
+        + "spotify play-pause";
       "exec" = ''
         ${pkgs.playerctl}/bin/playerctl -p spotify metadata -f '{{artist}}' | \
         ${pkgs.gnused}/bin/sed 's/&/&amp;/g'
@@ -158,7 +169,9 @@
       "interval" = 60;
       "format" = "Disk {percentage_used}%";
       "path" = "/";
-      "on-click" = "${pkgs.alacritty}/bin/alacritty -e '${pkgs.bottom}/bin/btm'";
+      "on-click" =
+        "${pkgs.alacritty}/bin/alacritty -e "
+        + "'${pkgs.bottom}/bin/btm'";
       "tooltip" = false;
     };
     "pulseaudio" = {
@@ -190,7 +203,8 @@
         pkgs.writeShellScript "waybar-backlight"
         ''
           DISPLAY="$(${pkgs.sway}/bin/swaymsg -r -t get_outputs)"
-          DISPLAY="$(echo $DISPLAY | ${pkgs.jq}/bin/jq 'map(select(.name=="eDP-1"))')"
+          DISPLAY="$(echo $DISPLAY | ${pkgs.jq}/bin/jq \
+              'map(select(.name=="eDP-1"))')"
           DISPLAY="$(echo $DISPLAY | ${pkgs.jq}/bin/jq '.[0] | .active')"
           if [ "$DISPLAY" == "true" ]; then
               BRIGHTNESS="$(${pkgs.brillo}/bin/brillo -G)"
