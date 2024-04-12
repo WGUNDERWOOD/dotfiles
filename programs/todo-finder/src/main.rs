@@ -23,7 +23,8 @@ fn main() {
 
     for filename in filenames {
         // read lines from file
-        let file = fs::read_to_string(filename).expect("Should have been able to read the file");
+        let file = fs::read_to_string(filename)
+            .expect("Should have been able to read the file");
         let lines: Vec<&str> = file.lines().collect();
 
         // print file name if any matches

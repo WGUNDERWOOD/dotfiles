@@ -22,32 +22,35 @@ bind index l display-message
 bind index \Cd half-down
 bind index \Cu half-up
 
-macro index h '<limit>all<enter>' "view all messages"
+macro index h "<limit>all<enter>" "view all messages"
 bind index P recall-message
 bind index,pager R group-reply
 bind index,pager \Ck sidebar-prev
 bind index,pager \Cj sidebar-next
 bind index,pager \Co sidebar-open
 bind index,pager B sidebar-toggle-visible
-macro index,pager d '<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><delete-message>'
-macro index a '<tag-pattern>.<enter>' "tag all messages"
-macro index A '<untag-pattern>.<enter>' "untag all messages"
+macro index,pager d "<enter-command>unset \
+    resolve<enter><clear-flag>N<enter-command>set \
+    resolve<enter><delete-message>"
+macro index a "<tag-pattern>.<enter>" "tag all messages"
+macro index A "<untag-pattern>.<enter>" "untag all messages"
 bind index e mail
 bind index S sync-mailbox
-macro index q '<sync-mailbox><exit>' "quit"
+macro index q "<sync-mailbox><exit>" "quit"
 
 bind index ss limit
-macro index sd '<limit>~D<enter>' "filter deleted messages"
-macro index si '<limit>~F<enter>' "filter important messages"
-macro index sj '<limit>~H 999<enter>' "filter spam messages"
-macro index su '<limit>~U<enter>' "filter unread messages"
-macro index sa '<limit>all<enter>' "view all messages"
-macro index sf '<limit>~f ' "filter messages by sender"
-macro index st '<limit>~t ' "filter messages by recipient"
+macro index sd "<limit>~D<enter>" "filter deleted messages"
+macro index si "<limit>~F<enter>" "filter important messages"
+macro index sj "<limit>~H 999<enter>" "filter spam messages"
+macro index su "<limit>~U<enter>" "filter unread messages"
+macro index sa "<limit>all<enter>" "view all messages"
+macro index sf "<limit>~f " "filter messages by sender"
+macro index st "<limit>~t " "filter messages by recipient"
 
 bind index i flag-message
 
-macro index,pager c "<pipe-message>goobook add<return>" "add sender to Google contacts"
+macro index,pager c "<pipe-message>goobook add<return>" \
+    "add sender to Google contacts"
 
 # pager bindings
 bind pager g noop

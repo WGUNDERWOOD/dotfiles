@@ -23,8 +23,8 @@ color sidebar_highlight default color60
 
 # message index ----- foreground ---- background -----------------------------
 color index           bold color11    default    ~N       # new messages
-color index           color10         default    ~Q       # messages which have been replied to
-color index           color141        default    ~v       # messages part of a collapsed thread
+color index           color10         default    ~Q       # replied messages
+color index           color141        default    ~v       # collapsed messages
 color index           bold color215   default    ~F       # flagged messages
 color index           color245        default    "~H 999" # spam messages
 color index           color210        default    ~D       # deleted messages
@@ -39,11 +39,16 @@ color header          color231        default    ^Subject:.*
 
 # message body ------ foreground ---- background -----------------------------
 color attachment      color228        default
-color body            color231        default    [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+               # email addresses
-color body            color228        default    (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+        # URLs
-color body            color231        default    (^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$) # *bold* text
-color body            color231        default    (^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)     # _underlined_ text
-color body            color231        default    (^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)     # /italic/ text
+color body            color231        default \
+    [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+               # email addresses
+color body            color228        default \
+    (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+        # URLs
+color body            color231        default \
+    (^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$) # *bold* text
+color body            color231        default \
+    (^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)     # _underlined_ text
+color body            color231        default \
+    (^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)     # /italic/ text
 color quoted          color147        default
 color quoted1         color117        default
 color quoted2         color84         default

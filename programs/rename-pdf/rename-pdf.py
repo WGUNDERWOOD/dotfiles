@@ -18,7 +18,8 @@ def slugify(s):
 def parse_arxiv(filename):
     ident = filename.stem
     source = "arxiv"
-    feed = feedparser.parse(f"http://export.arxiv.org/api/query?id_list={ident}&max_results=1")
+    feed = feedparser.parse(
+            f"http://export.arxiv.org/api/query?id_list={ident}&max_results=1")
     paper = feed.entries[0]
     authors = [a.name.split()[-1] for a in paper["authors"]]
     year = paper.published_parsed.tm_year
@@ -33,7 +34,8 @@ def parse_science_direct(filename):
     url = "http://www.sciencedirect.com/science/article/pii/" + ident
     headers = {
         "User-Agent":
-        ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        ("Mozilla/5.0 (Windows NT 10.0; WOW64) "
+         "AppleWebKit/537.36 (KHTML, like Gecko) "
          "Chrome/47.0.2526.106 Safari/537.36")}
     req = urllib.request.Request(url, headers=headers)
     html = urllib.request.urlopen(req).read().decode('utf8').replace("\n", "")
@@ -45,7 +47,8 @@ def parse_science_direct(filename):
     url = "https://doi.org/" + doi
     headers = {
         "User-Agent":
-        ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        ("Mozilla/5.0 (Windows NT 10.0; WOW64) "
+         "AppleWebKit/537.36 (KHTML, like Gecko) "
          "Chrome/47.0.2526.106 Safari/537.36"),
         "Accept": "application/json; charset=utf-8"}
     req = urllib.request.Request(url, headers=headers)
@@ -55,8 +58,10 @@ def parse_science_direct(filename):
 
     # format info
     authors_list = paper["author"]
-    first_authors = [a["family"] for a in authors_list if a["sequence"] == "first"]
-    other_authors = [a["family"] for a in authors_list if a["sequence"] != "first"]
+    first_authors = [a["family"] for a in authors_list
+                     if a["sequence"] == "first"]
+    other_authors = [a["family"] for a in authors_list
+                     if a["sequence"] != "first"]
     authors = first_authors + other_authors
     title = paper["title"].split(" ")
     year = paper["published-print"]["date-parts"][0][0]
@@ -71,10 +76,12 @@ def parse_jstor(filename):
     url = "https://www.jstor.org/citation/ris/" + ident
     headers = {
         "User-Agent":
-        ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        ("Mozilla/5.0 (Windows NT 10.0; WOW64) "
+         "AppleWebKit/537.36 (KHTML, like Gecko) "
          "Chrome/47.0.2526.106 Safari/537.36")}
     req = urllib.request.Request(url, headers=headers)
-    bib = urllib.request.urlopen(req).read().decode('utf8').replace("\r", "").split("\n")
+    dec = urllib.request.urlopen(req).read().decode('utf8')
+    bib = dec.replace("\r", "").split("\n")
 
     # format info
     authors = [b[2:] for b in bib if b[0:2] == "AU"]
@@ -91,14 +98,16 @@ def parse_jstor(filename):
 def save_file(info):
     title_excluded_words = ["A", "An", "And", "The", "On", "When", "For",
                             "Can", "Note", "Of", "With"]
-    title_words = [w.title() for w in info["title"] if w.title() not in title_excluded_words]
+    title_words = [w.title() for w in info["title"]
+                   if w.title() not in title_excluded_words]
     title = slugify("-".join(title_words[0:2]))
     authors = [a.title() for a in info["authors"]]
     authors = slugify("-".join(authors[0:min(5, len(authors))]))
     year = info["year"]
     ident = info["ident"]
     source = info["source"]
-    new_filename = filename.with_stem(f"{authors}_{year}_{title}_{source}-{ident}")
+    new_filename = filename.with_stem(
+            f"{authors}_{year}_{title}_{source}-{ident}")
     message = ("\033[0;33m\033[1m" + str(filename) + "\033[00m\033[0m" +
                "\033[00m\033[1m --> \033[00m\033[0m" +
                "\033[0;32m\033[1m" + str(new_filename) + "\033[00m\033[0m")

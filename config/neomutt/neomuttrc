@@ -28,7 +28,9 @@ set timeout = 30
 
 # display
 set date_format = "%a %d %h %y  %H:%M"
-set status_format = "Emails: %?M?%M/?%m%?n?   New: %n?%?d?   Delete: %d?%?F?   Important: %F?%?t?   Tagged: %t?%?p?  Postponed: %p?   %*  Sort: %s/%S   Size: %?L?%L/?%l%?V?   %V?   %P"
+set status_format = "Emails: %?M?%M/?%m%?n?   New: %n?%?d?   Delete: %d?%?F?\
+   Important: %F?%?t?   Tagged: %t?%?p?  Postponed: %p?   %*  Sort: %s/%S\
+   Size: %?L?%L/?%l%?V?   %V?   %P"
 set index_format = "%3C   %D   %-30.30F   %s  %*   %c"
 set mark_old = no
 set help = "no"
@@ -52,7 +54,9 @@ set forward_format = "Fwd: %s"
 set forward_quote
 set include
 set abort_noattach = "ask-yes"
-set abort_noattach_regex = "\\<(attachment|attach|attached|attaching|enclose|enclosed|enclosing|print|printed|printing|file|files|CV|CVs|resume|resumes|screenshot|screenshots)\\>"
+set abort_noattach_regex = "\\<(attachment|attach|attached|attaching|enclose\
+|enclosed|enclosing|print|printed|printing|file|files|CV|CVs|resume|resumes|\
+screenshot|screenshots)\\>"
 set abort_unmodified = "ask-yes"
 set sig_on_top = "yes"
 set edit_headers = "yes"

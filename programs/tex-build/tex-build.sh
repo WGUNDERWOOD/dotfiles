@@ -67,11 +67,14 @@ for file in "$@"; do
     cd "$dir"
     (latexmk "$pdf" "$quiet" "$report" "$warn" \
         "$esc" "$norc" "$filepath" 2>&1) | \
-        { grep --line-buffered -v -e "^Latexmk: Nothing to do for " -e "^$" || true; } | \
+        { grep --line-buffered -v -e \
+            "^Latexmk: Nothing to do for " -e "^$" || true; } | \
         { GREP_COLORS="ms=01;34$GREP_COLORS_BASE" \
-            grep --line-buffered --color=always -E "Latexmk:|$" || true; } | \
+            grep --line-buffered --color=always -E \
+                "Latexmk:|$" || true; } | \
         { GREP_COLORS="ms=01;36$GREP_COLORS_BASE" \
-            grep --line-buffered --color=always -E "Run number .*|$" || true; }
+            grep --line-buffered --color=always -E \
+                "Run number .*|$" || true; }
     )
 
 done

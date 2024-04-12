@@ -1,3 +1,4 @@
+use clap::Parser;
 use regex::Regex;
 use std::collections::HashMap;
 use std::fs;
@@ -5,7 +6,6 @@ use std::io;
 use std::path;
 use std::process::Command;
 use std::process::Stdio;
-use clap::Parser;
 
 const WORDLIST_PATH: &str = "./wordlist.txt";
 const YELLOW: &str = "\x1b[33m\x1b[1m";
@@ -31,7 +31,6 @@ enum Language {
 }
 
 fn main() {
-
     // get arguments
     let args = Cli::parse();
     let filenames = args.filenames;
@@ -59,8 +58,10 @@ fn main() {
 
     for filename in filenames {
         // read file
-        let file = fs::read_to_string(&filename).expect("Should have been able to read the file");
-        let mistakes = spell_check_get_mistakes(&filename, &lang, &file, &reject);
+        let file = fs::read_to_string(&filename)
+            .expect("Should have been able to read the file");
+        let mistakes =
+            spell_check_get_mistakes(&filename, &lang, &file, &reject);
 
         // output results
         if !mistakes.is_empty() {
@@ -68,7 +69,11 @@ fn main() {
             for m in mistakes {
                 print!(
                     "{}",
-                    String::new() + GREEN + &(m.0 + 1).to_string() + ": " + RESET
+                    String::new()
+                        + GREEN
+                        + &(m.0 + 1).to_string()
+                        + ": "
+                        + RESET
                 );
 
                 let mut formatted: String = m.2.to_string();
@@ -104,8 +109,10 @@ fn read_wordlist() -> (Vec<String>, Vec<String>) {
     let wordlist = fs::read_to_string(WORDLIST_PATH).unwrap();
     let wordlist_split: Vec<&str> = wordlist.split("\n\n").collect();
     assert!(wordlist_split.len() == 2, "Incorrectly formatted wordlist");
-    let mut accept: Vec<String> = wordlist_split[0].split('\n').map(str::to_string).collect();
-    let mut reject: Vec<String> = wordlist_split[1].split('\n').map(str::to_string).collect();
+    let mut accept: Vec<String> =
+        wordlist_split[0].split('\n').map(str::to_string).collect();
+    let mut reject: Vec<String> =
+        wordlist_split[1].split('\n').map(str::to_string).collect();
     assert!(accept[0] == "# accept", "Incorrectly formatted wordlist");
     assert!(reject[0] == "# reject", "Incorrectly formatted wordlist");
     accept.remove(0);
@@ -157,15 +164,21 @@ fn spell_check_get_mistakes(
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "--personal=.spell_accept.tmp", "-t", "list",
-              &get_aspell_lang_arg(&lang)])
+        .args([
+            "--home-dir=.",
+            "--personal=.spell_accept.tmp",
+            "-t",
+            "list",
+            &get_aspell_lang_arg(&lang),
+        ])
         .stdin(Stdio::from(output_cat.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()
         .unwrap();
     let output = output_aspell.wait_with_output().unwrap();
     let output_string = String::from_utf8_lossy(&output.stdout);
-    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
+    let mut ms: Vec<String> =
+        output_string.split('\n').map(str::to_string).collect();
 
     // format mistakes
     ms.append(&mut reject.to_owned());
@@ -206,7 +219,8 @@ fn check_accept_are_errors(lang: &Language, accept: &Vec<String>) {
         .unwrap();
     let output = output_aspell.wait_with_output().unwrap();
     let output_string = String::from_utf8_lossy(&output.stdout);
-    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
+    let mut ms: Vec<String> =
+        output_string.split('\n').map(str::to_string).collect();
     ms.retain(|x| !x.is_empty());
     for w in accept {
         if !ms.contains(w) {
@@ -230,7 +244,8 @@ fn check_reject_are_ok(lang: &Language) {
         .unwrap();
     let output = output_aspell.wait_with_output().unwrap();
     let output_string = String::from_utf8_lossy(&output.stdout);
-    let mut ms: Vec<String> = output_string.split('\n').map(str::to_string).collect();
+    let mut ms: Vec<String> =
+        output_string.split('\n').map(str::to_string).collect();
     ms.retain(|x| !x.is_empty());
     for w in &ms {
         println!("{} does not need to be on reject list", w)

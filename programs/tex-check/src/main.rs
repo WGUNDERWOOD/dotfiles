@@ -41,14 +41,19 @@ fn main() {
     println!("{}", String::new() + PINK + "tex-check" + RESET);
 
     // get regexes
-    let match_errors = MATCH_ERROR.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
-    let match_warnings = MATCH_WARNING.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
-    let match_others = MATCH_OTHER.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
-    let nomatches = NOMATCH.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
+    let match_errors =
+        MATCH_ERROR.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
+    let match_warnings = MATCH_WARNING
+        .map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
+    let match_others =
+        MATCH_OTHER.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
+    let nomatches =
+        NOMATCH.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
 
     for filename in filenames {
         // read lines from file
-        let file = fs::read_to_string(filename).expect("Should have read the file");
+        let file =
+            fs::read_to_string(filename).expect("Should have read the file");
         let lines: Vec<&str> = file.lines().collect();
         // warning is (line number, line contents, match type)
         let mut warnings: Vec<(usize, &str, &str)> = vec![];
@@ -95,7 +100,11 @@ fn main() {
             for w in &warnings {
                 print!(
                     "{}",
-                    String::new() + GREEN + &(w.0 + 1).to_string() + ": " + RESET
+                    String::new()
+                        + GREEN
+                        + &(w.0 + 1).to_string()
+                        + ": "
+                        + RESET
                 );
                 let color = match w.2 {
                     "error" => RED,

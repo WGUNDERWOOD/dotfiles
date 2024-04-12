@@ -8,7 +8,8 @@ alias ll='exa --all --long --git'
 alias lz='exa --all --long --git --sort size'
 alias lrz='fd -tf -X exa --long --sort size'
 alias lrc='ls -AiR1U ./ |
-           sed -rn "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
+           sed -rn \
+           "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
 
 # programs
@@ -34,7 +35,10 @@ rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
 alias cpdf='compress-pdf'
 alias rpdf='rename-pdf'
 li() { command libreoffice "$@" & }
-tex-labels() { command grep -o -e "\\\label{[^}]*}" "$@" | grep --color -P "(?<={)[^}]*(?=})"; }
+tex-labels() {
+    command grep -o -e "\\\label{[^}]*}" "$@" | \
+    grep --color -P "(?<={)[^}]*(?=})";
+}
 alias rcgdpl='rclone-sync -gl'
 alias rcgdps='rclone-sync -gs'
 alias rcgdppl='rclone-sync -pl'
@@ -43,7 +47,6 @@ alias rcdbppl='rclone-sync -dl'
 alias rcdbpps='rclone-sync -ds'
 alias rcpl='rcgdpl && rcgdppl && rcdbppl'
 alias rcps='rcgdps && rcgdpps && rcdbpps'
-alias jpgcompress='mogrify -strip -interlace Plane -gaussian-blur 0.05 -quality 80%'
 
 # nix
 nxr() {
@@ -57,9 +60,11 @@ nxu() {
         nix flake update "$DOTS"
 }
 alias nxq='nix-env -qa | fzf'
-alias nxg='nix-collect-garbage --delete-old && sudo nix-collect-garbage --delete-old'
+alias nxg='nix-collect-garbage --delete-old &&
+           sudo nix-collect-garbage --delete-old'
 alias nxs='nix-shell'
-alias nxb='nix-build'
+alias nxb='nix build'
+alias nxd='nix develop'
 nxp() { ls -l "$(which "$@")"; }
 nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }
 
@@ -70,7 +75,8 @@ gcl() { command git clone "git@github.com:WGUNDERWOOD/$@" & }
 
 # todoist
 alias t='rg --sort path -t org TODO $HOME/github $HOME/overleaf'
-alias tt='todoist sync && todoist --color list --filter "(overdue | today | p1)"'
+alias tt='todoist sync &&
+          todoist --color list --filter "(overdue | today | p1)"'
 alias tl='todoist sync && todoist --color list'
 tq() { command todoist quick "$@" && todoist sync & }
 tc() { command todoist close "$@" && todoist sync & }
@@ -89,8 +95,8 @@ alias cdgdp='cd ~/rclone/google_drive_princeton/'
 alias cddbp='cd ~/rclone/dropbox_princeton/'
 
 # cd google drive
-alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes/'
-alias cdtextbk='cd ~/rclone/google_drive/Education/Textbooks\ and\ Extra\ Notes/'
+alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes'
+alias cdtextbk='cd ~/rclone/google_drive/Education/Textbooks\ and\ Extra\ Notes'
 alias cdpton='cd ~/rclone/google_drive/Education/Princeton/'
 alias cdtax='cd ~/rclone/google_drive/Finances/Tax/'
 

@@ -22,9 +22,9 @@ fn main() {
     println!("{}", String::new() + PINK + "long-lines" + RESET);
 
     for filename in filenames {
-
         // read lines from file
-        let file = fs::read_to_string(filename).expect("Should have been able to read the file");
+        let file = fs::read_to_string(filename)
+            .expect("Should have been able to read the file");
         let lines: Vec<&str> = file.lines().collect();
 
         // sort lines by length
@@ -34,7 +34,7 @@ fn main() {
         let sorted_lines: Vec<&str> = order.iter().map(|&i| lines[i]).collect();
 
         // print file name if any lines are too long
-        if sorted_lines[n-1].len() > MAX_LEN {
+        if sorted_lines[n - 1].len() > MAX_LEN {
             println!("{}", String::new() + YELLOW + filename + RESET);
         }
 
@@ -45,9 +45,16 @@ fn main() {
             if len > MAX_LEN {
                 print!(
                     "{}",
-                    String::new() + GREEN + &(order[i] + 1).to_string() + ": " + RESET
+                    String::new()
+                        + GREEN
+                        + &(order[i] + 1).to_string()
+                        + ": "
+                        + RESET
                 );
-                print!("{}", String::new() + RED + &len.to_string() + " " + RESET);
+                print!(
+                    "{}",
+                    String::new() + RED + &len.to_string() + " " + RESET
+                );
                 print!("{}", line[0..MAX_LEN].to_string());
                 print!("{}", String::new() + PURPLE + "..." + RESET);
                 println!();

@@ -2,7 +2,8 @@
 
 # text
 text/plain; less %s
-text/html; firefox --new-window %s > /dev/null 2>&1 &; nametemplate=%s.html; test=test -n "$DISPLAY"; needsterminal;
+text/html; firefox --new-window %s > /dev/null 2>&1 &; nametemplate=%s.html; \
+    test=test -n "$DISPLAY"; needsterminal;
 text/html; lynx -width=500 -dump %s; nametemplate=%s.html; copiousoutput
 
 # pdf
@@ -13,4 +14,5 @@ application/octet-stream; zathura %s > /dev/null 2>&1 &
 image/*; feh %s > /dev/null 2>&1 &
 
 # docs
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s > /dev/null 2>&1 &
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; \
+    libreoffice %s > /dev/null 2>&1 &
