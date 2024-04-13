@@ -6,7 +6,7 @@
     "bash -c
     'pgrep spotify ||
     ((swaymsg workspace number 10 && spotify)
-    & (sleep 1 && rmdir $HOME/Downloads/))'"
+    & (sleep 1 && rm -fd $HOME/Downloads/))'"
 
 - name: Neovim
   command:
