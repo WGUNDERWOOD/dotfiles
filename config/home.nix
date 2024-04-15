@@ -12,6 +12,7 @@
   ../config/rclone/rclone.nix
   ../config/ripgrep.nix
   ../config/rofi/rofi.nix
+  ../config/python/python.nix
   ../config/starship/starship.nix
   ../config/sway.nix
   ../config/swaylock.nix

@@ -65,6 +65,8 @@
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     PYTHONSTARTUP = "$XDG_CONFIG_HOME/python/pythonrc.py";
     JULIA_DEPOT_PATH = "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH";
+    JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
+    IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
     # display settings
     MOZ_ENABLE_WAYLAND = "0";
     GDK_DPI_SCALE =
