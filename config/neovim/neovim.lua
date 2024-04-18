@@ -641,7 +641,7 @@ vim.cmd([[
     au Filetype tex hi texMathSub guifg=#bd93f9
     au Filetype tex hi texMathSuper guifg=#bd93f9
     au Filetype tex hi texMathSymbol gui=NONE guifg=#ff79c6
-    au Filetype tex hi texMathCmd guifg=#bd93f9
+    au Filetype tex hi texMathCmd guifg=#ff79c6
     au Filetype tex hi texSpecialChar guifg=#bd93f9
     au Filetype tex hi texMathDelimZoneLD guifg=#ff0000
     au Filetype tex hi texMathEnvArgName gui=bold guifg=#50fa7b
