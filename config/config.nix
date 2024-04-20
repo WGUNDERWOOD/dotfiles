@@ -64,7 +64,7 @@
     BUNDLE_USER_PLUGIN = "$XDG_DATA_HOME/bundle";
     CARGO_HOME = "$XDG_DATA_HOME/cargo";
     PYTHONSTARTUP = "$XDG_CONFIG_HOME/python/pythonrc.py";
-    JULIA_DEPOT_PATH = "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH";
+    JULIA_DEPOT_PATH = "$XDG_DATA_HOME/julia";
     JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
     IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
     # display settings
