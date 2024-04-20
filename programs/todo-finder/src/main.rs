@@ -33,8 +33,7 @@ fn main() {
         }
 
         // print formatted lines
-        for i in 0..lines.len() {
-            let line = lines[i];
+        for (i, line) in lines.iter().enumerate() {
             if check_match(line) {
                 format_print(line, i);
             }
@@ -45,7 +44,7 @@ fn main() {
 fn check_match(line: &str) -> bool {
     let contains_keyword = KEYWORDS.iter().any(|w| line.contains(w));
     let contains_exclude = EXCLUDES.iter().any(|w| line.contains(w));
-    return contains_keyword && !contains_exclude;
+    contains_keyword && !contains_exclude
 }
 
 fn format_print(line: &str, i: usize) {

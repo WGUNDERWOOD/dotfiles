@@ -169,7 +169,7 @@ fn spell_check_get_mistakes(
             "--personal=.spell_accept.tmp",
             "-t",
             "list",
-            &get_aspell_lang_arg(&lang),
+            &get_aspell_lang_arg(lang),
         ])
         .stdin(Stdio::from(output_cat.stdout.unwrap()))
         .stdout(Stdio::piped())
@@ -212,7 +212,7 @@ fn check_accept_are_errors(lang: &Language, accept: &Vec<String>) {
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(&lang)])
+        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(lang)])
         .stdin(Stdio::from(output_tail.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()
@@ -237,7 +237,7 @@ fn check_reject_are_ok(lang: &Language) {
         .spawn()
         .unwrap();
     let output_aspell = Command::new("aspell")
-        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(&lang)])
+        .args(["--home-dir=.", "-t", "list", &get_aspell_lang_arg(lang)])
         .stdin(Stdio::from(output_tail.stdout.unwrap()))
         .stdout(Stdio::piped())
         .spawn()

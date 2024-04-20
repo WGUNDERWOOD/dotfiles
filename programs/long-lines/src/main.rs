@@ -55,7 +55,7 @@ fn main() {
                     "{}",
                     String::new() + RED + &len.to_string() + " " + RESET
                 );
-                print!("{}", line[0..MAX_LEN].to_string());
+                print!("{}", &line[0..MAX_LEN].to_string());
                 print!("{}", String::new() + PURPLE + "..." + RESET);
                 println!();
             }

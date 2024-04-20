@@ -57,12 +57,10 @@ fn main() {
         let lines: Vec<&str> = file.lines().collect();
         // warning is (line number, line contents, match type)
         let mut warnings: Vec<(usize, &str, &str)> = vec![];
-        let n = lines.len();
 
         // check for matches
         let mut imax = 0;
-        for i in 0..n {
-            let line = lines[i];
+        for (i, line) in lines.iter().enumerate() {
             for m in &match_errors {
                 if m.is_match(line) && i >= imax {
                     warnings.push((i, line, "error"));
@@ -84,11 +82,10 @@ fn main() {
         }
 
         // remove non-matches
-        for i in 0..warnings.len() {
-            let w = warnings[i];
+        for w in &mut warnings {
             for v in &nomatches {
                 if v.is_match(w.1) {
-                    warnings[i] = (0, "", "");
+                    *w = (0, "", "");
                 }
             }
         }
