@@ -32,6 +32,7 @@ struct Cli {
 lazy_static! {
     static ref RE_NEWLINES: Regex = Regex::new(r"\n\n\n+").unwrap();
     static ref RE_TABS: Regex = Regex::new(r"\t").unwrap();
+    static ref RE_TRAIL: Regex = Regex::new(r" +\n").unwrap();
     static ref RE_PERCENT: Regex = Regex::new(r"\\\%").unwrap();
     static ref RE_COMMENT: Regex = Regex::new(r"\%.*").unwrap();
     static ref RE_ITEM: Regex = Regex::new(r".*\\item.*").unwrap();
@@ -60,6 +61,10 @@ fn remove_extra_newlines(file: &str) -> String {
 fn remove_tabs(file: &str) -> String {
     let replace = (0..TAB).map(|_| " ").collect::<String>();
     RE_TABS.replace_all(file, replace).to_string()
+}
+
+fn remove_trailing_spaces(file: &str) -> String {
+    RE_TRAIL.replace_all(file, "\n").to_string()
 }
 
 fn remove_comment(line: &str) -> String {
@@ -172,6 +177,7 @@ fn main() {
         // preformat
         file = remove_extra_newlines(&file);
         file = remove_tabs(&file);
+        file = remove_trailing_spaces(&file);
         let lines: Vec<&str> = file.lines().collect();
 
         // set up variables
