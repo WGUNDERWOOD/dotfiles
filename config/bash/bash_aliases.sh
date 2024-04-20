@@ -50,9 +50,14 @@ alias rcps='rcgdps && rcgdpps && rcdbpps'
 
 # nix
 nxr() {
+    (
     DOTS="$HOME/github/dotfiles"
+    cd "$DOTS"
+    NIX="$DOTS/.#nixosConfigurations.$HOSTNAME.config.system.build.toplevel"
     alejandra -cq "$DOTS" &&
+        sudo nom build "$NIX" &&
         sudo nixos-rebuild switch --flake "$DOTS#$HOSTNAME"
+    )
 }
 nxu() {
     DOTS="$HOME/github/dotfiles"
@@ -62,9 +67,8 @@ nxu() {
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-collect-garbage --delete-old &&
            sudo nix-collect-garbage --delete-old'
-alias nxs='nix-shell'
-alias nxb='nix build'
-alias nxd='nix develop'
+alias nxb='nom build'
+alias nxd='nom develop'
 nxp() { ls -l "$(which "$@")"; }
 nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }
 

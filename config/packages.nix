@@ -46,6 +46,7 @@ with pkgs; [
   lynx
   neomutt
   nix-index
+  nix-output-monitor
   nix-tree
   nodejs-slim
   numbat
