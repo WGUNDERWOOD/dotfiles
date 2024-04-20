@@ -182,6 +182,9 @@ map("n", "<Space>/",
 vim.g.gitgutter_enabled = false
 vim.g.gitgutter_map_keys = false
 map("n", "<Space>gg", ":GitGutterToggle <CR>")
+vim.cmd("hi GitGutterAdd guifg=#00dd00 guibg=#282a36 gui=bold")
+vim.cmd("hi GitGutterChange guifg=#ffff22 guibg=#282a36 gui=bold")
+vim.cmd("hi GitGutterDelete guifg=#ff3333 guibg=#282a36 gui=bold")
 
 -- leap
 vim.cmd("hi LeapBackdrop guifg=#6272a4 guibg=NONE gui=NONE")
@@ -324,9 +327,9 @@ cmp.setup({
         format = function(entry, vim_item)
             vim_item.kind = ""
             vim_item.menu = ({
-                luasnip = "[snippet]",
-                rg = "[ripgrep]",
-                omni = "[omnifunc]",
+                luasnip = "[sn]",
+                rg = "[rg]",
+                omni = "[om]",
             })[entry.source.name]
             return vim_item
         end
@@ -616,7 +619,7 @@ vim.cmd([[
     au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
     au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
     au Filetype tex let g:tex_fast = 'M'
-    au Filetype tex let g:vimtex_indent_delims = 
+    au Filetype tex let g:vimtex_indent_delims =
         \ {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
     au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
     au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
