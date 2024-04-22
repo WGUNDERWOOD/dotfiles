@@ -18,6 +18,7 @@ with pkgs; [
   (callPackage ../programs/rofi-start/rofi-start.nix {})
   (callPackage ../programs/spell-check/spell-check.nix {})
   (callPackage ../programs/spell-check-word.nix {})
+  (callPackage ../programs/spell-check-fix.nix {})
   (callPackage ../programs/sway-empty/sway-empty.nix {})
   (callPackage ../programs/tex-build/tex-build.nix {})
   (callPackage ../programs/tex-check/tex-check.nix {})
