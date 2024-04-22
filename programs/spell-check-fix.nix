@@ -1,6 +1,6 @@
 {pkgs ? import <nixpkgs> {}}:
 pkgs.writeShellApplication {
-  name = "spell-check-word";
+  name = "spell-check-fix";
   runtimeInputs = with pkgs; [coreutils aspell gnused];
   text = ''
     lang="british"
@@ -26,9 +26,9 @@ pkgs.writeShellApplication {
     fi
 
     if [ -n "$out" ]; then
-        echo "$out"
+        echo -n "$out"
     else
-        echo "$word"
+        echo -n "$word"
     fi
   '';
 }

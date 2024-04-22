@@ -380,6 +380,28 @@ vim.cmd [[
     nnoremap <Space>cS :CheckSpellingUnderCursorUS<CR>
 ]]
 
+-- fix spelling under cursor (british)
+vim.cmd [[
+    function! FixSpellingUnderCursorGB ( )
+        let word = expand("<cword>")
+        let fix = system("spell-check-fix -b '" . word . "'")
+        execute "normal! ciw" . fix . "\<Esc>"
+    endfunction
+    command FixSpellingUnderCursorGB call FixSpellingUnderCursorGB()
+    nnoremap <Space>cf :FixSpellingUnderCursorGB<CR>
+]]
+
+-- fix spelling under cursor (american)
+vim.cmd [[
+    function! FixSpellingUnderCursorUS ( )
+        let word = expand("<cword>")
+        let fix = system("spell-check-fix -a '" . word . "'")
+        execute "normal! ciw" . fix . "\<Esc>"
+    endfunction
+    command FixSpellingUnderCursorUS call FixSpellingUnderCursorUS()
+    nnoremap <Space>cF :FixSpellingUnderCursorUS<CR>
+]]
+
 -- bib files
 vim.cmd([[
     augroup bib
