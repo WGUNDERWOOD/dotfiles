@@ -1,7 +1,7 @@
 {pkgs ? import <nixpkgs> {}}:
-pkgs.python3Packages.buildPythonApplication rec {
+pkgs.rustPlatform.buildRustPackage rec {
   pname = "sway-empty";
   version = "0.1.0";
-  src = ./.;
-  postInstall = "mv -v $out/bin/sway-empty.py $out/bin/sway-empty";
+  cargoLock.lockFile = ./Cargo.lock;
+  src = pkgs.lib.cleanSource ./.;
 }

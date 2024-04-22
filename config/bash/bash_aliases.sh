@@ -69,6 +69,7 @@ alias nxg='nix-collect-garbage --delete-old &&
            sudo nix-collect-garbage --delete-old'
 alias nxb='nom build'
 alias nxd='nom develop'
+alias nxs='nix-shell'
 nxp() { ls -l "$(which "$@")"; }
 nxf() { find $(nix-build '<nixpkgs>' -A "$@" --no-link); }
 
