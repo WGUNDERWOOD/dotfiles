@@ -146,6 +146,68 @@ fn get_diff(line: &str) -> i32 {
     diff
 }
 
+fn format_file(file: String, debug: bool) -> String {
+    // preformat
+    let mut new_file = remove_extra_newlines(&file);
+    new_file = remove_tabs(&new_file);
+    new_file = remove_trailing_spaces(&new_file);
+    let lines: Vec<&str> = new_file.lines().collect();
+
+    // set up variables
+    let mut count: i32 = 0;
+    let n_lines = lines.len();
+    let mut indents: Vec<i32> = vec![0; lines.len()];
+    let mut new_lines = vec!["".to_owned(); n_lines];
+
+    // main loop through file
+    for i in 0..n_lines {
+        // calculate indent
+        let line = lines[i];
+        let line_strip = &remove_comment(line);
+        let back = get_back(line_strip);
+        let diff = get_diff(line_strip);
+        let indent: i32 = count - back;
+        if !debug {
+            assert!(indent >= 0)
+        };
+        indents[i] = indent;
+        count += diff;
+
+        // apply indent
+        let mut new_line = line.trim_start().to_string();
+        if !new_line.is_empty() {
+            let n_spaces = indents[i] * TAB;
+            let spaces: String = (0..n_spaces).map(|_| " ").collect();
+            new_line.insert_str(0, &spaces);
+        }
+        new_lines[i] = new_line
+    }
+
+    // check indents return to zero
+    if !debug {
+        assert!(indents.first().unwrap() == &0);
+        assert!(indents.last().unwrap() == &0);
+    }
+
+    // prepare indented file
+    let mut new_file = new_lines.join("\n");
+    new_file.push('\n');
+    new_file
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::fs;
+    use crate::format_file;
+    #[test]
+    fn test() {
+        let in_file = fs::read_to_string("test/test_in.tex").expect("");
+        let out_file = fs::read_to_string("test/test_out.tex").expect("");
+        let fmt_file = format_file(in_file, false);
+        assert_eq!(fmt_file, out_file);
+    }
+}
+
 fn main() {
     // get arguments
     let args = Cli::parse();
@@ -171,54 +233,10 @@ fn main() {
         }
 
         // read lines from file
-        let mut file =
+        let file =
             fs::read_to_string(&filename).expect("Should have read the file");
 
-        // preformat
-        file = remove_extra_newlines(&file);
-        file = remove_tabs(&file);
-        file = remove_trailing_spaces(&file);
-        let lines: Vec<&str> = file.lines().collect();
-
-        // set up variables
-        let mut count: i32 = 0;
-        let n_lines = lines.len();
-        let mut indents: Vec<i32> = vec![0; lines.len()];
-        let mut new_lines = vec!["".to_owned(); n_lines];
-
-        // main loop through file
-        for i in 0..n_lines {
-            // calculate indent
-            let line = lines[i];
-            let line_strip = &remove_comment(line);
-            let back = get_back(line_strip);
-            let diff = get_diff(line_strip);
-            let indent: i32 = count - back;
-            if !debug {
-                assert!(indent >= 0)
-            };
-            indents[i] = indent;
-            count += diff;
-
-            // apply indent
-            let mut new_line = line.trim_start().to_string();
-            if !new_line.is_empty() {
-                let n_spaces = indents[i] * TAB;
-                let spaces: String = (0..n_spaces).map(|_| " ").collect();
-                new_line.insert_str(0, &spaces);
-            }
-            new_lines[i] = new_line
-        }
-
-        // check indents return to zero
-        if !debug {
-            assert!(indents.first().unwrap() == &0);
-            assert!(indents.last().unwrap() == &0);
-        }
-
-        // prepare indented file
-        let mut new_file = new_lines.join("\n");
-        new_file.push('\n');
+        let new_file = format_file(file, debug);
 
         if print {
             // print new file
