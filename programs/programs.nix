@@ -23,12 +23,7 @@ with pkgs; [
   (callPackage ./tex-build/tex-build.nix {})
   (callPackage ./tex-check/tex-check.nix {})
   (callPackage ./tex-clean/tex-clean.nix {})
-  (callPackage (pkgs.fetchFromGitHub {
-    owner = "wgunderwood";
-    repo = "tex-fmt";
-    rev = "495cf17c6aa28ec9e257389fe62d1f1731169a86";
-    sha256 = "sha256-I6qNCvDEkPefkXEoSEOluNJcAqgX1RjB+rMwDfykpHQ=";
-  }) {})
+  (callPackage ./tex-fmt.nix {})
   (callPackage ./todo-finder/todo-finder.nix {})
   (callPackage ./zathura-fuzzy.nix {})
 ]
