@@ -134,6 +134,7 @@ alias cdov='cd ~/overleaf/'
 alias cdovm='cd ~/overleaf/CMU_2022_SAMartingale/'
 alias cdovf='cd ~/overleaf/CKU_2023_MondrianRF/'
 alias cdovh='cd ~/overleaf/CMU_2023_HigherOrderLindeberg/'
+alias cdova='cd ~/overleaf/CCKU_2024_AdaptiveMondrian/'
 
 # completion
 source $(which complete_alias)
