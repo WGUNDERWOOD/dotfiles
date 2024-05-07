@@ -202,6 +202,8 @@ map("n", "<Space>jc",
     ":echo 'just clean' | silent exec '!(just clean &) > /dev/null' <CR>")
 map("n", "<Space>jb",
     ":echo 'just build' | silent exec '!(just build &) > /dev/null' <CR>")
+map("n", "<Space>jf",
+    ":echo 'just format' | silent exec '!(just format &) > /dev/null' <CR>")
 
 -- todo highlighting
 vim.cmd("hi Todo guifg=#FF7722 guibg=NONE gui=bold")
