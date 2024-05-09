@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.file."$JULIA_DEPOT_PATH/artifacts/Overrides.toml".source = ./Overrides.toml;
+  home.file.".local/share/julia/artifacts/Overrides.toml".source = ./Overrides.toml;
 }
