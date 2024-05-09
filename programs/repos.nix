@@ -17,8 +17,11 @@ pkgs.writeShellApplication {
             stat=$(git status -s)
             merge=$(git for-each-ref --format="%(upstream:track)" refs/heads |
                 grep "ahead\|behind")
-            [[ -n "$stat$merge" ]] &&
+            if [ -n "$stat$merge" ]; then
                 echo -e "\e[0;31m\033[1m$(pwd)\e[0;30m\033[0m"
+            else
+                echo -e "\e[0;32m$(pwd)\e[0;30m\033[0m"
+            fi
         fi
     }
 
@@ -29,8 +32,11 @@ pkgs.writeShellApplication {
             stat=$(git status -s)
             merge=$(git for-each-ref --format="%(upstream:track)" refs/heads |
                 grep "ahead\|behind")
-            [[ -n "$stat$merge" ]] &&
+            if [ -n "$stat$merge" ]; then
                 echo -e "\e[0;31m\033[1m$(pwd)\e[0;30m\033[0m"
+            else
+                echo -e "\e[0;32m$(pwd)\e[0;30m\033[0m"
+            fi
         fi
     }
 
