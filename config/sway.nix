@@ -123,6 +123,7 @@
         "${modifier}+Right" = "exec playerctl -p spotify next";
         "${modifier}+Left" = "exec playerctl -p spotify previous";
         "${modifier}+space" = "exec playerctl -p spotify play-pause";
+        "${modifier}+c" = "exec pulse-cycle";
         "${modifier}+Down" =
           "exec \"pactl set-sink-volume "
           + "@DEFAULT_SINK@ -5%\"";

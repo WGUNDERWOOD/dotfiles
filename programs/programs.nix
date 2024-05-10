@@ -12,6 +12,7 @@ with pkgs; [
   (callPackage ./long-lines/long-lines.nix {})
   (callPackage ./pdf-insert-blank-pages.nix {})
   (callPackage ./player-art.nix {})
+  (callPackage ./pulse-cycle.nix {})
   (callPackage ./rclone-sync/rclone-sync.nix {})
   (callPackage ./rename-pdf/rename-pdf.nix {})
   (callPackage ./repos.nix {})
