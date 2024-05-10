@@ -1,6 +1,6 @@
 {pkgs ? import <nixpkgs> {}}:
 pkgs.writeShellApplication {
-  name = "gammatoggle";
+  name = "gamma-toggle";
   runtimeInputs = with pkgs; [coreutils procps gammastep];
   text = ''
     status_file="$HOME/tmp/gammastatus"

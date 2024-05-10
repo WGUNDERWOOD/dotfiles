@@ -7,7 +7,7 @@ with pkgs; [
   (callPackage ./compress-pdf/compress-pdf.nix {})
   (callPackage ./compress-mp3.nix {})
   (callPackage ./feh-fuzzy.nix {})
-  (callPackage ./gammatoggle.nix {})
+  (callPackage ./gamma-toggle.nix {})
   (callPackage ./img-diff/img-diff.nix {})
   (callPackage ./long-lines/long-lines.nix {})
   (callPackage ./pdf-insert-blank-pages.nix {})
