@@ -194,7 +194,7 @@
       "full-at" = 95;
       "format" = "Bat {capacity}%";
       "format-charging" = "Chg {capacity}%";
-      "interval" = 30;
+      "interval" = 10;
       "tooltip" = false;
     };
     "custom/backlight" = {
