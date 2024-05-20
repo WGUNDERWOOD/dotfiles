@@ -119,7 +119,7 @@
           "exec grim -g \"$(slurp)\" "
           + "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | "
           + "wl-copy -t image/png";
-        "${modifier}+Shift+g" = "exec gamma-toggle";
+        "${modifier}+g" = "exec gamma-toggle";
         "${modifier}+Right" = "exec playerctl -p spotify next";
         "${modifier}+Left" = "exec playerctl -p spotify previous";
         "${modifier}+space" = "exec playerctl -p spotify play-pause";
