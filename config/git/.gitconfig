@@ -11,6 +11,7 @@
     ad = "add"
     br = "branch"
     ci = "commit -v"
+    cl = "clone"
     co = "checkout"
     di = "diff"
     din = "diff --name-only"
