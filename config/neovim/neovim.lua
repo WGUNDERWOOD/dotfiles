@@ -225,10 +225,9 @@ vim.cmd("call matchadd('No', '\\<NO\\>', -1)")
 vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,mail"
 
 -- org mode
-require('orgmode').setup_ts_grammar()
 require('orgmode').setup({
     org_log_done=false,
-    org_indent_mode='noindent',
+    org_startup_indented=false,
     org_todo_keywords={'TODO(t)', 'NOTE(n)', 'NOW(w)', 'BUG(b)', 'LATER(l)',
     'CHECK(c)', 'YES(Y)', 'NO(O)', 'MAYBE(M)', '|', 'DONE(d)'},
     org_blank_before_new_entry = {

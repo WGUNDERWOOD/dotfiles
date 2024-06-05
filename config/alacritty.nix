@@ -7,7 +7,6 @@
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
     scrolling.history = 10000;
-    draw_bold_text_with_bright_colors = true;
 
     font = {
       normal.family = "Source Code Pro";
@@ -23,6 +22,7 @@
     };
 
     colors = {
+      draw_bold_text_with_bright_colors = true;
       primary = {
         background = "#181a26";
         foreground = "#f8f8f2";
