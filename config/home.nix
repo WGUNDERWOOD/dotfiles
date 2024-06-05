@@ -3,7 +3,6 @@
   ../config/bash/bash.nix
   ../config/feh.nix
   ../config/git/git.nix
-  ../config/julia/julia.nix
   ../config/latex/latex.nix
   ../config/mbsync.nix
   ../config/mime.nix

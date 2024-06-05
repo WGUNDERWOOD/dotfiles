@@ -1,5 +1,0 @@
-# use the nix version of git
-# the hash below is the UUID of Git_jll
-# in $JULIA_DEPOT_PATH/registries/General/Registry.toml
-[f8c6e375-362e-5223-8a59-34ff63f689eb]
-Git = "/run/current-system/sw"
