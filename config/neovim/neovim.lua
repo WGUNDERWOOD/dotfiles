@@ -606,15 +606,15 @@ vim.cmd([[
     au Filetype org inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
     au Filetype org inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
     au Filetype org setlocal nofoldenable
-    au Filetype org hi OrgHeadlineLevel1 guifg=#ff79c6 gui=bold
-    au Filetype org hi OrgHeadlineLevel2 guifg=#bd93f9 gui=bold
-    au Filetype org hi OrgHeadlineLevel3 guifg=#50fa7b
-    au Filetype org hi OrgHeadlineLevel4 guifg=#f1fa8c
-    au Filetype org hi OrgHeadlineLevel5 guifg=#8be9fd
-    au Filetype org hi OrgHeadlineLevel6 guifg=#ff79c6
-    au Filetype org hi OrgHeadlineLevel7 guifg=#bd93f9
-    au Filetype org hi OrgHeadlineLevel8 guifg=#50fa7b
-    au Filetype org hi Title gui=bold guifg=#ffb86c
+    au Filetype org hi @org.headline.level1.org guifg=#ff79c6 gui=bold
+    au Filetype org hi @org.headline.level2.org guifg=#bd93f9 gui=bold
+    au Filetype org hi @org.headline.level3.org guifg=#50fa7b
+    au Filetype org hi @org.headline.level4.org guifg=#f1fa8c
+    au Filetype org hi @org.headline.level5.org guifg=#8be9fd
+    au Filetype org hi @org.headline.level6.org guifg=#ff79c6
+    au Filetype org hi @org.headline.level7.org guifg=#bd93f9
+    au Filetype org hi @org.headline.level8.org guifg=#50fa7b
+    au Filetype org hi @org.directive.org gui=bold guifg=#ffb86c
     au Filetype org call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
     au Filetype org hi OrgDoneHeading guifg=#6272a4 guibg=NONE
     au Filetype org call matchadd('OrgDone', '*\+ \(DONE\)', -1)
