@@ -33,7 +33,7 @@
 
   home.file.".local/share/icons/default".source =
     "${pkgs.phinger-cursors}/share/icons/"
-    + "phinger-cursors";
+    + "phinger-cursors-dark";
 
   wayland.windowManager.sway = {
     enable = true;

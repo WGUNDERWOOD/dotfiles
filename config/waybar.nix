@@ -67,10 +67,12 @@
     );
     "custom/separator" = {
       "format" = "|";
+      "tooltip" = false;
     };
     "custom/separatorleft" = {
       "format" = "{}";
       "exec" = "echo '|'";
+      "tooltip" = false;
       "interval" = 1;
       "exec-if" = "${pkgs.procps}/bin/pgrep spotify";
     };
