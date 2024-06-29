@@ -42,7 +42,6 @@ with pkgs; [
   lame
   libreoffice
   lm_sensors
-  lutris
   lynx
   neomutt
   nix-index
