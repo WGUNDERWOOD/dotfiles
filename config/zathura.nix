@@ -4,7 +4,6 @@
     set default-bg "#282a36"
     set highlight-color "#bd93f9"
     set highlight-active-color "#ff79c6"
-    set highlight-transparency 0.3
     set recolor true
     set recolor-darkcolor "#eeeeee"
     set recolor-lightcolor "#181818"
