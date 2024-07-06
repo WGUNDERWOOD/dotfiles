@@ -224,8 +224,8 @@
   programs.waybar.style = let
     fontsize =
       if osConfig.networking.hostName == "libra"
-      then "20.0"
-      else "24.0";
+      then "20px"
+      else "24px";
     bordertoplarge =
       if osConfig.networking.hostName == "libra"
       then "3px"
