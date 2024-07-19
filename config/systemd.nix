@@ -61,7 +61,6 @@
         WantedBy = ["default.target"];
       };
       Service = {
-        Type = "forking";
         ExecStartPre = let
           davmailOauth = pkgs.callPackage ../programs/davmail-oauth.nix {};
         in "${davmailOauth}/bin/davmail-oauth";
