@@ -27,9 +27,9 @@ set signature = 'echo -e "William G Underwood\nPhD Candidate"; \
 
 # next account
 macro index,pager <space> "<enter-command>source \
-    ~/.config/neomutt/gmail.muttrc \
+    ~/.config/neomutt/cambridge.muttrc \
     <enter><change-folder>!<enter>;<check-stats><sync-mailbox>" \
-    "switch to Gmail"
+    "switch to Cambridge"
 
 # move spam
 macro index,pager J "<tag-pattern>~H \

@@ -85,6 +85,11 @@ named-mailboxes \
     "  Drafts" "~/mail/princeton/[Gmail]/Drafts" \
     "  Trash" "~/mail/princeton/[Gmail]/Trash" \
     "  Junk" "~/mail/princeton/[Gmail]/Spam" \
+    "Cambridge" "~/mail/cambridge/INBOX" \
+    "  Sent" "~/mail/cambridge/Sent" \
+    "  Drafts" "~/mail/cambridge/Drafts" \
+    "  Trash" "~/mail/cambridge/Trash" \
+    "  Junk" "~/mail/cambridge/Junk" \
 
 # sidebar settings
 set sidebar_visible = yes
@@ -97,5 +102,6 @@ set sidebar_format = ' %D% %* %?N?%N/?%?S?%S? '
 source ~/.config/neomutt/gmail.muttrc
 
 # switch accounts
-folder-hook mail/princeton/* source ~/.config/neomutt/princeton.muttrc
 folder-hook mail/gmail/* source ~/.config/neomutt/gmail.muttrc
+folder-hook mail/princeton/* source ~/.config/neomutt/princeton.muttrc
+folder-hook mail/cambridge/* source ~/.config/neomutt/cambridge.muttrc
