@@ -12,6 +12,7 @@ with pkgs; [
   bundix
   chafa
   complete-alias
+  davmail
   diff-so-fancy
   diffpdf
   du-dust
