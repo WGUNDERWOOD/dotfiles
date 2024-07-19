@@ -55,8 +55,8 @@
     AuthMechs Login
     Host localhost
     Port 1143
-    UserCmd "cat $HOME/tmp/bw/neomutt_cambridge_email"
-    PassCmd "cat $HOME/tmp/bw/neomutt_cambridge_password"
+    UserCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_cambridge_email"
+    PassCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_cambridge_password"
 
     IMAPStore cambridge-far
     Account cambridge

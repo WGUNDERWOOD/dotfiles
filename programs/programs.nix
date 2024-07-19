@@ -6,6 +6,7 @@ with pkgs; [
   (callPackage ./cd-fuzzy.nix {})
   (callPackage ./compress-pdf/compress-pdf.nix {})
   (callPackage ./compress-mp3.nix {})
+  (callPackage ./davmail-oauth.nix {})
   (callPackage ./feh-fuzzy.nix {})
   (callPackage ./gamma-toggle.nix {})
   (callPackage ./img-diff/img-diff.nix {})

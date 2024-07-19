@@ -1,7 +1,7 @@
 [
   ./alacritty.nix
   ./bash/bash.nix
-  #./davmail.nix
+  ./davmail.nix
   ./feh.nix
   ./git/git.nix
   ./latex/latex.nix

@@ -5,10 +5,12 @@ set spoolfile = "~/mail/cambridge/INBOX"
 set mbox_type = Maildir
 
 # outgoing
-set from = "`cat $HOME/tmp/bw/neomutt_cambridge_email`"
-set smtp_url = "`echo smtps://$(cat \
-    $HOME/tmp/bw/neomutt_cambridge_email)@smtp.office365.com:587/`"
+set smtp_user = "`cat $HOME/tmp/bw/neomutt_cambridge_email`"
 set smtp_pass = "`cat $HOME/tmp/bw/neomutt_cambridge_password`"
+set from = "$smtp_user"
+set smtp_url="smtp://$smtp_user:$smtp_pass@127.0.0.1:1025"
+set ssl_force_tls = no
+set ssl_starttls = no
 
 # sidebar colors
 color sidebar_indicator default color29
@@ -20,9 +22,10 @@ set trash = "~/mail/cambridge/Trash"
 unset record
 
 # signature
-set signature = 'echo -e "William G Underwood\nPhD Candidate"; \
-    echo -e "Operations Research & Financial Engineering"; \
-    echo -e "Princeton University"; \
+set signature = 'echo -e "William G Underwood\nPostdoctoral Researcher"; \
+    echo -e "Statistics Laboratory"; \
+    echo -e "Department of Pure Mathematics and Mathematical Statistics"; \
+    echo -e "University of Cambridge"; \
     echo -e "$(cat $HOME/tmp/bw/neomutt_cambridge_email)\n\n\n"|'
 
 # next account

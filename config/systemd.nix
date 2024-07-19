@@ -52,16 +52,26 @@
       };
     };
 
-    #services.davmail = {
-    #Unit = {
-    #Description = "davmail";
-    #After = "network-online.target";
-    #};
-    #Service = {
-    #ExecStart = "${pkgs.davmail}/bin/davmail";
-    #RestartSec = 3;
-    #Restart = "always";
-    #};
-    #};
+    services.davmail = {
+      Unit = {
+        Description = "davmail";
+        After = "network-online.target";
+      };
+      Install = {
+        WantedBy = ["default.target"];
+      };
+      Service = {
+        Type = "forking";
+        ExecStartPre = let
+          davmailOauth = pkgs.callPackage ../programs/davmail-oauth.nix {};
+        in "${davmailOauth}/bin/davmail-oauth";
+        ExecStart = let
+          davmailConfig = "/home/will/.config/davmail/davmail.conf";
+        in "${pkgs.davmail}/bin/davmail ${davmailConfig}";
+        RestartSec = 20;
+        Restart = "always";
+        RemainAfterExit = "true";
+      };
+    };
   };
 }
