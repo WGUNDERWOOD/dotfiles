@@ -51,5 +51,17 @@
         Restart = "always";
       };
     };
+
+    services.davmail = {
+      Unit = {
+        Description = "davmail";
+        After = "network-online.target";
+      };
+      Service = {
+        ExecStart = "${pkgs.davmail}/bin/davmail ~/.config/davmail/davmail.conf";
+        RestartSec = 3;
+        Restart = "always";
+      };
+    };
   };
 }
