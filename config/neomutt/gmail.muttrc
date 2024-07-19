@@ -1,4 +1,4 @@
-# Gmail
+# gmail
 
 # read from local copy
 set spoolfile = "~/mail/gmail/INBOX"
