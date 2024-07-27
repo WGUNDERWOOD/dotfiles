@@ -6,8 +6,6 @@ pkgs.writeShellApplication {
     file=$(find "$HOME/github" "$HOME/overleaf" "$HOME/rclone" \
            -type f -print | fzf --tac)
     dir=$(dirname "$file")
-    echo "$dir"
-    echo "$file"
     [[ -n "$file" ]] && cd "$dir"
     exec bash
   '';

@@ -16,6 +16,7 @@ alias lrc='ls -AiR1U ./ |
 alias b='bat --theme Dracula'
 alias c='cd'
 alias ci='cdi'
+alias cf='cd-fuzzy'
 f() { command feh "$@" & }
 alias g='git'
 alias j='just'
