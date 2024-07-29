@@ -82,7 +82,7 @@
     (import ./packages.nix pkgs)
     ++ (import ../programs/programs.nix pkgs);
   programs.sway.enable = true;
-  programs.steam.enable = true;
+  programs.steam.enable = config.networking.hostName == "libra";
   programs.neovim = {
     enable = true;
     defaultEditor = true;
