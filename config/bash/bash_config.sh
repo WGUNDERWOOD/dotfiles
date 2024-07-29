@@ -12,8 +12,10 @@ bind -m vi-insert 'Control-n: history-search-forward'
 
 # directories
 rm -fd ~/Downloads/
+mkdir -p ~/downloads/
 mkdir -p ~/mail/gmail/
 mkdir -p ~/mail/princeton/
+mkdir -p ~/mail/cambridge/
 
 export PATH=$PATH:$HOME/scripts/
 export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
