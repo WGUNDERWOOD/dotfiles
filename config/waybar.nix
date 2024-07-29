@@ -437,7 +437,7 @@
     }
 
     #custom-backlight.off {
-        color: ${color-mid-gray};
+        color: ${color-pastel-yellow};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
