@@ -119,7 +119,10 @@
               $HOME/tmp/mbsync_last_sync_time)"
           ELAPSED_TIME=$((CURRENT_TIME - LAST_SYNC_TIME))
           COUNT=$(${pkgs.findutils}/bin/find \
-              ~/mail/princeton/INBOX/new/ ~/mail/gmail/INBOX/new/ -type f | \
+              ~/mail/gmail/INBOX/new/ \
+              ~/mail/princeton/INBOX/new/ \
+              ~/mail/cambridge/INBOX/new/ \
+              -type f | \
               ${pkgs.coreutils}/bin/wc -l)
           if (( "$ELAPSED_TIME" < 120 )); then
               if [ "$COUNT" -ge "1" ]; then
