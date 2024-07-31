@@ -3,7 +3,7 @@ pkgs.callPackage (
   pkgs.fetchFromGitHub {
     owner = "wgunderwood";
     repo = "tex-fmt";
-    rev = "v0.2.2";
-    sha256 = "sha256-yHTxwbPHBnq3NqT9RcqxXxw6Sjc7guomwDA/iIzOlbU=";
+    rev = "v0.3.0";
+    sha256 = "sha256-j5AwecYlywdPxeYcJpdpgVUlVNW8uuL9JD6Vf1IkeQI=";
   }
 ) {}
