@@ -26,6 +26,7 @@ alias r='ranger'
 z() { command zathura "$@" & }
 alias bbd='bib-down'
 alias bm='btm'
+alias dav='davmail ~/.config/davmail/davmail.conf'
 alias no='nvim notes.org'
 alias nj='nvim justfile'
 alias texc='tex-clean'

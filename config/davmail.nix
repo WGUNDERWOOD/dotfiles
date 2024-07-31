@@ -2,7 +2,7 @@
   home.file.".config/davmail/davmail_static.conf".text = ''
     # davmail settings
     davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
-    davmail.mode=O365Interactive
+    davmail.mode=O365Manual
     davmail.server=true
     davmail.enableKeepAlive=true
     davmail.allowRemote=false
