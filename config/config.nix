@@ -9,6 +9,7 @@
 
   # video and sound
   hardware.opengl.driSupport32Bit = true;
+  hardware.bluetooth.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
