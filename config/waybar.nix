@@ -301,7 +301,7 @@
     #workspaces button.urgent {
         border-left: none;
         border-right: none;
-        color: ${color-alert};
+        color: ${color-mid-gray};
     }
 
     #workspaces button:hover {

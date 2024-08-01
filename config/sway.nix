@@ -168,11 +168,11 @@
           childBorder = "#000000";
         };
         urgent = {
-          border = "#ff8833";
-          background = "#ff8833";
+          border = "#000000";
+          background = "#000000";
           text = "#f8f8f2";
-          indicator = "#ff8833";
-          childBorder = "#ff8833";
+          indicator = "#000000";
+          childBorder = "#000000";
         };
         placeholder = {
           border = "#000000";

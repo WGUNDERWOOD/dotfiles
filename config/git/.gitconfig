@@ -17,6 +17,7 @@
     din = "diff --name-only"
     dic = "diff --compact-summary"
     dis = "diff --staged"
+    dih = "diff HEAD~1"
     fe = "fetch --all"
     hi = "log --graph --full-history --all --pretty=format:'%Cred%h%Creset %Cblue%ah%Creset %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset'"
     lg = "log --graph --pretty=format:'%Cred%h%Creset %Cblue%ah%Creset %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset'"

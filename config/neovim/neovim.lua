@@ -629,7 +629,6 @@ vim.cmd([[
 
 -- tex files
 vim.g.vimtex_view_method = 'zathura_simple'
-vim.g.vimtex_view_general_viewer = 'zathura'
 vim.cmd([[
     augroup tex
     autocmd!
