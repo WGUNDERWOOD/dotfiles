@@ -8,11 +8,10 @@
     home-manager,
     ...
   }: {
-    nixosConfigurations = {
-      libra = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/configuration-libra.nix
+    nixosConfigurations = let
+      systemArch = "x86_64-linux";
+      homeManager = {
+        imports = [
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -24,19 +23,19 @@
           }
         ];
       };
+    in {
+      libra = inputs.nixpkgs.lib.nixosSystem {
+        system = systemArch;
+        modules = [
+          ./machines/configuration-libra.nix
+          homeManager
+        ];
+      };
       xanth = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = systemArch;
         modules = [
           ./machines/configuration-xanth.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.will = {
-              imports = import ./config/home.nix;
-              home.stateVersion = "23.05";
-            };
-          }
+          homeManager
         ];
       };
     };
