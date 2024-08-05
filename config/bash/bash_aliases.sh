@@ -113,6 +113,7 @@ alias cdtax='cd ~/rclone/google_drive/Finances/Tax/'
 alias cdgh='cd ~/github/'
 alias cddot='cd ~/github/dotfiles/'
 alias cdjob='cd ~/github/job-search-2023/'
+alias cdref='cd ~/github/references/'
 alias cdcv='cd ~/github/wgu-cv/'
 alias cdnot='cd ~/github/notes/'
 alias cdtf='cd ~/github/tex-fmt/'
@@ -130,8 +131,8 @@ alias cdrev='cd ~/github/reviewing/'
 alias cdted='cd ~/rclone/dropbox_princeton/2024Spring_ORF499/'
 
 # cd research github
-alias cdrem='cd ~/github/research-martingale-yurinskii/'
-alias cdref='cd ~/github/research-random-forests/'
+alias cdrm='cd ~/github/research-martingale-yurinskii/'
+alias cdrf='cd ~/github/research-random-forests/'
 
 # cd overleaf
 alias cdov='cd ~/overleaf/'
