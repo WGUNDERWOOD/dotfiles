@@ -22,7 +22,15 @@
     'FZF_DEFAULT_OPTS=--color=fg:#dddddd,bg:#181a26,hl:#bd93f9,fg+:#ffffff,\
     bg+:#181a26,hl+:#bd93f9,info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6,\
     marker:#ff79c6,spinner:#ffb86c,header:#6272a4
-    zathura-fuzzy'"
+    zathura-fuzzy $HOME'"
+
+- name: References
+  command:
+    "alacritty -e bash -c
+    'FZF_DEFAULT_OPTS=--color=fg:#dddddd,bg:#181a26,hl:#bd93f9,fg+:#ffffff,\
+    bg+:#181a26,hl+:#bd93f9,info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6,\
+    marker:#ff79c6,spinner:#ffb86c,header:#6272a4
+    zathura-fuzzy $HOME/github/references/'"
 
 - name: Gimp
   command: gimp

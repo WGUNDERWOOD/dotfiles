@@ -33,7 +33,7 @@ configuration {
     padding:          20;
     width: 700;
     /* Each item needs around 35 height */
-    height: 310;
+    height: 345;
 }
 #mainbox {
     border:  0;
