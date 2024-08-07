@@ -91,7 +91,7 @@
   security.pam.services.swaylock.text = "auth include login";
   networking.networkmanager.enable = true;
   services.ntp.enable = true;
-  fonts.packages = with pkgs; [source-code-pro fira libre-baskerville];
+  fonts.packages = with pkgs; [source-code-pro fira libre-baskerville google-fonts];
   nix.optimise.automatic = true;
 
   # user
