@@ -17,15 +17,14 @@ def slugify(s):
 
 def parse_arxiv(filename):
     ident = filename.stem
-    source = "arxiv"
+    source = "arXiv"
     feed = feedparser.parse(
             f"http://export.arxiv.org/api/query?id_list={ident}&max_results=1")
     paper = feed.entries[0]
     authors = [a.name.split()[-1] for a in paper["authors"]]
     year = paper.published_parsed.tm_year
     title = [w.capitalize() for w in paper["title"].split()]
-    return dict(title = title, authors = authors, year = year,
-                ident = ident, source = source)
+    return dict(title = title, authors = authors, year = year, source = source)
 
 def parse_science_direct(filename):
 
@@ -66,8 +65,7 @@ def parse_science_direct(filename):
     title = paper["title"].split(" ")
     year = paper["published-print"]["date-parts"][0][0]
     source = "science-direct"
-    return dict(title = title, authors = authors, year = year,
-                ident = ident, source = source)
+    return dict(title = title, authors = authors, year = year, source = source)
 
 def parse_jstor(filename):
 
@@ -92,8 +90,7 @@ def parse_jstor(filename):
     year = [b[2:] for b in bib if b[0:2] == "PY"][0]
     year = re.match(" *- *([0-9]{4})", year).group(1)
     source = "jstor"
-    return dict(title = title, authors = authors, year = year,
-                ident = ident, source = source)
+    return dict(title = title, authors = authors, year = year, source = source)
 
 def save_file(info):
     title_excluded_words = ["A", "An", "And", "The", "On", "When", "For",
@@ -104,10 +101,9 @@ def save_file(info):
     authors = [a.title() for a in info["authors"]]
     authors = slugify("-".join(authors[0:min(5, len(authors))]))
     year = info["year"]
-    ident = info["ident"]
     source = info["source"]
     new_filename = filename.with_stem(
-            f"{authors}_{year}_{title}_{source}-{ident}")
+            f"{authors}_{year}_{source}_{title}")
     message = ("\033[0;33m\033[1m" + str(filename) + "\033[00m\033[0m" +
                "\033[00m\033[1m --> \033[00m\033[0m" +
                "\033[0;32m\033[1m" + str(new_filename) + "\033[00m\033[0m")
