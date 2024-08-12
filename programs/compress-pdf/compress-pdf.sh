@@ -7,6 +7,7 @@ PURPLE='\033[1;34m'
 PINK='\033[1;35m'
 GREEN='\033[1;32m'
 WHITE='\033[1;37m'
+CYAN='\033[1;36m'
 RESET='\033[0m'
 
 # get quality level from flags
@@ -94,7 +95,7 @@ for infile in "$@"; do
         oldsha="$(cat "$shafile")"
         if [ "$sha" == "$oldsha" ]; then
             shamatch="true"
-            printf "%b%s%b\n" "$GREEN" "SHA match" "$RESET"
+            printf "%b%s%b\n" "$CYAN" "SHA match" "$RESET"
         fi
     fi
 

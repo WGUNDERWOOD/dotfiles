@@ -46,12 +46,8 @@ tex-labels() {
 alias rmsha='rm --verbose *.sha256'
 alias rcgdpl='rclone-sync -gl'
 alias rcgdps='rclone-sync -gs'
-alias rcgdppl='rclone-sync -pl'
-alias rcgdpps='rclone-sync -ps'
-alias rcdbppl='rclone-sync -dl'
-alias rcdbpps='rclone-sync -ds'
-alias rcpl='rcgdpl && rcgdppl && rcdbppl'
-alias rcps='rcgdps && rcgdpps && rcdbpps'
+alias rcpl='rcgdpl'
+alias rcps='rcgdps'
 
 # nix
 nxr() {
@@ -101,8 +97,6 @@ alias cdcon='cd ~/.config/'
 # cd rclone
 alias cdrc='cd ~/rclone/'
 alias cdgd='cd ~/rclone/google_drive/'
-alias cdgdp='cd ~/rclone/google_drive_princeton/'
-alias cddbp='cd ~/rclone/dropbox_princeton/'
 
 # cd google drive
 alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes'
@@ -127,9 +121,6 @@ alias cdmot='cd ~/github/motifcluster/'
 alias cddy='cd ~/github/DyadicKDE.jl/'
 alias cdte='cd ~/github/orf-499-spring-2024/'
 alias cdrev='cd ~/github/reviewing/'
-
-# cd dropbox
-alias cdted='cd ~/rclone/dropbox_princeton/2024Spring_ORF499/'
 
 # cd research github
 alias cdrm='cd ~/github/research-martingale-yurinskii/'
