@@ -100,7 +100,6 @@ alias cdgd='cd ~/rclone/google_drive/'
 
 # cd google drive
 alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes'
-alias cdtextbk='cd ~/rclone/google_drive/Education/Textbooks\ and\ Extra\ Notes'
 alias cdpton='cd ~/rclone/google_drive/Education/Princeton/'
 alias cdtax='cd ~/rclone/google_drive/Finances/Tax/'
 
