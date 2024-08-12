@@ -27,6 +27,12 @@ if [[ -z "$*" ]]; then
     exit 1
 fi
 
+# exit if glob has no matches
+if ! (stat -t "$@" >/dev/null 2>&1); then
+    printf "%bno file(s) to compress%b\n" "$GREEN" "$RESET"
+    exit 0
+fi
+
 # print script name and quality
 case $quality in
     perfect) printf "%bcompress-pdf %b\n" "$PINK" "$RESET" ;;
@@ -39,14 +45,14 @@ tempdir=$(mktemp -d)
 
 # perfect quality optimization
 optimize_perfect() {
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH \
         -dDetectDuplicateImages -dCompressFonts=true \
         -sOutputFile="${cmpfile}" "${infile}"
 }
 
 # high quality optimization
 optimize_high() {
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH \
         -dDetectDuplicateImages -dCompressFonts=true \
         -dPDFSETTINGS=/ebook \
         -sOutputFile="${cmpfile}" "${infile}"
@@ -54,7 +60,7 @@ optimize_high() {
 
 # low quality optimization
 optimize_low() {
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH \
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH \
         -dDetectDuplicateImages -dCompressFonts=true \
         -dPDFSETTINGS=/screen \
         -sOutputFile="${cmpfile}" "${infile}"
