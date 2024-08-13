@@ -77,19 +77,16 @@ done
 
 for infile in "$@"; do
 
-    # set up variables and get initial file size
-    infilebase="$(basename "$infile" .pdf)"
-    outdir="$(dirname "$infile")"
-    shafile="${outdir}/${infilebase}.pdf.sha256"
-    cmpfile="${tempdir}/${infilebase}_cmp.pdf"
-    outfile="$infilebase".pdf
-    insize=$(du -b "${infile}" | cut -f -1)
+    # set up variables
     insizeh=$(du -bh "${infile}" | cut -f -1)
+    outdir="$(dirname "$infile")"
+    infilebase="$(basename "$infile" .pdf)"
+    shafile="${outdir}/${infilebase}.pdf.sha256"
     printf "%b%-40.40s  %b%-4.4s %b-> %b" \
         "$YELLOW" "$infile" "$PURPLE" "$insizeh" "$WHITE" "$RESET"
 
-    # check if a sha matches
-    sha="$(sha256sum "$infile")"
+    # check if sha matches
+    sha="$(xxhsum "$infile" 2> /dev/null)"
     shamatch="false"
     if [ -f "$shafile" ]; then
         oldsha="$(cat "$shafile")"
@@ -101,6 +98,11 @@ for infile in "$@"; do
 
     # if no sha match then run the optimizer
     if [ "$shamatch" != "true" ]; then
+
+        # set up more variables
+        cmpfile="${tempdir}/${infilebase}_cmp.pdf"
+        outfile="${infilebase}.pdf"
+        insize=$(du -b "${infile}" | cut -f -1)
 
         # run the selected optimizer
         case $quality in
@@ -134,5 +136,5 @@ for infile in "$@"; do
 done
 
 # clean up
-rm -r "$tempdir"
+rm -rf "$tempdir"
 exit 0
