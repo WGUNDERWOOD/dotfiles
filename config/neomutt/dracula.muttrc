@@ -1,10 +1,5 @@
 # -*- conf -*-
 
-###############################################################################
-# Dracula Theme for Mutt: https://draculatheme.com/
-#
-# @author Paul Townsend <paul@caprica.org>
-
 # general ----------- foreground ---- background -----------------------------
 color error           color231        color160
 color indicator       bold white      color60
@@ -29,9 +24,9 @@ color index           bold color215   default    ~F       # flagged messages
 color index           color245        default    "~H 999" # spam messages
 color index           color210        default    ~D       # deleted messages
 color index           bold color117   default    ~T       # tagged messages
-color index_author    color13    default    '.*'
-color index_date      color12    default    '.*'
-color index_size      color14    default    '.*'
+color index_author    color13         default    '.*'
+color index_date      color12         default    '.*'
+color index_size      color14         default    '.*'
 
 # message headers --- foreground ---- background -----------------------------
 color hdrdefault      color117        default
