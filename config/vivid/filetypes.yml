@@ -397,25 +397,27 @@ unimportant:
       - .scons_opt
       - .sconsign.dblite
     latex:
+      - -blx.bib
       - .aux
       - .bbl
       - .bcf
       - .blg
-      - -blx.bib
       - .dvi
       - .fdb_latexmk
       - .fls
       - .idx
       - .ilg
       - .ind
-      - .run.xml
+      - .lof
+      - .lot
       - .nav
       - .out
+      - .pytxcode
+      - .run.xml
       - .snm
       - .synctex.gz
       - .thm
       - .toc
-      - .pytxcode
     llvm:
       - .bc
 
