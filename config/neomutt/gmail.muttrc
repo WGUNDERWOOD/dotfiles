@@ -25,9 +25,9 @@ set signature = 'echo -e "Will Underwood\n$(cat \
 
 # next account
 macro index,pager <space> "<enter-command>source \
-    ~/.config/neomutt/princeton.muttrc \
+    ~/.config/neomutt/cambridge.muttrc \
     <enter><change-folder>!<enter>;<check-stats><sync-mailbox>" \
-    "switch to Princeton"
+    "switch to Cambridge"
 
 # move spam
 macro index,pager J "<tag-pattern>~H \

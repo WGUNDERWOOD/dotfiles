@@ -80,11 +80,6 @@ named-mailboxes \
     "  Drafts" "~/mail/gmail/[Gmail]/Drafts" \
     "  Trash" "~/mail/gmail/[Gmail]/Trash" \
     "  Junk" "~/mail/gmail/[Gmail]/Spam" \
-    "Princeton" "~/mail/princeton/INBOX" \
-    "  Sent" "~/mail/princeton/[Gmail]/Sent\ Mail" \
-    "  Drafts" "~/mail/princeton/[Gmail]/Drafts" \
-    "  Trash" "~/mail/princeton/[Gmail]/Trash" \
-    "  Junk" "~/mail/princeton/[Gmail]/Spam" \
     "Cambridge" "~/mail/cambridge/INBOX" \
     "  Sent" "~/mail/cambridge/Sent" \
     "  Drafts" "~/mail/cambridge/Drafts" \
@@ -103,5 +98,4 @@ source ~/.config/neomutt/gmail.muttrc
 
 # switch accounts
 folder-hook mail/gmail/* source ~/.config/neomutt/gmail.muttrc
-folder-hook mail/princeton/* source ~/.config/neomutt/princeton.muttrc
 folder-hook mail/cambridge/* source ~/.config/neomutt/cambridge.muttrc

@@ -27,28 +27,6 @@
     Expunge Both
     CopyArrivalDate yes
 
-    # princeton
-    IMAPAccount princeton
-    SSLType IMAPS
-    Host imap.gmail.com
-    UserCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_princeton_email"
-    PassCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_princeton_password"
-
-    IMAPStore princeton-far
-    Account princeton
-
-    MaildirStore princeton-near
-    Path ~/mail/princeton/
-    Inbox ~/mail/princeton/INBOX/
-    SubFolders Verbatim
-
-    Channel princeton
-    Far :princeton-far:
-    Near :princeton-near:
-    Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important" !"[Gmail]/Starred"
-    Expunge Both
-    CopyArrivalDate yes
-
     # cambridge
     IMAPAccount cambridge
     SSLType None

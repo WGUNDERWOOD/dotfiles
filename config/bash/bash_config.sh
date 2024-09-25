@@ -14,7 +14,6 @@ bind -m vi-insert 'Control-n: history-search-forward'
 rm -fd ~/Downloads/
 mkdir -p ~/downloads/
 mkdir -p ~/mail/gmail/
-mkdir -p ~/mail/princeton/
 mkdir -p ~/mail/cambridge/
 
 export PATH=$PATH:$HOME/scripts/

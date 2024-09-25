@@ -120,7 +120,6 @@
           ELAPSED_TIME=$((CURRENT_TIME - LAST_SYNC_TIME))
           COUNT=$(${pkgs.findutils}/bin/find \
               ~/mail/gmail/INBOX/new/ \
-              ~/mail/princeton/INBOX/new/ \
               ~/mail/cambridge/INBOX/new/ \
               -type f | \
               ${pkgs.coreutils}/bin/wc -l)
