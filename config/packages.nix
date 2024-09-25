@@ -5,7 +5,6 @@ with pkgs; [
   aspell
   aspellDicts.en
   bash-completion
-  bat
   bitwarden-cli
   bottom
   brillo

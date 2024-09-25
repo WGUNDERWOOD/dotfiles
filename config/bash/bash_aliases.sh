@@ -13,7 +13,7 @@ alias lrc='ls -AiR1U ./ |
            sort -t : -uk1.1,1n | cut -d: -f2 | sort -V | uniq -c |sort -n'
 
 # programs
-alias b='bat --theme Dracula'
+alias b='bat'
 alias c='cd'
 alias ci='cdi'
 alias cf='cd-fuzzy'

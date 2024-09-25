@@ -1,6 +1,7 @@
 [
   ./alacritty.nix
   ./bash/bash.nix
+  ./bat.nix
   ./davmail.nix
   ./feh.nix
   ./git/git.nix
