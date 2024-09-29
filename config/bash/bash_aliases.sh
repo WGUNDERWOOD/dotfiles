@@ -36,6 +36,7 @@ alias pla='player-art'
 alias cava='cava -p ~/cava.conf'
 fp() { command fd "$@" "$(git rev-parse --show-toplevel)"; }
 rp() { command rg "$@" "$(git rev-parse --show-toplevel)"; }
+rc() { command git show --no-patch :/"$@"; }
 alias cpdf='compress-pdf'
 alias rpdf='rename-pdf'
 li() { command libreoffice "$@" & }
