@@ -11,6 +11,6 @@ pkgs.writeShellApplication {
     WALLPAPER="$HOME/wallpaper.png"
     WALLPAPER_BLUR="$HOME/wallpaper_blur.png"
     RADIUS="$1"
-    convert "$WALLPAPER" -blur 0,"$RADIUS" "$WALLPAPER_BLUR"
+    magick "$WALLPAPER" -blur 0,"$RADIUS" "$WALLPAPER_BLUR"
   '';
 }
