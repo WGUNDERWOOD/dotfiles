@@ -66,6 +66,9 @@ for file in "$@"; do
     (
     cd "$dir"
     (latexmk "$pdf" "$quiet" "$report" "$warn" \
+        -pdflatex="pdflatex -synctex=1 %O %S" \
+        -lualatex="lualatex -synctex=1 %O %S" \
+        -xelatex="xelatex -synctex=1 %O %S" \
         "$esc" "$norc" "$filepath" 2>&1) | \
         { grep --line-buffered -v -e \
             "^Latexmk: Nothing to do for " -e "^$" || true; } | \
