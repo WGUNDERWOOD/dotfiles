@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home.file.".config/bash/bash_config.sh".source = ./bash_config.sh;
   home.file.".config/bash/bash_aliases.sh".source = ./bash_aliases.sh;
 

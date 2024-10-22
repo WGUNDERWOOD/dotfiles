@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs.feh = {
     enable = true;
     keybindings = {

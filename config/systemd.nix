@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  setEnvironment,
-  ...
-}: {
+{pkgs, ...}: {
   systemd.user = {
     services.mbsync = {
       Unit = {

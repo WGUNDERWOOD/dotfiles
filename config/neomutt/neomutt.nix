@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home.file.".config/neomutt/neomuttrc".source = ./neomuttrc;
   home.file.".config/neomutt/mailcap".source = ./mailcap;
   home.file.".config/neomutt/dracula.muttrc".source = ./dracula.muttrc;

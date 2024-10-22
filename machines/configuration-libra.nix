@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   networking.hostName = "libra";
   system.stateVersion = "23.05";
   imports = [

@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  osConfig,
-  ...
-}: {
+{osConfig, ...}: {
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
     scrolling.history = 10000;

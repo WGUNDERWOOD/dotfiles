@@ -12,6 +12,7 @@ with pkgs; [
   chafa
   complete-alias
   davmail
+  deadnix
   diff-so-fancy
   diffpdf
   du-dust

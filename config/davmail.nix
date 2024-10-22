@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home.file.".config/davmail/davmail_static.conf".text = ''
     # davmail settings
     davmail.url=https://outlook.office365.com/EWS/Exchange.asmx

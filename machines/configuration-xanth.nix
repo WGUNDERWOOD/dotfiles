@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   networking.hostName = "xanth";
   system.stateVersion = "23.05";
   imports = [

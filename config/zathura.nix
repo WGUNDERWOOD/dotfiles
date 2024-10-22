@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home.file.".config/zathura/zathurarc".text = ''
     map <M-i> recolor
     set default-bg "#282a36"

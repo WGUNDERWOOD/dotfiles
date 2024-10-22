@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   programs.swaylock.enable = true;
   programs.swaylock.settings = {
     ignore-empty-password = true;
