@@ -11,6 +11,7 @@ with pkgs; [
   (callPackage ./gamma-toggle.nix {})
   (callPackage ./img-diff/img-diff.nix {})
   (callPackage ./long-lines/long-lines.nix {})
+  (callPackage ./nix-age.nix {})
   (callPackage ./pdf-insert-blank-pages.nix {})
   (callPackage ./player-art.nix {})
   (callPackage ./pulse-cycle.nix {})
