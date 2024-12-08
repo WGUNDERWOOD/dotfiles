@@ -9,7 +9,7 @@ vim.o.number = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.clipboard = "unnamedplus"
-vim.o.mouse = false
+vim.o.mouse = ""
 vim.o.undofile = true
 vim.o.completeopt = "menu"
 vim.api.nvim_command("filetype plugin indent on")
@@ -58,7 +58,7 @@ vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
   extends = ">", precedes = "<", space = "·"}
 
 -- colors
-vim.o.syntax = true
+vim.o.syntax = "ON"
 vim.o.termguicolors = true
 vim.g.dracula_colorterm = 0
 vim.g.dracula_italic = 0
