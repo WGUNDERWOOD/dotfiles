@@ -202,10 +202,10 @@
           pointer_accel 0.5
           natural_scroll enabled
       }
-      workspace 1
       exec echo "day" > $HOME/tmp/gammastatus
       exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
       exec "swaylock -f"
+      exec "swaymsg workspace 1"
     '';
   };
 }

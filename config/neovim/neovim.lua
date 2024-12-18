@@ -644,7 +644,8 @@ vim.cmd([[
     au Filetype tex let g:vimtex_quickfix_mode = 0
     au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
     au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-    au Filetype tex let g:tex_fast = 'M'
+    au Filetype tex let g:tex_fast = ''
+    au Filetype tex let g:vimtex_syntax_conceal_disable = 1
     au Filetype tex let g:vimtex_indent_delims =
         \ {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
     au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
