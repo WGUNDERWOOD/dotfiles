@@ -63,9 +63,12 @@ nxr() {
     )
 }
 nxu() {
+    (
     DOTS="$HOME/github/dotfiles"
+    cd "$DOTS"
     alejandra -cq "$DOTS" &&
-        nix flake update "$DOTS"
+        nix flake update
+    )
 }
 alias nxq='nix-env -qa | fzf'
 alias nxg='nix-collect-garbage --delete-old &&
