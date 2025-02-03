@@ -7,7 +7,7 @@
 
     # gmail
     IMAPAccount gmail
-    SSLType IMAPS
+    TLSType IMAPS
     Host imap.gmail.com
     UserCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_gmail_email"
     PassCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_gmail_password"
@@ -29,7 +29,7 @@
 
     # cambridge
     IMAPAccount cambridge
-    SSLType None
+    TLSType None
     AuthMechs Login
     Host localhost
     Port 1143
