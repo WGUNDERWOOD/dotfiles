@@ -68,6 +68,9 @@ text:
     dockerfile:
       - Dockerfile
 
+    ruby:
+      - Gemfile
+
     nix:
       - .nix
 
