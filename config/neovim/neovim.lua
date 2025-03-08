@@ -53,6 +53,7 @@ map("n", "<Space>wd", ":clo<CR>")
 map("n", "<Space>wi", ":vertical resize +5<CR>")
 map("n", "<Space>wu", ":vertical resize -5<CR>")
 map("n", "<Space>hg", ":Inspect <CR>")
+map("n", "<Space>yy", "m'^v$hy")
 map("i", "kj", "<Esc>")
 vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
   extends = ">", precedes = "<", space = "·"}
