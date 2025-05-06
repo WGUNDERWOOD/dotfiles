@@ -87,6 +87,7 @@ with pkgs; [
   vim
   vivid
   vlc
+  xdg-ninja
   watchexec
   waybar
   wayland
