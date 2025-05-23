@@ -74,10 +74,6 @@
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+f" = "exec firefox";
-        "${modifier}+Shift+s" =
-          "exec pgrep spotify || "
-          + "((swaymsg workspace number 10 && spotify) & "
-          + "(sleep 1 && rm -fd $HOME/Downloads/))";
         "${modifier}+d" = "exec rofi-start";
         "${modifier}+Shift+Ctrl+k" =
           if osConfig.networking.hostName == "xanth"
@@ -125,9 +121,9 @@
           + "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | "
           + "wl-copy -t image/png";
         "${modifier}+g" = "exec gamma-toggle";
-        "${modifier}+Right" = "exec playerctl -p spotify next";
-        "${modifier}+Left" = "exec playerctl -p spotify previous";
-        "${modifier}+space" = "exec playerctl -p spotify play-pause";
+        "${modifier}+Right" = "exec playerctl next";
+        "${modifier}+Left" = "exec playerctl previous";
+        "${modifier}+space" = "exec playerctl play-pause";
         "${modifier}+c" = "exec pulse-cycle";
         "${modifier}+Down" =
           "exec \"pactl set-sink-volume "

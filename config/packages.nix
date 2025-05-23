@@ -76,6 +76,7 @@ with pkgs; [
   silicon
   slurp
   spotify
+  spotify-player
   starship
   swaylock
   texlive.combined.scheme-full

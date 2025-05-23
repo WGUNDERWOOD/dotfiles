@@ -29,6 +29,7 @@ alias bm='btm'
 alias dav='davmail ~/.config/davmail/davmail.conf'
 alias no='nvim notes.org'
 alias nj='nvim justfile'
+alias sp='spotify_player'
 alias texc='tex-clean'
 alias texf='tex-fmt'
 cpref() { command cp --backup=numbered "$@" "$HOME/github/references/new/"; }

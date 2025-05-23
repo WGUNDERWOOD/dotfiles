@@ -74,7 +74,7 @@
       "exec" = "echo '|'";
       "tooltip" = false;
       "interval" = 1;
-      "exec-if" = "${pkgs.procps}/bin/pgrep spotify";
+      "exec-if" = "${pkgs.procps}/bin/pgrep spotify_player";
     };
     "sway/workspaces" = {
       "enable-bar-scroll" = true;
@@ -157,16 +157,14 @@
       "format" = "{}";
       "interval" = 1;
       "max-length" = 50;
-      "on-click" = "${pkgs.playerctl}/bin/playerctl -p spotify previous";
-      "on-click-right" = "${pkgs.playerctl}/bin/playerctl -p spotify next";
-      "on-click-middle" =
-        "${pkgs.playerctl}/bin/playerctl -p "
-        + "spotify play-pause";
+      "on-click" = "${pkgs.playerctl}/bin/playerctl previous";
+      "on-click-right" = "${pkgs.playerctl}/bin/playerctl next";
+      "on-click-middle" = "${pkgs.playerctl}/bin/playerctl play-pause";
       "exec" = ''
-        ${pkgs.playerctl}/bin/playerctl -p spotify metadata -f '{{artist}}' | \
+        ${pkgs.playerctl}/bin/playerctl -p spotify_player metadata -f '{{artist}}' | \
         ${pkgs.gnused}/bin/sed 's/&/&amp;/g'
       '';
-      "exec-if" = "${pkgs.procps}/bin/pgrep spotify";
+      "exec-if" = "${pkgs.procps}/bin/pgrep spotify_player";
       "tooltip" = false;
     };
     "disk" = {
