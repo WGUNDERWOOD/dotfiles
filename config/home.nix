@@ -14,6 +14,7 @@
   ./ripgrep.nix
   ./rofi/rofi.nix
   ./python/python.nix
+  ./spotify.nix
   ./starship/starship.nix
   ./sway.nix
   ./swaylock.nix
