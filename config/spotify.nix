@@ -24,7 +24,7 @@
     name = "dracula"
 
     [themes.palette]
-    background = "#1e1f29"
+    background = "#121218"
     foreground = "#f8f8f2"
     black = "#000000"
     red = "#ff5555"
