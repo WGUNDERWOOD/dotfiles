@@ -74,6 +74,10 @@
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+f" = "exec firefox";
+        "${modifier}+Shift+s" =
+          "exec pgrep spotify || "
+          + "((swaymsg workspace number 10 && spotify) & "
+          + "(sleep 1 && rm -fd $HOME/Downloads/))";
         "${modifier}+d" = "exec rofi-start";
         "${modifier}+Shift+Ctrl+k" =
           if osConfig.networking.hostName == "xanth"
