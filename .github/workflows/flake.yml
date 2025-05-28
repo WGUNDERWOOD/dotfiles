@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v25
+    - uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        nix_path: nixpkgs=channel:nixos-23.11
-    - uses: DeterminateSystems/magic-nix-cache-action@v2
+        nix_path: nixpkgs=channel:nixos-24.11
     - run: nix flake check
