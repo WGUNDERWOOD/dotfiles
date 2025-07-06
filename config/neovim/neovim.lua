@@ -61,9 +61,7 @@ vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
 -- colors
 vim.o.syntax = "ON"
 vim.o.termguicolors = true
-vim.g.dracula_colorterm = 0
-vim.g.dracula_italic = 0
-vim.cmd("colorscheme dracula")
+vim.cmd("colorscheme catppuccin-mocha")
 vim.cmd("hi normal guibg=#181a26")
 
 vim.cmd("hi StatusLine guibg=#6272a4 guifg=#f8f8f2")
@@ -261,19 +259,8 @@ require("colorizer").setup {
 }
 
 -- lualine
-local custom_dracula = require('lualine.themes.dracula')
-custom_dracula.normal.a.bg = '#ffb86c'
-custom_dracula.normal.b.bg = '#44475a'
-custom_dracula.normal.c.bg = '#282a36'
-custom_dracula.insert.b.bg = '#44475a'
-custom_dracula.insert.c.bg = '#282a36'
-custom_dracula.visual.b.bg = '#44475a'
-custom_dracula.visual.c.bg = '#282a36'
-custom_dracula.command.a.bg = '#ff79c6'
-custom_dracula.command.b.bg = '#44475a'
-custom_dracula.command.c.bg = '#282a36'
 require('lualine').setup {
-    options = {theme  = custom_dracula, icons_enabled = false},
+    options = {icons_enabled = false},
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'searchcount'},

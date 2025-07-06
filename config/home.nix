@@ -1,5 +1,5 @@
 [
-  ./alacritty.nix
+  ./alacritty/alacritty.nix
   ./bash/bash.nix
   ./bat.nix
   ./davmail.nix

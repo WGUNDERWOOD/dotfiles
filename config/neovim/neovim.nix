@@ -38,7 +38,7 @@
     pkgs.vimPlugins.cmp-omni
     pkgs.vimPlugins.cmp-rg
     pkgs.vimPlugins.cmp_luasnip
-    pkgs.vimPlugins.dracula-nvim
+    pkgs.vimPlugins.catppuccin-nvim
     pkgs.vimPlugins.fzf-lua
     pkgs.vimPlugins.lean-nvim
     pkgs.vimPlugins.leap-nvim
