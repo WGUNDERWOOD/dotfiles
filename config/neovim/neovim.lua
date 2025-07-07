@@ -62,33 +62,20 @@ vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
 vim.o.syntax = "ON"
 vim.o.termguicolors = true
 vim.cmd("colorscheme catppuccin-mocha")
---vim.cmd("hi normal guibg=#181a26")
 
---vim.cmd("hi StatusLine guibg=#6272a4 guifg=#f8f8f2")
---vim.cmd("hi Visual guibg=#f1fa8c guifg=#000000")
---vim.cmd("hi MatchParen guifg=#8be9ff gui=bold")
---vim.cmd("hi ErrorMsg guifg=#ff8833 guibg=#181a26 gui=bold")
---vim.cmd("hi vimCommand gui=bold guifg=#ff79c6")
---vim.cmd("hi ExtraWhitespace guibg=#6272a4")
---vim.cmd("hi Search guibg=#50fa7b")
---vim.cmd("hi Special gui=NONE")
---vim.cmd("match ExtraWhitespace /\\s\\+$/")
+vim.cmd("hi MatchParen guifg=#8be9ff gui=bold")
+vim.cmd("hi Search guibg=#a6e3a1 guifg=#181825")
+vim.cmd("hi CurSearch guibg=#a6e3a1 guifg=#181825")
+vim.cmd("hi IncSearch guibg=#a6e3a1 guifg=#181825")
+vim.cmd("hi Special gui=NONE")
+vim.cmd("hi ExtraWhitespace guibg=#45475a")
+vim.cmd("match ExtraWhitespace /\\s\\+$/")
 
 -- cursor
---vim.o.cursorline = true
---vim.cmd("hi CursorOrange guibg=#ef982c")
---vim.cmd("hi CursorWhite guibg=#f8f8f2")
---vim.cmd("hi CursorGreen guibg=#50fa7b")
---vim.cmd("hi CursorInsert guifg=black guibg=#50fa7b")
---vim.cmd("hi CursorPending guifg=black guibg=#ef982c")
---vim.cmd("hi CursorLine guibg=#292c3f")
---vim.cmd("hi CursorLineNr guifg=#6272a4 gui=NONE")
---vim.cmd("set guicursor=n-v:block-CursorOrange")
---vim.cmd("set guicursor+=c:block-CursorWhite")
---vim.cmd("set guicursor+=r:block-CursorGreen")
---vim.cmd("set guicursor+=o:hor50-CursorPending")
---vim.cmd("set guicursor+=i:ver100-CursorInsert")
---vim.cmd("set guicursor+=a:blinkwait300-blinkon200-blinkoff150")
+vim.o.cursorline = true
+vim.cmd("hi CursorLine guibg=#242438")
+vim.cmd("hi CursorLineNr guifg=#6c7086 gui=bold")
+vim.cmd("set guicursor+=a:blinkwait300-blinkon200-blinkoff150")
 
 -- ignore missing language providers
 vim.loaded_python3_provider = 0
@@ -102,7 +89,6 @@ vim.cmd("au BufEnter * set fo-=c fo-=r fo-=o")
 vim.cmd("set shada=!,'500,<50,s10,h")
 
 -- toggle colorcolumn
---vim.cmd("hi ColorColumn guibg=#292c3f")
 vim.cmd [[
     function! ToggleColorColumn ( )
         if &colorcolumn == ""
@@ -117,7 +103,6 @@ vim.cmd [[
 
 -- git conflicts
 map("n", "gc", "/=======\\|<<<<<<<\\|>>>>>>><CR>")
---vim.cmd("hi gitconfigSection guifg=#ff79c6 gui=bold")
 
 -- trim whitespace
 map("n", "<Space>tt", ":let _s=@/<Bar>:%s/\\s\\+$//e<Bar>:let @/=_s<Bar><CR>")
@@ -143,14 +128,12 @@ vim.g.startify_custom_header = {
     "     ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
     " "
 }
---vim.cmd([[
-    --augroup startify
-    --autocmd!
-    --au Filetype startify hi StartifyHeader gui=bold guifg=#bd93f9
-    --au Filetype startify hi StartifySection gui=bold guifg=#ff79c6
-    --au Filetype startify hi StartifyNumber gui=bold guifg=#50fa7b
-    --au Filetype startify hi ExtraWhitespace guibg=NONE
---]])
+vim.cmd([[
+    augroup startify
+    autocmd!
+    au Filetype startify hi StartifyHeader gui=bold guifg=#cba6f7
+    au Filetype startify hi ExtraWhitespace guibg=NONE
+]])
 
 -- fzf
 map("n", "<Space>ff", ":lua require'fzf-lua'.files({prompt='Files> '}) <CR>")
@@ -185,13 +168,12 @@ map("n", "<Space>/",
 vim.g.gitgutter_enabled = false
 vim.g.gitgutter_map_keys = false
 map("n", "<Space>gg", ":GitGutterToggle <CR>")
---vim.cmd("hi GitGutterAdd guifg=#00dd00 guibg=#282a36 gui=bold")
---vim.cmd("hi GitGutterChange guifg=#ffff22 guibg=#282a36 gui=bold")
---vim.cmd("hi GitGutterDelete guifg=#ff3333 guibg=#282a36 gui=bold")
+vim.cmd("hi GitGutterAdd guifg=#00dd00 gui=bold")
+vim.cmd("hi GitGutterChange guifg=#ffff22 gui=bold")
+vim.cmd("hi GitGutterDelete guifg=#ff2222 gui=bold")
 
 -- leap
---vim.cmd("hi LeapBackdrop guifg=#6272a4 guibg=NONE gui=NONE")
---vim.cmd("hi LeapLabelPrimary guifg=#50fa7b guibg=NONE gui=bold")
+vim.cmd("hi LeapBackdrop guifg=#a6adc8 guibg=NONE gui=NONE")
 require('leap').opts.safe_labels = {}
 vim.keymap.set('n', 'F', function ()
     local current_window = vim.fn.win_getid()
@@ -209,12 +191,12 @@ map("n", "<Space>jf",
     ":echo 'just format' | silent exec '!(just format &) > /dev/null' <CR>")
 
 -- todo highlighting
---vim.cmd("hi Todo guifg=#FF7722 guibg=NONE gui=bold")
---vim.cmd("hi Now guifg=#8be9fd guibg=NONE gui=bold")
---vim.cmd("hi Note guifg=#ffff22 guibg=NONE gui=bold")
---vim.cmd("hi Done guifg=#00dd00 guibg=NONE gui=bold")
---vim.cmd("hi Later guifg=#6272a4 guibg=NONE gui=bold")
---vim.cmd("hi No guifg=#ff3333 guibg=NONE gui=bold")
+vim.cmd("hi Todo guifg=#FF7722 guibg=NONE gui=bold")
+vim.cmd("hi Now guifg=#8be9fd guibg=NONE gui=bold")
+vim.cmd("hi Note guifg=#ffff22 guibg=NONE gui=bold")
+vim.cmd("hi Done guifg=#00dd00 guibg=NONE gui=bold")
+vim.cmd("hi Later guifg=#6272a4 guibg=NONE gui=bold")
+vim.cmd("hi No guifg=#ff2222 guibg=NONE gui=bold")
 vim.cmd("call matchadd('Todo', '\\<TODO\\>\\|\\<BUG\\>\\|\\\\TODO', -1)")
 vim.cmd("call matchadd('Done', '\\<DONE\\>\\|\\<YES\\>', -1)")
 vim.cmd("call matchadd('Now', '\\<NOW\\>', -1)")
@@ -395,6 +377,7 @@ vim.cmd [[
     nnoremap <Space>cF :FixSpellingUnderCursorUS<CR>
 ]]
 
+-- TODO edit from here
 -- bib files
 --vim.cmd([[
     --augroup bib
