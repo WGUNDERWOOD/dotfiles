@@ -22,6 +22,7 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.autochdir = true
 vim.g.yankring_clipboard_monitor = 0
+vim.o.foldenable = false
 
 -- mappings
 map("n", "<Tab>", "==")
@@ -191,7 +192,7 @@ map("n", "<Space>jf",
     ":echo 'just format' | silent exec '!(just format &) > /dev/null' <CR>")
 
 -- todo highlighting
-vim.cmd("hi Todo guifg=#FF7722 guibg=NONE gui=bold")
+vim.cmd("hi Todo guifg=#FF7722 guibg=#1e1e2e gui=bold")
 vim.cmd("hi Now guifg=#8be9fd guibg=NONE gui=bold")
 vim.cmd("hi Note guifg=#ffff22 guibg=NONE gui=bold")
 vim.cmd("hi Done guifg=#00dd00 guibg=NONE gui=bold")
@@ -377,231 +378,86 @@ vim.cmd [[
     nnoremap <Space>cF :FixSpellingUnderCursorUS<CR>
 ]]
 
--- TODO edit from here
--- bib files
---vim.cmd([[
-    --augroup bib
-    --autocmd!
-    --au Filetype bib call matchadd('bibTypeAt', '^@[a-z]', -1)
-    --au Filetype bib hi bibTypeAt gui=bold guifg=#50fa7b
-    --au Filetype bib hi bibType gui=bold guifg=#50fa7b
-    --au Filetype bib hi bibKey gui=bold guifg=#bd93f9
-    --au Filetype bib hi bibEntryKw gui=bold guifg=#ff79c6
-    --augroup END
---]])
-
--- shell files
---vim.cmd([[
-    --augroup sh
-    --autocmd!
-    --au Filetype sh hi shFunction gui=bold guifg=#50fa7b
-    --au Filetype sh hi shQuote gui=NONE guifg=#f1fa8c
-    --au Filetype sh hi shStatement gui=bold guifg=#ff79c6
-    --au Filetype sh hi shVarAssign gui=bold guifg=#ff79c6
-    --au Filetype sh hi shFunctionkey gui=bold guifg=#ff79c6
---]])
-
--- rust files
---vim.cmd([[
-    --augroup rust
-    --autocmd!
-    --au Filetype rust hi rustFuncName gui=bold guifg=#50fa7b
-    --au Filetype rust hi rustKeyword gui=bold guifg=#ff79c6
-    --au Filetype rust hi rustModPath guifg=#8be9fd
-    --au Filetype rust hi rustRepeat gui=bold guifg=#ff79c6
-    --au Filetype rust hi rustTypeDef gui=bold guifg=#ff79c6
-    --au Filetype rust hi rustConditional gui=bold guifg=#ff79c6
-    --au Filetype rust hi rustStorage gui=bold guifg=#ff79c6
-    --au Filetype rust hi rustDecNumber guifg=#8be9fd
-    --au Filetype rust hi rustType guifg=#bd93f9
-    --au Filetype rust hi rustOperator guifg=#f8f8f2
-    --au Filetype rust hi rustMacro guifg=#ffb86c
-    --au Filetype rust hi rustAssert guifg=#ffb86c
-    --au Filetype rust hi rustAttribute gui=bold guifg=#ffb86c
-    --au Filetype rust hi rustDerive gui=bold guifg=#ffb86c
-    --au Filetype rust hi rustStructure gui=bold guifg=#ff79c6
---]])
-
--- julia files
---vim.cmd([[
-    --augroup julia
-    --autocmd!
-    --au Filetype julia hi juliaFunctionName gui=bold guifg=#50fa7b
-    --au Filetype julia hi juliaKeyword gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaBlKeyword gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaRepeat gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaConditional gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaComprehensionFor gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaComprehensionIf gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaInfixKeyword gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaWhereKeyword gui=bold guifg=#ff79c6
-    --au Filetype julia hi juliaType guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeNum guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeString guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeRange guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeArray guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeBasic guifg=#bd93f9
-    --au Filetype julia hi juliaBaseTypeRound guifg=#bd93f9
-    --au Filetype julia hi juliaParamType guifg=#bd93f9
-    --au Filetype julia hi juliaChar guifg=#f1fa8c
-    --au Filetype julia hi juliaNumber guifg=#8be9fd
-    --au Filetype julia hi juliaConstNum guifg=#8be9fd
-    --au Filetype julia hi juliaFloat guifg=#8be9fd
-    --au Filetype julia hi juliaConstGeneric guifg=#8be9fd
-    --au Filetype julia hi juliaRangeKeyword guifg=#8be9fd
-    --au Filetype julia hi juliaSymbol guifg=#8be9fd
-    --au Filetype julia hi juliaOperator guifg=#f8f8f2
-    --au Filetype julia hi juliaMacro gui=bold guifg=#ffb86c
---]])
-
--- python files
---vim.cmd([[
-    --augroup python
-    --autocmd!
-    --au Filetype python hi pythonInclude gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonStatement gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonFunction gui=bold guifg=#50fa7b
-    --au Filetype python hi pythonBuiltin gui=NONE guifg=#ffb86c
-    --au Filetype python hi pythonRepeat gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonOperator gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonConditional gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonException gui=bold guifg=#ff79c6
-    --au Filetype python hi pythonNumber gui=NONE guifg=#8be9fd
---]])
-
--- snippet files
---vim.cmd([[
-    --augroup snippet
-    --autocmd!
-    --au Filetype snippet hi snippet gui=bold guifg=#ff79c6
-    --au Filetype snippet hi tabStop gui=NONE guifg=#8be9fd
---]])
-
--- git commit files
---vim.cmd([[
-    --augroup gitcommit
-    --autocmd!
-    --au Filetype gitcommit hi gitcommitHeader gui=bold guifg=#bd93f9
-    --au Filetype gitcommit hi gitcommitBranch gui=bold guifg=#ff79c6
-    --au Filetype gitcommit hi gitcommitSelectedType gui=NONE guifg=#ffb86c
-    --au Filetype gitcommit hi gitcommitSelectedFile gui=NONE guifg=#8be9fd
-    --au Filetype gitcommit hi gitcommitUntrackedFile gui=NONE guifg=#8be9fd
-    --au Filetype gitcommit hi diffFile gui=NONE guifg=#ff79c6
-    --au Filetype gitcommit hi ExtraWhitespace guibg=NONE"
---]])
-
 -- mail files
---vim.cmd([[
-    --augroup mail
-    --autocmd!
+vim.cmd([[
+    augroup mail
+    autocmd!
 
-    --call matchadd('mailAttachment', '
-        --\[Aa]ttaching\|
-        --\[Aa]ttached\|
-        --\[Aa]ttach\|
-        --\cv\|
-        --\CV\|
-        --\[Ee]nclosing\|
-        --\[Ee]nclosed\|
-        --\[Ee]nclose\|
-        --\[Ff]iles\|
-        --\[Ff]ile\|
-        --\[Ii]ncluding\|
-        --\[Ii]ncluded\|
-        --\[Ii]nclude\|
-        --\[Pp]rinting\|
-        --\[Pp]rinter\|
-        --\[Pp]rint\|
-        --\[Rr]esume\|
-        --\[Ss]creenshots\|
-        --\[Ss]creenshot',
-        --\ -1)
+    call matchadd('mailAttachment', '
+        \[Aa]ttaching\|
+        \[Aa]ttached\|
+        \[Aa]ttach\|
+        \cv\|
+        \CV\|
+        \[Ee]nclosing\|
+        \[Ee]nclosed\|
+        \[Ee]nclose\|
+        \[Ff]iles\|
+        \[Ff]ile\|
+        \[Ii]ncluding\|
+        \[Ii]ncluded\|
+        \[Ii]nclude\|
+        \[Pp]rinting\|
+        \[Pp]rinter\|
+        \[Pp]rint\|
+        \[Rr]esume\|
+        \[Ss]creenshots\|
+        \[Ss]creenshot',
+        \ -1)
 
-    --call matchadd('mailHeaderKeyName', '
-        --\^From:\|
-        --\^To:\|
-        --\^Cc:\|
-        --\^Bcc:\|
-        --\^Subject:\|
-        --\^Reply-To:\|
-        --\^In-Reply-To:',
-        --\ -1)
-
-    --au Filetype mail hi mailAttachment guifg=#ff7722
-    --au Filetype mail hi ExtraWhitespace guibg=NONE
-    --au Filetype mail hi mailHeaderKeyName guifg=#ff79c6 gui=bold
-    --au Filetype mail hi mailSubject guifg=#8be9fd
-    --au Filetype mail hi mailEmail guifg=#f1fa8c
-    --au Filetype mail hi mailHeaderEmail guifg=#f1fa8c
-    --au Filetype mail hi mailSignature guifg=#8be9fd
-    --au Filetype mail hi mailQuoted1 guifg=#bd93f9
-    --au Filetype mail hi mailQuoted2 guifg=#ffb86c
-    --au Filetype mail hi mailQuoted3 guifg=#50fa7b
-    --au Filetype mail hi mailQuoted4 guifg=#8be9fd
-    --au Filetype mail set linebreak
-    --au Filetype mail /\n\n--
---]])
-
--- just files
---vim.cmd([[
-    --augroup just
-    --autocmd!
-    --au Filetype just hi justAssignment guifg=#f8f8f2 gui=bold
-    --au Filetype just hi justFunction guifg=#ff79c6 gui=bold
---]])
+    au Filetype mail hi mailAttachment guifg=#ff7722
+    au Filetype mail hi ExtraWhitespace guibg=NONE
+    au Filetype mail setlocal linebreak
+    au Filetype mail /\n\n--
+]])
 
 -- text files
---vim.cmd([[
-    --augroup text
-    --autocmd!
-    --au Filetype text setlocal linebreak
---]])
-
--- nix files
---vim.cmd([[
-    --augroup nix
-    --autocmd!
-    --au Filetype nix hi nixStringDelimiter guifg=#f1fa8c
---]])
+vim.cmd([[
+    augroup text
+    autocmd!
+    au Filetype text setlocal linebreak
+]])
 
 -- org files
---vim.cmd [[
-    --function! RemoveOrgTodoHeader()
-        --normal mz
-        --normal 0
-        --s/ TODO \| NOTE \| DONE \| NOW / /e
-        --normal `z
-    --endfun
-    --command RemoveOrgTodoHeader call RemoveOrgTodoHeader()
---]]
+vim.cmd [[
+    function! RemoveOrgTodoHeader()
+        normal mz
+        normal 0
+        s/ TODO \| NOTE \| DONE \| NOW / /e
+        normal `z
+    endfun
+    command RemoveOrgTodoHeader call RemoveOrgTodoHeader()
+]]
 
---vim.cmd([[
-    --augroup org
-    --autocmd!
-    --au Filetype org inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
-    --au Filetype org inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
-    --au Filetype org setlocal nofoldenable
-    --au Filetype org hi @org.headline.level1.org guifg=#ff79c6 gui=bold
-    --au Filetype org hi @org.headline.level2.org guifg=#bd93f9 gui=bold
-    --au Filetype org hi @org.headline.level3.org guifg=#50fa7b
-    ----au Filetype org hi @org.headline.level4.org guifg=#f1fa8c
-    --au Filetype org hi @org.headline.level5.org guifg=#8be9fd
-    --au Filetype org hi @org.headline.level6.org guifg=#ff79c6
-    --au Filetype org hi @org.headline.level7.org guifg=#bd93f9
-    --au Filetype org hi @org.headline.level8.org guifg=#50fa7b
-    --au Filetype org hi @org.directive.org gui=bold guifg=#ffb86c
-    --au Filetype org call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
-    --au Filetype org hi OrgDoneHeading guifg=#6272a4 guibg=NONE
-    --au Filetype org call matchadd('OrgDone', '*\+ \(DONE\)', -1)
-    --au Filetype org hi OrgDone guifg=#00dd00 guibg=NONE gui=bold
-    --au Filetype org call matchadd('OrgLeadingStars', '*\+\(* \)\@=', -1)
-    --au Filetype org hi OrgLeadingStars guifg=#181a26 guibg=NONE
-    --au Filetype org call matchadd('OrgLeadingStar', '* ', -1)
-    --au Filetype org hi OrgLeadingStar gui=bold
-    --au Filetype org nnoremap T :RemoveOrgTodoHeader<CR>
-    --au Filetype org setlocal linebreak
---]])
+vim.cmd([[
+    augroup org
+    autocmd!
+    au Filetype org inoremap <C-l> <Esc>ma0f<Space>i*<Esc>A
+    au Filetype org inoremap <C-h> <Esc>ma0f<Space>hx<Esc>A
+    au Filetype org setlocal nofoldenable
+    au Filetype org hi @org.headline.level1.org guifg=#f5c2e7 gui=bold
+    au Filetype org hi @org.headline.level2.org guifg=#cba6f7 gui=bold
+    au Filetype org hi @org.headline.level3.org guifg=#a6e3a1
+    au Filetype org hi @org.headline.level4.org guifg=#f9e2af
+    au Filetype org hi @org.headline.level5.org guifg=#89dceb
+    au Filetype org hi @org.headline.level6.org guifg=#f5c2e7
+    au Filetype org hi @org.headline.level7.org guifg=#cba6f7
+    au Filetype org hi @org.headline.level8.org guifg=#a6e3a1
+    au Filetype org hi @org.directive.org gui=bold guifg=#fab387
+    au Filetype org call matchadd('OrgDoneHeading', '*\+ DONE \(.*\)$', -1)
+    au Filetype org hi OrgDoneHeading guifg=#9399b2 guibg=NONE
+    au Filetype org call matchadd('OrgDone', '*\+ \(DONE\)', -1)
+    au Filetype org hi OrgDone guifg=#00dd00 guibg=NONE gui=bold
+    au Filetype org call matchadd('OrgLeadingStars', '*\+\(* \)\@=', -1)
+    au Filetype org hi OrgLeadingStars guifg=#1e1e2e guibg=NONE
+    au Filetype org call matchadd('OrgLeadingStar', '* ', -1)
+    au Filetype org hi OrgLeadingStar gui=bold
+    au Filetype org nnoremap T :RemoveOrgTodoHeader<CR>
+    au Filetype org setlocal linebreak
+]])
 
+-- TODO edit from here
+-- TODO check bright colours, including org keywords
 -- tex files
 vim.g.vimtex_view_method = 'zathura_simple'
 vim.cmd([[
