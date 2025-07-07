@@ -92,6 +92,7 @@ with pkgs; [
   watchexec
   waybar
   wayland
+  wget
   wine
   wl-clipboard
   zathura
