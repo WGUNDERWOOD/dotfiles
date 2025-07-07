@@ -18,25 +18,26 @@ $status\
 $character"""
 
 add_newline = false
+palette = "catppuccin_mocha"
 
 [sudo]
-format = "‍[[as](bold #bbbbbb) sudo ](bold #ff7722)"
+format = "‍[[as](bold subtext1) sudo ](bold red)"
 disabled = true
 
 [directory]
 truncation_length = 1
 truncate_to_repo = false
 fish_style_pwd_dir_length = 4
-format = "[[$path](bold #8be9fd) ](bold #bbbbbb)"
+format = "[[$path](bold sky) ](bold subtext1)"
 
 [git_branch]
-format = "[on [$branch](bold bright-yellow) ](bold #bbbbbb)"
+format = "[on [$branch](bold bright-yellow) ](bold subtext1)"
 ignore_branches = ["HEAD"]
 
 [git_commit]
 only_detached = true
 tag_disabled = true
-format = "[on [$hash $tag](bold yellow)](bold #bbbbbb)"
+format = "[on [$hash $tag](bold yellow)](bold subtext1)"
 
 [custom.git_tag]
 command = "echo \\($(git tag --points-at HEAD)\\)"
@@ -49,17 +50,17 @@ format = "\\([$state( $progress_current/$progress_total)](bold yellow)\\) "
 [git_status]
 style = "bold yellow"
 format = "([\\($all_status$ahead_behind\\)]($style) )"
-ahead = "[↑](bold #dddddd)"
-behind = "[↓](bold #dddddd)"
-diverged = "[↑↓](bold #dddddd)"
-conflicted = "[=](bold #ff7722)"
+ahead = "[↑](bold text)"
+behind = "[↓](bold text)"
+diverged = "[↑↓](bold text)"
+conflicted = "[=](bold red)"
 up_to_date = ""
-untracked = "[?](bold #ddb3f9)"
-stashed = "[S](bold #dddddd)"
+untracked = "[?](bold mauve)"
+stashed = "[S](bold text)"
 staged = "[+](bold green)"
-modified = "[!](bold #ff7722 )"
-renamed = "[r](bold #ff7722 )"
-deleted = "[d](bold #ff7722 )"
+modified = "[!](bold red)"
+renamed = "[r](bold red)"
+deleted = "[d](bold red)"
 
 [git_metrics]
 disabled = true
@@ -69,11 +70,11 @@ disabled = true
 
 [jobs]
 number_threshold = 1
-format = "[[bg](bold #bbbbbb) $number](bold #ddb3f9) "
+format = "[[bg](bold subtext1) $number](bold mauve) "
 disabled = true
 
 [cmd_duration]
-format = "[took [$duration](bold #ddb3f9) ](bold #bbbbbb)"
+format = "[took [$duration](bold mauve) ](bold subtext1)"
 min_time = 1
 show_milliseconds = true
 
@@ -81,12 +82,40 @@ show_milliseconds = true
 disabled = true
 
 [nix_shell]
-format = '[nix](bold #7bb9ed) '
+format = '[nix](bold blue) '
 
 [status]
 disabled = false
-format = "[$status( $common_meaning)( $signal_name)](bold #ff7722) "
+format = "[$status( $common_meaning)( $signal_name)](bold red) "
 
 [character]
 success_symbol = "[>](bold green)"
-error_symbol = "[>](bold #ff7722)"
+error_symbol = "[>](bold red)"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

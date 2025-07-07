@@ -621,21 +621,34 @@ vim.cmd [[
 
 -- tex files
 vim.g.vimtex_view_method = 'zathura_simple'
+vim.cmd([[
+    augroup tex
+    autocmd!
+    au Filetype tex syntax enable
+    au Filetype tex setlocal shiftwidth=2
+    au Filetype tex let g:vimtex_matchparen_enabled = 0
+    au Filetype tex let g:vimtex_compiler_silent = 1
+    au Filetype tex let g:vimtex_quickfix_mode = 0
+    au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
+    au Filetype tex let g:tex_fast = ''
+    au Filetype tex let g:vimtex_syntax_conceal_disable = 1
+    au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+    au Filetype tex let g:vimtex_indent_delims =
+        \ {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
+    au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
+    au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS<CR>
+    au Filetype tex nnoremap ,v :VimtexView<CR>
+    au Filetype tex nnoremap ,k :VimtexStopAll<CR>
+    au Filetype tex nnoremap ,w :VimtexErrors<CR>
+    au Filetype tex nnoremap ,e V<plug>(vimtex-ae)
+    au Filetype tex inoremap <C-L> <C-X><C-O>
+    au Filetype tex inoremap <C-J> <C-N>
+    au Filetype tex inoremap <C-K> <C-P>
+]])
 --vim.cmd([[
     --augroup tex
     --autocmd!
-    --au Filetype tex syntax enable
-    --au Filetype tex setlocal shiftwidth=2
     --au Filetype tex :ColorizerDetachFromBuffer
-    --au Filetype tex let g:vimtex_matchparen_enabled = 0
-    --au Filetype tex let g:vimtex_compiler_silent = 1
-    --au Filetype tex let g:vimtex_quickfix_mode = 0
-    --au Filetype tex let g:vimtex_quickfix_method = 'pplatex'
-    --au Filetype tex let g:vimtex_quickfix_autoclose_after_keystrokes = 1
-    --au Filetype tex let g:tex_fast = ''
-    --au Filetype tex let g:vimtex_syntax_conceal_disable = 1
-    --au Filetype tex let g:vimtex_indent_delims =
-        --\ {'open': ['{', '(', '['], 'close' : ['}', ')', ']']}
     --au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
     --au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
     --au Filetype tex hi texPartArgTitle gui=bold guifg=#ffff22

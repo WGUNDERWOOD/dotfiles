@@ -152,39 +152,39 @@
 
       colors = {
         focused = {
-          border = "#ffa9e6";
-          background = "#ffa9e6";
-          text = "#f8f8f2";
-          indicator = "#ffa9e6";
-          childBorder = "#ffa9e6";
+          border = "#f5c2e7";
+          background = "#f5c2e7";
+          text = "#cdd6f4";
+          indicator = "#f5c2e7";
+          childBorder = "#f5c2e7";
         };
         focusedInactive = {
-          border = "#000000";
-          background = "#000000";
-          text = "#f8f8f2";
-          indicator = "#000000";
-          childBorder = "#000000";
+          border = "#11111b";
+          background = "#11111b";
+          text = "#cdd6f4";
+          indicator = "#11111b";
+          childBorder = "#11111b";
         };
         unfocused = {
-          border = "#000000";
-          background = "#000000";
-          text = "#888888";
-          indicator = "#000000";
-          childBorder = "#000000";
+          border = "#11111b";
+          background = "#11111b";
+          text = "#6c7086";
+          indicator = "#11111b";
+          childBorder = "#11111b";
         };
         urgent = {
-          border = "#000000";
-          background = "#000000";
-          text = "#f8f8f2";
-          indicator = "#000000";
-          childBorder = "#000000";
+          border = "#11111b";
+          background = "#11111b";
+          text = "#cdd6f4";
+          indicator = "#11111b";
+          childBorder = "#11111b";
         };
         placeholder = {
-          border = "#000000";
-          background = "#000000";
-          text = "#888888";
-          indicator = "#000000";
-          childBorder = "#000000";
+          border = "#11111b";
+          background = "#11111b";
+          text = "#6c7086";
+          indicator = "#11111b";
+          childBorder = "#11111b";
         };
       };
     };
