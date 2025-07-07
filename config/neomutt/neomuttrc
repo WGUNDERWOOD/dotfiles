@@ -2,8 +2,8 @@
 
 # neomuttrc
 
-# dracula theme
-source ~/.config/neomutt/dracula.muttrc
+# theme
+source ~/.config/neomutt/theme.muttrc
 
 # bindings
 source ~/.config/neomutt/bindings.muttrc
