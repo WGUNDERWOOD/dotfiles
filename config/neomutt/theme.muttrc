@@ -1,84 +1,55 @@
 # -*- conf -*-
 
-#color index		    color2 default ~N       # New Messages are Green
-#color index		    color1 default ~F       # Flagged messages are Red
-#color index		    color13 default ~T      # Tagged Messages are Red
-#color index		    color1 default ~D       # Messages to delete are Red
-#color attachment	color5 default          # Attachments are Pink
-#color signature	  color8 default          # Signatures are Surface 2
-
-#color hdrdefault  color13 default         # default headers Pink
-#color header		  color13 default "^From:"
-#color header	 	  color13 default "^Subject:"
-
-#color quoted		  color15 default         # Subtext 0
-#color quoted1		  color7 default          # Subtext 1
-#color quoted2		  color8 default          # Surface 2
-#color quoted3		  color0 default          # Surface 1
-#color quoted4		  color0 default
-#color quoted5		  color0 default
-
-#color body		color2 default		[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+               # email addresses Green
-#color body	  color2 default		(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+        # URLs Green
-#color body		color4 default		(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$) # *bold* text Blue
-#color body		color4 default		(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)     # _underlined_ text Blue
-#color body		color4 default		(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)     # /italic/ text Blue
-
-#color sidebar_flagged   color1 default    # Mailboxes with flagged mails are Red
-#color sidebar_new       color10 default   # Mailboxes with new mail are Green
-
-# DRACULA
-
 # general ----------- foreground ---- background -----------------------------
 color error           color1          default
-color indicator       bold default    color60
-#color markers         color210        default
-#color message         default         default
+color indicator       bold default    color0
 color normal          default         default
 color prompt          default         default
+color markers         color13         default
 color search          color4          default
 color status          color15         default
 color tilde           color15         default
 color tree            color15         default
 
-# sidebar
-color sidebar_divider default default
-color sidebar_highlight default color60
+# sidebar ------------- foreground -- background -----------------------------
+color sidebar_divider   default       default
+color sidebar_highlight bold default  color60
 
 # message index ----- foreground ---- background -----------------------------
 color index           bold color11    default    ~N       # new messages
 color index           color10         default    ~Q       # replied messages
-color index           color141        default    ~v       # collapsed messages
-color index           bold color215   default    ~F       # flagged messages
-color index           color245        default    "~H 999" # spam messages
-color index           color210        default    ~D       # deleted messages
-color index           bold color117   default    ~T       # tagged messages
+color index           color5          default    ~v       # collapsed messages
+color index           bold color16    default    ~F       # flagged messages
+color index           color15         default    "~H 999" # spam messages
+color index           color1          default    ~D       # deleted messages
+color index           bold color4     default    ~T       # tagged messages
 color index_author    color13         default    '.*'
 color index_date      color12         default    '.*'
 color index_size      color14         default    '.*'
 
 # message headers --- foreground ---- background -----------------------------
-color hdrdefault      color117        default
-color header          color231        default    ^Subject:.*
+color hdrdefault      color13         default
+color header	 	  color13         default    "^Subject:"
+color header	 	  color13         default    "^From:"
 
 # message body ------ foreground ---- background -----------------------------
-color attachment      color228        default
-color body            color231        default \
+color attachment      color11         default
+color body            color11         default \
     [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+               # email addresses
-color body            color228        default \
+color body            color11         default \
     (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+        # URLs
-color body            color231        default \
+color body            bold color17    default \
     (^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$) # *bold* text
-color body            color231        default \
+color body            color17         default \
     (^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)     # _underlined_ text
-color body            color231        default \
+color body            color17         default \
     (^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)     # /italic/ text
-color quoted          color147        default
-color quoted1         color117        default
-color quoted2         color84         default
-color quoted3         color215        default
-color quoted4         color212        default
-color signature       color212        default
+color quoted          color3          default
+color quoted1         color4          default
+color quoted2         color2          default
+color quoted3         color5          default
+color quoted4         color3          default
+color signature       color16         default
 
 # compose menu ------ foreground ---- background -----------------------------
 color compose header  bold color13    default
