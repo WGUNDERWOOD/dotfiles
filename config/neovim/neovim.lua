@@ -64,7 +64,7 @@ vim.o.syntax = "ON"
 vim.o.termguicolors = true
 vim.cmd("colorscheme catppuccin-mocha")
 
-vim.cmd("hi MatchParen guifg=#8be9ff gui=bold")
+vim.cmd("hi MatchParen guifg=#8be9ff guibg=#1e1e2e gui=bold")
 vim.cmd("hi Search guibg=#a6e3a1 guifg=#181825")
 vim.cmd("hi CurSearch guibg=#a6e3a1 guifg=#181825")
 vim.cmd("hi IncSearch guibg=#a6e3a1 guifg=#181825")
