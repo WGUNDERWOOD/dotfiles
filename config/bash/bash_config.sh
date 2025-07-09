@@ -27,9 +27,6 @@ mkdir -p "$XDG_CACHE_HOME/less/"
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 
-# zoxide
-eval "$(zoxide init --cmd cd bash)"
-
 # colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -47,3 +44,7 @@ export FZF_DEFAULT_OPTS='
     --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
     --color=selected-bg:#45475a
     --color=border:#313244,label:#cdd6f4'
+
+# zoxide
+export _ZO_DOCTOR=0
+eval "$(zoxide init --cmd cd bash)"
