@@ -16,7 +16,7 @@ configuration {
     font: "Source Code Pro 18";
     foreground: #cdd6f4;
     background: #1e1e2e;
-    active-background: #45475a;
+    active-background: #313244;
     urgent-background: #ff5555;
     selected-background: @active-background;
     selected-urgent-background: @urgent-background;
