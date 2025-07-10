@@ -126,7 +126,6 @@ office:
 
 archives:
   foreground: sapphire
-  font-style: underline
 
 executable:
   foreground: red
