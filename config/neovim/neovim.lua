@@ -483,14 +483,14 @@ vim.cmd([[
     au Filetype tex inoremap <C-L> <C-X><C-O>
     au Filetype tex inoremap <C-J> <C-N>
     au Filetype tex inoremap <C-K> <C-P>
+    au Filetype tex hi texTitleArg gui=bold guifg=#f9e2af
+    au Filetype tex hi texPartArgTitle gui=bold guifg=#f9e2af
 ]])
 --vim.cmd([[
     --augroup tex
     --autocmd!
     --au Filetype tex :ColorizerDetachFromBuffer
     --au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
-    --au Filetype tex hi texTitleArg gui=bold guifg=#ffff22
-    --au Filetype tex hi texPartArgTitle gui=bold guifg=#ffff22
     --au Filetype tex hi texCmdInput gui=bold guifg=#ff79c6
     --au Filetype tex hi texCmdStyle gui=bold guifg=#bd93f9
     --au Filetype tex hi texFileArg guifg=#8be9fd
