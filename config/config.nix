@@ -92,6 +92,7 @@
   networking.networkmanager.enable = true;
   services.ntp.enable = true;
   fonts.packages = with pkgs; [source-code-pro fira libre-baskerville google-fonts];
+  fonts.fontconfig.enable = true;
   nix.optimise.automatic = true;
 
   # user

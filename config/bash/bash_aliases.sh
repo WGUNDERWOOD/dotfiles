@@ -1,12 +1,12 @@
 # exa
-alias l='exa'
-alias lg='exa --all --long --git --git-ignore'
-alias ltg='exa --long --tree --git --git-ignore'
-alias lt='exa --all --long --sort newest'
-alias ltt='exa --tree'
-alias ll='exa --all --long --git'
-alias lz='exa --all --long --git --sort size'
-alias lrz='fd -tf -X exa --long --sort size'
+alias l='exa --classify'
+alias lg='exa --all --long --git --git-ignore --classify'
+alias ltg='exa --long --tree --git --git-ignore --classify'
+alias lt='exa --all --long --sort newest --classify'
+alias ltt='exa --tree --classify'
+alias ll='exa --all --long --git --classify'
+alias lz='exa --all --long --git --sort size --classify'
+alias lrz='fd -tf -X exa --long --sort size --classify'
 alias lrc='ls -AiR1U ./ |
            sed -rn \
            "/^[./]/{h;n;};G; s|^ *([0-9][0-9]*)[^0-9][^/]*([~./].*):|\1:\2|p" |
