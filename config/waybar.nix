@@ -254,28 +254,28 @@
       if osConfig.networking.hostName == "libra"
       then "19px"
       else "23px";
-    color-black = "#000000";
-    color-mid-gray = "#8298c4";
-    color-dark-gray = "#34374a";
+    color-crust = "#11111b";
+    color-overlay-2 = "#9399b2";
+    color-surface-0 = "#313244";
     color-hot-pink = "#ffaaff";
+    color-pink = "#f5c2e7";
     color-alert = "#ff713e";
-    color-night = "#ffb86c";
-    color-pastel-yellow = "#f4f5cc";
-    color-pastel-pink = "#f8ceeb";
-    color-pastel-blue = "#a8e4ec";
-    color-pastel-green = "#a9f4b0";
-    color-pastel-purple = "#dfc2ff";
+    color-peach = "#fab387";
+    color-yellow = "#f9e2af";
+    color-sky = "#89dceb";
+    color-green = "#a6e3a1";
+    color-mauve = "#cba6f7";
   in ''
     * {
         font-family: "Source Code Pro";
         font-size: ${fontsize};
-        background-color: ${color-black};
-        border-top: ${bordertopsmall} solid ${color-black}
+        background-color: ${color-crust};
+        border-top: ${bordertopsmall} solid ${color-crust}
     }
 
     #workspaces {
         font-weight: 600;
-        background-color: ${color-black};
+        background-color: ${color-crust};
     }
 
     #workspaces button {
@@ -283,13 +283,13 @@
         border-radius: 1px;
         border-left: none;
         border-right: none;
-        color: ${color-mid-gray};
-        background-color: ${color-black};
+        color: ${color-overlay-2};
+        background-color: ${color-crust};
     }
 
     #workspaces button.focused {
         border-bottom: ${bordertoplarge} solid ${color-hot-pink};
-        border-top: ${bordertoplarge} solid ${color-black};
+        border-top: ${bordertoplarge} solid ${color-crust};
         border-left: none;
         border-right: none;
         color: ${color-hot-pink};
@@ -298,7 +298,7 @@
     #workspaces button.urgent {
         border-left: none;
         border-right: none;
-        color: ${color-mid-gray};
+        color: ${color-overlay-2};
     }
 
     #workspaces button:hover {
@@ -313,7 +313,7 @@
         text-shadow: inherit;
         background: none;
         border-bottom: ${bordertoplarge} solid ${color-hot-pink};
-        border-top: ${bordertoplarge} solid ${color-black};
+        border-top: ${bordertoplarge} solid ${color-crust};
         border-left: none;
         border-right: none;
     }
@@ -326,25 +326,25 @@
     }
 
     #clock.time {
-        color: ${color-pastel-green};
+        color: ${color-green};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #clock.date {
-        color: ${color-pastel-purple};
+        color: ${color-mauve};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #cpu {
-        color: ${color-pastel-pink};
+        color: ${color-pink};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #memory {
-        color: ${color-pastel-yellow};
+        color: ${color-yellow};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
@@ -356,7 +356,7 @@
     }
 
     #custom-mail.no_mail {
-        color: ${color-pastel-pink};
+        color: ${color-pink};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
@@ -368,19 +368,19 @@
     }
 
     #custom-gammastep.day {
-        color: ${color-pastel-blue};
+        color: ${color-sky};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #custom-gammastep.night {
-        color: ${color-night};
+        color: ${color-peach};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #network.wifi, #network.ethernet {
-        color: ${color-pastel-yellow};
+        color: ${color-yellow};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
@@ -392,25 +392,25 @@
     }
 
     #pulseaudio, #pulseaudio.bluetooth {
-        color: ${color-pastel-green};
+        color: ${color-green};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #pulseaudio.muted {
-        color: ${color-mid-gray};
+        color: ${color-overlay-2};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #disk {
-        color: ${color-pastel-blue};
+        color: ${color-sky};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #battery {
-        color: ${color-pastel-purple};
+        color: ${color-mauve};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
@@ -422,38 +422,38 @@
     }
 
     #battery.charging.warning {
-        color: ${color-pastel-purple};
+        color: ${color-mauve};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #custom-backlight.on {
-        color: ${color-pastel-yellow};
+        color: ${color-yellow};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #custom-backlight.off {
-        color: ${color-pastel-yellow};
+        color: ${color-yellow};
         padding: 0px ${paddinglarge};
         font-weight: 500;
     }
 
     #custom-spotify {
-        color: ${color-pastel-green};
+        color: ${color-green};
         font-size: ${spotifyfontsize};
         padding: 0px ${paddingsmall};
         font-weight: 500;
     }
 
     #custom-separator {
-        color: ${color-dark-gray};
+        color: ${color-surface-0};
         font-size: ${fontsize};
         font-weight: 600;
     }
 
     #custom-separatorleft {
-        color: ${color-dark-gray};
+        color: ${color-surface-0};
         font-size: ${fontsize};
         font-weight: 600;
         padding-left: ${paddingmedium};
