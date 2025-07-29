@@ -254,7 +254,8 @@
       if osConfig.networking.hostName == "libra"
       then "19px"
       else "23px";
-    color-crust = "#11111b";
+    #color-crust = "#11111b";
+    color-black = "#060609";
     color-overlay-2 = "#9399b2";
     color-surface-0 = "#313244";
     color-hot-pink = "#ffaaff";
@@ -269,13 +270,13 @@
     * {
         font-family: "Source Code Pro";
         font-size: ${fontsize};
-        background-color: ${color-crust};
-        border-top: ${bordertopsmall} solid ${color-crust}
+        background-color: ${color-black};
+        border-top: ${bordertopsmall} solid ${color-black}
     }
 
     #workspaces {
         font-weight: 600;
-        background-color: ${color-crust};
+        background-color: ${color-black};
     }
 
     #workspaces button {
@@ -284,12 +285,12 @@
         border-left: none;
         border-right: none;
         color: ${color-overlay-2};
-        background-color: ${color-crust};
+        background-color: ${color-black};
     }
 
     #workspaces button.focused {
         border-bottom: ${bordertoplarge} solid ${color-hot-pink};
-        border-top: ${bordertoplarge} solid ${color-crust};
+        border-top: ${bordertoplarge} solid ${color-black};
         border-left: none;
         border-right: none;
         color: ${color-hot-pink};
@@ -313,7 +314,7 @@
         text-shadow: inherit;
         background: none;
         border-bottom: ${bordertoplarge} solid ${color-hot-pink};
-        border-top: ${bordertoplarge} solid ${color-crust};
+        border-top: ${bordertoplarge} solid ${color-black};
         border-left: none;
         border-right: none;
     }
