@@ -38,7 +38,7 @@ def parse_science_direct(filename):
          "Chrome/47.0.2526.106 Safari/537.36")}
     req = urllib.request.Request(url, headers=headers)
     html = urllib.request.urlopen(req).read().decode('utf8').replace("\n", "")
-    doi_regex = ".*(\"doi\":\"[a-zA-Z0-9/\.\(\)\-]*\").*"
+    doi_regex = ".*(\"doi\":\"[a-zA-Z0-9/\\.\\(\\)\\-]*\").*"
     doi_match = re.match(doi_regex, html).group(1)
     doi = doi_match[7:len(doi_match)-1]
 
@@ -115,9 +115,9 @@ def save_file(info):
 
 if __name__ == "__main__":
     filename = Path(sys.argv[1])
-    arxiv_regex = "^[0-9]{4}\.[0-9]{4}[0-9]?\.pdf$"
-    science_direct_regex = "^1-s2\.0-[A-Z]?[0-9].*-main\.pdf$"
-    jstor_regex = "^[0-9]*\.pdf$"
+    arxiv_regex = "^[0-9]{4}\\.[0-9]{4}[0-9]?v?[0-9]?\\.pdf$"
+    science_direct_regex = "^1-s2\\.0-[A-Z]?[0-9].*-main\\.pdf$"
+    jstor_regex = "^[0-9]*\\.pdf$"
 
     if re.match(arxiv_regex, str(filename)):
         save_file(parse_arxiv(filename))
