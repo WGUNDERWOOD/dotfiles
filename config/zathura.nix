@@ -23,7 +23,6 @@
     set statusbar-basename true
     set guioptions none
     set selection-clipboard clipboard
-    set sandbox none
     set completion-bg "#24273a"
     set completion-fg "#eeeeee"
     set completion-group-bg "#9d73d9"

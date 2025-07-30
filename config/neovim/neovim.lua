@@ -152,14 +152,14 @@ map("n", "<Space>fa", ":lua require'fzf-lua'.files({prompt='All files> '," ..
 map("n", "<Space>pf",
     ":lua require'fzf-lua'.git_files({prompt='Project files> '," ..
     "cwd = '`git rev-parse --show-toplevel`'," ..
-    "show_cwd_header=false}) <CR>")
+    "cwd_header=false}) <CR>")
 map("n", "<Space>bb",
     ":lua require'fzf-lua'.oldfiles({prompt='Recent files> '," ..
     "file_ignore_patterns = { '%COMMIT_EDITMSG$' }," ..
     "include_current_session=true}) <CR>")
 map("n", "<Space>gc",
     ":lua require'fzf-lua'.git_commits({prompt='Commits> '," ..
-    "show_cwd_header=false}) <CR>")
+    "cwd_header=false}) <CR>")
 map("n", "<Space>/",
     ":lua require'fzf-lua'.grep_project({prompt='Project> '," ..
     "cwd = '`git rev-parse --show-toplevel`'," ..
