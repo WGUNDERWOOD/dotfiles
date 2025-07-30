@@ -16,6 +16,7 @@ with pkgs; [
   (callPackage ./player-art.nix {})
   (callPackage ./pulse-cycle.nix {})
   (callPackage ./rclone-sync/rclone-sync.nix {})
+  (callPackage ./reference-project.nix {})
   (callPackage ./rename-pdf/rename-pdf.nix {})
   (callPackage ./repos.nix {})
   (callPackage ./rofi-start/rofi-start.nix {})
