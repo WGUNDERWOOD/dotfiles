@@ -23,7 +23,7 @@ unset record
 
 # signature
 set signature = 'echo -e "William G Underwood\nPostdoctoral Researcher"; \
-    echo -e "Statistics Laboratory"; \
+    echo -e "Statistical Laboratory"; \
     echo -e "Department of Pure Mathematics and Mathematical Statistics"; \
     echo -e "University of Cambridge"; \
     echo -e "$(cat $HOME/tmp/bw/neomutt_cambridge_email)\n\n\n"|'
