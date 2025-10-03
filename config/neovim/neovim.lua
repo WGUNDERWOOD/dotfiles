@@ -456,10 +456,22 @@ vim.cmd([[
     au Filetype org setlocal linebreak
 ]])
 
--- TODO edit from here
--- TODO check bright colours, including org keywords
 -- tex files
 vim.g.vimtex_view_method = 'zathura_simple'
+
+--vim.cmd [[
+--fu s:SearchInMathZone(pat) abort
+    --call search(a:pat, '', 0, 0, {->
+        --"\ get the stack of syntax items under the cursor
+        --\ synstack('.', col('.'))
+        --"\ translate the IDs into names
+        --\ ->map({_, v -> synIDattr(v, 'name')})
+        --"\ skip the match if no syntax item under the cursor contains "texmathzone" in its name
+        --\ ->match('\ctexmathzone') == -1})
+--endfu
+--com -nargs=1 SearchInMathZone call s:SearchInMathZone(<q-args>)
+--]]
+
 vim.cmd([[
     augroup tex
     autocmd!
@@ -486,53 +498,3 @@ vim.cmd([[
     au Filetype tex hi texTitleArg gui=bold guifg=#f9e2af
     au Filetype tex hi texPartArgTitle gui=bold guifg=#f9e2af
 ]])
---vim.cmd([[
-    --augroup tex
-    --autocmd!
-    --au Filetype tex :ColorizerDetachFromBuffer
-    --au Filetype tex hi QuickFixLine guifg=NONE guibg=NONE gui=bold
-    --au Filetype tex hi texCmdInput gui=bold guifg=#ff79c6
-    --au Filetype tex hi texCmdStyle gui=bold guifg=#bd93f9
-    --au Filetype tex hi texFileArg guifg=#8be9fd
-    --au Filetype tex hi texCmdEnv gui=bold guifg=#ff79c6
-    --au Filetype tex hi texEnvArgName gui=bold guifg=#50fa7b
-    --au Filetype tex hi texCmdTitle gui=bold guifg=#ff79c6
-    --au Filetype tex hi texCmdAuthor gui=bold guifg=#ff79c6
-    --au Filetype tex hi texAuthorArg guifg=#bd93f9
-    --au Filetype tex hi texCmd gui=bold guifg=#ff79c6
-    --au Filetype tex hi texRefArg guifg=#8be9fd
-    --au Filetype tex hi texDelim guifg=#8be9fd
-    --au Filetype tex hi texTabularChar gui=bold guifg=#ff0000
-    --au Filetype tex hi texMathZoneTI guifg=#bd93f9
-    --au Filetype tex hi texMathArg guifg=#bd93f9
-    --au Filetype tex hi texMathGroup guifg=#bd93f9
-    --au Filetype tex hi texMathZoneEnv guifg=#bd93f9
-    --au Filetype tex hi texMathSuperSub gui=bold guifg=#6272a4
-    --au Filetype tex hi texMathSub guifg=#bd93f9
-    --au Filetype tex hi texMathSuper guifg=#bd93f9
-    --au Filetype tex hi texMathSymbol gui=NONE guifg=#ff79c6
-    --au Filetype tex hi texMathCmd guifg=#ff79c6
-    --au Filetype tex hi texSpecialChar guifg=#bd93f9
-    --au Filetype tex hi texMathDelimZoneLD guifg=#ff0000
-    --au Filetype tex hi texMathEnvArgName gui=bold guifg=#50fa7b
-    --au Filetype tex hi texMathDelimZoneTI gui=bold guifg=#ff0000
-    --au Filetype tex hi texMathDelimZoneTD gui=bold guifg=#ff0000
-    --au Filetype tex hi texTheoremEnvOpt gui=bold guifg=#ffff22
-    --au Filetype tex hi texProofEnvOpt gui=bold guifg=#ffff22
-    --au Filetype tex hi Special gui=NONE guifg=#f8f8f2
-    --au Filetype tex call matchadd('texPartArgTitle',
-        --\ '^[^%]*\\proofparagraph{\zs[^}][^}]*\ze}', -1)
-    --au Filetype tex call matchadd('texPartArgTitle',
-        --\ '^[^%]*\\begin{frame}\(\[.*\]\)\?{\zs[^}][^}]*\ze}', -1)
-    --au Filetype tex call matchadd('texPageCmd',
-        --\ '\\pagebreak\|\\newpage\|\\clearpage\|\\appendix', -1)
-    --au Filetype tex hi texPageCmd gui=bold guifg=#ff0000
-    --au Filetype tex nnoremap ,b :update<CR>:VimtexCompileSS<CR>
-    --au Filetype tex nnoremap ,v :VimtexView<CR>
-    --au Filetype tex nnoremap ,k :VimtexStopAll<CR>
-    --au Filetype tex nnoremap ,w :VimtexErrors<CR>
-    --au Filetype tex nnoremap ,e V<plug>(vimtex-ae)
-    --au Filetype tex inoremap <C-L> <C-X><C-O>
-    --au Filetype tex inoremap <C-J> <C-N>
-    --au Filetype tex inoremap <C-K> <C-P>
---]])
