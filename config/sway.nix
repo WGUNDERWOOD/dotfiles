@@ -122,7 +122,7 @@
         "${modifier}+Shift+n" = "move container to workspace prev";
         "${modifier}+s" =
           "exec grim -g \"$(slurp)\" "
-          + "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%m-%S).png | "
+          + "~/screenshots/screenshot_$(date -u +%Y-%m-%d_%H-%M-%S).png | "
           + "wl-copy -t image/png";
         "${modifier}+g" = "exec gamma-toggle";
         "${modifier}+Right" = "exec playerctl next";
