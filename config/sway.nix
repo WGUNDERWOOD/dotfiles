@@ -202,6 +202,9 @@
           pointer_accel 0.5
           natural_scroll enabled
       }
+      input type:pointer {
+          pointer_accel 0.5
+      }
       exec echo "day" > $HOME/tmp/gammastatus
       exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
       exec "swaylock -f"
