@@ -51,9 +51,12 @@ fn main() {
         NOMATCH.map(|w| Regex::new(&(String::new() + "(?i)" + w)).unwrap());
 
     for filename in filenames {
+
         // read lines from file
-        let file =
-            fs::read_to_string(filename).expect("Should have read the file");
+        //let file =
+            //fs::read_to_string(filename).expect("Should have read the file");
+        let bytes = fs::read(filename).unwrap();
+        let file = String::from_utf8_lossy(&bytes);
         let lines: Vec<&str> = file.lines().collect();
         // warning is (line number, line contents, match type)
         let mut warnings: Vec<(usize, &str, &str)> = vec![];
