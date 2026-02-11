@@ -98,46 +98,6 @@ td() { command todoist delete "$@" && todoist sync & }
 # cd local
 alias ..='cd ..'
 alias ...='cd ../..'
-alias cddow='cd ~/downloads/'
-alias cdcon='cd ~/.config/'
-
-# cd rclone
-alias cdrc='cd ~/rclone/'
-alias cdgd='cd ~/rclone/google_drive/'
-
-# cd google drive
-alias cdoxlec='cd ~/rclone/google_drive/Education/Oxford/Oxford\ Lecture\ Notes'
-alias cdpton='cd ~/rclone/google_drive/Education/Princeton/'
-alias cdtax='cd ~/rclone/google_drive/Finances/Tax/'
-
-# cd github
-alias cdgh='cd ~/github/'
-alias cddot='cd ~/github/dotfiles/'
-alias cdjob='cd ~/github/job-search-2023/'
-alias cdref='cd ~/github/references/'
-alias cdcv='cd ~/github/wgu-cv/'
-alias cdnot='cd ~/github/notes/'
-alias cdtf='cd ~/github/tex-fmt/'
-alias cdtr='cd ~/github/notes/travel/'
-alias cdphd='cd ~/github/phd-dissertation/'
-alias cdweb='cd ~/github/wgunderwood.github.io/'
-alias cdsco='cd ~/github/music-scores/'
-alias cdmon='cd ~/github/MondrianForests.jl/'
-alias cdmot='cd ~/github/motifcluster/'
-alias cddy='cd ~/github/DyadicKDE.jl/'
-alias cdte='cd ~/github/orf-499-spring-2024/'
-alias cdrev='cd ~/github/reviewing/'
-
-# cd research github
-alias cdrm='cd ~/github/research-martingale-yurinskii/'
-alias cdrf='cd ~/github/research-random-forests/'
-
-# cd overleaf
-alias cdov='cd ~/overleaf/'
-alias cdovm='cd ~/overleaf/CMU_2022_SAMartingale/'
-alias cdovf='cd ~/overleaf/CKU_2023_MondrianRF/'
-alias cdovh='cd ~/overleaf/CMU_2023_HigherOrderLindeberg/'
-alias cdova='cd ~/overleaf/CCKU_2024_AdaptiveMondrian/'
 
 # completion
 source $(which complete_alias)
