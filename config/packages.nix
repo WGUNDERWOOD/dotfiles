@@ -55,6 +55,7 @@ with pkgs; [
   pandoc
   pastel
   pavucontrol
+  pciutils
   pdftk
   phinger-cursors
   playerctl
