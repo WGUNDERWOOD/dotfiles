@@ -103,6 +103,6 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Underwood";
-    extraGroups = ["networkmanager" "wheel" "audio" "video"];
+    extraGroups = ["networkmanager" "wheel" "audio" "video" "gamemode"];
   };
 }
