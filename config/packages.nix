@@ -15,7 +15,7 @@ with pkgs; [
   deadnix
   diff-so-fancy
   diffpdf
-  du-dust
+  dust
   eza
   fd
   fdupes
@@ -60,7 +60,7 @@ with pkgs; [
   phinger-cursors
   playerctl
   pngquant
-  poppler_utils
+  poppler-utils
   pplatex
   procps
   procs
@@ -71,7 +71,7 @@ with pkgs; [
   rclone
   ripgrep
   rm-improved
-  rofi-wayland
+  rofi
   ruby
   screen
   silicon

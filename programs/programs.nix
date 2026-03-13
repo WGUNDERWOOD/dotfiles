@@ -1,6 +1,6 @@
 {pkgs, ...}:
 with pkgs; [
-  (callPackage ./bib-down/bib-down.nix {})
+  #(callPackage ./bib-down/bib-down.nix {})
   (callPackage ./blur-wallpaper.nix {})
   (callPackage ./bw-get.nix {})
   (callPackage ./cd-fuzzy.nix {})
@@ -17,7 +17,7 @@ with pkgs; [
   (callPackage ./pulse-cycle.nix {})
   (callPackage ./rclone-sync/rclone-sync.nix {})
   (callPackage ./reference-project.nix {})
-  (callPackage ./rename-pdf/rename-pdf.nix {})
+  #(callPackage ./rename-pdf/rename-pdf.nix {})
   (callPackage ./repos.nix {})
   (callPackage ./rofi-start/rofi-start.nix {})
   (callPackage ./spell-check/spell-check.nix {})

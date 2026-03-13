@@ -4,6 +4,8 @@ pkgs.python3Packages.buildPythonApplication rec {
   version = "0.1.0";
   src = ./.;
   postInstall = "mv -v $out/bin/bib-down.py $out/bin/bib-down";
+  pyproject = true;
+  build-system = with pkgs.python3Packages; [setuptools];
   propagatedBuildInputs = with pkgs.python3Packages; [
     habanero
     pyperclip
