@@ -11,6 +11,9 @@ pkgs.python3Packages.buildPythonApplication rec {
     version = "1.2.25";
     pyproject = true;
     build-system = with pkgs.python3Packages; [setuptools];
+    propagatedBuildInputs = with pkgs.python3Packages; [
+      colorama
+    ];
     src = pkgs.python3Packages.fetchPypi {
       inherit pname version;
       sha256 = "sha256-oWulx1LIfCY7+S+LS1hiTjseKScak5H1ZPErhuk8Z1U=";

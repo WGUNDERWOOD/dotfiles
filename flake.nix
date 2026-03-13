@@ -3,11 +3,7 @@
     nixpkgs.url = "nixpkgs/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
   };
-  outputs = inputs @ {
-    nixpkgs,
-    home-manager,
-    ...
-  }: {
+  outputs = inputs @ {home-manager, ...}: {
     nixosConfigurations = let
       systemArch = "x86_64-linux";
       homeManager = {

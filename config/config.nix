@@ -12,6 +12,7 @@
     enable = true;
     enable32Bit = true;
   };
+  programs.gamemode.enable = true;
   hardware.bluetooth.enable = false;
   services.pipewire = {
     enable = true;
