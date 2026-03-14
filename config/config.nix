@@ -12,7 +12,6 @@
     enable = true;
     enable32Bit = true;
   };
-  programs.gamemode.enable = true;
   hardware.bluetooth.enable = false;
   services.pipewire = {
     enable = true;
@@ -26,6 +25,23 @@
     wlr.enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal-wlr];
   };
+
+  # gamemode
+  programs.gamemode =
+    if config.networking.hostName == "libra"
+    then {
+      enable = true;
+      settings = {
+        general = {
+          renice = 10;
+        };
+        custom = {
+          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+        };
+      };
+    }
+    else {};
 
   # printing
   services.printing.enable = true;
