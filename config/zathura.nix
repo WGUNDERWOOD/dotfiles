@@ -8,7 +8,8 @@
     set recolor-darkcolor "#eeeeee"
     set recolor-lightcolor "#181818"
     set recolor-keephue true
-    set page-padding 20
+    set page-v-padding 20
+    set page-h-padding 20
     map - zoom out
     map = zoom in
     map u zoom out
