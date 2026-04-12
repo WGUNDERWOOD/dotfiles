@@ -203,7 +203,7 @@
           natural_scroll enabled
       }
       input type:pointer {
-          pointer_accel 0.5
+          pointer_accel 0
       }
       exec echo "day" > $HOME/tmp/gammastatus
       exec "pactl set-sink-volume @DEFAULT_SINK@ 30%"
