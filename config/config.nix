@@ -43,6 +43,14 @@
     }
     else {};
 
+  # swap
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
   # printing
   services.printing.enable = true;
   services.avahi = {
