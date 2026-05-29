@@ -26,6 +26,7 @@ with pkgs; [
   fzf
   gammastep
   gcc
+  gemini-cli
   ghostscript
   gimp
   git
