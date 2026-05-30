@@ -11,14 +11,9 @@ pkgs.writeShellApplication {
         exit 1
     fi
 
-    if [ -z "$2" ]; then
-        echo "Please supply a bitrate"
-        exit 1
-    fi
-
     FILE="$(basename -s .mp3 "$1")"
     TEMP="/home/will/tmp/''${FILE}_cmp.mp3"
-    ffmpeg -y -i "$1" -acodec libmp3lame -ab "$2" "$TEMP"
+    lame -V4 "$1" "$TEMP"
     mv "$TEMP" .
   '';
 }
