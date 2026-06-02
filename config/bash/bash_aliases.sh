@@ -51,6 +51,7 @@ alias rcgdpl='rclone-sync -gl'
 alias rcgdps='rclone-sync -gs'
 alias rcpl='rcgdpl'
 alias rcps='rcgdps'
+alias suspend='systemctl suspend'
 
 # nix
 nxr() {
