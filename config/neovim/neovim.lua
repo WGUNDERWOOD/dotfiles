@@ -58,6 +58,7 @@ map("n", "<Space>yy", "m'^v$hy")
 map("i", "kj", "<Esc>")
 vim.opt.listchars = {eol = "$", tab = ">-", trail = "~",
   extends = ">", precedes = "<", space = "·"}
+vim.g.maplocalleader = '  '
 
 -- colors
 vim.o.syntax = "ON"
@@ -209,6 +210,9 @@ vim.cmd("call matchadd('No', '\\<NO\\>', -1)")
 
 -- lastplace
 vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,mail"
+
+-- lean
+require("lean").setup { mappings = true }
 
 -- org mode
 require('orgmode').setup({
