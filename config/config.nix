@@ -36,8 +36,8 @@
           renice = 10;
         };
         custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+          start = "${pkgs.libnotify}/bin/notify-send 'gamemode started'";
+          end = "${pkgs.libnotify}/bin/notify-send 'gamemode ended'";
         };
       };
     }
@@ -61,16 +61,9 @@
 
   # greeter
   services.getty.autologinUser = "will";
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "will";
-      };
-      default_session = initial_session;
-    };
-  };
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && sleep 0.1 && sway
+  '';
 
   # keymap
   services.xserver.xkb = {
