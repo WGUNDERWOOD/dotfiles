@@ -62,7 +62,7 @@
   # greeter
   services.getty.autologinUser = "will";
   environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sleep 1 && sway
+    [[ "$(tty)" == /dev/tty1 ]] && sleep 2 && sway
   '';
 
   # keymap
