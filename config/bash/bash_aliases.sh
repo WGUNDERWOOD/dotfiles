@@ -17,7 +17,7 @@ alias b='bat'
 alias c='cd'
 alias ci='cdi'
 alias cf='cd-fuzzy'
-f() { command feh "$@" & }
+f() { command feh --scale-down --info 'echo %N' "$@" & }
 alias g='git'
 alias j='just'
 alias m='(cd ~/downloads; neomutt)'
