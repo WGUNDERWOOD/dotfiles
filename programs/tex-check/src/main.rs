@@ -8,13 +8,14 @@ const MATCH_WARNING: [&str; 1] = ["warn"];
 const MATCH_OTHER: [&str; 2] = ["overfull", "underfull"];
 
 // declare non matches
-const NOMATCH: [&str; 6] = [
+const NOMATCH: [&str; 7] = [
     "Package: infwarerr",
     "file:line:error style",
     "pgfplots.errorbars.code.tex",
     "warning\\$ -- 0",
     "Package caption Warning: Unknown document class",
     "font should be expanded before its first use",
+    "LaTeX Warning: Command \\\\showhyphens *has changed",
 ];
 
 // declare colors
