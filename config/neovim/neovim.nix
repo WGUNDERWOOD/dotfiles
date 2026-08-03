@@ -14,6 +14,8 @@
 
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
 
   programs.neovim.plugins = let
     vim-searchindex = pkgs.vimUtils.buildVimPlugin {

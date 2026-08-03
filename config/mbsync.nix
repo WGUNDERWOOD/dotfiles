@@ -56,7 +56,7 @@
     TLSType None
     AuthMechs Login
     Host localhost
-    Port 1143
+    Port 2143
     UserCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_warwick_email"
     PassCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_warwick_password"
 

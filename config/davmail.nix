@@ -1,5 +1,5 @@
 {...}: {
-  home.file.".config/davmail/davmail_static.conf".text = ''
+  home.file.".config/davmail/davmail_static_cambridge.conf".text = ''
     # davmail settings
     davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
     davmail.mode=O365Manual
@@ -25,6 +25,43 @@
     davmail.ldapPort=1389
     davmail.popPort=1110
     davmail.smtpPort=1025
+
+    # security
+    davmail.ssl.nosecureimap=false
+    davmail.ssl.nosecureldap=false
+    davmail.ssl.nosecurecaldav=false
+    davmail.ssl.nosecuresmtp=false
+    davmail.ssl.nosecurepop=false
+
+    # oauth key (leave as bottom line)
+  '';
+
+  home.file.".config/davmail/davmail_static_warwick.conf".text = ''
+    # davmail settings
+    davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+    davmail.mode=O365Manual
+    davmail.server=true
+    davmail.enableKeepAlive=true
+    davmail.allowRemote=false
+    davmail.smtpSaveInSent=true
+    davmail.imapAutoExpunge=true
+    davmail.imapIdleDelay=
+    davmail.imapAlwaysApproxMsgSize=
+
+    # logging
+    log4j.logger.davmail=WARN
+    log4j.logger.httpclient.wire=WARN
+    log4j.logger.org.apache.commons.httpclient=WARN
+    log4j.logger.org.apache.http.wire=WARN
+    log4j.rootLogger=WARN
+    log4j.logger.org.apache.http.conn.ssl=WARN
+
+    # ports
+    davmail.caldavPort=2080
+    davmail.imapPort=2143
+    davmail.ldapPort=2389
+    davmail.popPort=2110
+    davmail.smtpPort=2025
 
     # security
     davmail.ssl.nosecureimap=false

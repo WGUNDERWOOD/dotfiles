@@ -3,8 +3,11 @@ pkgs.writeShellApplication {
   name = "davmail-oauth";
   runtimeInputs = with pkgs; [coreutils gnugrep];
   text = ''
-    STATIC_FILE="/home/will/.config/davmail/davmail_static.conf"
-    STATIC_TEXT="$(cat $STATIC_FILE)"
+    STATIC_FILE_CAMBRIDGE="/home/will/.config/davmail/davmail_static_cambridge.conf"
+    STATIC_FILE_WARWICK="/home/will/.config/davmail/davmail_static_warwick.conf"
+    STATIC_TEXT_CAMBRIDGE="$(cat $STATIC_FILE_CAMBRIDGE)"
+    STATIC_TEXT_WARWICK="$(cat $STATIC_FILE_WARWICK)"
+
     CONF_FILE_CAMBRIDGE="/home/will/.config/davmail/davmail_cambridge.conf"
     CONF_FILE_WARWICK="/home/will/.config/davmail/davmail_warwick.conf"
     touch $CONF_FILE_CAMBRIDGE $CONF_FILE_WARWICK
@@ -23,9 +26,9 @@ pkgs.writeShellApplication {
         AUTH_TEXT_WARWICK=""
     fi
 
-    NEW_CONF_TEXT_CAMBRIDGE="$STATIC_TEXT\n$AUTH_TEXT_CAMBRIDGE"
+    NEW_CONF_TEXT_CAMBRIDGE="$STATIC_TEXT_CAMBRIDGE\n$AUTH_TEXT_CAMBRIDGE"
     echo -e "$NEW_CONF_TEXT_CAMBRIDGE" > $CONF_FILE_CAMBRIDGE
-    NEW_CONF_TEXT_WARWICK="$STATIC_TEXT\n$AUTH_TEXT_WARWICK"
+    NEW_CONF_TEXT_WARWICK="$STATIC_TEXT_WARWICK\n$AUTH_TEXT_WARWICK"
     echo -e "$NEW_CONF_TEXT_WARWICK" > $CONF_FILE_WARWICK
   '';
 }
