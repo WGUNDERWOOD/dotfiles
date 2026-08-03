@@ -9,8 +9,6 @@ pkgs.writeShellApplication {
             "neomutt_gmail_password" \
             "neomutt_cambridge_email" \
             "neomutt_cambridge_password" \
-            "neomutt_warwick_email" \
-            "neomutt_warwick_password" \
            )
 
     # unlock and update bitwarden local vault

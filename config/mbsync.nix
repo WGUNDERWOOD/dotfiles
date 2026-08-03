@@ -50,29 +50,5 @@
     Patterns *
     Expunge Both
     CopyArrivalDate yes
-
-    # warwick
-    IMAPAccount warwick
-    TLSType None
-    AuthMechs Login
-    Host localhost
-    Port 2143
-    UserCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_warwick_email"
-    PassCmd "${pkgs.coreutils}/bin/cat $HOME/tmp/bw/neomutt_warwick_password"
-
-    IMAPStore warwick-far
-    Account warwick
-
-    MaildirStore warwick-near
-    Path ~/mail/warwick/
-    Inbox ~/mail/warwick/INBOX/
-    SubFolders Verbatim
-
-    Channel warwick
-    Far :warwick-far:
-    Near :warwick-near:
-    Patterns *
-    Expunge Both
-    CopyArrivalDate yes
   '';
 }

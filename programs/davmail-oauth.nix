@@ -3,32 +3,20 @@ pkgs.writeShellApplication {
   name = "davmail-oauth";
   runtimeInputs = with pkgs; [coreutils gnugrep];
   text = ''
-    STATIC_FILE_CAMBRIDGE="/home/will/.config/davmail/davmail_static_cambridge.conf"
-    STATIC_FILE_WARWICK="/home/will/.config/davmail/davmail_static_warwick.conf"
-    STATIC_TEXT_CAMBRIDGE="$(cat $STATIC_FILE_CAMBRIDGE)"
-    STATIC_TEXT_WARWICK="$(cat $STATIC_FILE_WARWICK)"
+    STATIC_FILE="/home/will/.config/davmail/davmail_static.conf"
+    STATIC_TEXT="$(cat $STATIC_FILE)"
 
-    CONF_FILE_CAMBRIDGE="/home/will/.config/davmail/davmail_cambridge.conf"
-    CONF_FILE_WARWICK="/home/will/.config/davmail/davmail_warwick.conf"
-    touch $CONF_FILE_CAMBRIDGE $CONF_FILE_WARWICK
+    CONF_FILE="/home/will/.config/davmail/davmail.conf"
+    touch $CONF_FILE
 
-    AUTH_PATTERN_CAMBRIDGE="davmail.oauth.*@cam.ac.uk.refreshToken"
-    if grep -q "$AUTH_PATTERN_CAMBRIDGE" "$CONF_FILE_CAMBRIDGE"; then
-        AUTH_TEXT_CAMBRIDGE="$(grep "$AUTH_PATTERN_CAMBRIDGE" "$CONF_FILE_CAMBRIDGE")"
+    AUTH_PATTERN="davmail.oauth.*@cam.ac.uk.refreshToken"
+    if grep -q "$AUTH_PATTERN" "$CONF_FILE"; then
+        AUTH_TEXT="$(grep "$AUTH_PATTERN" "$CONF_FILE")"
     else
-        AUTH_TEXT_CAMBRIDGE=""
+        AUTH_TEXT=""
     fi
 
-    AUTH_PATTERN_WARWICK="davmail.oauth.*@live.warwick.ac.uk.refreshToken"
-    if grep -q "$AUTH_PATTERN_WARWICK" "$CONF_FILE_WARWICK"; then
-        AUTH_TEXT_WARWICK="$(grep "$AUTH_PATTERN_WARWICK" "$CONF_FILE_WARWICK")"
-    else
-        AUTH_TEXT_WARWICK=""
-    fi
-
-    NEW_CONF_TEXT_CAMBRIDGE="$STATIC_TEXT_CAMBRIDGE\n$AUTH_TEXT_CAMBRIDGE"
-    echo -e "$NEW_CONF_TEXT_CAMBRIDGE" > $CONF_FILE_CAMBRIDGE
-    NEW_CONF_TEXT_WARWICK="$STATIC_TEXT_WARWICK\n$AUTH_TEXT_WARWICK"
-    echo -e "$NEW_CONF_TEXT_WARWICK" > $CONF_FILE_WARWICK
+    NEW_CONF_TEXT="$STATIC_TEXT\n$AUTH_TEXT"
+    echo -e "$NEW_CONF_TEXT" > $CONF_FILE
   '';
 }

@@ -46,9 +46,9 @@
       };
     };
 
-    services.davmail_cambridge = {
+    services.davmail = {
       Unit = {
-        Description = "davmail_cambridge";
+        Description = "davmail";
         After = "network-online.target";
       };
       Install = {
@@ -59,7 +59,7 @@
           davmailOauth = pkgs.callPackage ../programs/davmail-oauth.nix {};
         in "${davmailOauth}/bin/davmail-oauth";
         ExecStart = let
-          davmailConfig = "/home/will/.config/davmail/davmail_cambridge.conf";
+          davmailConfig = "/home/will/.config/davmail/davmail.conf";
         in "${pkgs.davmail}/bin/davmail ${davmailConfig}";
         RestartSec = 20;
         Restart = "always";
@@ -67,25 +67,5 @@
       };
     };
 
-    services.davmail_warwick = {
-      Unit = {
-        Description = "davmail_warwick";
-        After = "network-online.target";
-      };
-      Install = {
-        WantedBy = ["default.target"];
-      };
-      Service = {
-        ExecStartPre = let
-          davmailOauth = pkgs.callPackage ../programs/davmail-oauth.nix {};
-        in "${davmailOauth}/bin/davmail-oauth";
-        ExecStart = let
-          davmailConfig = "/home/will/.config/davmail/davmail_warwick.conf";
-        in "${pkgs.davmail}/bin/davmail ${davmailConfig}";
-        RestartSec = 20;
-        Restart = "always";
-        RemainAfterExit = "true";
-      };
-    };
   };
 }
