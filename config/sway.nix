@@ -20,15 +20,12 @@
         resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
       }
     ];
-    events = [
-      {
-        event = "before-sleep";
-        command =
-          if osConfig.networking.hostName == "xanth"
-          then "${pkgs.swaylock}/bin/swaylock -f"
-          else "";
-      }
-    ];
+    events = {
+      "before-sleep" =
+        if osConfig.networking.hostName == "xanth"
+        then "${pkgs.swaylock}/bin/swaylock -f"
+        else "";
+    };
   };
 
   home.file.".local/share/icons/default".source =

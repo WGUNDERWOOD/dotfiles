@@ -2,7 +2,6 @@
 with pkgs; [
   alacritty
   alejandra
-  #antigravity-cli
   aspell
   aspellDicts.en
   bash-completion
@@ -11,6 +10,7 @@ with pkgs; [
   brillo
   bundix
   chafa
+  codex
   complete-alias
   davmail
   deadnix
