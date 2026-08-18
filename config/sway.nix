@@ -49,10 +49,10 @@
         // (
           if osConfig.networking.hostName == "libra"
           then {
-            "DP-1" = {
+            "DP-3" = {
               pos = "0,0";
-              res = "2560x1440";
-              scale = "1";
+              res = "3840x2160";
+              scale = "1.4";
             };
           }
           else {
