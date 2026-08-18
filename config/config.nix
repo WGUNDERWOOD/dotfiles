@@ -90,7 +90,7 @@
     JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
     IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
     # display settings
-    MOZ_ENABLE_WAYLAND = "0";
+    MOZ_ENABLE_WAYLAND = "1";
     GDK_DPI_SCALE =
       if config.networking.hostName == "xanth"
       then "1.3"
