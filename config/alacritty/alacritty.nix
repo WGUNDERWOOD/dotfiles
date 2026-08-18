@@ -8,7 +8,7 @@
       normal.family = "Source Code Pro";
       size =
         if osConfig.networking.hostName == "libra"
-        then 12.0
+        then 15.0
         else 14.0;
     };
 

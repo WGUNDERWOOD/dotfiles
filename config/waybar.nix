@@ -8,7 +8,7 @@
     position = "bottom";
     height =
       if osConfig.networking.hostName == "libra"
-      then 40
+      then 50
       else 50;
     modules-left = [
       "sway/workspaces"
@@ -224,7 +224,7 @@
   programs.waybar.style = let
     fontsize =
       if osConfig.networking.hostName == "libra"
-      then "20px"
+      then "24px"
       else "24px";
     bordertoplarge =
       if osConfig.networking.hostName == "libra"
@@ -236,23 +236,23 @@
       else "1px";
     paddinglarge =
       if osConfig.networking.hostName == "libra"
-      then "16px"
+      then "18px"
       else "18px";
     paddingmedium =
       if osConfig.networking.hostName == "libra"
-      then "12px"
+      then "14px"
       else "14px";
     paddingsmall =
       if osConfig.networking.hostName == "libra"
-      then "8px"
+      then "10px"
       else "10px";
     paddingtiny =
       if osConfig.networking.hostName == "libra"
-      then "0px"
+      then "1px"
       else "1px";
     spotifyfontsize =
       if osConfig.networking.hostName == "libra"
-      then "19px"
+      then "23px"
       else "23px";
     #color-crust = "#11111b";
     color-black = "#060609";
