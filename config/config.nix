@@ -91,6 +91,7 @@
     IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
     # display settings
     MOZ_ENABLE_WAYLAND = "1";
+    NIXOS_OZONE_WL = "1";
     GDK_DPI_SCALE =
       if config.networking.hostName == "xanth"
       then "1.3"

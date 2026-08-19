@@ -73,7 +73,7 @@
         "${modifier}+Shift+f" = "exec firefox";
         "${modifier}+Shift+s" =
           "exec pgrep spotify || "
-          + "((swaymsg workspace number 10 && spotify) & "
+          + "((swaymsg workspace number 10 && NIXOS_OZONE_WL=1 spotify) & "
           + "(sleep 1 && rm -fd $HOME/Downloads/))";
         "${modifier}+d" = "exec rofi-start";
         "${modifier}+Shift+Ctrl+k" =
@@ -86,8 +86,7 @@
         "${modifier}+Shift+j" = "move down";
         "${modifier}+Shift+k" = "move up";
         "${modifier}+Shift+l" = "move right";
-        "${modifier}+b" = "split h";
-        "${modifier}+v" = "split v";
+        "${modifier}+b" = "exec pkill --signal SIGUSR1 waybar";
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
         "${modifier}+3" = "workspace number 3";
