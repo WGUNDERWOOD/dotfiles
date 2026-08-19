@@ -2,7 +2,6 @@
   ./alacritty/alacritty.nix
   ./bash/bash.nix
   ./bat/bat.nix
-  ./davmail.nix
   ./feh.nix
   ./git/git.nix
   ./latex/latex.nix

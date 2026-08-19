@@ -46,25 +46,5 @@
       };
     };
 
-    services.davmail = {
-      Unit = {
-        Description = "davmail";
-        After = "network-online.target";
-      };
-      Install = {
-        WantedBy = ["default.target"];
-      };
-      Service = {
-        ExecStartPre = let
-          davmailOauth = pkgs.callPackage ../programs/davmail-oauth.nix {};
-        in "${davmailOauth}/bin/davmail-oauth";
-        ExecStart = let
-          davmailConfig = "/home/will/.config/davmail/davmail.conf";
-        in "${pkgs.davmail}/bin/davmail ${davmailConfig}";
-        RestartSec = 20;
-        Restart = "always";
-        RemainAfterExit = "true";
-      };
-    };
   };
 }

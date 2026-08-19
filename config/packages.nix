@@ -12,7 +12,6 @@ with pkgs; [
   chafa
   codex
   complete-alias
-  davmail
   deadnix
   diff-so-fancy
   diffpdf
