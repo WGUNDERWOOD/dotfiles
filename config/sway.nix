@@ -45,7 +45,7 @@
       };
       bars = [];
       output =
-        {"*" = {bg = "~/wallpaper.png fill";};}
+        {"*" = {bg = "~/wallpaper.svg fill";};}
         // (
           if osConfig.networking.hostName == "libra"
           then {

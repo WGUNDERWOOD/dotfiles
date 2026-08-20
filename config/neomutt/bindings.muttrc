@@ -35,6 +35,7 @@ macro index a "<tag-pattern>.<enter>" "tag all messages"
 macro index A "<untag-pattern>.<enter>" "untag all messages"
 bind index e mail
 bind index S sync-mailbox
+bind index,pager <space> sync-mailbox
 macro index q "<sync-mailbox><exit>" "quit"
 
 bind index ss limit
