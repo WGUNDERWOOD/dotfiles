@@ -10,12 +10,12 @@ background = "#181818"
 subprocess.run([
     "resvg",
     "nixos.svg",
-    "logo.png",
+    "nixos.png",
     "-w", str(logo_size),
     "-h", str(logo_size),
 ], check=True)
 
-logo = Image.open("logo.png").convert("RGBA")
+logo = Image.open("nixos.png").convert("RGBA")
 
 out = Image.new("RGBA", (W, H), background)
 
