@@ -5,7 +5,7 @@ from PIL import Image
 
 W, H = 3840, 2160
 logo_size = 800
-background = "#181818"
+background = "#090916"
 
 subprocess.run([
     "resvg",
