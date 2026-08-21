@@ -26,5 +26,6 @@
     bs-hl-color = "f38ba8";
     key-hl-color = "a6e3a1";
     text-caps-lock-color = "00000000";
+    scaling = "fill";
   };
 }
