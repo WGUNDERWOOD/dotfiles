@@ -75,11 +75,11 @@ alternative_order text/plain text/enriched text/html
 
 # sidebar items
 named-mailboxes \
-    "Gmail" "~/mail/gmail/INBOX" \
-    "  Sent" "~/mail/gmail/[Gmail]/Sent\ Mail" \
-    "  Drafts" "~/mail/gmail/[Gmail]/Drafts" \
-    "  Trash" "~/mail/gmail/[Gmail]/Trash" \
-    "  Junk" "~/mail/gmail/[Gmail]/Spam" \
+    "Inbox" "~/mail/gmail/INBOX" \
+    "Sent" "~/mail/gmail/[Gmail]/Sent\ Mail" \
+    "Drafts" "~/mail/gmail/[Gmail]/Drafts" \
+    "Trash" "~/mail/gmail/[Gmail]/Trash" \
+    "Junk" "~/mail/gmail/[Gmail]/Spam" \
 
 # sidebar settings
 set sidebar_visible = yes
