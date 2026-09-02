@@ -64,6 +64,7 @@ vim.g.maplocalleader = '  '
 vim.o.syntax = "ON"
 vim.o.termguicolors = true
 vim.cmd("colorscheme catppuccin-mocha")
+--vim.cmd("colorscheme catppuccin-latte")
 
 vim.cmd("hi MatchParen guifg=#8be9ff guibg=#1e1e2e gui=bold")
 vim.cmd("hi Search guibg=#a6e3a1 guifg=#181825")
@@ -462,6 +463,12 @@ vim.cmd([[
 
 -- tex files
 vim.g.vimtex_view_method = 'zathura_simple'
+vim.g.vimtex_delim_toggle_mod_list = {
+  { '\\bigl',  '\\bigr' },
+  { '\\Bigl',  '\\Bigr' },
+  { '\\biggl', '\\biggr' },
+  { '\\Biggl', '\\Biggr' },
+}
 
 --vim.cmd [[
 --fu s:SearchInMathZone(pat) abort
