@@ -22,6 +22,7 @@ with pkgs; [
   (callPackage ./spell-check/spell-check.nix {})
   (callPackage ./spell-check-word.nix {})
   (callPackage ./spell-check-fix.nix {})
+  (callPackage ./sway-dpi.nix {})
   (callPackage ./sway-empty/sway-empty.nix {})
   (callPackage ./tex-build/tex-build.nix {})
   (callPackage ./tex-check/tex-check.nix {})

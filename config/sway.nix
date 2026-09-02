@@ -125,6 +125,7 @@
         "${modifier}+Left" = "exec playerctl previous";
         "${modifier}+space" = "exec playerctl play-pause";
         "${modifier}+c" = "exec pulse-cycle";
+        "${modifier}+r" = "exec sway-dpi";
         "${modifier}+Down" =
           "exec \"pactl set-sink-volume "
           + "@DEFAULT_SINK@ -5%\"";
