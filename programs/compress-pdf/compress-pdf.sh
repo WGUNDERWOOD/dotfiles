@@ -119,12 +119,12 @@ for infile in "$@"; do
         if [ "$cmpsize" -eq 0 ]; then
             printf "%bNo output, keeping original%b\n" "$RED" "$RESET"
 
-        # first compression size is larger, keep original and save hash
-        elif [ "$cmpsize" -ge "$insize" ]; then
+        # first compression size is not much smaller, keep original and save hash
+        elif [ "$cmpsize" -ge $((99 * insize / 100)) ]; then
             echo "$sha" > "$shafile"
             printf "%b%s%b\n" "$RED" "$cmpsizeh" "$RESET"
 
-        # first compression size is smaller, keep compressed file
+        # first compression size is much smaller, keep compressed file
         else
             cmppercent=$(("$cmpsize" * 100 / "$insize"))
             printf "%b%s (%s%%)%b\n" "$GREEN" "$cmpsizeh" "$cmppercent" "$RESET"
