@@ -6,10 +6,7 @@
   programs.waybar.enable = true;
   programs.waybar.settings.mainbar = {
     position = "bottom";
-    height =
-      if osConfig.networking.hostName == "libra"
-      then 40
-      else 50;
+    height = 40;
     modules-left = [
       "sway/workspaces"
       "custom/separatorleft"

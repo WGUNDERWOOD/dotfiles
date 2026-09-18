@@ -6,7 +6,7 @@
     set highlight-active-color "rgba(0,0,0,0)"
     set recolor true
     set recolor-darkcolor "#eeeeee"
-    set recolor-lightcolor "#1c1c1e"
+    set recolor-lightcolor "#10101b"
     set recolor-keephue true
     set page-v-padding 20
     set page-h-padding 20
