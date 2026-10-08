@@ -10,6 +10,7 @@ with pkgs; [
   brillo
   bundix
   chafa
+  chromium
   codex
   complete-alias
   deadnix
