@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  nixpkgs-unstable,
   ...
 }: {
   # boot
@@ -102,7 +103,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
   environment.systemPackages =
-    (import ./packages.nix pkgs)
+    (import ./packages.nix {inherit pkgs nixpkgs-unstable;})
     ++ (import ../programs/programs.nix pkgs);
   programs.sway.enable = true;
   programs.steam.enable = config.networking.hostName == "libra";

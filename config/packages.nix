@@ -1,5 +1,10 @@
-{pkgs, ...}:
+{
+  pkgs,
+  nixpkgs-unstable,
+  ...
+}:
 with pkgs; [
+  # stable packages
   alacritty
   alejandra
   aspell
@@ -11,7 +16,6 @@ with pkgs; [
   bundix
   chafa
   chromium
-  codex
   complete-alias
   deadnix
   diff-so-fancy
@@ -100,4 +104,6 @@ with pkgs; [
   zathura
   zip
   zoxide
+  # unstable packages
+  nixpkgs-unstable.codex
 ]
