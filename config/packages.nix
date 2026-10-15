@@ -15,7 +15,6 @@ with pkgs; [
   brillo
   bundix
   chafa
-  chromium
   complete-alias
   deadnix
   diff-so-fancy
