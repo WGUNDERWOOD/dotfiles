@@ -12,7 +12,8 @@
   command: "firefox
     'https://outlook.cloud.microsoft/mail/'
     'https://calendar.google.com/calendar/'
-    'https://app.todoist.com/app/upcoming'"
+    'https://app.todoist.com/app/upcoming'
+    'https://tabula.warwick.ac.uk/'"
 
 - name: Neovim
   command:
