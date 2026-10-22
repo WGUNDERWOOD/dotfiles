@@ -13,7 +13,8 @@
     'https://outlook.cloud.microsoft/mail/'
     'https://calendar.google.com/calendar/'
     'https://app.todoist.com/app/upcoming'
-    'https://tabula.warwick.ac.uk/'"
+    'https://tabula.warwick.ac.uk/'
+    'https://teams.microsoft.com/v2/'"
 
 - name: Neovim
   command:
