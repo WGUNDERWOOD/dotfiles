@@ -69,6 +69,7 @@ with pkgs; [
   procps
   procs
   pulseaudio
+  pympress
   python3
   R
   ranger
