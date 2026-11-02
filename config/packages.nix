@@ -101,6 +101,7 @@ with pkgs; [
   wget
   wine
   wl-clipboard
+  wl-mirror
   zathura
   zip
   zoxide
