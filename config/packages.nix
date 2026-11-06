@@ -13,6 +13,7 @@ with pkgs; [
   bitwarden-cli
   bottom
   brillo
+  bubblewrap
   bundix
   chafa
   complete-alias
