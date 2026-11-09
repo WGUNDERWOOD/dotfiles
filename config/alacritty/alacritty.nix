@@ -9,7 +9,7 @@
       size =
         if osConfig.networking.hostName == "libra"
         then 12.0
-        else 14.0;
+        else 13.0;
     };
 
     cursor.style = {
